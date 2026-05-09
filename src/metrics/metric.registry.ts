@@ -1,18 +1,19 @@
-import { type CallExpression, Node, SyntaxKind } from "ts-morph";
-import { Metric } from "./metric.ts";
+import { Node, SyntaxKind } from "ts-morph";
+import type { MetricDescriptor } from "./metric.ts";
 
-export class LineCountMetric extends Metric<number> {
-  readonly name = "lineCount" as const;
+export const lineCountMetric: MetricDescriptor<number> = {
+  name: "lineCount",
+  description:
+    "Measures the total number of lines in the test block to help identify oversized, complex, or \"Eager\" tests.",
+  extract: (call) =>
+    call.getEndLineNumber() - call.getStartLineNumber() + 1,
+};
 
-  extract(testCall: CallExpression): number {
-    return testCall.getEndLineNumber() - testCall.getStartLineNumber() + 1;
-  }
-}
-
-export class AssertionCountMetric extends Metric<number> {
-  readonly name = "assertionCount" as const;
-
-  extract(testCall: CallExpression): number {
+export const assertionCountMetric: MetricDescriptor<number> = {
+  name: "assertionCount",
+  description:
+    "Counts the total number of expect calls; high values often signal the presence of the Assertion Roulette smell.",
+  extract: (testCall) => {
     const testBody = testCall.getArguments()[1];
     if (!testBody) return 0;
 
@@ -22,13 +23,14 @@ export class AssertionCountMetric extends Metric<number> {
         const exp = c.getExpression();
         return Node.isIdentifier(exp) && exp.getText() === "expect";
       }).length;
-  }
-}
+  },
+};
 
-export class AssertionsWithoutMessagesMetric extends Metric<number> {
-  readonly name = "assertionsWithoutMessages" as const;
-
-  extract(testCall: CallExpression): number {
+export const assertionsWithoutMessagesMetric: MetricDescriptor<number> = {
+  name: "assertionsWithoutMessages",
+  description:
+    "Identifies assertions lacking custom diagnostic messages, making it harder to pinpoint specific failures in large suites.",
+  extract: (testCall) => {
     const testBody = testCall.getArguments()[1];
     if (!testBody) return 0;
 
@@ -41,19 +43,19 @@ export class AssertionsWithoutMessagesMetric extends Metric<number> {
       if (Node.isPropertyAccessExpression(parent)) {
         const matcherCall = parent.getParent();
         if (Node.isCallExpression(matcherCall)) {
-          // Geralmente, se o matcher tem > 1 argumento, o segundo é a mensagem de erro
           return matcherCall.getArguments().length <= 1;
         }
       }
       return true;
     }).length;
-  }
-}
+  },
+};
 
-export class ControlFlowCountMetric extends Metric<number> {
-  readonly name = "controlFlowCount" as const;
-
-  extract(testCall: CallExpression): number {
+export const controlFlowCountMetric: MetricDescriptor<number> = {
+  name: "controlFlowCount",
+  description:
+    "Tracks branching and loops (if, for, switch) to detect the Conditional Test Logic smell, which increases test complexity.",
+  extract: (testCall) => {
     const testBody = testCall.getArguments()[1];
     if (!testBody) return 0;
 
@@ -65,20 +67,21 @@ export class ControlFlowCountMetric extends Metric<number> {
       SyntaxKind.SwitchStatement,
       SyntaxKind.WhileStatement,
       SyntaxKind.DoStatement,
-      SyntaxKind.ConditionalExpression, // ternary operator
+      SyntaxKind.ConditionalExpression,
     ];
 
     return kinds.reduce(
       (acc, kind) => acc + testBody.getDescendantsOfKind(kind).length,
       0,
     );
-  }
-}
+  },
+};
 
-export class ConjunctionsInNameMetric extends Metric<boolean> {
-  readonly name = "hasConjunctionsInName" as const;
-
-  extract(testCall: CallExpression): boolean {
+export const conjunctionsInNameMetric: MetricDescriptor<boolean> = {
+  name: "hasConjunctionsInName",
+  description:
+    'Checks for words like "and" or "with" in the title, signaling that a single test might be verifying multiple behaviors.',
+  extract: (testCall) => {
     const firstArg = testCall.getArguments()[0];
     if (
       !Node.isStringLiteral(firstArg) &&
@@ -89,13 +92,14 @@ export class ConjunctionsInNameMetric extends Metric<boolean> {
     const name = firstArg.getLiteralText().toLowerCase();
     const conjunctions = [" and ", " or ", " & ", " also ", " with "];
     return conjunctions.some((c) => name.includes(c));
-  }
-}
+  },
+};
 
-export class DistinctMatchersMetric extends Metric<number> {
-  readonly name = "distinctMatchersCount" as const;
-
-  extract(testCall: CallExpression): number {
+export const distinctMatchersMetric: MetricDescriptor<number> = {
+  name: "distinctMatchersCount",
+  description:
+    "Calculates the variety of matchers used (e.g., toBe, toMatch); high diversity can indicate a lack of test cohesion and focus.",
+  extract: (testCall) => {
     const testBody = testCall.getArguments()[1];
     if (!testBody) return 0;
 
@@ -105,13 +109,14 @@ export class DistinctMatchersMetric extends Metric<number> {
       .map((p) => p.getName());
 
     return new Set(matchers).size;
-  }
-}
+  },
+};
 
-export class HardcodedLiteralCountMetric extends Metric<number> {
-  readonly name = "hardcodedLiteralCount" as const;
-
-  extract(testCall: CallExpression): number {
+export const hardcodedLiteralCountMetric: MetricDescriptor<number> = {
+  name: "hardcodedLiteralCount",
+  description:
+    'Tallies raw strings and numbers, highlighting potential "Magic Numbers" or high coupling with specific data values.',
+  extract: (testCall) => {
     const testBody = testCall.getArguments()[1];
     if (!testBody) return 0;
 
@@ -119,5 +124,15 @@ export class HardcodedLiteralCountMetric extends Metric<number> {
       testBody.getDescendantsOfKind(SyntaxKind.StringLiteral).length +
       testBody.getDescendantsOfKind(SyntaxKind.NumericLiteral).length
     );
-  }
-}
+  },
+};
+
+export const DEFAULT_METRICS = [
+  lineCountMetric,
+  assertionCountMetric,
+  assertionsWithoutMessagesMetric,
+  controlFlowCountMetric,
+  conjunctionsInNameMetric,
+  distinctMatchersMetric,
+  hardcodedLiteralCountMetric,
+] as const;

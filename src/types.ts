@@ -1,4 +1,4 @@
-import type { Metric } from "./metrics/metric.ts";
+import type { MetricDescriptor } from "./metrics/metric.ts";
 
 export interface MinerConfig {
   minStars: number;
@@ -13,7 +13,7 @@ export interface MinerConfig {
     minAssertions: number;
   };
   /** When omitted, uses the built-in default metrics (lineCount, assertionCount). */
-  metrics?: readonly Metric<unknown>[];
+  metrics?: readonly MetricDescriptor<unknown>[];
 }
 
 export interface ExtractedTestCase {

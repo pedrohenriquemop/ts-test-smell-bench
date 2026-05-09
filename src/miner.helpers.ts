@@ -1,8 +1,10 @@
 import { CallExpression, Node, Project, SyntaxKind } from "ts-morph";
-import { defaultTestMetrics } from "./metrics/metric.helpers.ts";
-import { metricsRecord } from "./metrics/metric.helpers.ts";
+import {
+  DEFAULT_METRICS,
+  metricsRecord,
+} from "./metrics/metric.helpers.ts";
+import type { MetricDescriptor } from "./metrics/metric.ts";
 import type { ExtractedTestCase } from "./types.ts";
-import { Metric } from "./metrics/metric.ts";
 
 export class MinerHelpers {
   static sleep(ms: number): Promise<void> {
@@ -22,7 +24,7 @@ export class MinerHelpers {
   static extractTestCasesFromSource(
     content: string,
     virtualFilename = "tests.ts",
-    metrics: readonly Metric<unknown>[] = defaultTestMetrics,
+    metrics: readonly MetricDescriptor<unknown>[] = DEFAULT_METRICS,
   ): ExtractedTestCase[] {
     const project = new Project({ useInMemoryFileSystem: true });
     const sourceFile = project.createSourceFile(virtualFilename, content, {

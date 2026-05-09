@@ -1,19 +1,19 @@
 import { Octokit } from "@octokit/rest";
 import * as fs from "fs";
 import * as path from "path";
-import { defaultTestMetrics } from "./metrics/metric.helpers.ts";
+import { DEFAULT_METRICS } from "./metrics/metric.helpers.ts";
 import {
-  AssertionCountMetric,
-  LineCountMetric,
+  assertionCountMetric,
+  lineCountMetric,
 } from "./metrics/metric.registry.ts";
 import { MinerHelpers } from "./miner.helpers.ts";
 import type { ExtractedTestCase, MinerConfig } from "./types.ts";
-import { type Metric } from "./metrics/metric.ts";
+import type { MetricDescriptor } from "./metrics/metric.ts";
 
 export class Miner {
   private readonly octokit: Octokit;
   private readonly config: MinerConfig;
-  private readonly metrics: readonly Metric<unknown>[];
+  private readonly metrics: readonly MetricDescriptor<unknown>[];
 
   constructor(config: MinerConfig) {
     if (!process.env.GITHUB_TOKEN) {
@@ -21,17 +21,16 @@ export class Miner {
     }
 
     this.config = config;
-    this.metrics = config.metrics ?? defaultTestMetrics;
+    this.metrics = config.metrics ?? DEFAULT_METRICS;
     this.octokit = new Octokit({
       auth: process.env.GITHUB_TOKEN,
     });
   }
 
   private passesHeuristic(tc: ExtractedTestCase): boolean {
-    const lineCount = Number(tc.metrics[new LineCountMetric().name] ?? 0);
-    const assertionCount = Number(
-      tc.metrics[new AssertionCountMetric().name] ?? 0,
-    );
+    const lineCount = Number(tc.metrics[lineCountMetric.name] ?? 0);
+    const assertionCount = Number(tc.metrics[assertionCountMetric.name] ?? 0);
+
     return (
       lineCount > this.config.heuristics.minLines ||
       assertionCount > this.config.heuristics.minAssertions

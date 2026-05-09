@@ -1,35 +1,22 @@
-import { CallExpression } from "ts-morph";
-import { Metric, type MetricReading } from "./metric.ts";
-import {
-  AssertionCountMetric,
-  AssertionsWithoutMessagesMetric,
-  ConjunctionsInNameMetric,
-  ControlFlowCountMetric,
-  DistinctMatchersMetric,
-  HardcodedLiteralCountMetric,
-  LineCountMetric,
-} from "./metric.registry.ts";
+import { type CallExpression } from "ts-morph";
+import { DEFAULT_METRICS } from "./metric.registry.ts";
+import type { MetricDescriptor, MetricReading } from "./metric.ts";
 
-export const defaultTestMetrics = [
-  new LineCountMetric(),
-  new AssertionCountMetric(),
-  new AssertionsWithoutMessagesMetric(),
-  new ControlFlowCountMetric(),
-  new ConjunctionsInNameMetric(),
-  new DistinctMatchersMetric(),
-  new HardcodedLiteralCountMetric(),
-] as const;
+export { DEFAULT_METRICS };
 
 export function metricReadings(
   testCall: CallExpression,
-  metrics: readonly Metric<unknown>[],
+  metrics: readonly MetricDescriptor<unknown>[],
 ): MetricReading<unknown>[] {
-  return metrics.map((m) => m.reading(testCall));
+  return metrics.map((m) => ({
+    name: m.name,
+    value: m.extract(testCall),
+  }));
 }
 
 export function metricsRecord(
   testCall: CallExpression,
-  metrics: readonly Metric<unknown>[],
+  metrics: readonly MetricDescriptor<unknown>[],
 ): Record<string, unknown> {
   const out: Record<string, unknown> = {};
   for (const m of metrics) {
