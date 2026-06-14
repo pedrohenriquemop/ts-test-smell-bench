@@ -9,7 +9,7 @@ const CONFIG: MinerConfig = {
   language: "typescript",
   maxRepos: 100,
   maxFilesPerRepo: 100,
-  globalFileLimit: 10,
+  globalFileLimit: 1000,
   cooldownMs: 500,
   outputDir: "./tests",
   heuristics: {
