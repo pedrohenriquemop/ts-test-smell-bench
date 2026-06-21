@@ -1,0 +1,23 @@
+it('should handle decline action', async () => {
+      const handlers: Map<string, Function> = new Map();
+      const mockSendRequest = vi.fn().mockResolvedValue({
+        action: 'decline',
+      });
+
+      const mockServer = {
+        registerTool: vi.fn((name: string, config: any, handler: Function) => {
+          handlers.set(name, handler);
+        }),
+        server: {
+          getClientCapabilities: vi.fn(() => ({ elicitation: {} })),
+        },
+      } as unknown as McpServer;
+
+      registerTriggerElicitationRequestTool(mockServer);
+
+      const handler = handlers.get('trigger-elicitation-request')!;
+      const result = await handler({}, { sendRequest: mockSendRequest });
+
+      expect(result.content[0].text).toContain('❌');
+      expect(result.content[0].text).toContain('declined');
+    })

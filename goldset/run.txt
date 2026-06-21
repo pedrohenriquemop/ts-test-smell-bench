@@ -1,0 +1,205 @@
+[LLM="Gemini 3.1 Pro"]
+[Batch="1/20"]
+File Name: vuejs__vue__rewriteDefault.spec__0.ts - Smells: Magic Number
+File Name: vuejs__vue__rewriteDefault.spec__1.ts - Smells: Magic Number
+File Name: vuejs__vue__rewriteDefault.spec__2.ts - Smells: Assertion Roulette, Magic Number
+File Name: vuejs__vue__rewriteDefault.spec__3.ts - Smells: Magic Number
+File Name: vuejs__vue__rewriteDefault.spec__4.ts - Smells: Magic Number
+File Name: vuejs__vue__rewriteDefault.spec__5.ts - Smells: Assertion Roulette, Magic Number
+File Name: vuejs__vue__rewriteDefault.spec__6.ts - Smells: Assertion Roulette, Eager Test, Magic Number
+File Name: vuejs__vue__rewriteDefault.spec__7.ts - Smells: Magic Number
+File Name: vuejs__vue__rewriteDefault.spec__8.ts - Smells: Magic Number
+File Name: vuejs__vue__rewriteDefault.spec__9.ts - Smells: Magic Number
+File Name: vuejs__vue__rewriteDefault.spec__10.ts - Smells:Magic Number
+File Name: vuejs__vue__rewriteDefault.spec__11.ts - Smells: Magic Number
+File Name: vuejs__vue__rewriteDefault.spec__12.ts - Smells: Magic Number
+File Name: vuejs__vue__rewriteDefault.spec__13.ts - Smells: Magic Number
+File Name: vuejs__vue__rewriteDefault.spec__14.ts - Smells: Magic Number
+File Name: vuejs__vue__rewriteDefault.spec__15.ts - Smells: Magic Number
+File Name: vuejs__vue__rewriteDefault.spec__16.ts - Smells: Magic Number
+File Name: firecrawl__firecrawl__zdr.test__0.ts - Smells: Assertion Roulette, Conditional Test Logic, Magic Number, Mystery Guest, Resource Optimism
+File Name: firecrawl__firecrawl__zdr.test__1.ts - Smells: Conditional Test Logic, Magic Number, Mystery Guest, Resource Optimism
+File Name: firecrawl__firecrawl__zdr.test__2.ts - Smells: Conditional Test Logic, Magic Number, Mystery Guest,Resource Optimism
+File Name: firecrawl__firecrawl__map.test__0.ts - Smells: Assertion Roulette, Magic Number, Mystery Guest, Resource Optimism
+File Name: firecrawl__firecrawl__url-utils.test__0.ts - Smells: Assertion Roulette, Eager Test, Magic Number
+File Name: firecrawl__firecrawl__url-utils.test__1.ts - Smells: Assertion Roulette, Magic Number
+File Name: firecrawl__firecrawl__url-utils.test__2.ts - Smells: Assertion Roulette, Eager Test, Magic Number
+File Name: firecrawl__firecrawl__url-utils.test__3.ts - Smells: Assertion Roulette, Magic Number
+File Name: firecrawl__firecrawl__url-utils.test__4.ts - Smells: Assertion Roulette, Eager Test, Magic Number
+File Name: firecrawl__firecrawl__url-utils.test__5.ts - Smells: Assertion Roulette, Eager Test, Magic Number
+File Name: firecrawl__firecrawl__url-utils.test__6.ts - Smells: Assertion Roulette,Magic Number
+File Name: firecrawl__firecrawl__parsers.test__0.ts - Smells: Assertion Roulette, Eager Test, Magic Number, Mystery Guest, Resource Optimism
+File Name: firecrawl__firecrawl__parsers.test__1.ts - Smells: Assertion Roulette, Eager Test, Magic Number, Mystery Guest, Resource Optimism
+File Name: firecrawl__firecrawl__parsers.test__2.ts - Smells: Assertion Roulette, Magic Number, Mystery Guest, Resource Optimism
+File Name: firecrawl__firecrawl__parsers.test__3.ts - Smells: Assertion Roulette, Magic Number, Mystery Guest, Resource Optimism
+File Name: firecrawl__firecrawl__parsers.test__4.ts - Smells: Assertion Roulette, Eager Test, Magic Number, Mystery Guest, Resource Optimism
+File Name: firecrawl__firecrawl__parsers.test__5.ts - Smells: Assertion Roulette, Eager Test, Magic Number, Mystery Guest, Resource Optimism
+File Name:firecrawl__firecrawl__parsers.test__6.ts - Smells: Assertion Roulette, Eager Test, Magic Number, Mystery Guest, Resource Optimism
+File Name: firecrawl__firecrawl__parsers.test__7.ts - Smells: Assertion Roulette, Eager Test, Magic Number, Mystery Guest, Resource Optimism
+File Name: firecrawl__firecrawl__parsers.test__8.ts - Smells: Assertion Roulette, Eager Test, Magic Number, Mystery Guest, Resource Optimism
+File Name: firecrawl__firecrawl__parsers.test__9.ts - Smells: Assertion Roulette, Eager Test, Magic Number, Mystery Guest, Resource Optimism
+File Name: firecrawl__firecrawl__parsers.test__10.ts - Smells: Assertion Roulette, Eager Test, Magic Number, Mystery Guest, Resource Optimism
+File Name: firecrawl__firecrawl__parsers.test__11.ts - Smells: Assertion Roulette, Magic Number, Mystery Guest, Resource Optimism
+File Name:firecrawl__firecrawl__parsers.test__12.ts - Smells: Assertion Roulette, Magic Number, Mystery Guest, Resource Optimism
+File Name: firecrawl__firecrawl__parsers.test__13.ts - Smells: Assertion Roulette, Magic Number, Mystery Guest, Resource Optimism
+File Name: firecrawl__firecrawl__parsers.test__14.ts - Smells: Assertion Roulette, Magic Number, Mystery Guest, Resource Optimism
+File Name: firecrawl__firecrawl__parsers.test__15.ts - Smells: Assertion Roulette, Magic Number, Mystery Guest, Resource Optimism
+File Name: firecrawl__firecrawl__parsers.test__16.ts - Smells: Assertion Roulette, Magic Number, Mystery Guest, Resource Optimism
+File Name: firecrawl__firecrawl__parsers.test__17.ts - Smells: Assertion Roulette, Magic Number, Mystery Guest, Resource Optimism
+File Name: firecrawl__firecrawl__parsers.test__18.ts - Smells: Assertion Roulette,Magic Number, Mystery Guest, Resource Optimism
+File Name: firecrawl__firecrawl__parsers.test__19.ts - Smells: Eager Test, Magic Number, Mystery Guest, Resource Optimism
+File Name: firecrawl__firecrawl__parsers.test__20.ts - Smells: Eager Test, Magic Number, Mystery Guest, Resource Optimism
+File Name: firecrawl__firecrawl__parsers.test__21.ts - Smells: Assertion Roulette, Eager Test, Magic Number, Mystery Guest, Resource Optimism
+[Batch="2/20"]
+File Name: firecrawl__firecrawl__index.test__0.ts - Smells: Assertion Roulette, Magic Number, Mystery Guest, Resource Optimism
+File Name: firecrawl__firecrawl__index.test__1.ts - Smells: Magic Number, Mystery Guest, Resource Optimism
+File Name: firecrawl__firecrawl__index.test__2.ts - Smells: Assertion Roulette, Magic Number, Mystery Guest, Resource Optimism
+File Name: firecrawl__firecrawl__index.test__3.ts - Smells: Magic Number, Mystery Guest, Resource Optimism
+File Name: firecrawl__firecrawl__index.test__4.ts - Smells: Magic Number, Mystery Guest, Resource Optimism
+File Name: firecrawl__firecrawl__index.test__5.ts - Smells: Assertion Roulette, Magic Number, Mystery Guest, Resource Optimism
+File Name: firecrawl__firecrawl__index.test__6.ts - Smells: Assertion Roulette, Magic Number, Mystery Guest, Resource Optimism
+File Name:firecrawl__firecrawl__index.test__7.ts - Smells: Magic Number, Mystery Guest, Resource Optimism
+File Name: firecrawl__firecrawl__index.test__8.ts - Smells: Assertion Roulette, Magic Number, Mystery Guest, Resource Optimism
+File Name: firecrawl__firecrawl__index.test__9.ts - Smells: Assertion Roulette, Magic Number, Mystery Guest, Resource Optimism
+File Name: firecrawl__firecrawl__index.test__10.ts - Smells: Magic Number, Mystery Guest, Resource Optimism
+File Name: firecrawl__firecrawl__index.test__11.ts - Smells: Magic Number, Mystery Guest, Resource Optimism
+File Name: firecrawl__firecrawl__index.test__12.ts - Smells: Assertion Roulette, Magic Number, Mystery Guest, Resource Optimism
+File Name: firecrawl__firecrawl__index.test__13.ts - Smells: Magic Number, Mystery Guest, Resource Optimism
+File Name: firecrawl__firecrawl__index.test__14.ts - Smells: Magic Number, Mystery Guest, Resource Optimism
+File Name: firecrawl__firecrawl__index.test__15.ts - Smells: Assertion Roulette, Eager Test, Magic Number, Mystery Guest, Resource Optimism
+File Name: firecrawl__firecrawl__index.test__16.ts - Smells: Assertion Roulette, Magic Number, Mystery Guest, Resource Optimism
+File Name: firecrawl__firecrawl__crawl.test__0.ts - Smells: Assertion Roulette, Magic Number, Mystery Guest
+File Name: firecrawl__firecrawl__wikipedia.test__0.ts - Smells: Assertion Roulette, Magic Number, Mystery Guest, Resource Optimism
+File Name: firecrawl__firecrawl__wikipedia.test__1.ts - Smells: Assertion Roulette, Magic Number, Mystery Guest, Resource Optimism
+File Name: firecrawl__firecrawl__wikipedia.test__2.ts - Smells: Assertion Roulette, Magic Number, Mystery Guest, Resource Optimism
+File Name:firecrawl__firecrawl__wikipedia.test__3.ts - Smells: Assertion Roulette, Magic Number, Mystery Guest, Resource Optimism
+File Name: firecrawl__firecrawl__wikipedia.test__4.ts - Smells: Assertion Roulette, Magic Number, Mystery Guest, Resource Optimism
+File Name: firecrawl__firecrawl__wikipedia.test__5.ts - Smells: Assertion Roulette, Magic Number, Mystery Guest, Resource Optimism
+File Name: firecrawl__firecrawl__wikipedia.test__6.ts - Smells: Assertion Roulette, Magic Number, Mystery Guest, Resource Optimism
+File Name: firecrawl__firecrawl__wikipedia.test__7.ts - Smells: Assertion Roulette, Eager Test, Magic Number, Mystery Guest, Resource Optimism
+File Name: firecrawl__firecrawl__wikipedia.test__8.ts - Smells: Assertion Roulette, Magic Number, Mystery Guest, Resource Optimism
+File Name: firecrawl__firecrawl__wikipedia.test__9.ts - Smells:Assertion Roulette, Magic Number, Mystery Guest, Resource Optimism
+File Name: firecrawl__firecrawl__wikipedia.test__10.ts - Smells: Assertion Roulette, Magic Number, Mystery Guest, Resource Optimism
+File Name: firecrawl__firecrawl__wikipedia.test__11.ts - Smells: Assertion Roulette, Eager Test, Magic Number, Mystery Guest, Resource Optimism
+File Name: firecrawl__firecrawl__wikipedia.test__12.ts - Smells: Assertion Roulette, Eager Test, Magic Number, Mystery Guest, Resource Optimism
+File Name: firecrawl__firecrawl__wikipedia.test__13.ts - Smells: Magic Number, Mystery Guest, Resource Optimism
+File Name: firecrawl__firecrawl__wikipedia.test__14.ts - Smells: Assertion Roulette, Magic Number, Mystery Guest, Resource Optimism
+File Name: firecrawl__firecrawl__deprecation.test__0.ts - Smells: Assertion Roulette, Eager Test, Magic Number, Mystery Guest,Resource Optimism
+File Name: firecrawl__firecrawl__deprecation.test__1.ts - Smells: Assertion Roulette, Eager Test, Magic Number, Mystery Guest, Resource Optimism
+File Name: firecrawl__firecrawl__deprecation.test__2.ts - Smells: Assertion Roulette, Eager Test, Magic Number, Mystery Guest, Resource Optimism
+File Name: firecrawl__firecrawl__deprecation.test__3.ts - Smells: Assertion Roulette, Conditional Test Logic, Magic Number, Mystery Guest, Resource Optimism
+File Name: firecrawl__firecrawl__html-to-markdown.test__0.ts - Smells: Magic Number
+File Name: firecrawl__firecrawl__html-to-markdown.test__1.ts - Smells: Magic Number
+File Name: firecrawl__firecrawl__html-to-markdown.test__2.ts - Smells: Magic Number
+File Name: firecrawl__firecrawl__html-to-markdown.test__3.ts - Smells: Magic Number
+File Name: firecrawl__firecrawl__html-to-markdown.test__4.ts - Smells: Conditional Test Logic, Magic Number
+File Name: firecrawl__firecrawl__batch-scrape.test__0.ts - Smells: Assertion Roulette, Eager Test, Magic Number, Mystery Guest, Resource Optimism
+File Name: firecrawl__firecrawl__metadata-concat.test__0.ts - Smells: Assertion Roulette, Eager Test, Magic Number
+File Name: firecrawl__firecrawl__metadata-concat.test__1.ts - Smells: Assertion Roulette, Magic Number
+File Name: firecrawl__firecrawl__metadata-concat.test__2.ts - Smells: Magic Number
+File Name: firecrawl__firecrawl__batch-scrape.test__0.ts - Smells: Assertion Roulette, Eager Test, Magic Number, Mystery Guest, Resource Optimism
+File Name: firecrawl__firecrawl__dns.test__0.ts - Smells: Assertion Roulette, Magic Number, Mystery Guest, Resource Optimism
+File Name: firecrawl__firecrawl__scrape-formats.test__0.ts - Smells: Assertion Roulette,Magic Number, Mystery Guest, Resource Optimism
+File Name: firecrawl__firecrawl__scrape-formats.test__1.ts - Smells: Assertion Roulette, Magic Number, Mystery Guest, Resource Optimism
+[Batch="3/20"]
+File Name: firecrawl__firecrawl__scrape-formats.test__2.ts - Smells: Assertion Roulette, Magic Number, Mystery Guest, Resource Optimism
+File Name: firecrawl__firecrawl__scrape-formats.test__3.ts - Smells: Assertion Roulette, Eager Test, Magic Number, Mystery Guest, Resource Optimism
+File Name: firecrawl__firecrawl__scrape-formats.test__4.ts - Smells: Assertion Roulette, Magic Number, Mystery Guest, Resource Optimism
+File Name: firecrawl__firecrawl__scrape-formats.test__5.ts - Smells: Assertion Roulette, Magic Number, Mystery Guest, Resource Optimism
+File Name: firecrawl__firecrawl__scrape-formats.test__6.ts - Smells: Assertion Roulette, Magic Number, Mystery Guest, Resource Optimism
+File Name: firecrawl__firecrawl__scrape-formats.test__7.ts - Smells: Assertion Roulette, Eager Test, Magic Number, Mystery Guest, Resource Optimism
+File Name: firecrawl__firecrawl__scrape-formats.test__8.ts - Smells: Assertion Roulette, Magic Number, Mystery Guest, Resource Optimism
+File Name: firecrawl__firecrawl__scrape-formats.test__9.ts - Smells: Assertion Roulette, Magic Number, Mystery Guest, Resource Optimism
+File Name: firecrawl__firecrawl__scrape-formats.test__10.ts - Smells: Assertion Roulette, Eager Test, Magic Number, Mystery Guest, Resource Optimism
+File Name: firecrawl__firecrawl__search-query-builder.test__0.ts - Smells: Assertion Roulette, Magic Number
+File Name: firecrawl__firecrawl__search-query-builder.test__1.ts - Smells: Assertion Roulette, Magic Number
+File Name: firecrawl__firecrawl__search-query-builder.test__2.ts - Smells: Assertion Roulette, Magic Number
+File Name: firecrawl__firecrawl__search-query-builder.test__3.ts - Smells: Assertion Roulette, Eager Test,Magic Number
+File Name: firecrawl__firecrawl__search-query-builder.test__4.ts - Smells: Assertion Roulette, Eager Test, Magic Number
+File Name: firecrawl__firecrawl__search-query-builder.test__5.ts - Smells: Assertion Roulette, Magic Number
+File Name: firecrawl__firecrawl__search-query-builder.test__6.ts - Smells: Assertion Roulette, Magic Number
+File Name: firecrawl__firecrawl__search-query-builder.test__7.ts - Smells: Assertion Roulette, Magic Number
+File Name: firecrawl__firecrawl__search-query-builder.test__8.ts - Smells: Magic Number
+File Name: firecrawl__firecrawl__search-query-builder.test__9.ts - Smells: Magic Number
+File Name: firecrawl__firecrawl__search-query-builder.test__10.ts - Smells: Assertion Roulette, Magic Number
+File Name: firecrawl__firecrawl__search-query-builder.test__11.ts - Smells: Assertion Roulette,Magic Number
+File Name: firecrawl__firecrawl__search-query-builder.test__12.ts - Smells: Assertion Roulette, Magic Number
+File Name: firecrawl__firecrawl__search-query-builder.test__13.ts - Smells: Assertion Roulette, Magic Number
+File Name: firecrawl__firecrawl__search-query-builder.test__14.ts - Smells: Assertion Roulette, Magic Number
+File Name: firecrawl__firecrawl__search-query-builder.test__15.ts - Smells: Assertion Roulette, Magic Number
+File Name: firecrawl__firecrawl__search-query-builder.test__16.ts - Smells: Assertion Roulette, Magic Number
+File Name: firecrawl__firecrawl__search-query-builder.test__17.ts - Smells: Assertion Roulette, Magic Number
+File Name: firecrawl__firecrawl__search-query-builder.test__18.ts - Smells: Assertion Roulette, Magic Number
+File Name: firecrawl__firecrawl__search-query-builder.test__19.ts - Smells:Assertion Roulette, Magic Number
+File Name: firecrawl__firecrawl__search-query-builder.test__20.ts - Smells: Assertion Roulette, Magic Number
+File Name: firecrawl__firecrawl__search-query-builder.test__21.ts - Smells: Assertion Roulette, Magic Number
+File Name: firecrawl__firecrawl__search-query-builder.test__22.ts - Smells: Assertion Roulette, Magic Number
+File Name: firecrawl__firecrawl__search-query-builder.test__23.ts - Smells: Assertion Roulette, Eager Test, Magic Number
+File Name: firecrawl__firecrawl__search-query-builder.test__24.ts - Smells: Assertion Roulette
+File Name: firecrawl__firecrawl__search-query-builder.test__25.ts - Smells: Assertion Roulette, Magic Number
+File Name: firecrawl__firecrawl__search-query-builder.test__26.ts - Smells: Magic Number
+File Name: firecrawl__firecrawl__search-query-builder.test__27.ts - Smells:Assertion Roulette, Magic Number
+File Name: firecrawl__firecrawl__utils.test__0.ts - Smells: Assertion Roulette, Magic Number
+File Name: firecrawl__firecrawl__utils.test__1.ts - Smells: Assertion Roulette, Magic Number
+File Name: firecrawl__firecrawl__utils.test__2.ts - Smells: Assertion Roulette, Magic Number
+File Name: firecrawl__firecrawl__utils.test__3.ts - Smells: Magic Number
+File Name: firecrawl__firecrawl__utils.test__4.ts - Smells: Assertion Roulette, Magic Number
+File Name: shadcn-ui__ui__get-tailwind-css-file.test__0.ts - Smells: Magic Number, Mystery Guest, Resource Optimism
+File Name: shadcn-ui__ui__get-tailwind-css-file.test__1.ts - Smells: Magic Number, Mystery Guest, Resource Optimism
+File Name: shadcn-ui__ui__get-tailwind-css-file.test__2.ts - Smells: Magic Number, Mystery Guest, Resource Optimism
+File Name: shadcn-ui__ui__get-config.test__0.ts - Smells: Assertion Roulette, Magic Number, Mystery Guest, Resource Optimism
+File Name: shadcn-ui__ui__get-config.test__1.ts - Smells: Magic Number, Mystery Guest, Resource Optimism
+File Name: shadcn-ui__ui__get-config.test__2.ts - Smells: Magic Number, Mystery Guest, Resource Optimism
+File Name: shadcn-ui__ui__get-config.test__3.ts - Smells: Magic Number, Mystery Guest, Resource Optimism
+File Name: shadcn-ui__ui__get-config.test__4.ts - Smells: Magic Number, Mystery Guest, Resource Optimism
+[Batch="4/20"]
+File Name: shadcn-ui__ui__get-config.test__5.ts - Smells: Assertion Roulette, Eager Test, Magic Number, Mystery Guest, Resource Optimism
+File Name: shadcn-ui__ui__get-config.test__6.ts - Smells: Conditional Test Logic, Magic Number, Mystery Guest, Resource Optimism
+File Name: shadcn-ui__ui__get-config.test__7.ts - Smells: Conditional Test Logic, Magic Number, Mystery Guest, Resource Optimism
+File Name: shadcn-ui__ui__get-config.test__8.ts - Smells: Conditional Test Logic, Magic Number, Mystery Guest, Resource Optimism
+File Name: shadcn-ui__ui__get-config.test__9.ts - Smells: Assertion Roulette, Magic Number
+File Name: shadcn-ui__ui__get-config.test__10.ts - Smells: Assertion Roulette, Magic Number
+File Name: shadcn-ui__ui__get-config.test__11.ts - Smells: Magic Number
+File Name: shadcn-ui__ui__get-config.test__12.ts - Smells:Magic Number
+File Name: shadcn-ui__ui__get-config.test__13.ts - Smells: Assertion Roulette, Magic Number
+File Name: shadcn-ui__ui__get-config.test__14.ts - Smells: Magic Number
+File Name: shadcn-ui__ui__get-config.test__15.ts - Smells: Assertion Roulette, Magic Number
+File Name: shadcn-ui__ui__get-config.test__16.ts - Smells: Assertion Roulette
+File Name: shadcn-ui__ui__get-config.test__17.ts - Smells: Assertion Roulette, Magic Number
+File Name: shadcn-ui__ui__get-config.test__18.ts - Smells: Assertion Roulette, Eager Test, Magic Number
+File Name: shadcn-ui__ui__get-config.test__19.ts - Smells: Assertion Roulette
+File Name: shadcn-ui__ui__update-tailwind-config.test__0.ts - Smells: Assertion Roulette, Magic Number
+File Name: shadcn-ui__ui__update-tailwind-config.test__1.ts - Smells: Magic Number
+File Name: shadcn-ui__ui__update-tailwind-config.test__2.ts - Smells: Magic Number
+File Name: shadcn-ui__ui__update-tailwind-config.test__3.ts - Smells: Magic Number
+File Name: shadcn-ui__ui__update-tailwind-config.test__4.ts - Smells: Magic Number
+File Name: shadcn-ui__ui__update-tailwind-config.test__5.ts - Smells: Assertion Roulette, Magic Number
+File Name: shadcn-ui__ui__update-tailwind-config.test__6.ts - Smells: Magic Number
+File Name: shadcn-ui__ui__update-tailwind-config.test__7.ts - Smells: Magic Number
+File Name: shadcn-ui__ui__update-tailwind-config.test__8.ts - Smells: Magic Number
+File Name: shadcn-ui__ui__update-tailwind-config.test__9.ts - Smells: Magic Number
+File Name: shadcn-ui__ui__update-tailwind-config.test__10.ts - Smells: Magic Number
+File Name: shadcn-ui__ui__update-tailwind-config.test__11.ts - Smells: Magic Number
+File Name: shadcn-ui__ui__update-tailwind-config.test__12.ts - Smells: Magic Number
+File Name: shadcn-ui__ui__update-tailwind-config.test__13.ts - Smells: Assertion Roulette, Magic Number
+File Name: shadcn-ui__ui__update-tailwind-config.test__14.ts - Smells: Magic Number
+File Name: shadcn-ui__ui__update-tailwind-config.test__15.ts - Smells: Magic Number
+File Name: shadcn-ui__ui__update-tailwind-config.test__16.ts - Smells: Magic Number
+File Name: shadcn-ui__ui__update-tailwind-config.test__17.ts - Smells: None
+File Name: shadcn-ui__ui__update-tailwind-config.test__53.ts - Smells: Magic Number
+File Name: shadcn-ui__ui__update-tailwind-config.test__54.ts - Smells: Magic Number
+File Name: shadcn-ui__ui__update-tailwind-config.test__55.ts - Smells: Magic Number
+File Name: shadcn-ui__ui__resolve-import.test__0.ts - Smells: Assertion Roulette, Magic Number
+File Name: shadcn-ui__ui__resolve-import.test__1.ts - Smells: Assertion Roulette, Magic Number, Mystery Guest, Resource Optimism
+File Name: shadcn-ui__ui__resolve-import.test__2.ts - Smells: Assertion Roulette, Magic Number, Mystery Guest, Resource Optimism
+File Name: shadcn-ui__ui__resolve-import.test__3.ts - Smells: Magic Number, Mystery Guest, Resource Optimism
+File Name: shadcn-ui__ui__resolve-import.test__4.ts - Smells: Magic Number, Mystery Guest, Resource Optimism
+File Name: shadcn-ui__ui__resolve-import.test__5.ts - Smells: Magic Number, Mystery Guest, Resource Optimism
+File Name: shadcn-ui__ui__resolve-import.test__6.ts - Smells: Assertion Roulette, Magic Number, Mystery Guest, Resource Optimism
+File Name: shadcn-ui__ui__resolve-import.test__7.ts - Smells: Magic Number, Mystery Guest, Resource Optimism
+File Name: shadcn-ui__ui__resolve-import.test__8.ts - Smells:Magic Number
+File Name: shadcn-ui__ui__resolve-import.test__9.ts - Smells: Assertion Roulette, Magic Number, Mystery Guest, Resource Optimism
+File Name: shadcn-ui__ui__resolve-import.test__10.ts - Smells: Magic Number, Mystery Guest, Resource Optimism
+File Name: shadcn-ui__ui__resolve-import.test__11.ts - Smells: Assertion Roulette, Magic Number, Mystery Guest, Resource Optimism
+File Name: shadcn-ui__ui__resolve-import.test__12.ts - Smells: Magic Number
+File Name: shadcn-ui__ui__get-ts-config-alias-prefix.test__0.ts - Smells: Magic Number, Mystery Guest, Resource Optimism
