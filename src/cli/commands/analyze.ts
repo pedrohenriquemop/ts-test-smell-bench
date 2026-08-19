@@ -1,9 +1,9 @@
 import { Command } from 'commander';
 import { loadConfig } from '../../config/index.ts';
-import { runAnalyzer } from '../../analyzer/index.ts';
+import { runAnalyzerLegacy } from '../../analyzer/index.ts';
 
 export const analyzeCommand = new Command('analyze')
-  .description('Analyze test smells and compare with Gemini baseline')
+  .description('Analyze test smells and compare with reference baseline')
   .option('-c, --config <path>', 'Path to config file', 'ts-test-smell-bench.config.json')
   .option('--num-tests <number>', 'Override number of tests to analyze')
   .option('--model <name>', 'Override Ollama model name')
@@ -17,7 +17,7 @@ export const analyzeCommand = new Command('analyze')
       if (options.model) analyzerConfig.model = options.model;
       if (options.versionSuffix) analyzerConfig.version = options.versionSuffix;
       
-      await runAnalyzer(analyzerConfig);
+      await runAnalyzerLegacy(analyzerConfig);
     } catch (error) {
       console.error('Error during analysis:', error);
       process.exit(1);

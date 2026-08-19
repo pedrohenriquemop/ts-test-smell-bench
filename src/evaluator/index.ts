@@ -5,10 +5,16 @@ import type { ChartConfiguration } from 'chart.js';
 
 export interface ComparisonResult {
   file: string;
-  geminiSmells: string[];
-  ollamaSmells: string[];
-  ollamaStatus: string;
-  ollamaJustification: string;
+  referenceSmells: string[];
+  modelSmells: string[];
+  modelStatus: string;
+  modelJustification?: string;
+  modelName?: string;
+  // Legacy field names (for backward compat with old result files)
+  geminiSmells?: string[];
+  ollamaSmells?: string[];
+  ollamaStatus?: string;
+  ollamaJustification?: string;
 }
 
 export interface Metric {
@@ -31,7 +37,16 @@ export async function evaluateResults(config: any) {
     process.exit(1);
   }
 
-  const data: ComparisonResult[] = JSON.parse(fs.readFileSync(inputPath, 'utf-8'));
+  const rawData: any[] = JSON.parse(fs.readFileSync(inputPath, 'utf-8'));
+  
+  // Normalize legacy field names → new generic names
+  const data: ComparisonResult[] = rawData.map((d: any) => ({
+    ...d,
+    referenceSmells: d.referenceSmells ?? d.geminiSmells ?? [],
+    modelSmells: d.modelSmells ?? d.ollamaSmells ?? [],
+    modelStatus: d.modelStatus ?? d.ollamaStatus ?? 'unknown',
+    modelJustification: d.modelJustification ?? d.ollamaJustification ?? '',
+  }));
   
   const smellTypes = new Set<string>();
   
@@ -45,17 +60,17 @@ export async function evaluateResults(config: any) {
   };
 
   for (const result of data) {
-    if (result.ollamaStatus !== 'success') continue;
+    if (result.modelStatus !== 'success') continue;
     
-    result.geminiSmells.forEach(s => smellTypes.add(normalizeSmell(s)));
-    result.ollamaSmells.forEach(s => smellTypes.add(normalizeSmell(s)));
+    result.referenceSmells.forEach(s => smellTypes.add(normalizeSmell(s)));
+    result.modelSmells.forEach(s => smellTypes.add(normalizeSmell(s)));
   }
 
   smellTypes.delete('None');
   smellTypes.delete('');
 
   const metrics: Metric[] = [];
-  const validData = data.filter(d => d.ollamaStatus === 'success');
+  const validData = data.filter(d => d.modelStatus === 'success');
   const totalFiles = validData.length;
 
   for (const smell of Array.from(smellTypes)) {
@@ -65,12 +80,12 @@ export async function evaluateResults(config: any) {
     let tn = 0;
 
     for (const result of validData) {
-      const geminiHas = result.geminiSmells.some(s => normalizeSmell(s) === smell);
-      const ollamaHas = result.ollamaSmells.some(s => normalizeSmell(s) === smell);
+      const refHas = result.referenceSmells.some(s => normalizeSmell(s) === smell);
+      const modelHas = result.modelSmells.some(s => normalizeSmell(s) === smell);
 
-      if (geminiHas && ollamaHas) tp++;
-      else if (!geminiHas && ollamaHas) fp++;
-      else if (geminiHas && !ollamaHas) fn++;
+      if (refHas && modelHas) tp++;
+      else if (!refHas && modelHas) fp++;
+      else if (refHas && !modelHas) fn++;
       else tn++;
     }
 
@@ -152,7 +167,7 @@ function generateHtmlReport(metrics: Metric[], totalFiles: number, outputDir: st
             <h1 class="text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary drop-shadow-sm mb-4">
                 Test Smell Benchmarking${versionSuffix ? ` (v${versionSuffix.replace('_v', '')})` : ''}
             </h1>
-            <p class="text-xl text-gray-400">Ollama vs Gemini Baseline</p>
+            <p class="text-xl text-gray-400">Model vs Reference Baseline</p>
             <div class="mt-6 flex justify-center gap-6 text-sm font-medium">
                 <span class="px-4 py-2 bg-blue-500/20 text-blue-300 rounded-full">Evaluated Files: ${totalFiles}</span>
                 <span class="px-4 py-2 bg-purple-500/20 text-purple-300 rounded-full">Smell Types: ${metrics.length}</span>
