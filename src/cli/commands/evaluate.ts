@@ -8,7 +8,7 @@ export const evaluateCommand = new Command('evaluate')
   .option('-v, --version-suffix <version>', 'Version suffix for the input/output files')
   .action(async (options) => {
     try {
-      const config = loadConfig(options.config);
+      const config = await loadConfig(options.config);
       if (options.versionSuffix) config.analyzer.version = options.versionSuffix;
       await evaluateResults(config);
     } catch (error) {

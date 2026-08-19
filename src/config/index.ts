@@ -57,15 +57,22 @@ export interface AnalyzerConfig {
   version?: string;
 }
 
+export interface SmellsConfig {
+  /** List of smell IDs to detect (from the smell catalog). */
+  enabled: string[];
+}
+
 export interface AppConfig {
   miner: MinerConfig;
   dataset: DatasetConfig;
   analyzer: AnalyzerConfig;
   /** Configured model backends (multi-model support). */
   models?: ModelConfig[];
+  /** Which smells to detect. Defaults to all if omitted. */
+  smells?: SmellsConfig;
 }
 
-export function loadConfig(configPath: string = 'ts-test-smell-bench.config.json'): AppConfig {
+export async function loadConfig(configPath: string = 'ts-test-smell-bench.config.json'): Promise<AppConfig> {
   const fullPath = path.resolve(process.cwd(), configPath);
   if (!fs.existsSync(fullPath)) {
     throw new Error(`Configuration file not found at ${fullPath}`);
@@ -91,6 +98,13 @@ export function loadConfig(configPath: string = 'ts-test-smell-bench.config.json
         baseUrl: raw.analyzer.ollamaUrl ?? 'http://localhost:11434/api/generate',
       },
     ];
+  }
+
+  // Default smells to the full catalog when not specified.
+  // Import is dynamic to avoid circular deps at module-load time.
+  if (!raw.smells) {
+    const { allSmellIds } = await import('../smells/catalog.ts');
+    raw.smells = { enabled: allSmellIds() };
   }
 
   return raw as AppConfig;

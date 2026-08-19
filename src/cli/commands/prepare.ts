@@ -10,7 +10,7 @@ export const prepareCommand = new Command('prepare')
   .option('--manifest <path>', 'Override manifest path')
   .action(async (options) => {
     try {
-      const config = loadConfig(options.config);
+      const config = await loadConfig(options.config);
       const datasetConfig = config.dataset;
       
       if (options.sampleSize) datasetConfig.sampleSize = parseInt(options.sampleSize, 10);

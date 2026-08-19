@@ -8,7 +8,7 @@ export const mineCommand = new Command('mine')
   .option('--output <dir>', 'Override output directory')
   .action(async (options) => {
     try {
-      const config = loadConfig(options.config);
+      const config = await loadConfig(options.config);
       const minerConfig = config.miner;
       
       if (options.output) {
