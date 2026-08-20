@@ -1,5 +1,5 @@
 import { Node, SyntaxKind } from "ts-morph";
-import type { MetricDescriptor } from "./metric.ts";
+import type { MetricDescriptor, FileMetricDescriptor } from "./metric.ts";
 
 export const lineCountMetric: MetricDescriptor<number> = {
   name: "lineCount",
@@ -135,4 +135,86 @@ export const DEFAULT_METRICS = [
   conjunctionsInNameMetric,
   distinctMatchersMetric,
   hardcodedLiteralCountMetric,
+] as const;
+
+// ── File-level metrics (Phase 3) ─────────────────────────────────────
+
+/** Patterns that indicate external I/O modules. */
+const EXTERNAL_IO_PATTERNS = [
+  /^fs$/,   /^fs\/promises$/,  /^node:fs/,
+  /^path$/, /^node:path$/,
+  /^http$/, /^https$/,  /^node:http/, /^node:https/,
+  /^axios/, /^node-fetch/, /^cross-fetch/,
+  /^pg$/,   /^mysql/,  /^mongodb/,  /^mongoose/,
+  /^redis/, /^ioredis/,
+];
+
+export const importCountMetric: FileMetricDescriptor<number> = {
+  name: "importCount",
+  description:
+    "Counts the number of import declarations in the source file.",
+  extract: (sourceFile) =>
+    sourceFile.getImportDeclarations().length,
+};
+
+export const setupHookCountMetric: FileMetricDescriptor<number> = {
+  name: "setupHookCount",
+  description:
+    "Counts beforeEach/beforeAll/afterEach/afterAll hooks in the file.",
+  extract: (sourceFile) => {
+    const hookNames = ['beforeEach', 'beforeAll', 'afterEach', 'afterAll'];
+    return sourceFile
+      .getDescendantsOfKind(SyntaxKind.CallExpression)
+      .filter((call) => {
+        const expr = call.getExpression();
+        return Node.isIdentifier(expr) && hookNames.includes(expr.getText());
+      }).length;
+  },
+};
+
+export const beforeEachVarCountMetric: FileMetricDescriptor<number> = {
+  name: "beforeEachVarCount",
+  description:
+    "Counts variables declared or assigned inside beforeEach/beforeAll hooks.",
+  extract: (sourceFile) => {
+    const hookNames = ['beforeEach', 'beforeAll'];
+    const hookCalls = sourceFile
+      .getDescendantsOfKind(SyntaxKind.CallExpression)
+      .filter((call) => {
+        const expr = call.getExpression();
+        return Node.isIdentifier(expr) && hookNames.includes(expr.getText());
+      });
+
+    let count = 0;
+    for (const hook of hookCalls) {
+      const body = hook.getArguments()[0];
+      if (!body) continue;
+      count += body.getDescendantsOfKind(SyntaxKind.VariableDeclaration).length;
+      // Also count assignments to outer-scope variables (e.g. `myVar = ...`)
+      count += body
+        .getDescendantsOfKind(SyntaxKind.BinaryExpression)
+        .filter((bin) => bin.getOperatorToken().getText() === '=').length;
+    }
+    return count;
+  },
+};
+
+export const externalModuleRefsMetric: FileMetricDescriptor<number> = {
+  name: "externalModuleRefs",
+  description:
+    "Counts imports of external I/O modules (fs, http, axios, DB drivers, etc.).",
+  extract: (sourceFile) => {
+    const imports = sourceFile.getImportDeclarations();
+    return imports.filter((imp) => {
+      const specifier = imp.getModuleSpecifierValue();
+      return EXTERNAL_IO_PATTERNS.some((p) => p.test(specifier));
+    }).length;
+  },
+};
+
+export const DEFAULT_FILE_METRICS = [
+  importCountMetric,
+  setupHookCountMetric,
+  beforeEachVarCountMetric,
+  externalModuleRefsMetric,
 ] as const;

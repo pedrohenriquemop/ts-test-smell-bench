@@ -126,6 +126,10 @@ export class Miner {
                   originalPath: file.path,
                   testName: tc.testName,
                   testIndexInFile: i,
+                  // Context fields (Phase 3)
+                  describeContext: tc.describeContext,
+                  imports: tc.imports,
+                  setupVariables: tc.setupVariables,
                 });
 
                 savedAnyFromThisSourceFile = true;
