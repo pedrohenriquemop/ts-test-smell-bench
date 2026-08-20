@@ -17,13 +17,39 @@
     "outputDir": "./out/dataset",
     "manifestPath": "./manifesto_tests.json"
   },
+  "models": [
+    {
+      "id": "llama3-local",
+      "provider": "ollama",
+      "model": "llama3",
+      "baseUrl": "http://localhost:11434/api/generate",
+      "temperature": 0.0
+    },
+    {
+      "id": "gemini-flash",
+      "provider": "gemini",
+      "model": "gemini-2.5-flash-preview-04-17",
+      "apiKey": "$GEMINI_API_KEY",
+      "temperature": 0.0
+    }
+  ],
+  "smells": {
+    "enabled": [
+      "assertion-roulette",
+      "conditional-test-logic",
+      "eager-test",
+      "mystery-guest",
+      "resource-optimism",
+      "general-fixture",
+      "hardcoded-literal",
+      "magic-number"
+    ]
+  },
   "analyzer": {
-    "model": "detector-smells",
-    "ollamaUrl": "http://localhost:11434/api/generate",
-    "numTests": 5,
+    "numTests": 50,
     "manifestPath": "./manifesto_tests.json",
     "testsDir": "./tests",
-    "geminiResultsPath": "./goldset/run.txt",
+    "referenceResultsPath": "./goldset/run.txt",
     "outputDir": "./out/analysis"
   }
 }
