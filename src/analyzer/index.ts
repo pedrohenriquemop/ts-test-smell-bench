@@ -43,9 +43,9 @@ export async function runAnalyzer({ config, provider, systemPrompt }: RunAnalyze
 
   console.log('Loading metadata...');
   const manifestData = JSON.parse(fs.readFileSync(manifestPath, 'utf-8'));
-  const metricsMap = new Map<string, Record<string, unknown>>();
+  const manifestMap = new Map<string, any>();
   for (const item of manifestData) {
-    metricsMap.set(item.file, item.metrics);
+    manifestMap.set(item.file, item);
   }
 
   console.log('Parsing reference results...');
@@ -70,11 +70,34 @@ export async function runAnalyzer({ config, provider, systemPrompt }: RunAnalyze
     }
 
     const testCode = fs.readFileSync(testFilePath, 'utf-8');
-    const metadata = metricsMap.get(fileName);
+    const manifestEntry = manifestMap.get(fileName);
 
-    if (!metadata) {
+    if (!manifestEntry?.metrics) {
       console.warn(`Warning: Metadata for ${fileName} not found. Skipping.`);
       continue;
+    }
+
+    const metadata = manifestEntry.metrics;
+
+    // ── Build context snippets from manifest (Phase 4) ──────
+    const contextSnippets: string[] = [];
+
+    if (manifestEntry.imports && manifestEntry.imports.length > 0) {
+      contextSnippets.push(
+        `IMPORTS:\n${manifestEntry.imports.join('\n')}`,
+      );
+    }
+
+    if (manifestEntry.describeContext) {
+      contextSnippets.push(
+        `DESCRIBE BLOCK (setup hooks & shared variables, test bodies omitted):\n${manifestEntry.describeContext}`,
+      );
+    }
+
+    if (manifestEntry.setupVariables && manifestEntry.setupVariables.length > 0) {
+      contextSnippets.push(
+        `SETUP VARIABLES (declared in beforeEach/beforeAll): ${manifestEntry.setupVariables.join(', ')}`,
+      );
     }
 
     try {
@@ -82,6 +105,7 @@ export async function runAnalyzer({ config, provider, systemPrompt }: RunAnalyze
         testCode,
         metadata,
         systemPrompt,
+        contextSnippets: contextSnippets.length > 0 ? contextSnippets : undefined,
       });
 
       const status = response.smells.length > 0 || response.justification ? 'success' : 'invalid return';
