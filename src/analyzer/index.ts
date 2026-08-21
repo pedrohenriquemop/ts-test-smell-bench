@@ -1,6 +1,6 @@
 import * as fs from 'fs';
 import * as path from 'path';
-import type { AnalyzerConfig, ModelConfig } from '../config/index.ts';
+import type { AnalyzerConfig, ModelConfig, PromptConfig } from '../config/index.ts';
 import type { ModelProvider } from './provider.ts';
 import { createProvider } from './providers/index.ts';
 
@@ -34,12 +34,18 @@ export interface RunAnalyzerOptions {
   config: AnalyzerConfig;
   provider: ModelProvider;
   systemPrompt: string;
+  /** Ablation toggles — controls what data is sent to the LLM. */
+  promptConfig?: PromptConfig;
 }
 
-export async function runAnalyzer({ config, provider, systemPrompt }: RunAnalyzerOptions) {
+export async function runAnalyzer({ config, provider, systemPrompt, promptConfig }: RunAnalyzerOptions) {
   const manifestPath = path.resolve(process.cwd(), config.manifestPath);
   const referencePath = path.resolve(process.cwd(), config.referenceResultsPath);
   const testsDir = path.resolve(process.cwd(), config.testsDir);
+
+  // Ablation toggles (default to true if not provided)
+  const includeAst = promptConfig?.includeAstMetrics ?? true;
+  const includeCtx = promptConfig?.includeContext ?? true;
 
   console.log('Loading metadata...');
   const manifestData = JSON.parse(fs.readFileSync(manifestPath, 'utf-8'));
@@ -54,7 +60,8 @@ export async function runAnalyzer({ config, provider, systemPrompt }: RunAnalyze
 
   const comparisonResults: unknown[] = [];
 
-  console.log(`Starting analysis with "${provider.name}" for ${testsToRun.length} tests...`);
+  const ablationLabel = `AST=${includeAst ? 'ON' : 'OFF'}, Context=${includeCtx ? 'ON' : 'OFF'}`;
+  console.log(`Starting analysis with "${provider.name}" for ${testsToRun.length} tests (${ablationLabel})...`);
 
   for (let i = 0; i < testsToRun.length; i++) {
     const testInfo = testsToRun[i];
@@ -77,27 +84,30 @@ export async function runAnalyzer({ config, provider, systemPrompt }: RunAnalyze
       continue;
     }
 
-    const metadata = manifestEntry.metrics;
+    // ── Ablation: AST metrics toggle ─────────────────────────
+    const metadata = includeAst ? manifestEntry.metrics : {};
 
-    // ── Build context snippets from manifest (Phase 4) ──────
+    // ── Ablation: Context toggle ─────────────────────────────
     const contextSnippets: string[] = [];
 
-    if (manifestEntry.imports && manifestEntry.imports.length > 0) {
-      contextSnippets.push(
-        `IMPORTS:\n${manifestEntry.imports.join('\n')}`,
-      );
-    }
+    if (includeCtx) {
+      if (manifestEntry.imports && manifestEntry.imports.length > 0) {
+        contextSnippets.push(
+          `IMPORTS:\n${manifestEntry.imports.join('\n')}`,
+        );
+      }
 
-    if (manifestEntry.describeContext) {
-      contextSnippets.push(
-        `DESCRIBE BLOCK (setup hooks & shared variables, test bodies omitted):\n${manifestEntry.describeContext}`,
-      );
-    }
+      if (manifestEntry.describeContext) {
+        contextSnippets.push(
+          `DESCRIBE BLOCK (setup hooks & shared variables, test bodies omitted):\n${manifestEntry.describeContext}`,
+        );
+      }
 
-    if (manifestEntry.setupVariables && manifestEntry.setupVariables.length > 0) {
-      contextSnippets.push(
-        `SETUP VARIABLES (declared in beforeEach/beforeAll): ${manifestEntry.setupVariables.join(', ')}`,
-      );
+      if (manifestEntry.setupVariables && manifestEntry.setupVariables.length > 0) {
+        contextSnippets.push(
+          `SETUP VARIABLES (declared in beforeEach/beforeAll): ${manifestEntry.setupVariables.join(', ')}`,
+        );
+      }
     }
 
     try {

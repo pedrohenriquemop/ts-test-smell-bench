@@ -45,6 +45,11 @@
       "magic-number"
     ]
   },
+  "prompt": {
+    "strategy": "standard",
+    "includeAstMetrics": true,
+    "includeContext": true
+  },
   "analyzer": {
     "numTests": 50,
     "manifestPath": "./manifesto_tests.json",

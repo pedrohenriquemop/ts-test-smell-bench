@@ -12,7 +12,7 @@ import { prepareLlmLabelingDataset } from '../dataset/index.ts';
 import { runAnalyzer } from '../analyzer/index.ts';
 import { createProvider } from '../analyzer/providers/index.ts';
 import { resolveSmells } from '../smells/catalog.ts';
-import { buildSystemPrompt } from '../smells/prompt-builder.ts';
+import { buildPromptForStrategy } from '../smells/prompt-builder.ts';
 import { evaluateResults } from '../evaluator/index.ts';
 
 // ── Types ────────────────────────────────────────────────────────────
@@ -96,31 +96,43 @@ export async function runPipeline(opts: PipelineOptions): Promise<void> {
     const models = resolveModels(config, opts.modelIds);
     const smellIds = config.smells?.enabled ?? [];
     const smells = resolveSmells(smellIds);
-    const systemPrompt = buildSystemPrompt(smells);
+    const promptConfig = config.prompt;
+    const systemPrompt = buildPromptForStrategy(smells, promptConfig);
+
+    // Build ablation suffix for output file versioning
+    const strategy = promptConfig?.strategy ?? 'standard';
+    const astFlag = (promptConfig?.includeAstMetrics ?? true) ? 'ast' : 'noast';
+    const ctxFlag = (promptConfig?.includeContext ?? true) ? 'ctx' : 'noctx';
+    const setupSuffix = `${strategy}-${astFlag}-${ctxFlag}`;
 
     for (const modelCfg of models) {
-      const modelTag = modelCfg.id;
+      const modelTag = `${modelCfg.id}__${setupSuffix}`;
       notify('analyze', modelTag);
 
       try {
         const provider = createProvider(modelCfg);
 
         // Create a per-model copy of the analyzer config so each model
-        // writes to its own output file (version suffix = model ID).
+        // writes to its own output file (version suffix = model ID + setup).
         const analyzerCfg = {
           ...config.analyzer,
           version: modelTag,
         };
 
         console.log(`\n${'═'.repeat(60)}`);
-        console.log(`  Model: ${provider.name}`);
+        console.log(`  Model:    ${provider.name}`);
+        console.log(`  Strategy: ${strategy}`);
+        console.log(`  AST:      ${astFlag === 'ast' ? 'ON' : 'OFF'}`);
+        console.log(`  Context:  ${ctxFlag === 'ctx' ? 'ON' : 'OFF'}`);
         console.log(`  Smells (${smells.length}): ${smells.map((s) => s.displayName).join(', ')}`);
+        console.log(`  Tag:      ${modelTag}`);
         console.log(`${'═'.repeat(60)}\n`);
 
         await runAnalyzer({
           config: analyzerCfg,
           provider,
           systemPrompt,
+          promptConfig,
         });
 
         done('analyze', modelTag);
@@ -135,8 +147,15 @@ export async function runPipeline(opts: PipelineOptions): Promise<void> {
   if (stages.evaluate) {
     const models = resolveModels(config, opts.modelIds);
 
+    // Rebuild the same ablation suffix used in the analyze stage
+    const promptConfig = config.prompt;
+    const strategy = promptConfig?.strategy ?? 'standard';
+    const astFlag = (promptConfig?.includeAstMetrics ?? true) ? 'ast' : 'noast';
+    const ctxFlag = (promptConfig?.includeContext ?? true) ? 'ctx' : 'noctx';
+    const setupSuffix = `${strategy}-${astFlag}-${ctxFlag}`;
+
     for (const modelCfg of models) {
-      const modelTag = modelCfg.id;
+      const modelTag = `${modelCfg.id}__${setupSuffix}`;
       notify('evaluate', modelTag);
 
       try {
@@ -159,7 +178,7 @@ export async function runPipeline(opts: PipelineOptions): Promise<void> {
 
     // ── Cross-model summary ────────────────────────────────────
     if (models.length > 1) {
-      generateCrossModelSummary(config, models);
+      generateCrossModelSummary(config, models, setupSuffix);
     }
   }
 
@@ -198,15 +217,17 @@ function resolveModels(config: AppConfig, modelIds?: string[]): ModelConfig[] {
 function generateCrossModelSummary(
   config: AppConfig,
   models: ModelConfig[],
+  setupSuffix: string,
 ): void {
   const outputDir = path.resolve(process.cwd(), config.analyzer.outputDir);
 
   const summary: Record<string, Record<string, number>> = {};
 
   for (const modelCfg of models) {
+    const modelTag = `${modelCfg.id}__${setupSuffix}`;
     const metricsPath = path.join(
       outputDir,
-      `evaluation_metrics_v${modelCfg.id}.json`,
+      `evaluation_metrics_v${modelTag}.json`,
     );
 
     if (!fs.existsSync(metricsPath)) {

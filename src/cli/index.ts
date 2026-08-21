@@ -5,6 +5,8 @@ import { analyzeCommand } from './commands/analyze.ts';
 import { evaluateCommand } from './commands/evaluate.ts';
 import { runCommand } from './commands/run.ts';
 import { tuiCommand } from './commands/tui.tsx';
+import { consensusCommand } from './commands/consensus.ts';
+import { compareCommand } from './commands/compare.ts';
 
 const program = new Command();
 
@@ -19,6 +21,8 @@ program.addCommand(analyzeCommand);
 program.addCommand(evaluateCommand);
 program.addCommand(runCommand);
 program.addCommand(tuiCommand);
+program.addCommand(consensusCommand);
+program.addCommand(compareCommand);
 
 program.parseAsync(process.argv).catch((err) => {
   console.error('Fatal Error:', err);

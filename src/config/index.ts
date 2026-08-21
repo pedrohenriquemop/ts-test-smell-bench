@@ -62,6 +62,17 @@ export interface SmellsConfig {
   enabled: string[];
 }
 
+export interface PromptConfig {
+  /** Prompt strategy: 'standard' or 'chain-of-thought'. Default: 'standard'. */
+  strategy: 'standard' | 'chain-of-thought';
+
+  /** If false, AST metrics are NOT sent to the LLM. Default: true. */
+  includeAstMetrics: boolean;
+
+  /** If false, context snippets (imports, describe, setupVars) are NOT sent. Default: true. */
+  includeContext: boolean;
+}
+
 export interface AppConfig {
   miner: MinerConfig;
   dataset: DatasetConfig;
@@ -70,6 +81,8 @@ export interface AppConfig {
   models?: ModelConfig[];
   /** Which smells to detect. Defaults to all if omitted. */
   smells?: SmellsConfig;
+  /** Prompt strategy and ablation toggles. */
+  prompt?: PromptConfig;
 }
 
 export async function loadConfig(configPath: string = 'ts-test-smell-bench.config.json'): Promise<AppConfig> {
@@ -105,6 +118,21 @@ export async function loadConfig(configPath: string = 'ts-test-smell-bench.confi
   if (!raw.smells) {
     const { allSmellIds } = await import('../smells/catalog.ts');
     raw.smells = { enabled: allSmellIds() };
+  }
+
+  // Default prompt config.
+  if (!raw.prompt) {
+    raw.prompt = {
+      strategy: 'standard',
+      includeAstMetrics: true,
+      includeContext: true,
+    };
+  } else {
+    raw.prompt = {
+      strategy: raw.prompt.strategy ?? 'standard',
+      includeAstMetrics: raw.prompt.includeAstMetrics ?? true,
+      includeContext: raw.prompt.includeContext ?? true,
+    };
   }
 
   return raw as AppConfig;
