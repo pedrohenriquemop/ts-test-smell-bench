@@ -1,6 +1,6 @@
 # ts-test-smell-bench
 
-**ts-test-smell-bench** é uma ferramenta CLI avançada projetada para minerar, preparar, analisar e avaliar testes em TypeScript. O objetivo principal é automatizar a detecção de *test smells* utilizando modelos de linguagem (LLMs), permitindo a comparação e o benchmarking entre diferentes provedores (como Ollama local e Google Gemini).
+**ts-test-smell-bench** é uma ferramenta CLI avançada projetada para minerar, preparar, analisar e avaliar testes em TypeScript. O objetivo principal é automatizar a detecção de *test smells* utilizando modelos de linguagem, permitindo a comparação e o benchmarking com diferentes parâmetros
 
 ---
 

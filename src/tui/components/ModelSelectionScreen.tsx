@@ -86,7 +86,7 @@ export const ModelSelectionScreen: React.FC<Props> = ({ models, onStart, onExit 
         }
 
         const color = isSelected ? 'green' : 'white';
-        const bg = isSelected ? 'bgBlackBright' : undefined;
+        const bg = isSelected ? 'blackBright' : undefined;
 
         return (
           <Box key={item.id}>
