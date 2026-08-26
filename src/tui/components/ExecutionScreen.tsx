@@ -17,6 +17,17 @@ interface Props {
   onError: (error: string) => void;
 }
 
+const STAGE_DISPLAY_NAMES: Record<string, string> = {
+  mine: 'MINE',
+  prepare: 'PREPARE',
+  analyze: 'PREPARE GOLD SET',
+  evaluate: 'EVALUATE',
+};
+
+function stageDisplayName(stage: string): string {
+  return STAGE_DISPLAY_NAMES[stage] ?? stage.toUpperCase();
+}
+
 export const ExecutionScreen: React.FC<Props> = ({ config, modelIds, stages, onComplete, onError }) => {
   const [currentStage, setCurrentStage] = useState<string>('Initializing...');
   const [currentModel, setCurrentModel] = useState<string | undefined>();
@@ -93,7 +104,7 @@ export const ExecutionScreen: React.FC<Props> = ({ config, modelIds, stages, onC
 
       <Box flexDirection="row" marginBottom={1}>
         <Text color="white">Stage: </Text>
-        <Text color="cyan" bold>{currentStage.toUpperCase()}</Text>
+        <Text color="cyan" bold>{stageDisplayName(currentStage)}</Text>
         {currentModel && (
           <>
             <Text color="white"> | Model: </Text>

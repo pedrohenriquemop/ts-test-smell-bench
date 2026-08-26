@@ -1,3 +1,4 @@
+import 'dotenv/config';
 import { Command } from 'commander';
 import { mineCommand } from './commands/mine.ts';
 import { prepareCommand } from './commands/prepare.ts';
