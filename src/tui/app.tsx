@@ -1,16 +1,19 @@
 import React, { useState } from 'react';
 import { Box, Text } from 'ink';
+import * as fs from 'fs';
+import * as path from 'path';
 import type { AppConfig } from '../../config/index.ts';
 import { ModelSelectionScreen } from './components/ModelSelectionScreen.tsx';
 import { ExecutionScreen } from './components/ExecutionScreen.tsx';
 import { ResultsScreen } from './components/ResultsScreen.tsx';
+import { ConfirmMineScreen } from './components/ConfirmMineScreen.tsx';
 
 interface Props {
   config: AppConfig;
   onExit: () => void;
 }
 
-type ScreenState = 'select' | 'execute' | 'results' | 'error';
+type ScreenState = 'select' | 'confirm-mine' | 'execute' | 'results' | 'error';
 
 export const App: React.FC<Props> = ({ config, onExit }) => {
   const [screen, setScreen] = useState<ScreenState>('select');
@@ -28,6 +31,23 @@ export const App: React.FC<Props> = ({ config, onExit }) => {
   const handleStart = (models: string[], stgs: Record<string, boolean>) => {
     setSelectedModels(models);
     setStages(stgs as any);
+    
+    // Check if we need to confirm mine directory clearance
+    if (stgs.mine) {
+      const testsDir = path.resolve(process.cwd(), config.miner.outputDir || 'tests');
+      if (fs.existsSync(testsDir)) {
+        try {
+          const hasTsFiles = fs.readdirSync(testsDir).some(f => f.endsWith('.ts'));
+          if (hasTsFiles) {
+            setScreen('confirm-mine');
+            return;
+          }
+        } catch {
+          // ignore
+        }
+      }
+    }
+
     setScreen('execute');
   };
 
@@ -50,6 +70,14 @@ export const App: React.FC<Props> = ({ config, onExit }) => {
         />
       )}
       
+      {screen === 'confirm-mine' && (
+        <ConfirmMineScreen
+          testsDir={config.miner.outputDir || 'tests'}
+          onConfirm={() => setScreen('execute')}
+          onCancel={() => setScreen('select')}
+        />
+      )}
+      
       {screen === 'execute' && (
         <ExecutionScreen
           config={config}
@@ -63,6 +91,7 @@ export const App: React.FC<Props> = ({ config, onExit }) => {
       {screen === 'results' && (
         <ResultsScreen 
           config={config} 
+          stages={stages}
           onExit={onExit} 
         />
       )}

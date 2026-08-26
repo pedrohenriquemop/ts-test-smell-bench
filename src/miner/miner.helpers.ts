@@ -8,6 +8,54 @@ import type { MetricDescriptor } from "../metrics/metric.ts";
 import type { ExtractedTestCase } from "../types.ts";
 
 export class MinerHelpers {
+  // ── Human-readable test file formatter ──────────────────────────────
+
+  /**
+   * Build a self-contained test file that a human evaluator can read
+   * without cross-referencing the manifesto.
+   *
+   * Layout:
+   *   // ── Imports ──────────────────
+   *   // import { ... } from '...';
+   *   //
+   *   // ── Describe Context ────────
+   *   // describe('...', () => { ... });
+   *   //
+   *   // ── Test Case ───────────────
+   *   it('should ...', () => { ... });
+   */
+  static formatTestFileForHumans(tc: ExtractedTestCase): string {
+    const sections: string[] = [];
+
+    // ── Imports section ──────────────────────────────────────────
+    if (tc.imports && tc.imports.length > 0) {
+      sections.push("// ── Imports ──────────────────────────────────────");
+      for (const imp of tc.imports) {
+        for (const line of imp.split("\n")) {
+          sections.push(`// ${line}`);
+        }
+      }
+      sections.push("//");
+    }
+
+    // ── Describe context section ─────────────────────────────────
+    if (tc.describeContext) {
+      sections.push("// ── Describe Context ─────────────────────────────");
+      for (const line of tc.describeContext.split("\n")) {
+        sections.push(`// ${line}`);
+      }
+      sections.push("//");
+    }
+
+    // ── Test body ────────────────────────────────────────────────
+    if (sections.length > 0) {
+      sections.push("// ── Test Case ────────────────────────────────────");
+    }
+    sections.push(tc.text);
+
+    return sections.join("\n");
+  }
+
   static sleep(ms: number): Promise<void> {
     return new Promise((resolve) => setTimeout(resolve, ms));
   }

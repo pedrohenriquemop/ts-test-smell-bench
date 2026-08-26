@@ -44,6 +44,16 @@ export class Miner {
 
     if (!fs.existsSync(this.config.outputDir)) {
       fs.mkdirSync(this.config.outputDir);
+    } else {
+      console.log(
+        `Clearing existing test files in ${this.config.outputDir}...`
+      );
+      const existingFiles = fs.readdirSync(this.config.outputDir);
+      for (const file of existingFiles) {
+        if (file.endsWith(".ts")) {
+          fs.unlinkSync(path.join(this.config.outputDir, file));
+        }
+      }
     }
 
     try {
@@ -67,7 +77,7 @@ export class Miner {
           });
 
           const testFiles = searchResponse.data.items.filter((file) =>
-            /[\/\\](test|spec|__tests__)[\/\\]/i.test(file.path),
+            /[\/\\](test|spec|__tests__)[\/\\]/i.test(file.path)
           );
 
           for (const file of testFiles) {
@@ -87,7 +97,7 @@ export class Miner {
 
               const content = Buffer.from(
                 contentData.content,
-                "base64",
+                "base64"
               ).toString("utf-8");
 
               let extracted: ExtractedTestCase[];
@@ -95,7 +105,7 @@ export class Miner {
                 extracted = MinerHelpers.extractTestCasesFromSource(
                   content,
                   path.basename(file.path),
-                  this.metrics,
+                  this.metrics
                 );
               } catch {
                 continue;
@@ -105,7 +115,7 @@ export class Miner {
               const repoSlug = repo.full_name.replace(/\//g, "__");
               const baseStem = MinerHelpers.sanitizePathSegment(
                 path.basename(file.name, path.extname(file.name)),
-                48,
+                48
               );
 
               for (let i = 0; i < extracted.length; i++) {
@@ -117,7 +127,9 @@ export class Miner {
                 const outName = `${repoSlug}__${baseStem}__${i}.ts`;
                 const filePath = path.join(this.config.outputDir, outName);
 
-                fs.writeFileSync(filePath, tc.text);
+                const formattedContent =
+                  MinerHelpers.formatTestFileForHumans(tc);
+                fs.writeFileSync(filePath, formattedContent);
 
                 manifesto.push({
                   file: outName,
@@ -135,7 +147,7 @@ export class Miner {
                 savedAnyFromThisSourceFile = true;
                 totalDownloaded++;
                 console.log(
-                  `\t> Saved: ${outName} (${totalDownloaded}/${this.config.globalFileLimit})`,
+                  `\t> Saved: ${outName} (${totalDownloaded}/${this.config.globalFileLimit})`
                 );
               }
 
@@ -158,7 +170,9 @@ export class Miner {
             const extraMs = 2000;
             const waitTime = resetTimeMs - Date.now() + extraMs;
             console.log(
-              `\t⚠️ Rate limit reached. Waiting ${Math.ceil(waitTime / 1000)}s...`,
+              `\t⚠️ Rate limit reached. Waiting ${Math.ceil(
+                waitTime / 1000
+              )}s...`
             );
             await MinerHelpers.sleep(waitTime);
           } else {
@@ -169,10 +183,10 @@ export class Miner {
 
       fs.writeFileSync(
         "manifesto_tests.json",
-        JSON.stringify(manifesto, null, 2),
+        JSON.stringify(manifesto, null, 2)
       );
       console.log(
-        `\nMining finished. ${totalDownloaded} files saved at ${this.config.outputDir}`,
+        `\nMining finished. ${totalDownloaded} files saved at ${this.config.outputDir}`
       );
     } catch (error: unknown) {
       const msg = error instanceof Error ? error.message : String(error);
