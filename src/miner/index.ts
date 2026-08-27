@@ -18,6 +18,7 @@ export class Miner {
   constructor(config: MinerConfig) {
     if (!process.env.GITHUB_TOKEN) {
       throw new Error("GITHUB_TOKEN is not set");
+      throw new Error("GITHUB_TOKEN environment variable is not set. The GitHub API requires authentication to search code. Please run with: GITHUB_TOKEN=your_token ./bench tui");
     }
 
     this.config = config;
@@ -188,9 +189,14 @@ export class Miner {
       console.log(
         `\nMining finished. ${totalDownloaded} files saved at ${this.config.outputDir}`
       );
+
+      if (totalDownloaded === 0) {
+        throw new Error("No tests were mined. This is usually caused by strict heuristics (e.g., minLines too high) or an API rate limit/authentication issue. Check your config and GITHUB_TOKEN.");
+      }
     } catch (error: unknown) {
       const msg = error instanceof Error ? error.message : String(error);
       console.error("!!! Fatal error:", msg);
+      throw new Error(`Miner failed: ${msg}`);
     }
   }
 }
