@@ -1,9 +1,9 @@
-import axios from 'axios';
+import axios from "axios";
 import type {
   ModelProvider,
   AnalysisRequest,
   AnalysisResponse,
-} from '../provider.ts';
+} from "../provider.ts";
 
 // ── Config ───────────────────────────────────────────────────────────
 
@@ -41,7 +41,7 @@ function parseModelResponse(
   response: string,
 ): { smells: string[]; justification: string } | null {
   const match = response.match(
-    /FILE:.*?- SMELLS:\s*(.*?)\s*- JUSTIFICATION:\s*(.*)/si,
+    /FILE:.*?- SMELLS:\s*(.*?)\s*- JUSTIFICATION:\s*(.*)/is,
   );
   if (!match) return null;
 
@@ -50,11 +50,11 @@ function parseModelResponse(
 
   let smells: string[] = [];
   if (
-    smellsStr.toLowerCase() !== 'none' &&
-    smellsStr !== '[]' &&
-    smellsStr !== ''
+    smellsStr.toLowerCase() !== "none" &&
+    smellsStr !== "[]" &&
+    smellsStr !== ""
   ) {
-    smells = smellsStr.split(',').map((s) => s.trim());
+    smells = smellsStr.split(",").map((s) => s.trim());
   }
 
   return { smells, justification };
@@ -68,13 +68,15 @@ export class GeminiProvider implements ModelProvider {
 
   constructor(cfg: GeminiProviderConfig) {
     if (!cfg.apiKey) {
-      throw new Error('GeminiProvider requires an API key. Set apiKey in config or $GEMINI_API_KEY in .env');
+      throw new Error(
+        "GeminiProvider requires an API key. Set apiKey in config or $GEMINI_API_KEY in .env",
+      );
     }
 
     this.config = {
       model: cfg.model,
       apiKey: cfg.apiKey,
-      baseUrl: cfg.baseUrl ?? 'https://generativelanguage.googleapis.com',
+      baseUrl: cfg.baseUrl ?? "https://generativelanguage.googleapis.com",
       temperature: cfg.temperature ?? 0.0,
       maxTokens: cfg.maxTokens ?? 8192,
     };
@@ -84,8 +86,8 @@ export class GeminiProvider implements ModelProvider {
   async analyze(req: AnalysisRequest): Promise<AnalysisResponse> {
     const contextBlock =
       req.contextSnippets && req.contextSnippets.length > 0
-        ? `\n    CONTEXT:\n${req.contextSnippets.map((s) => `    ${s}`).join('\n')}\n`
-        : '';
+        ? `\n    CONTEXT:\n${req.contextSnippets.map((s) => `    ${s}`).join("\n")}\n`
+        : "";
 
     const userPrompt = `
     Analyze the following TypeScript test:
@@ -105,7 +107,7 @@ export class GeminiProvider implements ModelProvider {
     const body = {
       contents: [
         {
-          role: 'user',
+          role: "user",
           parts: [{ text: userPrompt }],
         },
       ],
@@ -121,7 +123,7 @@ export class GeminiProvider implements ModelProvider {
     const start = Date.now();
 
     const response = await axios.post(url, body, {
-      headers: { 'Content-Type': 'application/json' },
+      headers: { "Content-Type": "application/json" },
       timeout: 120_000, // 2 min timeout for slow models
     });
 
@@ -129,8 +131,7 @@ export class GeminiProvider implements ModelProvider {
 
     // Extract text from Gemini response
     const candidates = response.data?.candidates ?? [];
-    const rawText: string =
-      candidates[0]?.content?.parts?.[0]?.text ?? '';
+    const rawText: string = candidates[0]?.content?.parts?.[0]?.text ?? "";
 
     // Extract token usage if available
     const usageMetadata = response.data?.usageMetadata;
@@ -146,7 +147,7 @@ export class GeminiProvider implements ModelProvider {
     return {
       rawText,
       smells: parsed?.smells ?? [],
-      justification: parsed?.justification ?? '',
+      justification: parsed?.justification ?? "",
       modelName: this.name,
       latencyMs,
       tokenUsage,

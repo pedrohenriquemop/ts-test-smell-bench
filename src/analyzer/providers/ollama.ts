@@ -1,9 +1,9 @@
-import axios from 'axios';
+import axios from "axios";
 import type {
   ModelProvider,
   AnalysisRequest,
   AnalysisResponse,
-} from '../provider.ts';
+} from "../provider.ts";
 
 // ── Config ───────────────────────────────────────────────────────────
 
@@ -32,7 +32,7 @@ function parseOllamaResponse(
   response: string,
 ): { smells: string[]; justification: string } | null {
   const match = response.match(
-    /FILE:.*?- SMELLS:\s*(.*?)\s*- JUSTIFICATION:\s*(.*)/si,
+    /FILE:.*?- SMELLS:\s*(.*?)\s*- JUSTIFICATION:\s*(.*)/is,
   );
   if (!match) return null;
 
@@ -41,11 +41,11 @@ function parseOllamaResponse(
 
   let smells: string[] = [];
   if (
-    smellsStr.toLowerCase() !== 'none' &&
-    smellsStr !== '[]' &&
-    smellsStr !== ''
+    smellsStr.toLowerCase() !== "none" &&
+    smellsStr !== "[]" &&
+    smellsStr !== ""
   ) {
-    smells = smellsStr.split(',').map((s) => s.trim());
+    smells = smellsStr.split(",").map((s) => s.trim());
   }
 
   return { smells, justification };
@@ -60,7 +60,7 @@ export class OllamaProvider implements ModelProvider {
   constructor(cfg: OllamaProviderConfig) {
     this.config = {
       model: cfg.model,
-      baseUrl: cfg.baseUrl ?? 'http://localhost:11434/api/generate',
+      baseUrl: cfg.baseUrl ?? "http://localhost:11434/api/generate",
       temperature: cfg.temperature ?? 0.0,
     };
     this.name = `Ollama / ${this.config.model}`;
@@ -69,8 +69,8 @@ export class OllamaProvider implements ModelProvider {
   async analyze(req: AnalysisRequest): Promise<AnalysisResponse> {
     const contextBlock =
       req.contextSnippets && req.contextSnippets.length > 0
-        ? `\n    CONTEXT:\n${req.contextSnippets.map((s) => `    ${s}`).join('\n')}\n`
-        : '';
+        ? `\n    CONTEXT:\n${req.contextSnippets.map((s) => `    ${s}`).join("\n")}\n`
+        : "";
 
     const prompt = `
     Analyze the following TypeScript test:
@@ -98,13 +98,13 @@ export class OllamaProvider implements ModelProvider {
     });
 
     const latencyMs = Date.now() - start;
-    const rawText: string = response.data?.response ?? '';
+    const rawText: string = response.data?.response ?? "";
     const parsed = parseOllamaResponse(rawText);
 
     return {
       rawText,
       smells: parsed?.smells ?? [],
-      justification: parsed?.justification ?? '',
+      justification: parsed?.justification ?? "",
       modelName: this.name,
       latencyMs,
       // Ollama doesn't reliably report token usage in the generate API
@@ -117,7 +117,7 @@ export class OllamaProvider implements ModelProvider {
       // Ollama exposes a lightweight tags endpoint
       const tagsUrl = this.config.baseUrl.replace(
         /\/api\/generate$/,
-        '/api/tags',
+        "/api/tags",
       );
       const res = await axios.get(tagsUrl, { timeout: 5000 });
       const models: Array<{ name: string }> = res.data?.models ?? [];

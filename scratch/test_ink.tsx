@@ -1,5 +1,5 @@
-import React from 'react';
-import { render, Text, Box } from 'ink';
+import React from "react";
+import { render, Text, Box } from "ink";
 
 const App = () => (
   <Box borderStyle="round" borderColor="green" padding={1}>

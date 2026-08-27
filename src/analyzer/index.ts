@@ -1,14 +1,20 @@
-import * as fs from 'fs';
-import * as path from 'path';
-import type { AnalyzerConfig, ModelConfig, PromptConfig } from '../config/index.ts';
-import type { ModelProvider } from './provider.ts';
-import { createProvider } from './providers/index.ts';
+import * as fs from "fs";
+import * as path from "path";
+import type {
+  AnalyzerConfig,
+  ModelConfig,
+  PromptConfig,
+} from "../config/index.ts";
+import type { ModelProvider } from "./provider.ts";
+import { createProvider } from "./providers/index.ts";
 
 // ── Reference-result parser (formerly "Gemini parser") ───────────────
 
-function parseReferenceFile(filePath: string): Array<{ file: string; smells: string[] }> {
-  const content = fs.readFileSync(filePath, 'utf-8');
-  const lines = content.split('\n');
+function parseReferenceFile(
+  filePath: string,
+): Array<{ file: string; smells: string[] }> {
+  const content = fs.readFileSync(filePath, "utf-8");
+  const lines = content.split("\n");
   const results: Array<{ file: string; smells: string[] }> = [];
 
   for (const line of lines) {
@@ -18,8 +24,8 @@ function parseReferenceFile(filePath: string): Array<{ file: string; smells: str
       const fileName = match[1].trim();
       const smellsStr = match[2].trim();
       let smells: string[] = [];
-      if (smellsStr.toLowerCase() !== 'none') {
-        smells = smellsStr.split(',').map((s) => s.trim());
+      if (smellsStr.toLowerCase() !== "none") {
+        smells = smellsStr.split(",").map((s) => s.trim());
       }
       results.push({ file: fileName, smells });
     }
@@ -38,30 +44,40 @@ export interface RunAnalyzerOptions {
   promptConfig?: PromptConfig;
 }
 
-export async function runAnalyzer({ config, provider, systemPrompt, promptConfig }: RunAnalyzerOptions) {
+export async function runAnalyzer({
+  config,
+  provider,
+  systemPrompt,
+  promptConfig,
+}: RunAnalyzerOptions) {
   const manifestPath = path.resolve(process.cwd(), config.manifestPath);
-  const referencePath = path.resolve(process.cwd(), config.referenceResultsPath);
+  const referencePath = path.resolve(
+    process.cwd(),
+    config.referenceResultsPath,
+  );
   const testsDir = path.resolve(process.cwd(), config.testsDir);
 
   // Ablation toggles (default to true if not provided)
   const includeAst = promptConfig?.includeAstMetrics ?? true;
   const includeCtx = promptConfig?.includeContext ?? true;
 
-  console.log('Loading metadata...');
-  const manifestData = JSON.parse(fs.readFileSync(manifestPath, 'utf-8'));
+  console.log("Loading metadata...");
+  const manifestData = JSON.parse(fs.readFileSync(manifestPath, "utf-8"));
   const manifestMap = new Map<string, any>();
   for (const item of manifestData) {
     manifestMap.set(item.file, item);
   }
 
-  console.log('Parsing reference results...');
+  console.log("Parsing reference results...");
   const referenceResults = parseReferenceFile(referencePath);
   const testsToRun = referenceResults.slice(0, config.numTests);
 
   const comparisonResults: unknown[] = [];
 
-  const ablationLabel = `AST=${includeAst ? 'ON' : 'OFF'}, Context=${includeCtx ? 'ON' : 'OFF'}`;
-  console.log(`Starting analysis with "${provider.name}" for ${testsToRun.length} tests (${ablationLabel})...`);
+  const ablationLabel = `AST=${includeAst ? "ON" : "OFF"}, Context=${includeCtx ? "ON" : "OFF"}`;
+  console.log(
+    `Starting analysis with "${provider.name}" for ${testsToRun.length} tests (${ablationLabel})...`,
+  );
 
   for (let i = 0; i < testsToRun.length; i++) {
     const testInfo = testsToRun[i];
@@ -76,7 +92,7 @@ export async function runAnalyzer({ config, provider, systemPrompt, promptConfig
       continue;
     }
 
-    const testCode = fs.readFileSync(testFilePath, 'utf-8');
+    const testCode = fs.readFileSync(testFilePath, "utf-8");
     const manifestEntry = manifestMap.get(fileName);
 
     if (!manifestEntry?.metrics) {
@@ -92,9 +108,7 @@ export async function runAnalyzer({ config, provider, systemPrompt, promptConfig
 
     if (includeCtx) {
       if (manifestEntry.imports && manifestEntry.imports.length > 0) {
-        contextSnippets.push(
-          `IMPORTS:\n${manifestEntry.imports.join('\n')}`,
-        );
+        contextSnippets.push(`IMPORTS:\n${manifestEntry.imports.join("\n")}`);
       }
 
       if (manifestEntry.describeContext) {
@@ -103,9 +117,12 @@ export async function runAnalyzer({ config, provider, systemPrompt, promptConfig
         );
       }
 
-      if (manifestEntry.setupVariables && manifestEntry.setupVariables.length > 0) {
+      if (
+        manifestEntry.setupVariables &&
+        manifestEntry.setupVariables.length > 0
+      ) {
         contextSnippets.push(
-          `SETUP VARIABLES (declared in beforeEach/beforeAll): ${manifestEntry.setupVariables.join(', ')}`,
+          `SETUP VARIABLES (declared in beforeEach/beforeAll): ${manifestEntry.setupVariables.join(", ")}`,
         );
       }
     }
@@ -115,10 +132,14 @@ export async function runAnalyzer({ config, provider, systemPrompt, promptConfig
         testCode,
         metadata,
         systemPrompt,
-        contextSnippets: contextSnippets.length > 0 ? contextSnippets : undefined,
+        contextSnippets:
+          contextSnippets.length > 0 ? contextSnippets : undefined,
       });
 
-      const status = response.smells.length > 0 || response.justification ? 'success' : 'invalid return';
+      const status =
+        response.smells.length > 0 || response.justification
+          ? "success"
+          : "invalid return";
 
       const result = {
         file: fileName,
@@ -134,9 +155,13 @@ export async function runAnalyzer({ config, provider, systemPrompt, promptConfig
 
       comparisonResults.push(result);
 
-      console.log(`  Reference Smells: ${referenceSmells.join(', ') || 'None'}`);
-      if (status === 'success') {
-        console.log(`  Model Smells:     ${response.smells.join(', ') || 'None'}`);
+      console.log(
+        `  Reference Smells: ${referenceSmells.join(", ") || "None"}`,
+      );
+      if (status === "success") {
+        console.log(
+          `  Model Smells:     ${response.smells.join(", ") || "None"}`,
+        );
       } else {
         console.log(`  Model Smells:     [Invalid Format]`);
       }
@@ -148,7 +173,7 @@ export async function runAnalyzer({ config, provider, systemPrompt, promptConfig
         referenceSmells,
         modelSmells: [],
         modelName: provider.name,
-        modelStatus: 'error',
+        modelStatus: "error",
         error: String(error),
       });
     }
@@ -158,7 +183,7 @@ export async function runAnalyzer({ config, provider, systemPrompt, promptConfig
     fs.mkdirSync(config.outputDir, { recursive: true });
   }
 
-  const versionSuffix = config.version ? `_v${config.version}` : '';
+  const versionSuffix = config.version ? `_v${config.version}` : "";
   const outputPath = path.join(
     process.cwd(),
     config.outputDir,
@@ -180,10 +205,10 @@ FILE: [NAME] - SMELLS: [LIST] - JUSTIFICATION: [SHORT]`;
 
 export async function runAnalyzerLegacy(analyzerConfig: AnalyzerConfig) {
   const modelConfig: ModelConfig = {
-    id: analyzerConfig.model ?? 'detector-smells',
-    provider: 'ollama',
-    model: analyzerConfig.model ?? 'detector-smells',
-    baseUrl: analyzerConfig.ollamaUrl ?? 'http://localhost:11434/api/generate',
+    id: analyzerConfig.model ?? "detector-smells",
+    provider: "ollama",
+    model: analyzerConfig.model ?? "detector-smells",
+    baseUrl: analyzerConfig.ollamaUrl ?? "http://localhost:11434/api/generate",
   };
 
   const provider = createProvider(modelConfig);

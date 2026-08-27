@@ -1,4 +1,10 @@
-import { CallExpression, Node, Project, SourceFile, SyntaxKind } from "ts-morph";
+import {
+  CallExpression,
+  Node,
+  Project,
+  SourceFile,
+  SyntaxKind,
+} from "ts-morph";
 import {
   DEFAULT_METRICS,
   metricsRecord,
@@ -248,9 +254,7 @@ export class MinerHelpers {
    * Walk up the AST from a test call to find the nearest enclosing
    * `describe()` CallExpression.
    */
-  private static findEnclosingDescribe(
-    node: Node,
-  ): CallExpression | undefined {
+  private static findEnclosingDescribe(node: Node): CallExpression | undefined {
     let current: Node | undefined = node.getParent();
     while (current) {
       if (Node.isCallExpression(current)) {

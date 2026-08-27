@@ -4,9 +4,8 @@ import type { MetricDescriptor, FileMetricDescriptor } from "./metric.ts";
 export const lineCountMetric: MetricDescriptor<number> = {
   name: "lineCount",
   description:
-    "Measures the total number of lines in the test block to help identify oversized, complex, or \"Eager\" tests.",
-  extract: (call) =>
-    call.getEndLineNumber() - call.getStartLineNumber() + 1,
+    'Measures the total number of lines in the test block to help identify oversized, complex, or "Eager" tests.',
+  extract: (call) => call.getEndLineNumber() - call.getStartLineNumber() + 1,
 };
 
 export const assertionCountMetric: MetricDescriptor<number> = {
@@ -141,20 +140,30 @@ export const DEFAULT_METRICS = [
 
 /** Patterns that indicate external I/O modules. */
 const EXTERNAL_IO_PATTERNS = [
-  /^fs$/,   /^fs\/promises$/,  /^node:fs/,
-  /^path$/, /^node:path$/,
-  /^http$/, /^https$/,  /^node:http/, /^node:https/,
-  /^axios/, /^node-fetch/, /^cross-fetch/,
-  /^pg$/,   /^mysql/,  /^mongodb/,  /^mongoose/,
-  /^redis/, /^ioredis/,
+  /^fs$/,
+  /^fs\/promises$/,
+  /^node:fs/,
+  /^path$/,
+  /^node:path$/,
+  /^http$/,
+  /^https$/,
+  /^node:http/,
+  /^node:https/,
+  /^axios/,
+  /^node-fetch/,
+  /^cross-fetch/,
+  /^pg$/,
+  /^mysql/,
+  /^mongodb/,
+  /^mongoose/,
+  /^redis/,
+  /^ioredis/,
 ];
 
 export const importCountMetric: FileMetricDescriptor<number> = {
   name: "importCount",
-  description:
-    "Counts the number of import declarations in the source file.",
-  extract: (sourceFile) =>
-    sourceFile.getImportDeclarations().length,
+  description: "Counts the number of import declarations in the source file.",
+  extract: (sourceFile) => sourceFile.getImportDeclarations().length,
 };
 
 export const setupHookCountMetric: FileMetricDescriptor<number> = {
@@ -162,7 +171,7 @@ export const setupHookCountMetric: FileMetricDescriptor<number> = {
   description:
     "Counts beforeEach/beforeAll/afterEach/afterAll hooks in the file.",
   extract: (sourceFile) => {
-    const hookNames = ['beforeEach', 'beforeAll', 'afterEach', 'afterAll'];
+    const hookNames = ["beforeEach", "beforeAll", "afterEach", "afterAll"];
     return sourceFile
       .getDescendantsOfKind(SyntaxKind.CallExpression)
       .filter((call) => {
@@ -177,7 +186,7 @@ export const beforeEachVarCountMetric: FileMetricDescriptor<number> = {
   description:
     "Counts variables declared or assigned inside beforeEach/beforeAll hooks.",
   extract: (sourceFile) => {
-    const hookNames = ['beforeEach', 'beforeAll'];
+    const hookNames = ["beforeEach", "beforeAll"];
     const hookCalls = sourceFile
       .getDescendantsOfKind(SyntaxKind.CallExpression)
       .filter((call) => {
@@ -193,7 +202,7 @@ export const beforeEachVarCountMetric: FileMetricDescriptor<number> = {
       // Also count assignments to outer-scope variables (e.g. `myVar = ...`)
       count += body
         .getDescendantsOfKind(SyntaxKind.BinaryExpression)
-        .filter((bin) => bin.getOperatorToken().getText() === '=').length;
+        .filter((bin) => bin.getOperatorToken().getText() === "=").length;
     }
     return count;
   },

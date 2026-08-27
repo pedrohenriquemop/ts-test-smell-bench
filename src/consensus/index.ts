@@ -7,8 +7,8 @@
  * accepted into the consensus; the rest are filtered as hallucinations.
  */
 
-import * as fs from 'fs';
-import * as path from 'path';
+import * as fs from "fs";
+import * as path from "path";
 
 // ── Types ────────────────────────────────────────────────────────────
 
@@ -61,15 +61,15 @@ export function buildConsensus(opts: ConsensusOptions): FileVote[] {
       ollamaSmells?: string[];
       modelStatus?: string;
       ollamaStatus?: string;
-    }> = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
+    }> = JSON.parse(fs.readFileSync(filePath, "utf-8"));
 
     for (const entry of data) {
-      const status = entry.modelStatus ?? entry.ollamaStatus ?? 'unknown';
-      if (status !== 'success') continue;
+      const status = entry.modelStatus ?? entry.ollamaStatus ?? "unknown";
+      if (status !== "success") continue;
 
       const smells = (entry.modelSmells ?? entry.ollamaSmells ?? [])
         .map((s) => s.trim())
-        .filter((s) => s.length > 0 && s.toLowerCase() !== 'none');
+        .filter((s) => s.length > 0 && s.toLowerCase() !== "none");
 
       if (!allResults.has(entry.file)) {
         allResults.set(entry.file, new Map());
@@ -114,9 +114,8 @@ export function buildConsensus(opts: ConsensusOptions): FileVote[] {
 
   // 3. Write consensus goldset in the same format as run.txt
   const goldsetLines = votes.map((v) => {
-    const smells = v.consensusSmells.length > 0
-      ? v.consensusSmells.join(', ')
-      : 'None';
+    const smells =
+      v.consensusSmells.length > 0 ? v.consensusSmells.join(", ") : "None";
     return `File Name: ${v.file} - Smells: ${smells}`;
   });
 
@@ -124,12 +123,14 @@ export function buildConsensus(opts: ConsensusOptions): FileVote[] {
   if (!fs.existsSync(outputDir)) {
     fs.mkdirSync(outputDir, { recursive: true });
   }
-  fs.writeFileSync(outputPath, goldsetLines.join('\n'));
-  console.log(`\n✅ Consensus goldset written to ${outputPath} (${votes.length} files, threshold: ${threshold})`);
+  fs.writeFileSync(outputPath, goldsetLines.join("\n"));
+  console.log(
+    `\n✅ Consensus goldset written to ${outputPath} (${votes.length} files, threshold: ${threshold})`,
+  );
 
   // 4. Write disagreement report if requested
   if (writeReport) {
-    const reportPath = outputPath.replace(/\.[^.]+$/, '_disagreements.json');
+    const reportPath = outputPath.replace(/\.[^.]+$/, "_disagreements.json");
     const reportData = votes
       .filter((v) => v.disagreements.length > 0)
       .map((v) => ({
@@ -140,7 +141,9 @@ export function buildConsensus(opts: ConsensusOptions): FileVote[] {
       }));
 
     fs.writeFileSync(reportPath, JSON.stringify(reportData, null, 2));
-    console.log(`📊 Disagreement report written to ${reportPath} (${reportData.length} files with conflicts)`);
+    console.log(
+      `📊 Disagreement report written to ${reportPath} (${reportData.length} files with conflicts)`,
+    );
   }
 
   return votes;

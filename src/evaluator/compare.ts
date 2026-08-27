@@ -7,8 +7,8 @@
  * "does CoT improve detection?", "do AST metrics matter?", etc.
  */
 
-import * as fs from 'fs';
-import * as path from 'path';
+import * as fs from "fs";
+import * as path from "path";
 
 // ── Types ────────────────────────────────────────────────────────────
 
@@ -44,26 +44,36 @@ export interface ComparisonMatrix {
  * the convention.
  */
 export function parseRunTag(tag: string): RunTag {
-  const parts = tag.split('__');
+  const parts = tag.split("__");
   const modelId = parts[0] ?? tag;
 
   if (parts.length < 2) {
-    return { tag, modelId, strategy: 'unknown', hasAst: true, hasContext: true };
+    return {
+      tag,
+      modelId,
+      strategy: "unknown",
+      hasAst: true,
+      hasContext: true,
+    };
   }
 
-  const setupParts = parts[1].split('-');
-  const strategy = setupParts[0] ?? 'standard';
-  const hasAst = !setupParts.includes('noast');
-  const hasContext = !setupParts.includes('noctx');
+  const setupParts = parts[1].split("-");
+  const strategy = setupParts[0] ?? "standard";
+  const hasAst = !setupParts.includes("noast");
+  const hasContext = !setupParts.includes("noctx");
 
   return { tag, modelId, strategy, hasAst, hasContext };
 }
 
 // ── Core comparison ──────────────────────────────────────────────────
 
-export function buildComparisonMatrix(outputDir: string, filterModel?: string): ComparisonMatrix {
-  const files = fs.readdirSync(outputDir)
-    .filter((f) => f.startsWith('evaluation_metrics_v') && f.endsWith('.json'));
+export function buildComparisonMatrix(
+  outputDir: string,
+  filterModel?: string,
+): ComparisonMatrix {
+  const files = fs
+    .readdirSync(outputDir)
+    .filter((f) => f.startsWith("evaluation_metrics_v") && f.endsWith(".json"));
 
   if (files.length === 0) {
     throw new Error(`No evaluation_metrics files found in ${outputDir}`);
@@ -74,7 +84,7 @@ export function buildComparisonMatrix(outputDir: string, filterModel?: string): 
   const smellSet = new Set<string>();
 
   for (const file of files) {
-    const tag = file.replace('evaluation_metrics_v', '').replace('.json', '');
+    const tag = file.replace("evaluation_metrics_v", "").replace(".json", "");
     const runTag = parseRunTag(tag);
 
     // Filter by model if requested
@@ -83,7 +93,7 @@ export function buildComparisonMatrix(outputDir: string, filterModel?: string): 
     runs.push(runTag);
 
     const metrics: Array<{ smell: string; f1: number }> = JSON.parse(
-      fs.readFileSync(path.join(outputDir, file), 'utf-8'),
+      fs.readFileSync(path.join(outputDir, file), "utf-8"),
     );
 
     for (const m of metrics) {
@@ -96,11 +106,13 @@ export function buildComparisonMatrix(outputDir: string, filterModel?: string): 
   // Compute per-run averages
   const averages: Record<string, number> = {};
   for (const run of runs) {
-    const f1Values = Object.values(data)
-      .map((smellData) => smellData[run.tag] ?? 0);
-    averages[run.tag] = f1Values.length > 0
-      ? f1Values.reduce((a, b) => a + b, 0) / f1Values.length
-      : 0;
+    const f1Values = Object.values(data).map(
+      (smellData) => smellData[run.tag] ?? 0,
+    );
+    averages[run.tag] =
+      f1Values.length > 0
+        ? f1Values.reduce((a, b) => a + b, 0) / f1Values.length
+        : 0;
   }
 
   return {
@@ -113,15 +125,18 @@ export function buildComparisonMatrix(outputDir: string, filterModel?: string): 
 
 // ── HTML heatmap report ──────────────────────────────────────────────
 
-export function generateComparisonHtml(matrix: ComparisonMatrix, outputPath: string): void {
+export function generateComparisonHtml(
+  matrix: ComparisonMatrix,
+  outputPath: string,
+): void {
   const { smells, runs, data, averages } = matrix;
 
   const headerCells = runs
     .map((r) => {
-      const label = `${r.modelId}<br/><small>${r.strategy} | AST:${r.hasAst ? '✓' : '✗'} CTX:${r.hasContext ? '✓' : '✗'}</small>`;
+      const label = `${r.modelId}<br/><small>${r.strategy} | AST:${r.hasAst ? "✓" : "✗"} CTX:${r.hasContext ? "✓" : "✗"}</small>`;
       return `<th class="run-header">${label}</th>`;
     })
-    .join('');
+    .join("");
 
   const bodyRows = smells
     .map((smell) => {
@@ -133,17 +148,17 @@ export function generateComparisonHtml(matrix: ComparisonMatrix, outputPath: str
           const bg = `hsl(${hue}, 70%, 35%)`;
           return `<td style="background:${bg}; color: white; text-align: center;">${pct}%</td>`;
         })
-        .join('');
+        .join("");
       return `<tr><td class="smell-name">${smell}</td>${cells}</tr>`;
     })
-    .join('');
+    .join("");
 
   const avgCells = runs
     .map((r) => {
       const avg = (averages[r.tag] * 100).toFixed(1);
       return `<td style="text-align: center; font-weight: bold;">${avg}%</td>`;
     })
-    .join('');
+    .join("");
 
   const html = `<!DOCTYPE html>
 <html lang="en">

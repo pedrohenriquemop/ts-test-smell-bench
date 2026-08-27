@@ -4,16 +4,16 @@
  * with per-model output versioning.
  */
 
-import * as fs from 'fs';
-import * as path from 'path';
-import type { AppConfig, ModelConfig } from '../config/index.ts';
-import { Miner } from '../miner/index.ts';
-import { prepareLlmLabelingDataset } from '../dataset/index.ts';
-import { runAnalyzer } from '../analyzer/index.ts';
-import { createProvider } from '../analyzer/providers/index.ts';
-import { resolveSmells } from '../smells/catalog.ts';
-import { buildPromptForStrategy } from '../smells/prompt-builder.ts';
-import { evaluateResults } from '../evaluator/index.ts';
+import * as fs from "fs";
+import * as path from "path";
+import type { AppConfig, ModelConfig } from "../config/index.ts";
+import { Miner } from "../miner/index.ts";
+import { prepareLlmLabelingDataset } from "../dataset/index.ts";
+import { runAnalyzer } from "../analyzer/index.ts";
+import { createProvider } from "../analyzer/providers/index.ts";
+import { resolveSmells } from "../smells/catalog.ts";
+import { buildPromptForStrategy } from "../smells/prompt-builder.ts";
+import { evaluateResults } from "../evaluator/index.ts";
 
 // ── Types ────────────────────────────────────────────────────────────
 
@@ -65,28 +65,28 @@ export async function runPipeline(opts: PipelineOptions): Promise<void> {
 
   // ── 1. Mine ──────────────────────────────────────────────────
   if (stages.mine) {
-    notify('mine');
+    notify("mine");
     try {
       const miner = new Miner(config.miner);
       await miner.run();
-      done('mine');
+      done("mine");
     } catch (err) {
-      const cont = onStageError?.('mine', err as Error);
+      const cont = onStageError?.("mine", err as Error);
       if (!cont) throw err;
     }
   }
 
   // ── 2. Prepare ───────────────────────────────────────────────
   if (stages.prepare) {
-    notify('prepare');
+    notify("prepare");
     try {
       prepareLlmLabelingDataset(
         config.dataset,
-        config.miner.outputDir || 'tests',
+        config.miner.outputDir || "tests",
       );
-      done('prepare');
+      done("prepare");
     } catch (err) {
-      const cont = onStageError?.('prepare', err as Error);
+      const cont = onStageError?.("prepare", err as Error);
       if (!cont) throw err;
     }
   }
@@ -100,14 +100,14 @@ export async function runPipeline(opts: PipelineOptions): Promise<void> {
     const systemPrompt = buildPromptForStrategy(smells, promptConfig);
 
     // Build ablation suffix for output file versioning
-    const strategy = promptConfig?.strategy ?? 'standard';
-    const astFlag = (promptConfig?.includeAstMetrics ?? true) ? 'ast' : 'noast';
-    const ctxFlag = (promptConfig?.includeContext ?? true) ? 'ctx' : 'noctx';
+    const strategy = promptConfig?.strategy ?? "standard";
+    const astFlag = (promptConfig?.includeAstMetrics ?? true) ? "ast" : "noast";
+    const ctxFlag = (promptConfig?.includeContext ?? true) ? "ctx" : "noctx";
     const setupSuffix = `${strategy}-${astFlag}-${ctxFlag}`;
 
     for (const modelCfg of models) {
       const modelTag = `${modelCfg.id}__${setupSuffix}`;
-      notify('analyze', modelTag);
+      notify("analyze", modelTag);
 
       try {
         const provider = createProvider(modelCfg);
@@ -119,14 +119,16 @@ export async function runPipeline(opts: PipelineOptions): Promise<void> {
           version: modelTag,
         };
 
-        console.log(`\n${'═'.repeat(60)}`);
+        console.log(`\n${"═".repeat(60)}`);
         console.log(`  Model:    ${provider.name}`);
         console.log(`  Strategy: ${strategy}`);
-        console.log(`  AST:      ${astFlag === 'ast' ? 'ON' : 'OFF'}`);
-        console.log(`  Context:  ${ctxFlag === 'ctx' ? 'ON' : 'OFF'}`);
-        console.log(`  Smells (${smells.length}): ${smells.map((s) => s.displayName).join(', ')}`);
+        console.log(`  AST:      ${astFlag === "ast" ? "ON" : "OFF"}`);
+        console.log(`  Context:  ${ctxFlag === "ctx" ? "ON" : "OFF"}`);
+        console.log(
+          `  Smells (${smells.length}): ${smells.map((s) => s.displayName).join(", ")}`,
+        );
         console.log(`  Tag:      ${modelTag}`);
-        console.log(`${'═'.repeat(60)}\n`);
+        console.log(`${"═".repeat(60)}\n`);
 
         await runAnalyzer({
           config: analyzerCfg,
@@ -135,9 +137,9 @@ export async function runPipeline(opts: PipelineOptions): Promise<void> {
           promptConfig,
         });
 
-        done('analyze', modelTag);
+        done("analyze", modelTag);
       } catch (err) {
-        const cont = onStageError?.('analyze', err as Error, modelTag);
+        const cont = onStageError?.("analyze", err as Error, modelTag);
         if (!cont) throw err;
       }
     }
@@ -149,14 +151,14 @@ export async function runPipeline(opts: PipelineOptions): Promise<void> {
 
     // Rebuild the same ablation suffix used in the analyze stage
     const promptConfig = config.prompt;
-    const strategy = promptConfig?.strategy ?? 'standard';
-    const astFlag = (promptConfig?.includeAstMetrics ?? true) ? 'ast' : 'noast';
-    const ctxFlag = (promptConfig?.includeContext ?? true) ? 'ctx' : 'noctx';
+    const strategy = promptConfig?.strategy ?? "standard";
+    const astFlag = (promptConfig?.includeAstMetrics ?? true) ? "ast" : "noast";
+    const ctxFlag = (promptConfig?.includeContext ?? true) ? "ctx" : "noctx";
     const setupSuffix = `${strategy}-${astFlag}-${ctxFlag}`;
 
     for (const modelCfg of models) {
       const modelTag = `${modelCfg.id}__${setupSuffix}`;
-      notify('evaluate', modelTag);
+      notify("evaluate", modelTag);
 
       try {
         // Point the evaluator at the model-specific results file
@@ -169,9 +171,9 @@ export async function runPipeline(opts: PipelineOptions): Promise<void> {
         };
 
         await evaluateResults(evalConfig);
-        done('evaluate', modelTag);
+        done("evaluate", modelTag);
       } catch (err) {
-        const cont = onStageError?.('evaluate', err as Error, modelTag);
+        const cont = onStageError?.("evaluate", err as Error, modelTag);
         if (!cont) throw err;
       }
     }
@@ -182,7 +184,7 @@ export async function runPipeline(opts: PipelineOptions): Promise<void> {
     }
   }
 
-  console.log('\n✅ Pipeline complete.');
+  console.log("\n✅ Pipeline complete.");
 }
 
 // ── Helpers ──────────────────────────────────────────────────────────
@@ -203,7 +205,7 @@ function resolveModels(config: AppConfig, modelIds?: string[]): ModelConfig[] {
   return modelIds.map((id) => {
     const m = allModels.find((m) => m.id === id);
     if (!m) {
-      const known = allModels.map((m) => m.id).join(', ');
+      const known = allModels.map((m) => m.id).join(", ");
       throw new Error(`Model "${id}" not found in config. Available: ${known}`);
     }
     return m;
@@ -236,7 +238,7 @@ function generateCrossModelSummary(
     }
 
     const metrics: Array<{ smell: string; f1: number }> = JSON.parse(
-      fs.readFileSync(metricsPath, 'utf-8'),
+      fs.readFileSync(metricsPath, "utf-8"),
     );
 
     for (const m of metrics) {
@@ -245,7 +247,7 @@ function generateCrossModelSummary(
     }
   }
 
-  const summaryPath = path.join(outputDir, 'cross_model_summary.json');
+  const summaryPath = path.join(outputDir, "cross_model_summary.json");
   fs.writeFileSync(summaryPath, JSON.stringify(summary, null, 2));
   console.log(`\n📊 Cross-model summary saved to ${summaryPath}`);
 }

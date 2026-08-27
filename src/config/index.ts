@@ -1,5 +1,5 @@
-import * as fs from 'fs';
-import * as path from 'path';
+import * as fs from "fs";
+import * as path from "path";
 
 export interface MinerConfig {
   minStars: number;
@@ -25,7 +25,7 @@ export interface ModelConfig {
   /** Unique identifier used in CLI and output file names (e.g. "llama3-local"). */
   id: string;
   /** Backend provider type. */
-  provider: 'ollama' | 'openai' | 'gemini';
+  provider: "ollama" | "openai" | "gemini";
   /** Model name understood by the provider API. */
   model: string;
   /** Override the provider's default endpoint URL. */
@@ -64,7 +64,7 @@ export interface SmellsConfig {
 
 export interface PromptConfig {
   /** Prompt strategy: 'standard' or 'chain-of-thought'. Default: 'standard'. */
-  strategy: 'standard' | 'chain-of-thought';
+  strategy: "standard" | "chain-of-thought";
 
   /** If false, AST metrics are NOT sent to the LLM. Default: true. */
   includeAstMetrics: boolean;
@@ -85,12 +85,14 @@ export interface AppConfig {
   prompt?: PromptConfig;
 }
 
-export async function loadConfig(configPath: string = 'ts-test-smell-bench.config.json'): Promise<AppConfig> {
+export async function loadConfig(
+  configPath: string = "ts-test-smell-bench.config.json",
+): Promise<AppConfig> {
   const fullPath = path.resolve(process.cwd(), configPath);
   if (!fs.existsSync(fullPath)) {
     throw new Error(`Configuration file not found at ${fullPath}`);
   }
-  const content = fs.readFileSync(fullPath, 'utf-8');
+  const content = fs.readFileSync(fullPath, "utf-8");
   const raw = JSON.parse(content);
 
   // ── Backward-compatibility shims ──────────────────────────────
@@ -106,9 +108,10 @@ export async function loadConfig(configPath: string = 'ts-test-smell-bench.confi
     raw.models = [
       {
         id: raw.analyzer.model,
-        provider: 'ollama' as const,
+        provider: "ollama" as const,
         model: raw.analyzer.model,
-        baseUrl: raw.analyzer.ollamaUrl ?? 'http://localhost:11434/api/generate',
+        baseUrl:
+          raw.analyzer.ollamaUrl ?? "http://localhost:11434/api/generate",
       },
     ];
   }
@@ -116,20 +119,20 @@ export async function loadConfig(configPath: string = 'ts-test-smell-bench.confi
   // Default smells to the full catalog when not specified.
   // Import is dynamic to avoid circular deps at module-load time.
   if (!raw.smells) {
-    const { allSmellIds } = await import('../smells/catalog.ts');
+    const { allSmellIds } = await import("../smells/catalog.ts");
     raw.smells = { enabled: allSmellIds() };
   }
 
   // Default prompt config.
   if (!raw.prompt) {
     raw.prompt = {
-      strategy: 'standard',
+      strategy: "standard",
       includeAstMetrics: true,
       includeContext: true,
     };
   } else {
     raw.prompt = {
-      strategy: raw.prompt.strategy ?? 'standard',
+      strategy: raw.prompt.strategy ?? "standard",
       includeAstMetrics: raw.prompt.includeAstMetrics ?? true,
       includeContext: raw.prompt.includeContext ?? true,
     };

@@ -28,7 +28,7 @@ export const ResultsScreen: React.FC<Props> = ({ config, stages, onExit }) => {
       const summaryPath = path.join(
         process.cwd(),
         config.analyzer.outputDir,
-        "cross_model_summary.json"
+        "cross_model_summary.json",
       );
       if (fs.existsSync(summaryPath)) {
         try {
@@ -44,7 +44,7 @@ export const ResultsScreen: React.FC<Props> = ({ config, stages, onExit }) => {
     if (stages.mine) {
       const testsDir = path.join(
         process.cwd(),
-        config.miner.outputDir || "tests"
+        config.miner.outputDir || "tests",
       );
       if (fs.existsSync(testsDir)) {
         try {

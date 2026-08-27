@@ -1,6 +1,10 @@
 import { type CallExpression, type SourceFile } from "ts-morph";
 import { DEFAULT_METRICS, DEFAULT_FILE_METRICS } from "./metric.registry.ts";
-import type { MetricDescriptor, MetricReading, FileMetricDescriptor } from "./metric.ts";
+import type {
+  MetricDescriptor,
+  MetricReading,
+  FileMetricDescriptor,
+} from "./metric.ts";
 
 export { DEFAULT_METRICS, DEFAULT_FILE_METRICS };
 

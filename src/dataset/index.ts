@@ -1,13 +1,16 @@
 import * as fs from "fs";
 import * as path from "path";
 
-import type { DatasetConfig } from '../config/index.ts';
+import type { DatasetConfig } from "../config/index.ts";
 
 /**
  * Consolidates the manifest into fixed-size slices for LLM labelling.
  * Generates a pair of files per slice: sampled_manifesto_{index}.json and aggregated_tests_{index}.txt.
  */
-export function prepareLlmLabelingDataset(config: DatasetConfig, testsFolder: string = "tests"): void {
+export function prepareLlmLabelingDataset(
+  config: DatasetConfig,
+  testsFolder: string = "tests",
+): void {
   try {
     const { sampleSize, manifestPath, outputDir } = config;
     if (!Number.isFinite(sampleSize) || sampleSize <= 0) {

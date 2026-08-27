@@ -10,8 +10,8 @@
  *    the final classification.
  */
 
-import type { SmellDescriptor } from './catalog.ts';
-import type { PromptConfig } from '../config/index.ts';
+import type { SmellDescriptor } from "./catalog.ts";
+import type { PromptConfig } from "../config/index.ts";
 
 // ── Strategy dispatcher ──────────────────────────────────────────────
 
@@ -23,12 +23,12 @@ export function buildPromptForStrategy(
   smells: readonly SmellDescriptor[],
   promptConfig?: PromptConfig,
 ): string {
-  const strategy = promptConfig?.strategy ?? 'standard';
+  const strategy = promptConfig?.strategy ?? "standard";
 
   switch (strategy) {
-    case 'chain-of-thought':
+    case "chain-of-thought":
       return buildChainOfThoughtPrompt(smells);
-    case 'standard':
+    case "standard":
     default:
       return buildSystemPrompt(smells);
   }
@@ -44,11 +44,11 @@ export function buildPromptForStrategy(
 export function buildSystemPrompt(smells: readonly SmellDescriptor[]): string {
   const smellRules = smells
     .map((s, i) => `${i + 1}. ${s.promptSection}`)
-    .join('\n\n');
+    .join("\n\n");
 
   const exampleEvaluationLines = smells
     .map((s) => `- ${s.displayName}: <check metric/code> -> [MATCH] or [PASS]`)
-    .join('\n');
+    .join("\n");
 
   return `You are an expert Static Analysis & Software Quality Engine acting as a deterministic Oracular Classifier for TypeScript Test Smells.
 
@@ -71,7 +71,7 @@ Example response structure:
 ${exampleEvaluationLines}
 
 ---
-FILE: example.spec.ts - SMELLS: ${smells.length > 0 ? smells[0].displayName : 'None'} - JUSTIFICATION: Brief explanation of detected smells.`;
+FILE: example.spec.ts - SMELLS: ${smells.length > 0 ? smells[0].displayName : "None"} - JUSTIFICATION: Brief explanation of detected smells.`;
 }
 
 // ── Chain-of-Thought prompt ──────────────────────────────────────────
@@ -91,9 +91,9 @@ export function buildChainOfThoughtPrompt(
 ): string {
   const smellRules = smells
     .map((s, i) => `${i + 1}. ${s.promptSection}`)
-    .join('\n\n');
+    .join("\n\n");
 
-  const smellNames = smells.map((s) => s.displayName).join(', ');
+  const smellNames = smells.map((s) => s.displayName).join(", ");
 
   return `You are an expert Static Analysis & Software Quality Engine acting as a deterministic Oracular Classifier for TypeScript Test Smells.
 
@@ -135,7 +135,7 @@ Your full response must look like this:
 **Step 1 — Metrics:** [your metric analysis]
 **Step 2 — Context:** [your context analysis]  
 **Step 3 — Per-smell evaluation:**
-${smells.map((s) => `- ${s.displayName}: [MATCH/PASS] (confidence: HIGH/MEDIUM/LOW) — reason`).join('\n')}
+${smells.map((s) => `- ${s.displayName}: [MATCH/PASS] (confidence: HIGH/MEDIUM/LOW) — reason`).join("\n")}
 
 ---
 FILE: [filename] - SMELLS: [comma-separated list or None] - JUSTIFICATION: [one-sentence summary]

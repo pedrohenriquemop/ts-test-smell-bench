@@ -3,10 +3,10 @@
  * ModelConfig entry in the config file.
  */
 
-import type { ModelProvider } from '../provider.ts';
-import type { ModelConfig } from '../../config/index.ts';
-import { OllamaProvider } from './ollama.ts';
-import { GeminiProvider } from './gemini.ts';
+import type { ModelProvider } from "../provider.ts";
+import type { ModelConfig } from "../../config/index.ts";
+import { OllamaProvider } from "./ollama.ts";
+import { GeminiProvider } from "./gemini.ts";
 
 /**
  * Resolve an API key value.  If the value starts with "$", it's
@@ -14,8 +14,8 @@ import { GeminiProvider } from './gemini.ts';
  * `process.env`.  Otherwise it's used as-is.
  */
 function resolveApiKey(value: string | undefined): string {
-  if (!value) return '';
-  if (value.startsWith('$')) {
+  if (!value) return "";
+  if (value.startsWith("$")) {
     const envVar = value.slice(1);
     const resolved = process.env[envVar];
     if (!resolved) {
@@ -30,14 +30,14 @@ function resolveApiKey(value: string | undefined): string {
 
 export function createProvider(cfg: ModelConfig): ModelProvider {
   switch (cfg.provider) {
-    case 'ollama':
+    case "ollama":
       return new OllamaProvider({
         model: cfg.model,
         baseUrl: cfg.baseUrl,
         temperature: cfg.temperature,
       });
 
-    case 'gemini':
+    case "gemini":
       return new GeminiProvider({
         model: cfg.model,
         apiKey: resolveApiKey(cfg.apiKey),
@@ -46,7 +46,7 @@ export function createProvider(cfg: ModelConfig): ModelProvider {
         maxTokens: cfg.maxTokens,
       });
 
-    case 'openai':
+    case "openai":
       // Not implemented — Ollama + Gemini cover current needs
       throw new Error(
         `Provider "openai" is not yet implemented. Model: ${cfg.id}`,
@@ -59,5 +59,5 @@ export function createProvider(cfg: ModelConfig): ModelProvider {
   }
 }
 
-export { OllamaProvider } from './ollama.ts';
-export { GeminiProvider } from './gemini.ts';
+export { OllamaProvider } from "./ollama.ts";
+export { GeminiProvider } from "./gemini.ts";
