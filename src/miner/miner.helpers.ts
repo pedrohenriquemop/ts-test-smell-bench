@@ -3,6 +3,7 @@ import {
   Node,
   Project,
   SourceFile,
+  Statement,
   SyntaxKind,
 } from "ts-morph";
 import {
@@ -14,54 +15,6 @@ import type { MetricDescriptor } from "../metrics/metric.ts";
 import type { ExtractedTestCase } from "../types.ts";
 
 export class MinerHelpers {
-  // ── Human-readable test file formatter ──────────────────────────────
-
-  /**
-   * Build a self-contained test file that a human evaluator can read
-   * without cross-referencing the manifesto.
-   *
-   * Layout:
-   *   // ── Imports ──────────────────
-   *   // import { ... } from '...';
-   *   //
-   *   // ── Describe Context ────────
-   *   // describe('...', () => { ... });
-   *   //
-   *   // ── Test Case ───────────────
-   *   it('should ...', () => { ... });
-   */
-  static formatTestFileForHumans(tc: ExtractedTestCase): string {
-    const sections: string[] = [];
-
-    // ── Imports section ──────────────────────────────────────────
-    if (tc.imports && tc.imports.length > 0) {
-      sections.push("// ── Imports ──────────────────────────────────────");
-      for (const imp of tc.imports) {
-        for (const line of imp.split("\n")) {
-          sections.push(`// ${line}`);
-        }
-      }
-      sections.push("//");
-    }
-
-    // ── Describe context section ─────────────────────────────────
-    if (tc.describeContext) {
-      sections.push("// ── Describe Context ─────────────────────────────");
-      for (const line of tc.describeContext.split("\n")) {
-        sections.push(`// ${line}`);
-      }
-      sections.push("//");
-    }
-
-    // ── Test body ────────────────────────────────────────────────
-    if (sections.length > 0) {
-      sections.push("// ── Test Case ────────────────────────────────────");
-    }
-    sections.push(tc.text);
-
-    return sections.join("\n");
-  }
-
   static sleep(ms: number): Promise<void> {
     return new Promise((resolve) => setTimeout(resolve, ms));
   }
@@ -75,6 +28,8 @@ export class MinerHelpers {
       .slice(0, maxLen);
     return cleaned || "unnamed";
   }
+
+  // ── Test case extraction ────────────────────────────────────────────
 
   static extractTestCasesFromSource(
     content: string,
@@ -102,9 +57,10 @@ export class MinerHelpers {
       const testBody = args[1];
       if (!testBody) continue;
 
-      const text = testCall.getText();
+      // ── Build skeletal test file (AST-pruned) ─────────────────
+      const text = MinerHelpers.buildSkeletalTestFile(sourceFile, testCall);
 
-      // ── Per-test context ──────────────────────────────────────
+      // ── Per-test context (kept for manifesto / analyzer) ──────
       const describeContext = MinerHelpers.extractDescribeContext(testCall);
       const setupVariables = MinerHelpers.extractSetupVariables(testCall);
 
@@ -127,6 +83,219 @@ export class MinerHelpers {
     return tests;
   }
 
+  // ── Skeletal test file builder (AST Pruning) ────────────────────────
+
+  /**
+   * Build a valid, AST-pruned TypeScript file containing only:
+   *
+   *  - All imports from the original source file
+   *  - Top-level declarations (variables, helpers, types)
+   *  - The full ancestor `describe()` chain (all levels, not just the nearest)
+   *  - Setup/teardown hooks and shared variables at each scope level
+   *  - The single target `it()`/`test()` block, wrapped with marker comments
+   *
+   * All sibling tests and non-ancestor describe blocks are removed.
+   * The result is a self-contained, readable file suitable for both
+   * human evaluators and LLM analysis.
+   */
+  static buildSkeletalTestFile(
+    sourceFile: SourceFile,
+    testCall: CallExpression,
+  ): string {
+    const lines: string[] = [];
+
+    // 1. Imports
+    const imports = sourceFile.getImportDeclarations();
+    for (const imp of imports) {
+      lines.push(imp.getText().trim());
+    }
+    if (imports.length > 0) lines.push("");
+
+    // 2. Find all ancestor describe calls (outermost first)
+    const ancestors = MinerHelpers.findAllAncestorDescribes(testCall);
+
+    // 3. Process file-level statements recursively
+    MinerHelpers.processScopeStatements(
+      sourceFile.getStatements(),
+      ancestors,
+      0,
+      testCall,
+      0,
+      lines,
+    );
+
+    return lines.join("\n");
+  }
+
+  /**
+   * Walk up the AST from a test call to find ALL enclosing
+   * `describe()` CallExpressions, returned outermost-first.
+   */
+  private static findAllAncestorDescribes(node: Node): CallExpression[] {
+    const result: CallExpression[] = [];
+    let current: Node | undefined = node.getParent();
+    while (current) {
+      if (Node.isCallExpression(current)) {
+        const root = MinerHelpers.getRootIdentifierName(
+          current.getExpression(),
+        );
+        if (root === "describe") {
+          result.unshift(current); // prepend → outermost first
+        }
+      }
+      current = current.getParent();
+    }
+    return result;
+  }
+
+  /**
+   * Recursively process statements at a given scope level.
+   *
+   * Keeps all statements EXCEPT:
+   *  - `it()`/`test()` calls that are NOT the target test
+   *  - `describe()` calls that are NOT in the ancestor chain
+   *
+   * For ancestor describe blocks, reconstructs the describe wrapper and
+   * recurses into its body. For the target test, wraps it with marker
+   * comments.
+   */
+  private static processScopeStatements(
+    statements: Statement[],
+    ancestors: CallExpression[],
+    ancestorIdx: number,
+    testCall: CallExpression,
+    indent: number,
+    lines: string[],
+  ): void {
+    const pad = "  ".repeat(indent);
+
+    for (const stmt of statements) {
+      // Skip imports (already emitted at file level)
+      if (Node.isImportDeclaration(stmt)) continue;
+
+      // ── Check: does this statement contain the next ancestor describe?
+      if (ancestorIdx < ancestors.length) {
+        const nextAncestor = ancestors[ancestorIdx];
+        if (MinerHelpers.nodeContains(stmt, nextAncestor)) {
+          const describeName =
+            nextAncestor.getArguments()[0]?.getText() ?? "'unknown'";
+          const callback = nextAncestor.getArguments()[1];
+          const block = callback?.getDescendantsOfKind(SyntaxKind.Block)[0];
+
+          lines.push("");
+          lines.push(`${pad}describe(${describeName}, () => {`);
+
+          if (block) {
+            MinerHelpers.processScopeStatements(
+              block.getStatements(),
+              ancestors,
+              ancestorIdx + 1,
+              testCall,
+              indent + 1,
+              lines,
+            );
+          }
+
+          lines.push(`${pad}});`);
+          continue;
+        }
+      }
+
+      // ── Check: does this statement contain the target test?
+      if (MinerHelpers.nodeContains(stmt, testCall)) {
+        lines.push("");
+        lines.push(
+          `${pad}// ── TARGET TEST ─────────────────────────────────`,
+        );
+        lines.push(MinerHelpers.reindent(testCall.getText(), indent));
+        lines.push(
+          `${pad}// ── END TARGET TEST ─────────────────────────────`,
+        );
+        continue;
+      }
+
+      // ── Check: is this a sibling it/test/describe call? → skip
+      if (Node.isExpressionStatement(stmt)) {
+        const expr = stmt.getExpression();
+        if (Node.isCallExpression(expr)) {
+          const name = MinerHelpers.getRootIdentifierName(
+          const rootName = MinerHelpers.getRootIdentifierName(
+            expr.getExpression(),
+          );
+          
+          if (
+            name === "it" ||
+            name === "test" ||
+            name === "describe"
+            rootName === "it" ||
+            rootName === "test" ||
+            rootName === "describe"
+          ) {
+            continue; // sibling test or non-ancestor describe → prune
+          }
+
+          // Catch custom test wrappers like concurrentIf()("name", () => {})
+          const knownHooks = [
+            "beforeEach", "beforeAll", "afterEach", "afterAll",
+            "before", "after", "setup", "teardown"
+          ];
+          
+          if (rootName && !knownHooks.includes(rootName)) {
+            // If the call contains an ArrowFunction or FunctionExpression,
+            // it is very likely a custom test block or describe block.
+            const hasFunctionArg = 
+              expr.getDescendantsOfKind(SyntaxKind.ArrowFunction).length > 0 ||
+              expr.getDescendantsOfKind(SyntaxKind.FunctionExpression).length > 0;
+              
+            if (hasFunctionArg) {
+              continue; // Prune custom test/describe wrappers
+            }
+          }
+        }
+      }
+
+      // ── Keep everything else (variables, hooks, helpers, types, etc.)
+      lines.push(MinerHelpers.reindent(stmt.getText(), indent));
+    }
+  }
+
+  /**
+   * Check if `outer`'s source range fully contains `inner`'s range.
+   */
+  private static nodeContains(outer: Node, inner: Node): boolean {
+    return (
+      outer.getStart() <= inner.getStart() &&
+      outer.getEnd() >= inner.getEnd()
+    );
+  }
+
+  /**
+   * Re-indent a block of text to a target indentation level (2 spaces
+   * per level).  Strips the existing minimum indentation and replaces
+   * it with the target depth.
+   */
+  private static reindent(text: string, targetIndent: number): string {
+    const textLines = text.split("\n");
+    if (textLines.length === 0) return "";
+
+    // Find minimum indentation of non-empty lines
+    let minIndent = Infinity;
+    for (const line of textLines) {
+      if (line.trim().length === 0) continue;
+      const match = line.match(/^(\s*)/);
+      if (match) minIndent = Math.min(minIndent, match[1].length);
+    }
+    if (minIndent === Infinity) minIndent = 0;
+
+    const pad = "  ".repeat(targetIndent);
+    return textLines
+      .map((line) => {
+        if (line.trim().length === 0) return "";
+        return pad + line.slice(minIndent);
+      })
+      .join("\n");
+  }
+
   // ── Import extraction ──────────────────────────────────────────────
 
   /**
@@ -138,7 +307,7 @@ export class MinerHelpers {
       .map((imp) => imp.getText().trim());
   }
 
-  // ── Describe context extraction ────────────────────────────────────
+  // ── Describe context extraction (for manifesto) ────────────────────
 
   /**
    * Walk up from the test call to find the nearest enclosing
@@ -254,7 +423,9 @@ export class MinerHelpers {
    * Walk up the AST from a test call to find the nearest enclosing
    * `describe()` CallExpression.
    */
-  private static findEnclosingDescribe(node: Node): CallExpression | undefined {
+  private static findEnclosingDescribe(
+    node: Node,
+  ): CallExpression | undefined {
     let current: Node | undefined = node.getParent();
     while (current) {
       if (Node.isCallExpression(current)) {

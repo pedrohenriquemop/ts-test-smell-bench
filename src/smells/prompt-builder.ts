@@ -21,7 +21,7 @@ import type { PromptConfig } from "../config/index.ts";
  */
 export function buildPromptForStrategy(
   smells: readonly SmellDescriptor[],
-  promptConfig?: PromptConfig,
+  promptConfig?: PromptConfig
 ): string {
   const strategy = promptConfig?.strategy ?? "standard";
 
@@ -71,7 +71,9 @@ Example response structure:
 ${exampleEvaluationLines}
 
 ---
-FILE: example.spec.ts - SMELLS: ${smells.length > 0 ? smells[0].displayName : "None"} - JUSTIFICATION: Brief explanation of detected smells.`;
+FILE: example.spec.ts - SMELLS: ${
+    smells.length > 0 ? smells[0].displayName : "None"
+  } - JUSTIFICATION: Brief explanation of detected smells.`;
 }
 
 // ── Chain-of-Thought prompt ──────────────────────────────────────────
@@ -87,7 +89,7 @@ FILE: example.spec.ts - SMELLS: ${smells.length > 0 ? smells[0].displayName : "N
  * 4. Adds a "confidence" qualifier to each smell decision
  */
 export function buildChainOfThoughtPrompt(
-  smells: readonly SmellDescriptor[],
+  smells: readonly SmellDescriptor[]
 ): string {
   const smellRules = smells
     .map((s, i) => `${i + 1}. ${s.promptSection}`)
@@ -135,7 +137,12 @@ Your full response must look like this:
 **Step 1 — Metrics:** [your metric analysis]
 **Step 2 — Context:** [your context analysis]  
 **Step 3 — Per-smell evaluation:**
-${smells.map((s) => `- ${s.displayName}: [MATCH/PASS] (confidence: HIGH/MEDIUM/LOW) — reason`).join("\n")}
+${smells
+  .map(
+    (s) =>
+      `- ${s.displayName}: [MATCH/PASS] (confidence: HIGH/MEDIUM/LOW) — reason`
+  )
+  .join("\n")}
 
 ---
 FILE: [filename] - SMELLS: [comma-separated list or None] - JUSTIFICATION: [one-sentence summary]

@@ -17,7 +17,6 @@ export class Miner {
 
   constructor(config: MinerConfig) {
     if (!process.env.GITHUB_TOKEN) {
-      throw new Error("GITHUB_TOKEN is not set");
       throw new Error(
         "GITHUB_TOKEN environment variable is not set. The GitHub API requires authentication to search code. Please run with: GITHUB_TOKEN=your_token ./bench tui",
       );
@@ -130,9 +129,7 @@ export class Miner {
                 const outName = `${repoSlug}__${baseStem}__${i}.ts`;
                 const filePath = path.join(this.config.outputDir, outName);
 
-                const formattedContent =
-                  MinerHelpers.formatTestFileForHumans(tc);
-                fs.writeFileSync(filePath, formattedContent);
+                fs.writeFileSync(filePath, tc.text);
 
                 manifesto.push({
                   file: outName,

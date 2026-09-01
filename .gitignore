@@ -4,3 +4,5 @@ node_modules/
 manifesto_tests.json
 out/
 ignore/
+# Temporary test files
+scratch/
