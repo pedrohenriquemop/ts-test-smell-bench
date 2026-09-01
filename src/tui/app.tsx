@@ -7,13 +7,20 @@ import { ModelSelectionScreen } from "./components/ModelSelectionScreen.tsx";
 import { ExecutionScreen } from "./components/ExecutionScreen.tsx";
 import { ResultsScreen } from "./components/ResultsScreen.tsx";
 import { ConfirmMineScreen } from "./components/ConfirmMineScreen.tsx";
+import { ConfirmPrepareScreen } from "./components/ConfirmPrepareScreen.tsx";
 
 interface Props {
   config: AppConfig;
   onExit: () => void;
 }
 
-type ScreenState = "select" | "confirm-mine" | "execute" | "results" | "error";
+type ScreenState =
+  | "select"
+  | "confirm-mine"
+  | "confirm-prepare"
+  | "execute"
+  | "results"
+  | "error";
 
 export const App: React.FC<Props> = ({ config, onExit }) => {
   const [screen, setScreen] = useState<ScreenState>("select");
@@ -28,32 +35,63 @@ export const App: React.FC<Props> = ({ config, onExit }) => {
   });
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
 
+  const checkMineFiles = (stgs: Record<string, boolean>) => {
+    if (!stgs.mine) return false;
+    const testsDir = path.resolve(
+      process.cwd(),
+      config.miner.outputDir || "tests"
+    );
+    if (fs.existsSync(testsDir)) {
+      try {
+        return fs.readdirSync(testsDir).some((f) => f.endsWith(".ts"));
+      } catch {
+        return false;
+      }
+    }
+    return false;
+  };
+
+  const checkPrepareFiles = (stgs: Record<string, boolean>) => {
+    if (!stgs.prepare) return false;
+    const prepareDir = path.resolve(
+      process.cwd(),
+      config.dataset.outputDir || "tests"
+    );
+    if (fs.existsSync(prepareDir)) {
+      try {
+        return fs
+          .readdirSync(prepareDir)
+          .some(
+            (f) =>
+              (f.startsWith("sampled_manifesto_") && f.endsWith(".json")) ||
+              (f.startsWith("aggregated_tests_") && f.endsWith(".txt"))
+          );
+      } catch {
+        return false;
+      }
+    }
+    return false;
+  };
+
   const handleStart = (models: string[], stgs: Record<string, boolean>) => {
     setSelectedModels(models);
     setStages(stgs as any);
 
-    // Check if we need to confirm mine directory clearance
-    if (stgs.mine) {
-      const testsDir = path.resolve(
-        process.cwd(),
-        config.miner.outputDir || "tests",
-      );
-      if (fs.existsSync(testsDir)) {
-        try {
-          const hasTsFiles = fs
-            .readdirSync(testsDir)
-            .some((f) => f.endsWith(".ts"));
-          if (hasTsFiles) {
-            setScreen("confirm-mine");
-            return;
-          }
-        } catch {
-          // ignore
-        }
-      }
+    if (checkMineFiles(stgs)) {
+      setScreen("confirm-mine");
+    } else if (checkPrepareFiles(stgs)) {
+      setScreen("confirm-prepare");
+    } else {
+      setScreen("execute");
     }
+  };
 
-    setScreen("execute");
+  const handleConfirmMine = () => {
+    if (checkPrepareFiles(stages)) {
+      setScreen("confirm-prepare");
+    } else {
+      setScreen("execute");
+    }
   };
 
   const handleExecutionComplete = () => {
@@ -78,6 +116,14 @@ export const App: React.FC<Props> = ({ config, onExit }) => {
       {screen === "confirm-mine" && (
         <ConfirmMineScreen
           testsDir={config.miner.outputDir || "tests"}
+          onConfirm={handleConfirmMine}
+          onCancel={() => setScreen("select")}
+        />
+      )}
+
+      {screen === "confirm-prepare" && (
+        <ConfirmPrepareScreen
+          outputDir={config.dataset.outputDir || "tests"}
           onConfirm={() => setScreen("execute")}
           onCancel={() => setScreen("select")}
         />

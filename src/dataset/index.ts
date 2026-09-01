@@ -9,7 +9,7 @@ import type { DatasetConfig } from "../config/index.ts";
  */
 export function prepareLlmLabelingDataset(
   config: DatasetConfig,
-  testsFolder: string = "tests",
+  testsFolder: string = "tests"
 ): void {
   try {
     const { sampleSize, manifestPath, outputDir } = config;
@@ -27,6 +27,21 @@ export function prepareLlmLabelingDataset(
       return;
     }
 
+    if (!fs.existsSync(outputDir)) {
+      fs.mkdirSync(outputDir, { recursive: true });
+    } else {
+      console.log(`Clearing existing prepared files in ${outputDir}...`);
+      const existingFiles = fs.readdirSync(outputDir);
+      for (const file of existingFiles) {
+        if (
+          (file.startsWith("sampled_manifesto_") && file.endsWith(".json")) ||
+          (file.startsWith("aggregated_tests_") && file.endsWith(".txt"))
+        ) {
+          fs.unlinkSync(path.join(outputDir, file));
+        }
+      }
+    }
+
     const breakline = "\n" + "=".repeat(50) + "\n";
 
     for (let batchIndex = 0; batchIndex < batchCount; batchIndex++) {
@@ -34,7 +49,9 @@ export function prepareLlmLabelingDataset(
       const sampledManifesto = fullManifesto.slice(start, start + sampleSize);
 
       let aggregatedContent = "";
-      aggregatedContent += `[batch_index: ${batchIndex} | batch ${batchIndex + 1} of ${batchCount} | entries in this file: ${sampledManifesto.length}]\n`;
+      aggregatedContent += `[batch_index: ${batchIndex} | batch ${
+        batchIndex + 1
+      } of ${batchCount} | entries in this file: ${sampledManifesto.length}]\n`;
       aggregatedContent += breakline;
 
       sampledManifesto.forEach((entry: any, index: number) => {
@@ -51,17 +68,13 @@ export function prepareLlmLabelingDataset(
         }
       });
 
-      if (!fs.existsSync(outputDir)) {
-        fs.mkdirSync(outputDir, { recursive: true });
-      }
-
       const outputManifestoPath = path.join(
         outputDir,
-        `sampled_manifesto_${batchIndex}.json`,
+        `sampled_manifesto_${batchIndex}.json`
       );
       const outputTestsPath = path.join(
         outputDir,
-        `aggregated_tests_${batchIndex}.txt`,
+        `aggregated_tests_${batchIndex}.txt`
       );
 
       const manifestoFile = {
@@ -73,12 +86,12 @@ export function prepareLlmLabelingDataset(
 
       fs.writeFileSync(
         outputManifestoPath,
-        JSON.stringify(manifestoFile, null, 2),
+        JSON.stringify(manifestoFile, null, 2)
       );
       fs.writeFileSync(outputTestsPath, aggregatedContent);
 
       console.log(
-        `✅ Batch ${batchIndex}: ${outputManifestoPath}, ${outputTestsPath}`,
+        `✅ Batch ${batchIndex}: ${outputManifestoPath}, ${outputTestsPath}`
       );
     }
 
