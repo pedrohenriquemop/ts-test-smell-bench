@@ -1,16 +1,52 @@
-it('should return correct response structure on success', () => {
-      const input = {
-        thought: 'Test thought',
-        thoughtNumber: 1,
-        totalThoughts: 1,
-        nextThoughtNeeded: false
-      };
+import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
+import fs from 'fs/promises';
+import path from 'path';
+import os from 'os';
+import {
+  // Pure utility functions
+  formatSize,
+  normalizeLineEndings,
+  createUnifiedDiff,
+  // Security & validation functions
+  validatePath,
+  setAllowedDirectories,
+  // File operations
+  getFileStats,
+  readFileContent,
+  writeFileContent,
+  // Search & filtering functions
+  searchFilesWithValidation,
+  // File editing functions
+  applyFileEdits,
+  tailFile,
+  headFile
+} from '../lib.js';
 
-      const result = server.processThought(input);
+vi.mock('fs/promises');
+const mockFs = fs as any;
 
-      expect(result).toHaveProperty('content');
-      expect(Array.isArray(result.content)).toBe(true);
-      expect(result.content.length).toBe(1);
-      expect(result.content[0]).toHaveProperty('type', 'text');
-      expect(result.content[0]).toHaveProperty('text');
-    })
+describe('Lib Functions', () => {
+  beforeEach(() => {
+      vi.clearAllMocks();
+      // Set up allowed directories for tests
+      const allowedDirs = process.platform === 'win32' ? ['C:\\Users\\test', 'C:\\temp', 'C:\\allowed'] : ['/home/user', '/tmp', '/allowed'];
+      setAllowedDirectories(allowedDirs);
+    });
+  afterEach(() => {
+      vi.restoreAllMocks();
+      // Clear allowed directories after tests
+      setAllowedDirectories([]);
+    });
+
+  describe('Pure Utility Functions', () => {
+
+    describe('normalizeLineEndings', () => {
+
+      // ── TARGET TEST ─────────────────────────────────
+      it('handles empty string', () => {
+              expect(normalizeLineEndings('')).toBe('');
+            })
+      // ── END TARGET TEST ─────────────────────────────
+    });
+  });
+});

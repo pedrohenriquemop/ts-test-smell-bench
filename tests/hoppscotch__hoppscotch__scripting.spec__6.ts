@@ -1,7 +1,17 @@
-test("wraps a single script in a sequential async IIFE", () => {
-      const result = combineScriptsWithIIFE(["const x = 1;"]);
+import { describe, expect, test } from "vitest"
+import {
+  hasActualScript,
+  stripJsonSerializedModulePrefix,
+} from "@hoppscotch/js-sandbox/scripting"
 
-      expect(result).toContain("async");
-      expect(result).toContain("await");
-      expect(result).toContain("const x = 1;");
+
+describe("stripJsonSerializedModulePrefix", () => {
+
+  // ── TARGET TEST ─────────────────────────────────
+  test("preserves spacing between key delimiter and the stripped value", () => {
+      const json = `{"preRequestScript":  "export {};const a = 1;"}`
+      const out = stripJsonSerializedModulePrefix(json)
+      expect(out).toBe(`{"preRequestScript":  "const a = 1;"}`)
     })
+  // ── END TARGET TEST ─────────────────────────────
+});

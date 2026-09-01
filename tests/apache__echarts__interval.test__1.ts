@@ -1,44 +1,70 @@
-it('ticks_small_value', function () {
-            chart.setOption({
-                tooltip: {},
-                xAxis: [
-                    {
-                        type: 'category',
-                        data: ['Mon'],
-                        axisTick: {
-                            alignWithLabel: true
+import { createChart, getECModel } from '../../core/utHelper';
+import { EChartsType } from '@/src/echarts';
+import CartesianAxisModel from '@/src/coord/cartesian/AxisModel';
+import IntervalScale from '@/src/scale/Interval';
+import { intervalScaleNiceTicks } from '@/src/scale/helper';
+import { getPrecisionSafe } from '@/src/util/number';
+import { scaleCalcNice2 } from '@/src/coord/axisNiceTicks';
+import { NumericAxisBaseOptionCommon, ValueAxisBaseOption } from '@/src/coord/axisCommonTypes';
+import { AxisBaseModel } from '@/src/coord/AxisBaseModel';
+
+
+describe('scale_interval', () => {
+  let chart: EChartsType;
+  beforeEach(function () {
+          chart = createChart();
+      });
+  afterEach(function () {
+          chart.dispose();
+      });
+
+  describe('extreme', () => {
+
+    // ── TARGET TEST ─────────────────────────────────
+    it('ticks_small_value', function () {
+                chart.setOption({
+                    tooltip: {},
+                    xAxis: [
+                        {
+                            type: 'category',
+                            data: ['Mon'],
+                            axisTick: {
+                                alignWithLabel: true
+                            }
                         }
-                    }
-                ],
-                yAxis: [
-                    {
-                        type: 'value'
-                    }
-                ],
-                series: [
-                    {
-                        name: '',
-                        type: 'bar',
-                        data: [0.0000034]
-                    }
-                ]
-            });
+                    ],
+                    yAxis: [
+                        {
+                            type: 'value'
+                        }
+                    ],
+                    series: [
+                        {
+                            name: '',
+                            type: 'bar',
+                            data: [0.0000034]
+                        }
+                    ]
+                });
 
-            const yAxis = getECModel(chart).getComponent('yAxis', 0) as CartesianAxisModel;
-            const scale = yAxis.axis.scale as IntervalScale;
-            const ticks = scale.getTicks();
-            const labels = yAxis.axis.getViewLabels().map(function (item) {
-                return item.formattedLabel;
-            });
+                const yAxis = getECModel(chart).getComponent('yAxis', 0) as CartesianAxisModel;
+                const scale = yAxis.axis.scale as IntervalScale;
+                const ticks = scale.getTicks();
+                const labels = yAxis.axis.getViewLabels().map(function (item) {
+                    return item.formattedLabel;
+                });
 
-            const labelPrecisioned = scale.getLabel({ value: 0.0000005 }, { precision: 10 });
+                const labelPrecisioned = scale.getLabel({ value: 0.0000005 }, { precision: 10 });
 
-            expect(ticks.map(tick => tick.value)).toEqual(
-                [0, 0.0000005, 0.000001, 0.0000015, 0.000002, 0.0000025, 0.000003, 0.0000035]
-            );
-            expect(labels).toEqual(
-                // Should not be '5e-7'
-                ['0', '0.0000005', '0.000001', '0.0000015', '0.000002', '0.0000025', '0.000003', '0.0000035']
-            );
-            expect(labelPrecisioned).toEqual('0.0000005000');
-        })
+                expect(ticks.map(tick => tick.value)).toEqual(
+                    [0, 0.0000005, 0.000001, 0.0000015, 0.000002, 0.0000025, 0.000003, 0.0000035]
+                );
+                expect(labels).toEqual(
+                    // Should not be '5e-7'
+                    ['0', '0.0000005', '0.000001', '0.0000015', '0.000002', '0.0000025', '0.000003', '0.0000035']
+                );
+                expect(labelPrecisioned).toEqual('0.0000005000');
+            })
+    // ── END TARGET TEST ─────────────────────────────
+  });
+});

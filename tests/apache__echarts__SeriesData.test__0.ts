@@ -1,8 +1,33 @@
-it('initData 1d', function () {
-            const data = new SeriesData(['x', 'y'], new Model());
-            data.initData([10, 20, 30]);
-            expect(data.get('x', 0)).toEqual(10);
-            expect(data.get('x', 1)).toEqual(20);
-            expect(data.get('x', 2)).toEqual(30);
-            expect(data.get('y', 1)).toEqual(20);
-        })
+import SeriesData from '@/src/data/SeriesData';
+import Model from '@/src/model/Model';
+import { createSourceFromSeriesDataOption, Source, createSource } from '@/src/data/Source';
+import { OptionDataItemObject,
+    OptionDataValue,
+    SOURCE_FORMAT_ARRAY_ROWS,
+    SOURCE_FORMAT_OBJECT_ROWS,
+    SOURCE_FORMAT_ORIGINAL } from '@/src/util/types';
+import SeriesDimensionDefine from '@/src/data/SeriesDimensionDefine';
+import OrdinalMeta from '@/src/data/OrdinalMeta';
+import DataStore from '@/src/data/DataStore';
+import { DefaultDataProvider } from '@/src/data/helper/dataProvider';
+import { SeriesDataSchema } from '@/src/data/helper/SeriesDataSchema';
+
+const ID_PREFIX = 'e\0\0';
+const NAME_REPEAT_PREFIX = '__ec__';
+
+describe('SeriesData', () => {
+
+  describe('Data Manipulation', () => {
+
+    // ── TARGET TEST ─────────────────────────────────
+    it('initData 1d', function () {
+                const data = new SeriesData(['x', 'y'], new Model());
+                data.initData([10, 20, 30]);
+                expect(data.get('x', 0)).toEqual(10);
+                expect(data.get('x', 1)).toEqual(20);
+                expect(data.get('x', 2)).toEqual(30);
+                expect(data.get('y', 1)).toEqual(20);
+            })
+    // ── END TARGET TEST ─────────────────────────────
+  });
+});

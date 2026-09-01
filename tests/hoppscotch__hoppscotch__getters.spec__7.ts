@@ -1,78 +1,108 @@
-test("Proceeds with the network call if a value for the access token is specified and the supplied path/id is not a valid file path", async () => {
-        fs.access = vi.fn().mockRejectedValueOnce(undefined);
+import axios, { AxiosError, AxiosResponse } from "axios";
+import fs from "fs/promises";
+import { describe, expect, test, vi } from "vitest";
+import {
+  CollectionSchemaVersion,
+  HoppCollection,
+  getDefaultRESTRequest,
+} from "@hoppscotch/data";
+import { DEFAULT_DURATION_PRECISION } from "../../utils/constants";
+import {
+  getDurationInSeconds,
+  getEffectiveFinalMetaData,
+  getResolvedVariables,
+  getResourceContents,
+} from "../../utils/getters";
+import * as mutators from "../../utils/mutators";
+import * as workspaceAccessHelpers from "../../utils/workspace-access";
 
-        const sampleCollectionContents: HoppCollection = {
-          v: CollectionSchemaVersion,
-          name: "test-coll",
-          folders: [],
-          requests: [getDefaultRESTRequest()],
-          headers: [],
-          auth: {
-            authType: "none",
-            authActive: false,
-          },
-        };
 
-        axios.get = vi.fn().mockImplementation(() =>
-          Promise.resolve({
-            data: {
-              id: "clx06ik0o00028t6uwywwnxgg",
-              data: null,
-              title: "test-coll",
-              parentID: null,
-              folders: [],
-              requests: [
-                {
-                  id: "clx06imin00038t6uynt5vyk4",
-                  collectionID: "clx06ik0o00028t6uwywwnxgg",
-                  teamID: "clwt6r6j10031kc6pu0b08y6e",
-                  title: "req1",
-                  request:
-                    '{"v":"4","auth":{"authType":"inherit","authActive":true},"body":{"body":null,"contentType":null},"name":"req1","method":"GET","params":[],"headers":[],"endpoint":"https://echo.hoppscotch.io","testScript":"","preRequestScript":"","requestVariables":[]}',
+describe("getters", () => {
+
+  describe("getResourceContents", () => {
+
+    describe("Success", () => {
+
+      // ── TARGET TEST ─────────────────────────────────
+      test("Proceeds with the network call if a value for the access token is specified and the supplied path/id is not a valid file path", async () => {
+              fs.access = vi.fn().mockRejectedValueOnce(undefined);
+
+              const sampleCollectionContents: HoppCollection = {
+                v: CollectionSchemaVersion,
+                name: "test-coll",
+                folders: [],
+                requests: [getDefaultRESTRequest()],
+                headers: [],
+                auth: {
+                  authType: "none",
+                  authActive: false,
                 },
-              ],
-            },
-            headers: {
-              "content-type": "application/json",
-            },
-          })
-        );
+              };
 
-        const readJsonFileSpy = vi
-          .spyOn(mutators, "readJsonFile")
-          .mockImplementation(() => Promise.resolve(sampleCollectionContents));
+              axios.get = vi.fn().mockImplementation(() =>
+                Promise.resolve({
+                  data: {
+                    id: "clx06ik0o00028t6uwywwnxgg",
+                    data: null,
+                    title: "test-coll",
+                    parentID: null,
+                    folders: [],
+                    requests: [
+                      {
+                        id: "clx06imin00038t6uynt5vyk4",
+                        collectionID: "clx06ik0o00028t6uwywwnxgg",
+                        teamID: "clwt6r6j10031kc6pu0b08y6e",
+                        title: "req1",
+                        request:
+                          '{"v":"4","auth":{"authType":"inherit","authActive":true},"body":{"body":null,"contentType":null},"name":"req1","method":"GET","params":[],"headers":[],"endpoint":"https://echo.hoppscotch.io","testScript":"","preRequestScript":"","requestVariables":[]}',
+                      },
+                    ],
+                  },
+                  headers: {
+                    "content-type": "application/json",
+                  },
+                })
+              );
 
-        vi.spyOn(
-          workspaceAccessHelpers,
-          "transformWorkspaceCollections"
-        ).mockImplementation(() => [sampleCollectionContents]);
+              const readJsonFileSpy = vi
+                .spyOn(mutators, "readJsonFile")
+                .mockImplementation(() => Promise.resolve(sampleCollectionContents));
 
-        const pathOrId = "valid-collection-id";
-        const resourceType = "collection";
-        const accessToken = "valid-access-token";
-        const serverUrl = "valid-url";
+              vi.spyOn(
+                workspaceAccessHelpers,
+                "transformWorkspaceCollections"
+              ).mockImplementation(() => [sampleCollectionContents]);
 
-        // Clear spy calls from setup
-        readJsonFileSpy.mockClear();
+              const pathOrId = "valid-collection-id";
+              const resourceType = "collection";
+              const accessToken = "valid-access-token";
+              const serverUrl = "valid-url";
 
-        await getResourceContents({
-          pathOrId,
-          accessToken,
-          serverUrl,
-          resourceType,
-        });
+              // Clear spy calls from setup
+              readJsonFileSpy.mockClear();
 
-        expect(fs.access).toHaveBeenCalledWith(pathOrId);
-        expect(axios.get).toBeCalledWith(
-          `${serverUrl}/v1/access-tokens/${resourceType}/${pathOrId}`,
-          {
-            headers: {
-              Authorization: `Bearer ${accessToken}`,
-            },
-          }
-        );
-        expect(
-          workspaceAccessHelpers.transformWorkspaceCollections
-        ).toBeCalled();
-        expect(readJsonFileSpy).not.toHaveBeenCalled();
-      })
+              await getResourceContents({
+                pathOrId,
+                accessToken,
+                serverUrl,
+                resourceType,
+              });
+
+              expect(fs.access).toHaveBeenCalledWith(pathOrId);
+              expect(axios.get).toBeCalledWith(
+                `${serverUrl}/v1/access-tokens/${resourceType}/${pathOrId}`,
+                {
+                  headers: {
+                    Authorization: `Bearer ${accessToken}`,
+                  },
+                }
+              );
+              expect(
+                workspaceAccessHelpers.transformWorkspaceCollections
+              ).toBeCalled();
+              expect(readJsonFileSpy).not.toHaveBeenCalled();
+            })
+      // ── END TARGET TEST ─────────────────────────────
+    });
+  });
+});

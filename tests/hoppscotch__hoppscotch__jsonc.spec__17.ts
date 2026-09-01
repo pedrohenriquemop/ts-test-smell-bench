@@ -1,6 +1,18 @@
-test("gracefully handles completely invalid JSON", () => {
-      const input = 'this is not json at all {]}{]';
-      const result = stripComments(input);
-      // jsonc-parser extracts what it can and returns an object (even if mostly empty)
-      expect(result).toBe('{}');
-    })
+import { describe, expect, test } from "vitest";
+import { stripComments } from "../../utils/jsonc";
+
+
+describe("stripComments", () => {
+
+  describe("handles malformed JSON", () => {
+
+    // ── TARGET TEST ─────────────────────────────────
+    test("gracefully handles completely invalid JSON", () => {
+          const input = 'this is not json at all {]}{]';
+          const result = stripComments(input);
+          // jsonc-parser extracts what it can and returns an object (even if mostly empty)
+          expect(result).toBe('{}');
+        })
+    // ── END TARGET TEST ─────────────────────────────
+  });
+});

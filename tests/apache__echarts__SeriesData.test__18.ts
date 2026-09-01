@@ -1,78 +1,100 @@
-it('sourceFormatOriginal', function () {
-                const list = new SeriesData(['x'], new Model());
-                const oneByOne = makeOneByOneChecker(list);
+import SeriesData from '@/src/data/SeriesData';
+import Model from '@/src/model/Model';
+import { createSourceFromSeriesDataOption, Source, createSource } from '@/src/data/Source';
+import { OptionDataItemObject,
+    OptionDataValue,
+    SOURCE_FORMAT_ARRAY_ROWS,
+    SOURCE_FORMAT_OBJECT_ROWS,
+    SOURCE_FORMAT_ORIGINAL } from '@/src/util/types';
+import SeriesDimensionDefine from '@/src/data/SeriesDimensionDefine';
+import OrdinalMeta from '@/src/data/OrdinalMeta';
+import DataStore from '@/src/data/DataStore';
+import { DefaultDataProvider } from '@/src/data/helper/dataProvider';
+import { SeriesDataSchema } from '@/src/data/helper/SeriesDataSchema';
 
-                list.initData([
-                    { value: 0, id: 'myId_10' },
-                    { value: 10, id: 555 }, // numeric id.
-                    { value: 20, id: '666%' },
-                    { value: 30, id: 'myId_good', name: 'b' },
-                    { value: 40, name: 'b' },
-                    { value: 50, id: null },
-                    { value: 60, id: undefined },
-                    { value: 70, id: NaN },
-                    { value: 80, id: '' },
-                    { value: 90, name: 'b' },
-                    { value: 100 },
-                    { value: 110, id: 'myId_better' },
-                    { value: 120, id: 'myId_better' } // duplicated id.
-                ]);
+const ID_PREFIX = 'e\0\0';
+const NAME_REPEAT_PREFIX = '__ec__';
 
-                oneByOne.nextIdEqualsTo('myId_10');
-                oneByOne.nextIdEqualsTo('555');
-                oneByOne.nextIdEqualsTo('666%');
-                oneByOne.nextIdEqualsTo('myId_good');
-                oneByOne.nextIdEqualsTo('b');
-                oneByOne.nextIdEqualsTo(`${ID_PREFIX}${oneByOne.currGetIdDataIndex()}`);
-                oneByOne.nextIdEqualsTo(`${ID_PREFIX}${oneByOne.currGetIdDataIndex()}`);
-                oneByOne.nextIdEqualsTo('NaN');
-                oneByOne.nextIdEqualsTo('');
-                oneByOne.nextIdEqualsTo(`b${NAME_REPEAT_PREFIX}2`);
-                oneByOne.nextIdEqualsTo(`${ID_PREFIX}${oneByOne.currGetIdDataIndex()}`);
-                oneByOne.nextIdEqualsTo('myId_better');
-                oneByOne.nextIdEqualsTo('myId_better');
+describe('SeriesData', () => {
 
-                oneByOne.nextNameEqualsTo('');
-                oneByOne.nextNameEqualsTo('');
-                oneByOne.nextNameEqualsTo('');
-                oneByOne.nextNameEqualsTo('b');
-                oneByOne.nextNameEqualsTo('b');
-                oneByOne.nextNameEqualsTo('');
-                oneByOne.nextNameEqualsTo('');
-                oneByOne.nextNameEqualsTo('');
-                oneByOne.nextNameEqualsTo('');
-                oneByOne.nextNameEqualsTo('b');
-                oneByOne.nextNameEqualsTo('');
-                oneByOne.nextNameEqualsTo('');
-                oneByOne.nextNameEqualsTo('');
+  describe('id_and_name', () => {
+    function makeOneByOneChecker(list: SeriesData) {
+                let getIdDataIndex = 0;
+                let getNameDataIndex = 0;
 
-                list.appendData([
-                    { value: 200, id: 'myId_best' },
-                    { value: 210, id: 999 }, // numeric id.
-                    { value: 220, id: '777px' },
-                    { value: 230, name: 'b' },
-                    { value: 240 }
-                ]);
+                return {
+                    nextIdEqualsTo: function (expectedId: string): void {
+                        expect(list.getId(getIdDataIndex)).toEqual(expectedId);
+                        getIdDataIndex++;
+                    },
+                    nextNameEqualsTo: function (expectedName: string): void {
+                        expect(list.getName(getNameDataIndex)).toEqual(expectedName);
+                        getNameDataIndex++;
+                    },
+                    currGetIdDataIndex: function (): number {
+                        return getIdDataIndex;
+                    },
+                    currGetNameDataIndex: function (): number {
+                        return getNameDataIndex;
+                    }
+                };
+            }
 
-                oneByOne.nextIdEqualsTo('myId_best');
-                oneByOne.nextIdEqualsTo('999');
-                oneByOne.nextIdEqualsTo('777px');
-                oneByOne.nextIdEqualsTo(`b${NAME_REPEAT_PREFIX}3`);
-                oneByOne.nextIdEqualsTo(`${ID_PREFIX}${oneByOne.currGetIdDataIndex()}`);
+    describe('only_name_declared', () => {
+      function doChecks(list: SeriesData) {
+                      const oneByOne = makeOneByOneChecker(list);
 
-                oneByOne.nextNameEqualsTo('');
-                oneByOne.nextNameEqualsTo('');
-                oneByOne.nextNameEqualsTo('');
-                oneByOne.nextNameEqualsTo('b');
-                oneByOne.nextNameEqualsTo('');
+                      oneByOne.nextIdEqualsTo('a');
+                      oneByOne.nextIdEqualsTo('b');
+                      oneByOne.nextIdEqualsTo(`b${NAME_REPEAT_PREFIX}2`);
+                      oneByOne.nextIdEqualsTo('c');
+                      oneByOne.nextIdEqualsTo(`${ID_PREFIX}4`);
+                      oneByOne.nextIdEqualsTo(`c${NAME_REPEAT_PREFIX}2`);
+                      oneByOne.nextIdEqualsTo('d');
+                      oneByOne.nextIdEqualsTo(`c${NAME_REPEAT_PREFIX}3`);
 
-                list.appendValues([], ['b', 'c', null]);
+                      oneByOne.nextNameEqualsTo('a');
+                      oneByOne.nextNameEqualsTo('b');
+                      oneByOne.nextNameEqualsTo('b');
+                      oneByOne.nextNameEqualsTo('c');
+                      oneByOne.nextNameEqualsTo('');
+                      oneByOne.nextNameEqualsTo('c');
+                      oneByOne.nextNameEqualsTo('d');
+                      oneByOne.nextNameEqualsTo('c');
+                  }
 
-                oneByOne.nextIdEqualsTo(`b${NAME_REPEAT_PREFIX}4`);
-                oneByOne.nextIdEqualsTo('c');
-                oneByOne.nextIdEqualsTo(`${ID_PREFIX}${oneByOne.currGetIdDataIndex()}`);
+      // ── TARGET TEST ─────────────────────────────────
+      it('sourceFormatArrayRows', function () {
+                      const list = new SeriesData(
+                          [
+                              'x',
+                              { name: 'q', type: 'ordinal', otherDims: { itemName: 0 } }
+                          ],
+                          new Model()
+                      );
+                      const source = createSource(
+                          [
+                              [ 10, 'a' ],
+                              [ 20, 'b' ],
+                              [ 30, 'b' ],
+                              [ 40, 'c' ],
+                              [ 50, null ],
+                              [ 60, 'c' ],
+                              [ 70, 'd' ],
+                              [ 80, 'c' ]
+                          ],
+                          {
+                              seriesLayoutBy: 'column',
+                              sourceHeader: 0,
+                              dimensions: null
+                          },
+                          SOURCE_FORMAT_ARRAY_ROWS
+                      );
+                      list.initData(source);
 
-                oneByOne.nextNameEqualsTo('b');
-                oneByOne.nextNameEqualsTo('c');
-                oneByOne.nextNameEqualsTo('');
-            })
+                      doChecks(list);
+                  })
+      // ── END TARGET TEST ─────────────────────────────
+    });
+  });
+});

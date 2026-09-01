@@ -1,18 +1,54 @@
-it('should accept thought with optional fields', () => {
-      const input = {
-        thought: 'Revising my earlier idea',
-        thoughtNumber: 2,
-        totalThoughts: 3,
-        nextThoughtNeeded: true,
-        isRevision: true,
-        revisesThought: 1,
-        needsMoreThoughts: false
-      };
+import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
+import fs from 'fs/promises';
+import path from 'path';
+import os from 'os';
+import {
+  // Pure utility functions
+  formatSize,
+  normalizeLineEndings,
+  createUnifiedDiff,
+  // Security & validation functions
+  validatePath,
+  setAllowedDirectories,
+  // File operations
+  getFileStats,
+  readFileContent,
+  writeFileContent,
+  // Search & filtering functions
+  searchFilesWithValidation,
+  // File editing functions
+  applyFileEdits,
+  tailFile,
+  headFile
+} from '../lib.js';
 
-      const result = server.processThought(input);
-      expect(result.isError).toBeUndefined();
+vi.mock('fs/promises');
+const mockFs = fs as any;
 
-      const data = JSON.parse(result.content[0].text);
-      expect(data.thoughtNumber).toBe(2);
-      expect(data.thoughtHistoryLength).toBe(1);
-    })
+describe('Lib Functions', () => {
+  beforeEach(() => {
+      vi.clearAllMocks();
+      // Set up allowed directories for tests
+      const allowedDirs = process.platform === 'win32' ? ['C:\\Users\\test', 'C:\\temp', 'C:\\allowed'] : ['/home/user', '/tmp', '/allowed'];
+      setAllowedDirectories(allowedDirs);
+    });
+  afterEach(() => {
+      vi.restoreAllMocks();
+      // Clear allowed directories after tests
+      setAllowedDirectories([]);
+    });
+
+  describe('Pure Utility Functions', () => {
+
+    describe('formatSize', () => {
+
+      // ── TARGET TEST ─────────────────────────────────
+      it('handles edge cases', () => {
+              expect(formatSize(1023)).toBe('1023 B');
+              expect(formatSize(1025)).toBe('1.00 KB');
+              expect(formatSize(1048575)).toBe('1024.00 KB');
+            })
+      // ── END TARGET TEST ─────────────────────────────
+    });
+  });
+});

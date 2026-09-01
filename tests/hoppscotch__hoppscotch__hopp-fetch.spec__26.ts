@@ -1,17 +1,50 @@
-it("should handle response body json conversion", async () => {
-      const hoppFetch = createHoppFetchHook()
+import { describe, expect, it, vi, beforeEach } from "vitest"
+import { createHoppFetchHook } from "../../utils/hopp-fetch"
+import axios from "axios"
 
-      const jsonData = { message: "success" }
-      const data = new TextEncoder().encode(JSON.stringify(jsonData))
+const mockAxios = axios as any
+const mockIsAxiosError = mockAxios.isAxiosError as ReturnType<typeof vi.fn>
+const mockAxiosInstance = vi.fn()
+
+describe("CLI hopp-fetch", () => {
+  beforeEach(() => {
+      vi.clearAllMocks()
+
+      // Set up axios.create to return our mockAxiosInstance
+      mockAxios.create.mockReturnValue(mockAxiosInstance)
+
+      // Default successful response
       mockAxiosInstance.mockResolvedValue({
         status: 200,
         statusText: "OK",
-        headers: {},
-        data: data.buffer,
+        headers: { "content-type": "application/json" },
+        data: new ArrayBuffer(0),
       })
 
-      const response = await hoppFetch("https://api.example.com/data")
-      const json = await response.json()
-
-      expect(json).toEqual(jsonData)
+      // Reset isAxiosError mock
+      mockIsAxiosError.mockReturnValue(false)
     })
+
+  describe("Response handling", () => {
+
+    // ── TARGET TEST ─────────────────────────────────
+    it("should handle response body json conversion", async () => {
+          const hoppFetch = createHoppFetchHook()
+
+          const jsonData = { message: "success" }
+          const data = new TextEncoder().encode(JSON.stringify(jsonData))
+          mockAxiosInstance.mockResolvedValue({
+            status: 200,
+            statusText: "OK",
+            headers: {},
+            data: data.buffer,
+          })
+
+          const response = await hoppFetch("https://api.example.com/data")
+          const json = await response.json()
+
+          expect(json).toEqual(jsonData)
+        })
+    // ── END TARGET TEST ─────────────────────────────
+  });
+});
