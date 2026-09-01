@@ -34,7 +34,7 @@ export class MinerHelpers {
   static extractTestCasesFromSource(
     content: string,
     virtualFilename = "tests.ts",
-    metrics: readonly MetricDescriptor<unknown>[] = DEFAULT_METRICS,
+    metrics: readonly MetricDescriptor<unknown>[] = DEFAULT_METRICS
   ): ExtractedTestCase[] {
     const project = new Project({ useInMemoryFileSystem: true });
     const sourceFile = project.createSourceFile(virtualFilename, content, {
@@ -100,7 +100,7 @@ export class MinerHelpers {
    */
   static buildSkeletalTestFile(
     sourceFile: SourceFile,
-    testCall: CallExpression,
+    testCall: CallExpression
   ): string {
     const lines: string[] = [];
 
@@ -121,7 +121,7 @@ export class MinerHelpers {
       0,
       testCall,
       0,
-      lines,
+      lines
     );
 
     return lines.join("\n");
@@ -137,7 +137,7 @@ export class MinerHelpers {
     while (current) {
       if (Node.isCallExpression(current)) {
         const root = MinerHelpers.getRootIdentifierName(
-          current.getExpression(),
+          current.getExpression()
         );
         if (root === "describe") {
           result.unshift(current); // prepend → outermost first
@@ -165,7 +165,7 @@ export class MinerHelpers {
     ancestorIdx: number,
     testCall: CallExpression,
     indent: number,
-    lines: string[],
+    lines: string[]
   ): void {
     const pad = "  ".repeat(indent);
 
@@ -192,7 +192,7 @@ export class MinerHelpers {
               ancestorIdx + 1,
               testCall,
               indent + 1,
-              lines,
+              lines
             );
           }
 
@@ -204,13 +204,9 @@ export class MinerHelpers {
       // ── Check: does this statement contain the target test?
       if (MinerHelpers.nodeContains(stmt, testCall)) {
         lines.push("");
-        lines.push(
-          `${pad}// ── TARGET TEST ─────────────────────────────────`,
-        );
+        lines.push(`${pad}// ── TARGET TEST ─────────────────────────────────`);
         lines.push(MinerHelpers.reindent(testCall.getText(), indent));
-        lines.push(
-          `${pad}// ── END TARGET TEST ─────────────────────────────`,
-        );
+        lines.push(`${pad}// ── END TARGET TEST ─────────────────────────────`);
         continue;
       }
 
@@ -218,15 +214,11 @@ export class MinerHelpers {
       if (Node.isExpressionStatement(stmt)) {
         const expr = stmt.getExpression();
         if (Node.isCallExpression(expr)) {
-          const name = MinerHelpers.getRootIdentifierName(
           const rootName = MinerHelpers.getRootIdentifierName(
-            expr.getExpression(),
+            expr.getExpression()
           );
-          
+
           if (
-            name === "it" ||
-            name === "test" ||
-            name === "describe"
             rootName === "it" ||
             rootName === "test" ||
             rootName === "describe"
@@ -236,17 +228,24 @@ export class MinerHelpers {
 
           // Catch custom test wrappers like concurrentIf()("name", () => {})
           const knownHooks = [
-            "beforeEach", "beforeAll", "afterEach", "afterAll",
-            "before", "after", "setup", "teardown"
+            "beforeEach",
+            "beforeAll",
+            "afterEach",
+            "afterAll",
+            "before",
+            "after",
+            "setup",
+            "teardown",
           ];
-          
+
           if (rootName && !knownHooks.includes(rootName)) {
             // If the call contains an ArrowFunction or FunctionExpression,
             // it is very likely a custom test block or describe block.
-            const hasFunctionArg = 
+            const hasFunctionArg =
               expr.getDescendantsOfKind(SyntaxKind.ArrowFunction).length > 0 ||
-              expr.getDescendantsOfKind(SyntaxKind.FunctionExpression).length > 0;
-              
+              expr.getDescendantsOfKind(SyntaxKind.FunctionExpression).length >
+                0;
+
             if (hasFunctionArg) {
               continue; // Prune custom test/describe wrappers
             }
@@ -264,8 +263,7 @@ export class MinerHelpers {
    */
   private static nodeContains(outer: Node, inner: Node): boolean {
     return (
-      outer.getStart() <= inner.getStart() &&
-      outer.getEnd() >= inner.getEnd()
+      outer.getStart() <= inner.getStart() && outer.getEnd() >= inner.getEnd()
     );
   }
 
@@ -347,12 +345,12 @@ export class MinerHelpers {
         const expr = stmt.getExpression();
         if (Node.isCallExpression(expr)) {
           const hookName = MinerHelpers.getRootIdentifierName(
-            expr.getExpression(),
+            expr.getExpression()
           );
           if (
             hookName &&
             ["beforeEach", "beforeAll", "afterEach", "afterAll"].includes(
-              hookName,
+              hookName
             )
           ) {
             parts.push(`  ${stmt.getText()}`);
@@ -396,14 +394,14 @@ export class MinerHelpers {
 
       // Variable declarations inside the hook
       for (const decl of body.getDescendantsOfKind(
-        SyntaxKind.VariableDeclaration,
+        SyntaxKind.VariableDeclaration
       )) {
         varNames.add(decl.getName());
       }
 
       // Assignments to outer-scope variables (e.g. `myVar = new Foo()`)
       for (const bin of body.getDescendantsOfKind(
-        SyntaxKind.BinaryExpression,
+        SyntaxKind.BinaryExpression
       )) {
         if (bin.getOperatorToken().getText() === "=") {
           const left = bin.getLeft();
@@ -423,14 +421,12 @@ export class MinerHelpers {
    * Walk up the AST from a test call to find the nearest enclosing
    * `describe()` CallExpression.
    */
-  private static findEnclosingDescribe(
-    node: Node,
-  ): CallExpression | undefined {
+  private static findEnclosingDescribe(node: Node): CallExpression | undefined {
     let current: Node | undefined = node.getParent();
     while (current) {
       if (Node.isCallExpression(current)) {
         const root = MinerHelpers.getRootIdentifierName(
-          current.getExpression(),
+          current.getExpression()
         );
         if (root === "describe") return current;
       }
