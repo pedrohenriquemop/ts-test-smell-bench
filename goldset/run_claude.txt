@@ -1,0 +1,105 @@
+[LLM="Sonnet 5 High"]
+[Batch="1/20"]
+Good, 50 tests match 50 manifest entries. Let me view the full test file content.I need to see the truncated middle section too (tests 8-44).Let me view the remaining lines 1547-1573 (test 39 truncated portion).Now I have the full test source. Let me pull the full JSON metrics for all 50 entries to cross-reference systematically.File Name: firecrawl__firecrawl__rollout.test__0.ts - Smells: Assertion Roulette, Magic Number, Eager Test
+File Name: firecrawl__firecrawl__rollout.test__1.ts - Smells: Conditional Test Logic, Magic Number
+File Name: firecrawl__firecrawl__rollout.test__2.ts - Smells: Conditional Test Logic, Magic Number
+File Name: firecrawl__firecrawl__rollout.test__3.ts - Smells: Conditional Test Logic, Magic Number
+File Name: firecrawl__firecrawl__map.test__0.ts - Smells: Assertion Roulette, Hardcoded Literal, Mystery Guest, Resource Optimism
+File Name: shadcn-ui__ui__chat-contract__0.ts - Smells: Assertion Roulette, Eager Test, Mystery Guest
+File Name: shadcn-ui__ui__chat-contract__1.ts - Smells: Assertion Roulette, Mystery Guest
+File Name: shadcn-ui__ui__chat-contract__2.ts - Smells: Assertion Roulette, Mystery Guest
+File Name: ant-design__ant-design__17.test__0.ts - Smells: None
+File Name: ant-design__ant-design__blog.test__0.ts - Smells: Conditional Test Logic, Hardcoded Literal, Resource Optimism
+File Name: ant-design__ant-design__index.test__0.ts - Smells: Mystery Guest
+File Name: ant-design__ant-design__index.test__1.ts - Smells: None
+File Name: modelcontextprotocol__servers__resource.test__0.ts - Smells: None
+File Name: modelcontextprotocol__servers__resource.test__1.ts - Smells: Assertion Roulette, Hardcoded Literal
+File Name: modelcontextprotocol__servers__resource.test__2.ts - Smells: None
+File Name: modelcontextprotocol__servers__resource.test__3.ts - Smells: Assertion Roulette
+File Name: modelcontextprotocol__servers__resource.test__4.ts - Smells: Assertion Roulette, Hardcoded Literal, Eager Test
+File Name: modelcontextprotocol__servers__file-path.test__0.ts - Smells: Hardcoded Literal, General Fixture
+File Name: modelcontextprotocol__servers__file-path.test__1.ts - Smells: Assertion Roulette, Hardcoded Literal, General Fixture
+File Name: modelcontextprotocol__servers__file-path.test__2.ts - Smells: Assertion Roulette, Conditional Test Logic, Hardcoded Literal, General Fixture
+File Name: modelcontextprotocol__servers__file-path.test__3.ts - Smells: General Fixture
+File Name: modelcontextprotocol__servers__file-path.test__4.ts - Smells: Assertion Roulette, Hardcoded Literal, Resource Optimism
+File Name: modelcontextprotocol__servers__file-path.test__5.ts - Smells: Assertion Roulette, Hardcoded Literal, Eager Test, Resource Optimism
+File Name: modelcontextprotocol__servers__file-path.test__6.ts - Smells: Hardcoded Literal, Resource Optimism
+File Name: modelcontextprotocol__servers__file-path.test__7.ts - Smells: General Fixture
+File Name: modelcontextprotocol__servers__file-path.test__8.ts - Smells: General Fixture
+File Name: modelcontextprotocol__servers__server.test__0.ts - Smells: Assertion Roulette
+File Name: modelcontextprotocol__servers__server.test__1.ts - Smells: None
+File Name: modelcontextprotocol__servers__server.test__2.ts - Smells: Assertion Roulette
+File Name: modelcontextprotocol__servers__server.test__3.ts - Smells: None
+File Name: modelcontextprotocol__servers__server.test__4.ts - Smells: Assertion Roulette
+File Name: modelcontextprotocol__servers__prompts.test__0.ts - Smells: Hardcoded Literal
+File Name: modelcontextprotocol__servers__prompts.test__1.ts - Smells: Hardcoded Literal
+File Name: modelcontextprotocol__servers__prompts.test__2.ts - Smells: Hardcoded Literal
+File Name: modelcontextprotocol__servers__prompts.test__3.ts - Smells: Assertion Roulette, Hardcoded Literal
+File Name: modelcontextprotocol__servers__prompts.test__4.ts - Smells: Hardcoded Literal
+File Name: modelcontextprotocol__servers__prompts.test__5.ts - Smells: Assertion Roulette, Hardcoded Literal, Eager Test
+File Name: modelcontextprotocol__servers__prompts.test__6.ts - Smells: Assertion Roulette, Hardcoded Literal
+File Name: modelcontextprotocol__servers__prompts.test__7.ts - Smells: Assertion Roulette, Hardcoded Literal
+File Name: modelcontextprotocol__servers__prompts.test__8.ts - Smells: Hardcoded Literal
+File Name: modelcontextprotocol__servers__prompts.test__9.ts - Smells: Assertion Roulette, Hardcoded Literal
+File Name: modelcontextprotocol__servers__prompts.test__10.ts - Smells: Assertion Roulette, Hardcoded Literal
+File Name: modelcontextprotocol__servers__resources.test__0.ts - Smells: Assertion Roulette
+File Name: modelcontextprotocol__servers__resources.test__1.ts - Smells: None
+File Name: modelcontextprotocol__servers__resources.test__2.ts - Smells: Assertion Roulette, Magic Number
+File Name: modelcontextprotocol__servers__resources.test__3.ts - Smells: None
+File Name: modelcontextprotocol__servers__resources.test__4.ts - Smells: Assertion Roulette, Magic Number
+File Name: modelcontextprotocol__servers__resources.test__5.ts - Smells: Assertion Roulette
+File Name: modelcontextprotocol__servers__resources.test__6.ts - Smells: None
+File Name: modelcontextprotocol__servers__resources.test__7.ts - Smells: Assertion Roulette
+[Batch="2/20"]
+Now let me view the full test source file.Now let me view the rest, especially the knowledge-graph.test files since there are many (17-50).File Name: modelcontextprotocol__servers__resources.test__8.ts - Smells: Assertion Roulette, Hardcoded Literal
+File Name: modelcontextprotocol__servers__resources.test__9.ts - Smells: Assertion Roulette
+File Name: modelcontextprotocol__servers__resources.test__10.ts - Smells: Assertion Roulette, Hardcoded Literal
+File Name: modelcontextprotocol__servers__resources.test__11.ts - Smells: Assertion Roulette
+File Name: modelcontextprotocol__servers__resources.test__12.ts - Smells: Assertion Roulette, Hardcoded Literal
+File Name: modelcontextprotocol__servers__resources.test__13.ts - Smells: Assertion Roulette, Hardcoded Literal
+File Name: modelcontextprotocol__servers__resources.test__14.ts - Smells: Assertion Roulette, Hardcoded Literal
+File Name: modelcontextprotocol__servers__resources.test__15.ts - Smells: Assertion Roulette, Hardcoded Literal, Eager Test
+File Name: modelcontextprotocol__servers__resources.test__16.ts - Smells: Hardcoded Literal
+File Name: modelcontextprotocol__servers__resources.test__17.ts - Smells: Assertion Roulette, Hardcoded Literal
+File Name: modelcontextprotocol__servers__resources.test__18.ts - Smells: Assertion Roulette, Hardcoded Literal, Eager Test
+File Name: modelcontextprotocol__servers__resources.test__19.ts - Smells: Assertion Roulette, Hardcoded Literal
+File Name: modelcontextprotocol__servers__resources.test__20.ts - Smells: Assertion Roulette, Hardcoded Literal
+File Name: modelcontextprotocol__servers__resources.test__21.ts - Smells: Mystery Guest
+File Name: modelcontextprotocol__servers__resources.test__22.ts - Smells: None
+File Name: modelcontextprotocol__servers__resources.test__23.ts - Smells: Hardcoded Literal, Eager Test
+File Name: modelcontextprotocol__servers__knowledge-graph.test__0.ts - Smells: Assertion Roulette, Hardcoded Literal
+File Name: modelcontextprotocol__servers__knowledge-graph.test__1.ts - Smells: Assertion Roulette, Hardcoded Literal
+File Name: modelcontextprotocol__servers__knowledge-graph.test__2.ts - Smells: None
+File Name: modelcontextprotocol__servers__knowledge-graph.test__3.ts - Smells: Assertion Roulette, Hardcoded Literal
+File Name: modelcontextprotocol__servers__knowledge-graph.test__4.ts - Smells: Assertion Roulette, Hardcoded Literal
+File Name: modelcontextprotocol__servers__knowledge-graph.test__5.ts - Smells: None
+File Name: modelcontextprotocol__servers__knowledge-graph.test__6.ts - Smells: Assertion Roulette, Hardcoded Literal
+File Name: modelcontextprotocol__servers__knowledge-graph.test__7.ts - Smells: Assertion Roulette, Hardcoded Literal
+File Name: modelcontextprotocol__servers__knowledge-graph.test__8.ts - Smells: Hardcoded Literal
+File Name: modelcontextprotocol__servers__knowledge-graph.test__9.ts - Smells: Assertion Roulette, Hardcoded Literal
+File Name: modelcontextprotocol__servers__knowledge-graph.test__10.ts - Smells: Assertion Roulette, Hardcoded Literal
+File Name: modelcontextprotocol__servers__knowledge-graph.test__11.ts - Smells: Hardcoded Literal
+File Name: modelcontextprotocol__servers__knowledge-graph.test__12.ts - Smells: Assertion Roulette, Hardcoded Literal
+File Name: modelcontextprotocol__servers__knowledge-graph.test__13.ts - Smells: Hardcoded Literal
+File Name: modelcontextprotocol__servers__knowledge-graph.test__14.ts - Smells: Assertion Roulette, Hardcoded Literal
+File Name: modelcontextprotocol__servers__knowledge-graph.test__15.ts - Smells: Assertion Roulette
+File Name: modelcontextprotocol__servers__knowledge-graph.test__16.ts - Smells: Assertion Roulette, Hardcoded Literal
+File Name: modelcontextprotocol__servers__knowledge-graph.test__17.ts - Smells: Assertion Roulette, Hardcoded Literal
+File Name: modelcontextprotocol__servers__knowledge-graph.test__18.ts - Smells: Assertion Roulette, Hardcoded Literal
+File Name: modelcontextprotocol__servers__knowledge-graph.test__19.ts - Smells: Assertion Roulette, Hardcoded Literal
+File Name: modelcontextprotocol__servers__knowledge-graph.test__20.ts - Smells: Assertion Roulette, Hardcoded Literal
+File Name: modelcontextprotocol__servers__knowledge-graph.test__21.ts - Smells: Assertion Roulette, Hardcoded Literal
+File Name: modelcontextprotocol__servers__knowledge-graph.test__22.ts - Smells: Assertion Roulette, Hardcoded Literal
+File Name: modelcontextprotocol__servers__knowledge-graph.test__23.ts - Smells: Assertion Roulette, Hardcoded Literal
+File Name: modelcontextprotocol__servers__knowledge-graph.test__24.ts - Smells: Assertion Roulette, Hardcoded Literal
+File Name: modelcontextprotocol__servers__knowledge-graph.test__25.ts - Smells: Assertion Roulette, Hardcoded Literal
+File Name: modelcontextprotocol__servers__knowledge-graph.test__26.ts - Smells: Assertion Roulette, Hardcoded Literal
+File Name: modelcontextprotocol__servers__knowledge-graph.test__27.ts - Smells: Assertion Roulette, Hardcoded Literal
+File Name: modelcontextprotocol__servers__knowledge-graph.test__28.ts - Smells: Assertion Roulette, Hardcoded Literal
+File Name: modelcontextprotocol__servers__knowledge-graph.test__29.ts - Smells: Hardcoded Literal
+File Name: modelcontextprotocol__servers__knowledge-graph.test__30.ts - Smells: Assertion Roulette
+File Name: modelcontextprotocol__servers__knowledge-graph.test__31.ts - Smells: Assertion Roulette, Hardcoded Literal
+File Name: modelcontextprotocol__servers__knowledge-graph.test__32.ts - Smells: Hardcoded Literal, Resource Optimism
+File Name: modelcontextprotocol__servers__knowledge-graph.test__33.ts - Smells: Assertion Roulette, Hardcoded Literal, Eager Test, Resource Optimism
+[Batch="3/20"]
+[Batch="4/20"]
