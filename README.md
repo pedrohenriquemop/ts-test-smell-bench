@@ -133,7 +133,7 @@ O comportamento inteiro do bench é ditado pelo arquivo `ts-test-smell-bench.con
     ]
   },
   "analyzer": {
-    "numTests": 50, // Quantos testes do manifesto processar
+    "numTests": 200, // Quantos testes do goldset processar
     "manifestPath": "./manifesto_tests.json",
     "testsDir": "./tests",
     "referenceResultsPath": "./goldset/run.txt", // Onde está o seu Goldset (gabarito)

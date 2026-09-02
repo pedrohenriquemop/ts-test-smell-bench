@@ -1,6 +1,7 @@
 import { Command } from "commander";
 import { loadConfig } from "../../config/index.ts";
 import { runPipeline } from "../../pipeline/index.ts";
+import * as readline from "readline";
 
 export const runCommand = new Command("run")
   .description(
@@ -56,6 +57,18 @@ export const runCommand = new Command("run")
           // Abort the pipeline on error in CLI mode
           return false;
         },
+        onPrompt: (message) => {
+          return new Promise((resolve) => {
+            const rl = readline.createInterface({
+              input: process.stdin,
+              output: process.stdout,
+            });
+            rl.question(`\n❓ ${message} (y/n) `, (answer) => {
+              rl.close();
+              resolve(answer.toLowerCase() === "y");
+            });
+          });
+        }
       });
 
       const totalElapsed = ((Date.now() - startTime) / 1000).toFixed(1);

@@ -28,7 +28,7 @@
     {
       "id": "gemini-flash",
       "provider": "gemini",
-      "model": "gemini-2.5-flash-preview-04-17",
+      "model": "gemini-3.6-flash",
       "apiKey": "$GEMINI_API_KEY",
       "temperature": 0.0
     }
@@ -51,7 +51,7 @@
     "includeContext": true
   },
   "analyzer": {
-    "numTests": 50,
+    "numTests": 200,
     "manifestPath": "./manifesto_tests.json",
     "testsDir": "./tests",
     "referenceResultsPath": "./goldset/run.txt",

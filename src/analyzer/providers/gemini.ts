@@ -122,10 +122,24 @@ export class GeminiProvider implements ModelProvider {
 
     const start = Date.now();
 
-    const response = await axios.post(url, body, {
-      headers: { "Content-Type": "application/json" },
-      timeout: 120_000, // 2 min timeout for slow models
-    });
+    let response;
+    try {
+      response = await axios.post(url, body, {
+        headers: { "Content-Type": "application/json" },
+        timeout: 120_000, // 2 min timeout for slow models
+      });
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        const apiMessage = error.response?.data?.error?.message;
+        const detail = apiMessage ? `: ${apiMessage}` : "";
+        throw new Error(
+          `Gemini request failed for model "${this.config.model}" (HTTP ${
+            error.response?.status ?? "network"
+          })${detail}`
+        );
+      }
+      throw error;
+    }
 
     const latencyMs = Date.now() - start;
 

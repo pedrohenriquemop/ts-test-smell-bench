@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Box, Text } from "ink";
+import { Box, Text, useInput } from "ink";
 import Spinner from "ink-spinner";
 import { runPipeline } from "../../pipeline/index.ts";
 import type { AppConfig } from "../../config/index.ts";
@@ -38,6 +38,19 @@ export const ExecutionScreen: React.FC<Props> = ({
   const [currentStage, setCurrentStage] = useState<string>("Initializing...");
   const [currentModel, setCurrentModel] = useState<string | undefined>();
   const [logs, setLogs] = useState<string[]>([]);
+  const [prompt, setPrompt] = useState<{ message: string; resolve: (val: boolean) => void } | null>(null);
+
+  useInput((input, key) => {
+    if (!prompt) return;
+    
+    if (input.toLowerCase() === "y") {
+      prompt.resolve(true);
+      setPrompt(null);
+    } else if (input.toLowerCase() === "n") {
+      prompt.resolve(false);
+      setPrompt(null);
+    }
+  });
 
   useEffect(() => {
     let isMounted = true;
@@ -78,6 +91,15 @@ export const ExecutionScreen: React.FC<Props> = ({
             // Let it crash
             return false;
           },
+          onPrompt: (message) => {
+            return new Promise((resolve) => {
+              if (!isMounted) {
+                resolve(false);
+                return;
+              }
+              setPrompt({ message, resolve });
+            });
+          },
         });
 
         if (isMounted) {
@@ -105,13 +127,19 @@ export const ExecutionScreen: React.FC<Props> = ({
       flexDirection="column"
       padding={1}
       borderStyle="round"
-      borderColor="yellow"
+      borderColor={prompt ? "cyan" : "yellow"}
     >
       <Box marginBottom={1}>
-        <Text color="yellow" bold>
-          <Spinner type="dots" /> Running Pipeline...
+        <Text color={prompt ? "cyan" : "yellow"} bold>
+          {prompt ? <Text>❓ Waiting for Input</Text> : <Text><Spinner type="dots" /> Running Pipeline...</Text>}
         </Text>
       </Box>
+
+      {prompt && (
+        <Box marginBottom={1} padding={1} borderStyle="single" borderColor="cyan">
+          <Text color="white" bold>{prompt.message} (y/n)</Text>
+        </Box>
+      )}
 
       <Box flexDirection="row" marginBottom={1}>
         <Text color="white">Stage: </Text>
