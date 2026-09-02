@@ -1,36 +1,50 @@
 Role: You are an expert Software Quality Engineer specializing in Automated Testing and Technical Debt.
 
-Context: I am providing you with two files:
+Context: I am providing one batch as two uploaded files:
 
-aggregated_tests.txt: Contains the raw TypeScript source code for multiple test files, separated by markers.
+- `aggregated_tests_<N>.txt`: TypeScript source for 50 tests. Each test is delimited by a marker in the form `[Test N: <file name>]`.
+- `sampled_manifesto_<N>.json`: Metadata and AST-extracted metrics for the same 50 tests, in the required output order.
 
-sampled_manifesto.json: Contains metadata and AST-extracted metrics for these tests (line count, assertion count, control flow structures, etc.).
+Analyze each manifest entry against the source block with the same file name. The source block contains the target test between `TARGET TEST` and `END TARGET TEST` markers; imports, setup, and describe context are supplied only to provide context.
 
-The sample is given in parts across messages: each part uses these same two filenames with new contents, sometimes after a brief instruction. Apply this task to each part the same way.
-
-Task: Analyze the specific files listed below and identify the presence of any of the following 7 Test Smells:
+Task: Identify the presence of any of the following 8 Test Smells:
 
 Assertion Roulette: Multiple assertions in one test without descriptive messages.
 
 Eager Test: A test verifying too many different behaviors/objectives.
 
-Conditional Test Logic: Presence of if, for, switch, or ternary operators within the test.
+Conditional Test Logic: Presence of if, for, switch, while, or ternary operators within the target test.
 
-General Fixture: Excessive setup in beforeEach where only a fraction is used by the test.
+General Fixture: Excessive setup in beforeEach/beforeAll where only a fraction is used by the target test.
 
-Mystery Guest: Dependencies on external resources (files/DBs) not explicitly defined in the test.
+Mystery Guest: Dependencies on external resources, files, databases, helpers, mocks, or data not explicitly defined in the visible test code.
 
-Magic Number: Hardcoded strings or numbers used as logic inputs without context.
+Hardcoded Literal: Raw, unexplained domain strings used as behavioral inputs instead of declared constants. Do not flag strings used only in assertions.
 
-Resource Optimism: Assuming external resources (API/File System) are always available without error handling.
+Magic Number: Raw, unexplained numbers used as behavioral inputs. Do not flag numbers used only as expected values in assertions.
+
+Resource Optimism: Assuming external resources (API, file system, database) are always available without error handling or an existence/availability check.
 
 Instructions:
 
-Cross-reference the source code in aggregated_tests.txt with the metrics provided in sampled_manifesto.json for each file.
+- Analyze every entry in `sampled_manifesto_<N>.json`, in its listed order.
+- Cross-reference the target source block with its AST metrics. Treat metrics such as `assertionCount`, `assertionsWithoutMessages`, `controlFlowCount`, `hardcodedLiteralCount`, `beforeEachVarCount`, and `externalModuleRefs` as primary evidence; use the source and context to confirm the applicable smell.
+- For Assertion Roulette, flag only when there are at least two assertions and at least two lack descriptive messages.
+- For Conditional Test Logic, flag when `controlFlowCount` is at least 1 and the control flow is inside the target test.
+- If no smells apply, output `None`.
 
-Use the metrics (e.g., assertionCount, controlFlowCount) as primary evidence for your diagnosis.
+Output format — strict:
 
-If no smells are found, state "None".
+- Return exactly 50 lines: one line for every manifest entry.
+- Keep the lines in the exact manifest order.
+- Copy the file name exactly from the manifest entry or its `[Test N: ...]` marker.
+- Use only the eight smell names written above, with the same spelling and capitalization.
+- Return plain text only: no introduction, reasoning, headings, Markdown, numbering, code fences, or explanations.
 
-Output Format (Plain List Only):
-File Name: [Name] - Smells: [Smell 1, Smell 2]
+Each line must be exactly:
+
+File Name: <exact file name> - Smells: <comma-separated smell names, or None>
+
+Example:
+
+File Name: firecrawl__firecrawl__rollout.test__0.ts - Smells: Assertion Roulette, Magic Number
