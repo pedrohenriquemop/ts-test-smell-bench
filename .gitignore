@@ -6,3 +6,4 @@ out/
 ignore/
 # Temporary test files
 scratch/
+human_evaluation/processed_tests/

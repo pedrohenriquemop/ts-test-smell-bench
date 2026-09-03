@@ -1,4 +1,4 @@
-[LLM="GPT with Think"]
+[LLM="GPT-5.6 Luna"]
 [Batch="1/20"]
 File Name: firecrawl__firecrawl__rollout.test__0.ts - Smells: Assertion Roulette, Eager Test, Magic Number
 File Name: firecrawl__firecrawl__rollout.test__1.ts - Smells: Conditional Test Logic, Magic Number
