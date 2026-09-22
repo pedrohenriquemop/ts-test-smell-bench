@@ -11,6 +11,7 @@ interface Props {
     prepare: boolean;
     analyze: boolean;
     evaluate: boolean;
+    humanEvaluation: boolean;
   };
   onExit: () => void;
 }
@@ -93,6 +94,13 @@ export const ResultsScreen: React.FC<Props> = ({ config, stages, onExit }) => {
         <Box marginBottom={1}>
           <Text color="cyan">✓ Prepare Stage:</Text>
           <Text color="white"> Dataset sliced and ready.</Text>
+        </Box>
+      )}
+
+      {stages.humanEvaluation && (
+        <Box marginBottom={1}>
+          <Text color="cyan">✓ Human Evaluation:</Text>
+          <Text color="white"> Annotated tests saved to human_evaluation/processed_tests</Text>
         </Box>
       )}
 

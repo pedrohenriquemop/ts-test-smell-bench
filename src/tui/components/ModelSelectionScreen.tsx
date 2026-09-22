@@ -1,6 +1,8 @@
 import React, { useState, useMemo } from "react";
 import { Box, Text, useInput } from "ink";
 import type { ModelConfig } from "../../config/index.ts";
+import { APP_VERSION } from "../../version.ts";
+import type { TuiSettings } from "../settings.ts";
 
 interface Props {
   models: ModelConfig[];
@@ -9,6 +11,8 @@ interface Props {
     stages: Record<string, boolean>,
   ) => void;
   onExit: () => void;
+  initialSettings: TuiSettings;
+  onSettingsChange: (settings: TuiSettings) => void;
 }
 
 /**
@@ -22,19 +26,22 @@ export const ModelSelectionScreen: React.FC<Props> = ({
   models,
   onStart,
   onExit,
+  initialSettings,
+  onSettingsChange,
 }) => {
   const [cursorIndex, setCursorIndex] = useState(0);
 
   // State for selections
   const [selectedModels, setSelectedModels] = useState<Set<string>>(
-    new Set(models.map((m) => m.id)), // Default select all
+    new Set(initialSettings.selectedModelIds.filter((id) => models.some((model) => model.id === id))),
   );
   const [stages, setStages] = useState({
-    mine: false,
-    prepare: false,
-    analyze: true, // "Prepare Gold Set" — uses LLMs
-    evaluate: true, // "Evaluate" — uses SLMs
+    ...initialSettings.stages,
   });
+
+  const persistSettings = (nextModels: Set<string>, nextStages: typeof stages) => {
+    onSettingsChange({ selectedModelIds: Array.from(nextModels), stages: nextStages });
+  };
 
   // Split models by type
   const llmModels = useMemo(() => models.filter((m) => !isSlm(m)), [models]);
@@ -73,6 +80,11 @@ export const ModelSelectionScreen: React.FC<Props> = ({
       type: "stage",
       id: "evaluate",
       label: "Stage: Evaluate (Run SLM & Metrics)",
+    });
+    items.push({
+      type: "stage",
+      id: "humanEvaluation",
+      label: "Stage: Generate Human Evaluation",
     });
 
     // ── LLM models (only when "Prepare Gold Set" is active) ───
@@ -117,8 +129,12 @@ export const ModelSelectionScreen: React.FC<Props> = ({
   }, [showLlmModels, showSlmModels, llmModels, slmModels]);
 
   // Check if at least one relevant model is selected for the active stages
+  const relevantModels = Array.from(selectedModels).filter((id) => {
+    const model = models.find((m) => m.id === id);
+    return Boolean(model && ((stages.analyze && !isSlm(model)) || (stages.evaluate && isSlm(model))));
+  });
   const needsModels = stages.analyze || stages.evaluate;
-  const hasValidSelection = !needsModels || selectedModels.size > 0;
+  const hasValidSelection = !needsModels || relevantModels.length > 0;
 
   useInput((input, key) => {
     if (key.upArrow) {
@@ -146,29 +162,22 @@ export const ModelSelectionScreen: React.FC<Props> = ({
       if (!item || item.type === "separator") return;
 
       if (item.type === "model") {
-        setSelectedModels((prev) => {
-          const next = new Set(prev);
-          if (next.has(item.id)) next.delete(item.id);
-          else next.add(item.id);
-          return next;
-        });
+        const next = new Set(selectedModels);
+        if (next.has(item.id)) next.delete(item.id);
+        else next.add(item.id);
+        setSelectedModels(next);
+        persistSettings(next, stages);
       } else if (item.type === "stage") {
-        setStages((prev) => ({
-          ...prev,
-          [item.id]: !prev[item.id as keyof typeof stages],
-        }));
+        const next = {
+          ...stages,
+          [item.id]: !stages[item.id as keyof typeof stages],
+        };
+        setStages(next);
+        persistSettings(selectedModels, next);
       } else if (item.type === "action") {
         if (item.id === "start") {
           if (!hasValidSelection) return;
-          // Only pass models relevant to the selected stages
-          const relevantIds = Array.from(selectedModels).filter((id) => {
-            const model = models.find((m) => m.id === id);
-            if (!model) return false;
-            if (stages.analyze && !isSlm(model)) return true; // LLM for gold set
-            if (stages.evaluate && isSlm(model)) return true; // SLM for evaluate
-            return false;
-          });
-          onStart(relevantIds, stages);
+          onStart(relevantModels, stages);
         } else if (item.id === "exit") {
           onExit();
         }
@@ -185,7 +194,7 @@ export const ModelSelectionScreen: React.FC<Props> = ({
     >
       <Box marginBottom={1}>
         <Text bold color="cyan">
-          === Pipeline Configuration ===
+          === Pipeline Configuration (v{APP_VERSION}) ===
         </Text>
       </Box>
 

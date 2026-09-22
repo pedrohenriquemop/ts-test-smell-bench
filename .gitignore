@@ -7,3 +7,4 @@ ignore/
 # Temporary test files
 scratch/
 human_evaluation/processed_tests/
+.ts-test-smell-bench.tui.json

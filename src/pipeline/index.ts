@@ -14,6 +14,7 @@ import { createProvider } from "../analyzer/providers/index.ts";
 import { resolveSmells } from "../smells/catalog.ts";
 import { buildPromptForStrategy } from "../smells/prompt-builder.ts";
 import { evaluateResults } from "../evaluator/index.ts";
+import { generateHumanEvaluation } from "../human-evaluation/index.ts";
 
 // ── Types ────────────────────────────────────────────────────────────
 
@@ -26,6 +27,7 @@ export interface PipelineOptions {
     prepare?: boolean;
     analyze?: boolean;
     evaluate?: boolean;
+    humanEvaluation?: boolean;
   };
 
   /**
@@ -59,6 +61,7 @@ export async function runPipeline(opts: PipelineOptions): Promise<void> {
     prepare: true,
     analyze: true,
     evaluate: true,
+    humanEvaluation: false,
     ...opts.stages,
   };
 
@@ -199,6 +202,18 @@ export async function runPipeline(opts: PipelineOptions): Promise<void> {
     // ── Cross-model summary ────────────────────────────────────
     if (models.length > 1) {
       generateCrossModelSummary(config, models, setupSuffix);
+    }
+  }
+
+  // ── 5. Generate human-evaluation files ──────────────────────
+  if (stages.humanEvaluation) {
+    notify("humanEvaluation");
+    try {
+      generateHumanEvaluation();
+      done("humanEvaluation");
+    } catch (err) {
+      const cont = onStageError?.("humanEvaluation", err as Error);
+      if (!cont) throw err;
     }
   }
 

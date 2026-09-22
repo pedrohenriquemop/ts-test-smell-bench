@@ -1,6 +1,6 @@
 {
   "name": "ts-test-smell-bench",
-  "version": "1.0.0",
+  "version": "0.33.0",
   "main": "index.js",
   "type": "module",
   "scripts": {

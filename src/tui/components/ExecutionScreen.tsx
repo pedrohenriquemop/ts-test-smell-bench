@@ -12,6 +12,7 @@ interface Props {
     prepare: boolean;
     analyze: boolean;
     evaluate: boolean;
+    humanEvaluation: boolean;
   };
   onComplete: () => void;
   onError: (error: string) => void;
@@ -22,6 +23,7 @@ const STAGE_DISPLAY_NAMES: Record<string, string> = {
   prepare: "PREPARE",
   analyze: "PREPARE GOLD SET",
   evaluate: "EVALUATE",
+  humanEvaluation: "GENERATE HUMAN EVALUATION",
 };
 
 function stageDisplayName(stage: string): string {

@@ -2,12 +2,13 @@ import React, { useState } from "react";
 import { Box, Text } from "ink";
 import * as fs from "fs";
 import * as path from "path";
-import type { AppConfig } from "../../config/index.ts";
+import type { AppConfig } from "../config/index.ts";
 import { ModelSelectionScreen } from "./components/ModelSelectionScreen.tsx";
 import { ExecutionScreen } from "./components/ExecutionScreen.tsx";
 import { ResultsScreen } from "./components/ResultsScreen.tsx";
 import { ConfirmMineScreen } from "./components/ConfirmMineScreen.tsx";
 import { ConfirmPrepareScreen } from "./components/ConfirmPrepareScreen.tsx";
+import { loadTuiSettings, saveTuiSettings } from "./settings.ts";
 
 interface Props {
   config: AppConfig;
@@ -32,6 +33,7 @@ export const App: React.FC<Props> = ({ config, onExit }) => {
     prepare: false,
     analyze: false,
     evaluate: false,
+    humanEvaluation: false,
   });
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
 
@@ -110,6 +112,8 @@ export const App: React.FC<Props> = ({ config, onExit }) => {
           models={config.models || []}
           onStart={handleStart}
           onExit={onExit}
+          initialSettings={loadTuiSettings()}
+          onSettingsChange={saveTuiSettings}
         />
       )}
 
