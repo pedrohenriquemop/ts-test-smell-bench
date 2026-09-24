@@ -117,6 +117,8 @@ export class Miner {
               const repoSlug = repo.full_name.replace(/\//g, "__");
               const pathWithoutExt = file.path.replace(/\.[^/.]+$/, "");
               const baseStem = MinerHelpers.sanitizePathSegment(
+                path.basename(file.name, path.extname(file.name)),
+                48,
                 pathWithoutExt,
                 96,
               );
