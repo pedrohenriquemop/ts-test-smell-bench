@@ -1,0 +1,63 @@
+import { describe, expect, test } from 'vitest'
+import {
+  findAssetFile,
+  getColor,
+  isBuild,
+  listAssets,
+  page,
+  readManifest,
+} from '~utils'
+
+
+// ── TARGET TEST ─────────────────────────────────
+test('should load dynamic import with module', async () => {
+  const css = await page.textContent('.dynamic-module')
+  expect(css).toMatch('_mod_')
+
+  expect(await getColor('.mod')).toBe('yellow')
+})
+// ── END TARGET TEST ─────────────────────────────
+describe.runIf(isBuild)('build', () => {
+  test('should remove empty chunk', async () => {
+    expect(findAssetFile(/style-.*\.js$/)).toBeUndefined()
+    expect(findAssetFile('main.*.js$')).toMatch(`/* empty css`)
+    expect(findAssetFile('other.*.js$')).toMatch(`/* empty css`)
+    expect(findAssetFile(/async-[-\w]{8}\.js$/)).toBeUndefined()
+
+    const assets = listAssets()
+    expect(assets).not.toContainEqual(
+      expect.stringMatching(/async-js-[-\w]{8}\.js$/),
+    )
+  })
+
+  test('should remove empty chunk, HTML without JS', async () => {
+    const sharedCSSWithJSChunk = findAssetFile('shared-css-with-js.*.js$')
+    expect(sharedCSSWithJSChunk).toMatch(`/* empty css`)
+    // there are functions and modules in the src code that should be tree-shaken
+    expect(sharedCSSWithJSChunk).not.toMatch('function')
+    expect(sharedCSSWithJSChunk).not.toMatch(/import(?!\s*".\/modulepreload)/)
+  })
+
+  test('should generate correct manifest', async () => {
+    const manifest = readManifest()
+    expect(manifest['index.html'].css.length).toBe(2)
+    expect(manifest['other.js'].css.length).toBe(1)
+  })
+
+  // Regression test for vitejs/vite#22856: when rolldown deduplicates two same-content css
+  // assets, it must not rename the survivor after Vite has recorded the earlier name, or the
+  // manifest ends up pointing at a css file that was never written.
+  test('manifest should not reference a deduplicated css file that does not exist', () => {
+    const emitted = new Set(listAssets())
+    const referenced = Object.values(readManifest())
+      .flatMap((chunk) => chunk.css ?? [])
+      .map((file) => file.replace(/^assets\//, ''))
+    for (const file of referenced) {
+      expect(emitted).toContain(file)
+    }
+  })
+
+  test('should not mark a css chunk with ?url and normal import as pure css chunk', () => {
+    expect(findAssetFile(/chunk-.*\.js$/)).toBeTruthy()
+  })
+})

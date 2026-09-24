@@ -1,0 +1,32 @@
+import {describe, it} from 'vitest';
+import webpack from 'webpack';
+import {createBuildClientConfig, createStartClientConfig} from '../client';
+import {loadSiteFixture} from '../../server/__tests__/testUtils';
+import {createConfigureWebpackUtils} from '../configure';
+import {
+  DEFAULT_FASTER_CONFIG,
+  DEFAULT_FUTURE_CONFIG,
+} from '../../server/configValidation';
+
+function createTestConfigureWebpackUtils() {
+  return createConfigureWebpackUtils({
+    siteConfig: {webpack: {jsLoader: 'babel'}, future: DEFAULT_FUTURE_CONFIG},
+  });
+}
+
+describe('webpack dev config', () => {
+
+  // ── TARGET TEST ─────────────────────────────────
+  it('custom start', async () => {
+      const {props} = await loadSiteFixture('custom-site');
+      const {clientConfig} = await createStartClientConfig({
+        props,
+        faster: DEFAULT_FASTER_CONFIG,
+        configureWebpackUtils: await createTestConfigureWebpackUtils(),
+        minify: false,
+        poll: false,
+      });
+      webpack.validate(clientConfig);
+    })
+  // ── END TARGET TEST ─────────────────────────────
+});

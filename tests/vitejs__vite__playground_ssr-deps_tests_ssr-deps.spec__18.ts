@@ -1,0 +1,42 @@
+import { describe, expect, test } from 'vitest'
+import { editFile, getColor, isServe, page } from '~utils'
+import { port } from './serve'
+
+const url = `http://localhost:${port}`
+
+// ── TARGET TEST ─────────────────────────────────
+test.skip('handle isomorphic module updates', async () => {
+    await page.goto(url)
+
+    expect(await page.textContent('.isomorphic-module-server')).toMatch(
+      '[server]',
+    )
+    // Allowing additional time for this element to be filled in
+    // by a client script that is loaded using dynamic import
+    await expect
+      .poll(async () => {
+        return page.textContent('.isomorphic-module-browser')
+      })
+      .toMatch('[browser]')
+
+    editFile('src/isomorphic-module-browser.js', (code) =>
+      code.replace('[browser]', '[browser-hmr]'),
+    )
+    await page.waitForNavigation()
+    await expect
+      .poll(async () => {
+        return page.textContent('.isomorphic-module-browser')
+      })
+      .toMatch('[browser-hmr]')
+
+    editFile('src/isomorphic-module-server.js', (code) =>
+      code.replace('[server]', '[server-hmr]'),
+    )
+    await page.waitForNavigation()
+    await expect
+      .poll(async () => {
+        return page.textContent('.isomorphic-module-server')
+      })
+      .toMatch('[server-hmr]')
+  })
+// ── END TARGET TEST ─────────────────────────────

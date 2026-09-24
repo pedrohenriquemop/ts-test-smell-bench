@@ -1,0 +1,44 @@
+import {describe, expect, it} from 'vitest';
+import path from 'path';
+import {loadSiteFixture} from './testUtils';
+
+
+describe('loadSite', () => {
+
+  describe('custom-i18n-site', () => {
+
+    // ── TARGET TEST ─────────────────────────────────
+    it('loads site - zh-Hans locale', async () => {
+          const site = await loadSiteFixture('custom-i18n-site', {
+            locale: 'zh-Hans',
+          });
+
+          expect(site.props).toEqual(
+            expect.objectContaining({
+              baseUrl: '/zh-Hans/',
+              i18n: expect.objectContaining({
+                currentLocale: 'zh-Hans',
+              }),
+              localizationDir: path.join(
+                __dirname,
+                '__fixtures__/custom-i18n-site/i18n/zh-Hans-custom',
+              ),
+              outDir: path.join(
+                __dirname,
+                '__fixtures__/custom-i18n-site/build/zh-Hans/',
+              ),
+              routesPaths: ['/zh-Hans/404.html'],
+              siteConfig: expect.objectContaining({
+                baseUrl: '/zh-Hans/',
+              }),
+              siteStorage: {
+                namespace: '',
+                type: 'localStorage',
+              },
+              plugins: site.props.plugins,
+            }),
+          );
+        })
+    // ── END TARGET TEST ─────────────────────────────
+  });
+});

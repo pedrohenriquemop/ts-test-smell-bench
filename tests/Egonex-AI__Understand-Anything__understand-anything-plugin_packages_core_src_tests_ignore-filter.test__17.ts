@@ -1,0 +1,38 @@
+import { describe, it, expect, beforeEach, afterEach } from "vitest";
+import { createIgnoreFilter, DEFAULT_IGNORE_PATTERNS } from "../ignore-filter";
+import { mkdirSync, writeFileSync, rmSync } from "node:fs";
+import { join } from "node:path";
+import { tmpdir } from "node:os";
+
+
+describe("IgnoreFilter", () => {
+  let testDir: string;
+  beforeEach(() => {
+      testDir = join(tmpdir(), `ignore-filter-test-${Date.now()}`);
+      mkdirSync(testDir, { recursive: true });
+      mkdirSync(join(testDir, ".understand-anything"), { recursive: true });
+    });
+  afterEach(() => {
+      rmSync(testDir, { recursive: true, force: true });
+    });
+
+  describe("createIgnoreFilter with user .understandignore", () => {
+
+    // ── TARGET TEST ─────────────────────────────────
+    it("merges .understand-anything/ and root .understandignore", () => {
+          writeFileSync(
+            join(testDir, ".understand-anything", ".understandignore"),
+            "__tests__/\n"
+          );
+          writeFileSync(
+            join(testDir, ".understandignore"),
+            "fixtures/\n"
+          );
+          const filter = createIgnoreFilter(testDir);
+          expect(filter.isIgnored("__tests__/foo.ts")).toBe(true);
+          expect(filter.isIgnored("fixtures/data.json")).toBe(true);
+          expect(filter.isIgnored("src/index.ts")).toBe(false);
+        })
+    // ── END TARGET TEST ─────────────────────────────
+  });
+});
