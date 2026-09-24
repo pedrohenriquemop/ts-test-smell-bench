@@ -1,4 +1,5 @@
 .env
+tests/
 node_modules/
 manifesto_tests.json
 out/
