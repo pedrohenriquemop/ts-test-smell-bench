@@ -83,6 +83,11 @@ export const ModelSelectionScreen: React.FC<Props> = ({
     });
     items.push({
       type: "stage",
+      id: "mergeGoldset",
+      label: "Stage: Merge Goldset Runs (Strict Majority)",
+    });
+    items.push({
+      type: "stage",
       id: "humanEvaluation",
       label: "Stage: Generate Human Evaluation",
     });

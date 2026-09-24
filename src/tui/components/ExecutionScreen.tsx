@@ -12,6 +12,7 @@ interface Props {
     prepare: boolean;
     analyze: boolean;
     evaluate: boolean;
+    mergeGoldset: boolean;
     humanEvaluation: boolean;
   };
   onComplete: () => void;
@@ -23,6 +24,7 @@ const STAGE_DISPLAY_NAMES: Record<string, string> = {
   prepare: "PREPARE",
   analyze: "PREPARE GOLD SET",
   evaluate: "EVALUATE",
+  mergeGoldset: "MERGE GOLDSET RUNS",
   humanEvaluation: "GENERATE HUMAN EVALUATION",
 };
 

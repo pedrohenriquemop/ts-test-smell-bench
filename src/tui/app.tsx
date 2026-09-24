@@ -33,6 +33,7 @@ export const App: React.FC<Props> = ({ config, onExit }) => {
     prepare: false,
     analyze: false,
     evaluate: false,
+    mergeGoldset: false,
     humanEvaluation: false,
   });
   const [errorMsg, setErrorMsg] = useState<string | null>(null);

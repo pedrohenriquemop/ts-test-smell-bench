@@ -11,6 +11,7 @@ interface Props {
     prepare: boolean;
     analyze: boolean;
     evaluate: boolean;
+    mergeGoldset: boolean;
     humanEvaluation: boolean;
   };
   onExit: () => void;
@@ -101,6 +102,13 @@ export const ResultsScreen: React.FC<Props> = ({ config, stages, onExit }) => {
         <Box marginBottom={1}>
           <Text color="cyan">✓ Human Evaluation:</Text>
           <Text color="white"> Annotated tests saved to human_evaluation/processed_tests</Text>
+        </Box>
+      )}
+
+      {stages.mergeGoldset && (
+        <Box marginBottom={1}>
+          <Text color="cyan">✓ Goldset Consensus:</Text>
+          <Text color="white"> Created goldset/run.txt using strict-majority voting</Text>
         </Box>
       )}
 

@@ -8,6 +8,7 @@ export interface TuiSettings {
     prepare: boolean;
     analyze: boolean;
     evaluate: boolean;
+    mergeGoldset: boolean;
     humanEvaluation: boolean;
   };
 }
@@ -21,6 +22,7 @@ const defaultSettings = (): TuiSettings => ({
     prepare: false,
     analyze: false,
     evaluate: false,
+    mergeGoldset: false,
     humanEvaluation: false,
   },
 });

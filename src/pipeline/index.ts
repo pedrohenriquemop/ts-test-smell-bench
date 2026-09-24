@@ -15,6 +15,7 @@ import { resolveSmells } from "../smells/catalog.ts";
 import { buildPromptForStrategy } from "../smells/prompt-builder.ts";
 import { evaluateResults } from "../evaluator/index.ts";
 import { generateHumanEvaluation } from "../human-evaluation/index.ts";
+import { mergeGoldsetRuns } from "../goldset-consensus/index.ts";
 
 // ── Types ────────────────────────────────────────────────────────────
 
@@ -27,6 +28,7 @@ export interface PipelineOptions {
     prepare?: boolean;
     analyze?: boolean;
     evaluate?: boolean;
+    mergeGoldset?: boolean;
     humanEvaluation?: boolean;
   };
 
@@ -61,6 +63,7 @@ export async function runPipeline(opts: PipelineOptions): Promise<void> {
     prepare: true,
     analyze: true,
     evaluate: true,
+    mergeGoldset: false,
     humanEvaluation: false,
     ...opts.stages,
   };
@@ -205,7 +208,19 @@ export async function runPipeline(opts: PipelineOptions): Promise<void> {
     }
   }
 
-  // ── 5. Generate human-evaluation files ──────────────────────
+  // ── 5. Merge independent goldset runs ───────────────────────
+  if (stages.mergeGoldset) {
+    notify("mergeGoldset");
+    try {
+      mergeGoldsetRuns();
+      done("mergeGoldset");
+    } catch (err) {
+      const cont = onStageError?.("mergeGoldset", err as Error);
+      if (!cont) throw err;
+    }
+  }
+
+  // ── 6. Generate human-evaluation files ──────────────────────
   if (stages.humanEvaluation) {
     notify("humanEvaluation");
     try {
