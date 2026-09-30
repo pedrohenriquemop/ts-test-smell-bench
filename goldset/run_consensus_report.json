@@ -1,0 +1,2553 @@
+{
+  "strategy": "strict-majority",
+  "sources": [
+    "run_claude.txt",
+    "run_gemini.txt",
+    "run_gpt.txt"
+  ],
+  "files": [
+    {
+      "file": "excalidraw__excalidraw__packages_element_src_tests_flowchart.test__0.ts",
+      "sourceCount": 3,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Assertion Roulette": 3,
+        "Hardcoded Literal": 3,
+        "Magic Number": 3
+      },
+      "smells": [
+        "Assertion Roulette",
+        "Hardcoded Literal",
+        "Magic Number"
+      ]
+    },
+    {
+      "file": "shadcn-ui__ui__packages_helpers_src_test_chat-contract__0.ts",
+      "sourceCount": 3,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Assertion Roulette": 3,
+        "Eager Test": 2,
+        "Magic Number": 1,
+        "Mystery Guest": 3
+      },
+      "smells": [
+        "Assertion Roulette",
+        "Eager Test",
+        "Mystery Guest"
+      ]
+    },
+    {
+      "file": "shadcn-ui__ui__packages_helpers_src_test_chat-contract__1.ts",
+      "sourceCount": 3,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Assertion Roulette": 3,
+        "Magic Number": 1,
+        "Mystery Guest": 3
+      },
+      "smells": [
+        "Assertion Roulette",
+        "Mystery Guest"
+      ]
+    },
+    {
+      "file": "shadcn-ui__ui__packages_helpers_src_test_chat-contract__2.ts",
+      "sourceCount": 3,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Assertion Roulette": 3,
+        "Mystery Guest": 3
+      },
+      "smells": [
+        "Assertion Roulette",
+        "Mystery Guest"
+      ]
+    },
+    {
+      "file": "earendil-works__pi__packages_agent_test_harness_pico3_spec-plugins-lifecycle.test__0.ts",
+      "sourceCount": 3,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Assertion Roulette": 3,
+        "Eager Test": 2,
+        "Hardcoded Literal": 3,
+        "Magic Number": 1,
+        "Mystery Guest": 2
+      },
+      "smells": [
+        "Assertion Roulette",
+        "Eager Test",
+        "Hardcoded Literal",
+        "Mystery Guest"
+      ]
+    },
+    {
+      "file": "earendil-works__pi__packages_agent_test_harness_pico3_spec-plugins-lifecycle.test__1.ts",
+      "sourceCount": 3,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Assertion Roulette": 3,
+        "Eager Test": 2,
+        "Hardcoded Literal": 3,
+        "Magic Number": 3,
+        "Mystery Guest": 2
+      },
+      "smells": [
+        "Assertion Roulette",
+        "Eager Test",
+        "Hardcoded Literal",
+        "Magic Number",
+        "Mystery Guest"
+      ]
+    },
+    {
+      "file": "earendil-works__pi__packages_agent_test_harness_pico3_spec-plugins-lifecycle.test__2.ts",
+      "sourceCount": 3,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Assertion Roulette": 3,
+        "Eager Test": 2,
+        "Hardcoded Literal": 3,
+        "Magic Number": 1,
+        "Mystery Guest": 2
+      },
+      "smells": [
+        "Assertion Roulette",
+        "Eager Test",
+        "Hardcoded Literal",
+        "Mystery Guest"
+      ]
+    },
+    {
+      "file": "earendil-works__pi__packages_agent_test_harness_pico3_spec-plugins-lifecycle.test__3.ts",
+      "sourceCount": 3,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Assertion Roulette": 3,
+        "Eager Test": 2,
+        "Hardcoded Literal": 3,
+        "Magic Number": 2,
+        "Mystery Guest": 2
+      },
+      "smells": [
+        "Assertion Roulette",
+        "Eager Test",
+        "Hardcoded Literal",
+        "Magic Number",
+        "Mystery Guest"
+      ]
+    },
+    {
+      "file": "earendil-works__pi__packages_agent_test_harness_pico3_spec-plugins-lifecycle.test__5.ts",
+      "sourceCount": 3,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Assertion Roulette": 3,
+        "Conditional Test Logic": 3,
+        "Eager Test": 2,
+        "Hardcoded Literal": 3,
+        "Mystery Guest": 2
+      },
+      "smells": [
+        "Assertion Roulette",
+        "Conditional Test Logic",
+        "Eager Test",
+        "Hardcoded Literal",
+        "Mystery Guest"
+      ]
+    },
+    {
+      "file": "earendil-works__pi__packages_agent_test_harness_pico3_spec-plugins-lifecycle.test__6.ts",
+      "sourceCount": 3,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Assertion Roulette": 3,
+        "Conditional Test Logic": 3,
+        "Eager Test": 2,
+        "Hardcoded Literal": 3,
+        "Magic Number": 1,
+        "Mystery Guest": 2
+      },
+      "smells": [
+        "Assertion Roulette",
+        "Conditional Test Logic",
+        "Eager Test",
+        "Hardcoded Literal",
+        "Mystery Guest"
+      ]
+    },
+    {
+      "file": "earendil-works__pi__packages_agent_test_harness_pico3_spec-plugins-lifecycle.test__7.ts",
+      "sourceCount": 3,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Assertion Roulette": 3,
+        "Conditional Test Logic": 3,
+        "Eager Test": 2,
+        "Hardcoded Literal": 3,
+        "Magic Number": 2,
+        "Mystery Guest": 2
+      },
+      "smells": [
+        "Assertion Roulette",
+        "Conditional Test Logic",
+        "Eager Test",
+        "Hardcoded Literal",
+        "Magic Number",
+        "Mystery Guest"
+      ]
+    },
+    {
+      "file": "earendil-works__pi__packages_agent_test_harness_pico3_spec-plugins-lifecycle.test__8.ts",
+      "sourceCount": 3,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Assertion Roulette": 3,
+        "Hardcoded Literal": 3,
+        "Magic Number": 1,
+        "Mystery Guest": 2
+      },
+      "smells": [
+        "Assertion Roulette",
+        "Hardcoded Literal",
+        "Mystery Guest"
+      ]
+    },
+    {
+      "file": "earendil-works__pi__packages_agent_test_harness_pico3_spec-plugins-lifecycle.test__9.ts",
+      "sourceCount": 3,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Assertion Roulette": 3,
+        "Conditional Test Logic": 3,
+        "Eager Test": 2,
+        "Hardcoded Literal": 3,
+        "Magic Number": 2,
+        "Mystery Guest": 2
+      },
+      "smells": [
+        "Assertion Roulette",
+        "Conditional Test Logic",
+        "Eager Test",
+        "Hardcoded Literal",
+        "Magic Number",
+        "Mystery Guest"
+      ]
+    },
+    {
+      "file": "earendil-works__pi__packages_agent_test_harness_pico3_spec-plugins-lifecycle.test__10.ts",
+      "sourceCount": 3,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Assertion Roulette": 3,
+        "Conditional Test Logic": 3,
+        "Hardcoded Literal": 3,
+        "Magic Number": 2,
+        "Mystery Guest": 2
+      },
+      "smells": [
+        "Assertion Roulette",
+        "Conditional Test Logic",
+        "Hardcoded Literal",
+        "Magic Number",
+        "Mystery Guest"
+      ]
+    },
+    {
+      "file": "earendil-works__pi__packages_agent_test_harness_pico3_spec-plugins-lifecycle.test__11.ts",
+      "sourceCount": 3,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Conditional Test Logic": 3,
+        "Hardcoded Literal": 3,
+        "Mystery Guest": 2
+      },
+      "smells": [
+        "Conditional Test Logic",
+        "Hardcoded Literal",
+        "Mystery Guest"
+      ]
+    },
+    {
+      "file": "earendil-works__pi__packages_agent_test_harness_pico3_spec-plugins-lifecycle.test__12.ts",
+      "sourceCount": 3,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Assertion Roulette": 3,
+        "Hardcoded Literal": 3,
+        "Magic Number": 1,
+        "Mystery Guest": 2
+      },
+      "smells": [
+        "Assertion Roulette",
+        "Hardcoded Literal",
+        "Mystery Guest"
+      ]
+    },
+    {
+      "file": "earendil-works__pi__packages_agent_test_harness_pico3_spec-plugins-lifecycle.test__13.ts",
+      "sourceCount": 3,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Hardcoded Literal": 3,
+        "Mystery Guest": 2
+      },
+      "smells": [
+        "Hardcoded Literal",
+        "Mystery Guest"
+      ]
+    },
+    {
+      "file": "earendil-works__pi__packages_agent_test_harness_pico3_spec-plugins-lifecycle.test__14.ts",
+      "sourceCount": 3,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Hardcoded Literal": 3,
+        "Mystery Guest": 2
+      },
+      "smells": [
+        "Hardcoded Literal",
+        "Mystery Guest"
+      ]
+    },
+    {
+      "file": "earendil-works__pi__packages_agent_test_harness_pico3_spec-plugins-lifecycle.test__15.ts",
+      "sourceCount": 3,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Assertion Roulette": 3,
+        "Hardcoded Literal": 3,
+        "Magic Number": 2,
+        "Mystery Guest": 2
+      },
+      "smells": [
+        "Assertion Roulette",
+        "Hardcoded Literal",
+        "Magic Number",
+        "Mystery Guest"
+      ]
+    },
+    {
+      "file": "earendil-works__pi__packages_agent_test_harness_pico3_spec-plugins-lifecycle.test__16.ts",
+      "sourceCount": 3,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Assertion Roulette": 3,
+        "Eager Test": 1,
+        "Hardcoded Literal": 3,
+        "Magic Number": 1,
+        "Mystery Guest": 2
+      },
+      "smells": [
+        "Assertion Roulette",
+        "Hardcoded Literal",
+        "Mystery Guest"
+      ]
+    },
+    {
+      "file": "earendil-works__pi__packages_ai_test_zen.test__0.ts",
+      "sourceCount": 3,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Assertion Roulette": 3,
+        "Hardcoded Literal": 2,
+        "Mystery Guest": 2,
+        "Resource Optimism": 2
+      },
+      "smells": [
+        "Assertion Roulette",
+        "Hardcoded Literal",
+        "Mystery Guest",
+        "Resource Optimism"
+      ]
+    },
+    {
+      "file": "earendil-works__pi__packages_ai_test_uuid.test__0.ts",
+      "sourceCount": 3,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Assertion Roulette": 3,
+        "Conditional Test Logic": 3,
+        "Magic Number": 3
+      },
+      "smells": [
+        "Assertion Roulette",
+        "Conditional Test Logic",
+        "Magic Number"
+      ]
+    },
+    {
+      "file": "earendil-works__pi__packages_ai_test_uuid.test__1.ts",
+      "sourceCount": 3,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Hardcoded Literal": 2,
+        "Magic Number": 3
+      },
+      "smells": [
+        "Hardcoded Literal",
+        "Magic Number"
+      ]
+    },
+    {
+      "file": "earendil-works__pi__packages_ai_test_text.test__0.ts",
+      "sourceCount": 3,
+      "requiredVotes": 2,
+      "smellVotes": {},
+      "smells": []
+    },
+    {
+      "file": "earendil-works__pi__packages_ai_test_text.test__1.ts",
+      "sourceCount": 3,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Hardcoded Literal": 2
+      },
+      "smells": [
+        "Hardcoded Literal"
+      ]
+    },
+    {
+      "file": "earendil-works__pi__packages_ai_test_text.test__2.ts",
+      "sourceCount": 3,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Hardcoded Literal": 3
+      },
+      "smells": [
+        "Hardcoded Literal"
+      ]
+    },
+    {
+      "file": "earendil-works__pi__packages_ai_test_text.test__3.ts",
+      "sourceCount": 3,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Hardcoded Literal": 3
+      },
+      "smells": [
+        "Hardcoded Literal"
+      ]
+    },
+    {
+      "file": "modelcontextprotocol__servers__src_memory_tests_resource.test__0.ts",
+      "sourceCount": 3,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Hardcoded Literal": 1
+      },
+      "smells": []
+    },
+    {
+      "file": "modelcontextprotocol__servers__src_memory_tests_resource.test__1.ts",
+      "sourceCount": 3,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Assertion Roulette": 3,
+        "Hardcoded Literal": 3
+      },
+      "smells": [
+        "Assertion Roulette",
+        "Hardcoded Literal"
+      ]
+    },
+    {
+      "file": "modelcontextprotocol__servers__src_memory_tests_resource.test__2.ts",
+      "sourceCount": 3,
+      "requiredVotes": 2,
+      "smellVotes": {},
+      "smells": []
+    },
+    {
+      "file": "modelcontextprotocol__servers__src_memory_tests_resource.test__3.ts",
+      "sourceCount": 3,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Assertion Roulette": 3
+      },
+      "smells": [
+        "Assertion Roulette"
+      ]
+    },
+    {
+      "file": "modelcontextprotocol__servers__src_memory_tests_resource.test__4.ts",
+      "sourceCount": 3,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Assertion Roulette": 3,
+        "Eager Test": 2,
+        "Hardcoded Literal": 3
+      },
+      "smells": [
+        "Assertion Roulette",
+        "Eager Test",
+        "Hardcoded Literal"
+      ]
+    },
+    {
+      "file": "modelcontextprotocol__servers__src_memory_tests_file-path.test__0.ts",
+      "sourceCount": 3,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "General Fixture": 1,
+        "Hardcoded Literal": 3,
+        "Mystery Guest": 1
+      },
+      "smells": [
+        "Hardcoded Literal"
+      ]
+    },
+    {
+      "file": "modelcontextprotocol__servers__src_memory_tests_file-path.test__1.ts",
+      "sourceCount": 3,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Assertion Roulette": 3,
+        "General Fixture": 1,
+        "Hardcoded Literal": 3,
+        "Mystery Guest": 1
+      },
+      "smells": [
+        "Assertion Roulette",
+        "Hardcoded Literal"
+      ]
+    },
+    {
+      "file": "modelcontextprotocol__servers__src_memory_tests_file-path.test__2.ts",
+      "sourceCount": 3,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Assertion Roulette": 3,
+        "Conditional Test Logic": 3,
+        "General Fixture": 1,
+        "Hardcoded Literal": 3,
+        "Mystery Guest": 1
+      },
+      "smells": [
+        "Assertion Roulette",
+        "Conditional Test Logic",
+        "Hardcoded Literal"
+      ]
+    },
+    {
+      "file": "modelcontextprotocol__servers__src_memory_tests_file-path.test__3.ts",
+      "sourceCount": 3,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Assertion Roulette": 3,
+        "General Fixture": 1,
+        "Hardcoded Literal": 3,
+        "Mystery Guest": 1
+      },
+      "smells": [
+        "Assertion Roulette",
+        "Hardcoded Literal"
+      ]
+    },
+    {
+      "file": "modelcontextprotocol__servers__src_memory_tests_file-path.test__4.ts",
+      "sourceCount": 3,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "General Fixture": 1,
+        "Mystery Guest": 1
+      },
+      "smells": []
+    },
+    {
+      "file": "modelcontextprotocol__servers__src_memory_tests_file-path.test__5.ts",
+      "sourceCount": 3,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Assertion Roulette": 3,
+        "Hardcoded Literal": 3,
+        "Mystery Guest": 1,
+        "Resource Optimism": 1
+      },
+      "smells": [
+        "Assertion Roulette",
+        "Hardcoded Literal"
+      ]
+    },
+    {
+      "file": "modelcontextprotocol__servers__src_memory_tests_file-path.test__6.ts",
+      "sourceCount": 3,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Assertion Roulette": 3,
+        "Eager Test": 1,
+        "Hardcoded Literal": 3,
+        "Mystery Guest": 1,
+        "Resource Optimism": 1
+      },
+      "smells": [
+        "Assertion Roulette",
+        "Hardcoded Literal"
+      ]
+    },
+    {
+      "file": "modelcontextprotocol__servers__src_memory_tests_file-path.test__7.ts",
+      "sourceCount": 3,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Hardcoded Literal": 3,
+        "Mystery Guest": 1,
+        "Resource Optimism": 2
+      },
+      "smells": [
+        "Hardcoded Literal",
+        "Resource Optimism"
+      ]
+    },
+    {
+      "file": "modelcontextprotocol__servers__src_memory_tests_file-path.test__8.ts",
+      "sourceCount": 3,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "General Fixture": 1
+      },
+      "smells": []
+    },
+    {
+      "file": "modelcontextprotocol__servers__src_memory_tests_file-path.test__9.ts",
+      "sourceCount": 3,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "General Fixture": 1
+      },
+      "smells": []
+    },
+    {
+      "file": "modelcontextprotocol__servers__src_memory_tests_file-path.test__10.ts",
+      "sourceCount": 3,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Hardcoded Literal": 3
+      },
+      "smells": [
+        "Hardcoded Literal"
+      ]
+    },
+    {
+      "file": "modelcontextprotocol__servers__src_memory_tests_file-path.test__11.ts",
+      "sourceCount": 3,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Hardcoded Literal": 3
+      },
+      "smells": [
+        "Hardcoded Literal"
+      ]
+    },
+    {
+      "file": "modelcontextprotocol__servers__src_memory_tests_file-path.test__12.ts",
+      "sourceCount": 3,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Hardcoded Literal": 3
+      },
+      "smells": [
+        "Hardcoded Literal"
+      ]
+    },
+    {
+      "file": "modelcontextprotocol__servers__src_memory_tests_file-path.test__13.ts",
+      "sourceCount": 3,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Hardcoded Literal": 3
+      },
+      "smells": [
+        "Hardcoded Literal"
+      ]
+    },
+    {
+      "file": "modelcontextprotocol__servers__src_memory_tests_file-path.test__14.ts",
+      "sourceCount": 3,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Hardcoded Literal": 3
+      },
+      "smells": [
+        "Hardcoded Literal"
+      ]
+    },
+    {
+      "file": "modelcontextprotocol__servers__src_everything_tests_server.test__0.ts",
+      "sourceCount": 3,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Assertion Roulette": 3
+      },
+      "smells": [
+        "Assertion Roulette"
+      ]
+    },
+    {
+      "file": "modelcontextprotocol__servers__src_everything_tests_server.test__1.ts",
+      "sourceCount": 3,
+      "requiredVotes": 2,
+      "smellVotes": {},
+      "smells": []
+    },
+    {
+      "file": "modelcontextprotocol__servers__src_everything_tests_server.test__2.ts",
+      "sourceCount": 3,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Assertion Roulette": 3
+      },
+      "smells": [
+        "Assertion Roulette"
+      ]
+    },
+    {
+      "file": "modelcontextprotocol__servers__src_everything_tests_server.test__3.ts",
+      "sourceCount": 3,
+      "requiredVotes": 2,
+      "smellVotes": {},
+      "smells": []
+    },
+    {
+      "file": "modelcontextprotocol__servers__src_everything_tests_server.test__4.ts",
+      "sourceCount": 3,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Assertion Roulette": 3
+      },
+      "smells": [
+        "Assertion Roulette"
+      ]
+    },
+    {
+      "file": "modelcontextprotocol__servers__src_everything_tests_prompts.test__0.ts",
+      "sourceCount": 3,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Hardcoded Literal": 3
+      },
+      "smells": [
+        "Hardcoded Literal"
+      ]
+    },
+    {
+      "file": "modelcontextprotocol__servers__src_everything_tests_prompts.test__1.ts",
+      "sourceCount": 3,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Hardcoded Literal": 3
+      },
+      "smells": [
+        "Hardcoded Literal"
+      ]
+    },
+    {
+      "file": "modelcontextprotocol__servers__src_everything_tests_prompts.test__2.ts",
+      "sourceCount": 3,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Hardcoded Literal": 3
+      },
+      "smells": [
+        "Hardcoded Literal"
+      ]
+    },
+    {
+      "file": "modelcontextprotocol__servers__src_everything_tests_prompts.test__3.ts",
+      "sourceCount": 3,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Assertion Roulette": 3,
+        "Hardcoded Literal": 3
+      },
+      "smells": [
+        "Assertion Roulette",
+        "Hardcoded Literal"
+      ]
+    },
+    {
+      "file": "modelcontextprotocol__servers__src_everything_tests_prompts.test__4.ts",
+      "sourceCount": 3,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Hardcoded Literal": 3
+      },
+      "smells": [
+        "Hardcoded Literal"
+      ]
+    },
+    {
+      "file": "modelcontextprotocol__servers__src_everything_tests_prompts.test__5.ts",
+      "sourceCount": 3,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Assertion Roulette": 3,
+        "Eager Test": 3,
+        "Hardcoded Literal": 3
+      },
+      "smells": [
+        "Assertion Roulette",
+        "Eager Test",
+        "Hardcoded Literal"
+      ]
+    },
+    {
+      "file": "modelcontextprotocol__servers__src_everything_tests_prompts.test__6.ts",
+      "sourceCount": 3,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Assertion Roulette": 3,
+        "Hardcoded Literal": 3
+      },
+      "smells": [
+        "Assertion Roulette",
+        "Hardcoded Literal"
+      ]
+    },
+    {
+      "file": "modelcontextprotocol__servers__src_everything_tests_prompts.test__7.ts",
+      "sourceCount": 3,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Assertion Roulette": 3,
+        "Hardcoded Literal": 3
+      },
+      "smells": [
+        "Assertion Roulette",
+        "Hardcoded Literal"
+      ]
+    },
+    {
+      "file": "modelcontextprotocol__servers__src_everything_tests_prompts.test__8.ts",
+      "sourceCount": 3,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Hardcoded Literal": 3
+      },
+      "smells": [
+        "Hardcoded Literal"
+      ]
+    },
+    {
+      "file": "modelcontextprotocol__servers__src_everything_tests_prompts.test__9.ts",
+      "sourceCount": 3,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Assertion Roulette": 3,
+        "Hardcoded Literal": 3
+      },
+      "smells": [
+        "Assertion Roulette",
+        "Hardcoded Literal"
+      ]
+    },
+    {
+      "file": "modelcontextprotocol__servers__src_everything_tests_prompts.test__10.ts",
+      "sourceCount": 3,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Assertion Roulette": 3,
+        "Eager Test": 1,
+        "Hardcoded Literal": 3
+      },
+      "smells": [
+        "Assertion Roulette",
+        "Hardcoded Literal"
+      ]
+    },
+    {
+      "file": "modelcontextprotocol__servers__src_everything_tests_resources.test__0.ts",
+      "sourceCount": 3,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Assertion Roulette": 3,
+        "Magic Number": 1
+      },
+      "smells": [
+        "Assertion Roulette"
+      ]
+    },
+    {
+      "file": "modelcontextprotocol__servers__src_everything_tests_resources.test__1.ts",
+      "sourceCount": 3,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Magic Number": 2
+      },
+      "smells": [
+        "Magic Number"
+      ]
+    },
+    {
+      "file": "modelcontextprotocol__servers__src_everything_tests_resources.test__2.ts",
+      "sourceCount": 3,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Assertion Roulette": 3,
+        "Magic Number": 3
+      },
+      "smells": [
+        "Assertion Roulette",
+        "Magic Number"
+      ]
+    },
+    {
+      "file": "modelcontextprotocol__servers__src_everything_tests_resources.test__3.ts",
+      "sourceCount": 3,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Magic Number": 2
+      },
+      "smells": [
+        "Magic Number"
+      ]
+    },
+    {
+      "file": "modelcontextprotocol__servers__src_everything_tests_resources.test__4.ts",
+      "sourceCount": 3,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Assertion Roulette": 3,
+        "Magic Number": 3
+      },
+      "smells": [
+        "Assertion Roulette",
+        "Magic Number"
+      ]
+    },
+    {
+      "file": "modelcontextprotocol__servers__src_everything_tests_resources.test__5.ts",
+      "sourceCount": 3,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Assertion Roulette": 3,
+        "Hardcoded Literal": 1,
+        "Magic Number": 2
+      },
+      "smells": [
+        "Assertion Roulette",
+        "Magic Number"
+      ]
+    },
+    {
+      "file": "modelcontextprotocol__servers__src_everything_tests_resources.test__6.ts",
+      "sourceCount": 3,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Magic Number": 2
+      },
+      "smells": [
+        "Magic Number"
+      ]
+    },
+    {
+      "file": "modelcontextprotocol__servers__src_everything_tests_resources.test__7.ts",
+      "sourceCount": 3,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Assertion Roulette": 3,
+        "Magic Number": 2
+      },
+      "smells": [
+        "Assertion Roulette",
+        "Magic Number"
+      ]
+    },
+    {
+      "file": "modelcontextprotocol__servers__src_everything_tests_resources.test__8.ts",
+      "sourceCount": 3,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Assertion Roulette": 3,
+        "Hardcoded Literal": 2,
+        "Magic Number": 2
+      },
+      "smells": [
+        "Assertion Roulette",
+        "Hardcoded Literal",
+        "Magic Number"
+      ]
+    },
+    {
+      "file": "modelcontextprotocol__servers__src_everything_tests_resources.test__9.ts",
+      "sourceCount": 3,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Assertion Roulette": 3
+      },
+      "smells": [
+        "Assertion Roulette"
+      ]
+    },
+    {
+      "file": "modelcontextprotocol__servers__src_everything_tests_resources.test__10.ts",
+      "sourceCount": 3,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Assertion Roulette": 3,
+        "Hardcoded Literal": 3
+      },
+      "smells": [
+        "Assertion Roulette",
+        "Hardcoded Literal"
+      ]
+    },
+    {
+      "file": "modelcontextprotocol__servers__src_everything_tests_resources.test__11.ts",
+      "sourceCount": 3,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Assertion Roulette": 3
+      },
+      "smells": [
+        "Assertion Roulette"
+      ]
+    },
+    {
+      "file": "modelcontextprotocol__servers__src_everything_tests_resources.test__12.ts",
+      "sourceCount": 3,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Assertion Roulette": 3,
+        "Hardcoded Literal": 3
+      },
+      "smells": [
+        "Assertion Roulette",
+        "Hardcoded Literal"
+      ]
+    },
+    {
+      "file": "modelcontextprotocol__servers__src_everything_tests_resources.test__13.ts",
+      "sourceCount": 3,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Assertion Roulette": 3,
+        "Hardcoded Literal": 3
+      },
+      "smells": [
+        "Assertion Roulette",
+        "Hardcoded Literal"
+      ]
+    },
+    {
+      "file": "modelcontextprotocol__servers__src_everything_tests_resources.test__14.ts",
+      "sourceCount": 3,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Assertion Roulette": 3,
+        "Hardcoded Literal": 3
+      },
+      "smells": [
+        "Assertion Roulette",
+        "Hardcoded Literal"
+      ]
+    },
+    {
+      "file": "modelcontextprotocol__servers__src_everything_tests_resources.test__15.ts",
+      "sourceCount": 3,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Assertion Roulette": 3,
+        "Eager Test": 2,
+        "Hardcoded Literal": 2
+      },
+      "smells": [
+        "Assertion Roulette",
+        "Eager Test",
+        "Hardcoded Literal"
+      ]
+    },
+    {
+      "file": "modelcontextprotocol__servers__src_everything_tests_resources.test__16.ts",
+      "sourceCount": 3,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Hardcoded Literal": 3
+      },
+      "smells": [
+        "Hardcoded Literal"
+      ]
+    },
+    {
+      "file": "modelcontextprotocol__servers__src_everything_tests_resources.test__17.ts",
+      "sourceCount": 3,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Assertion Roulette": 3,
+        "Hardcoded Literal": 3
+      },
+      "smells": [
+        "Assertion Roulette",
+        "Hardcoded Literal"
+      ]
+    },
+    {
+      "file": "modelcontextprotocol__servers__src_everything_tests_resources.test__18.ts",
+      "sourceCount": 3,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Assertion Roulette": 3,
+        "Eager Test": 2,
+        "Hardcoded Literal": 3
+      },
+      "smells": [
+        "Assertion Roulette",
+        "Eager Test",
+        "Hardcoded Literal"
+      ]
+    },
+    {
+      "file": "modelcontextprotocol__servers__src_everything_tests_resources.test__19.ts",
+      "sourceCount": 3,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Assertion Roulette": 3,
+        "Hardcoded Literal": 3
+      },
+      "smells": [
+        "Assertion Roulette",
+        "Hardcoded Literal"
+      ]
+    },
+    {
+      "file": "modelcontextprotocol__servers__src_everything_tests_resources.test__20.ts",
+      "sourceCount": 3,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Assertion Roulette": 3,
+        "Hardcoded Literal": 3
+      },
+      "smells": [
+        "Assertion Roulette",
+        "Hardcoded Literal"
+      ]
+    },
+    {
+      "file": "modelcontextprotocol__servers__src_everything_tests_resources.test__21.ts",
+      "sourceCount": 3,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Mystery Guest": 2,
+        "Resource Optimism": 1
+      },
+      "smells": [
+        "Mystery Guest"
+      ]
+    },
+    {
+      "file": "modelcontextprotocol__servers__src_everything_tests_resources.test__22.ts",
+      "sourceCount": 3,
+      "requiredVotes": 2,
+      "smellVotes": {},
+      "smells": []
+    },
+    {
+      "file": "modelcontextprotocol__servers__src_everything_tests_resources.test__23.ts",
+      "sourceCount": 3,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Assertion Roulette": 3,
+        "General Fixture": 1,
+        "Mystery Guest": 1
+      },
+      "smells": [
+        "Assertion Roulette"
+      ]
+    },
+    {
+      "file": "modelcontextprotocol__servers__src_everything_tests_resources.test__24.ts",
+      "sourceCount": 3,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "General Fixture": 1,
+        "Hardcoded Literal": 3,
+        "Mystery Guest": 1
+      },
+      "smells": [
+        "Hardcoded Literal"
+      ]
+    },
+    {
+      "file": "modelcontextprotocol__servers__src_everything_tests_resources.test__25.ts",
+      "sourceCount": 3,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Eager Test": 1,
+        "Hardcoded Literal": 3
+      },
+      "smells": [
+        "Hardcoded Literal"
+      ]
+    },
+    {
+      "file": "modelcontextprotocol__servers__src_memory_tests_server-version.test__0.ts",
+      "sourceCount": 3,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Assertion Roulette": 3,
+        "Mystery Guest": 1,
+        "Resource Optimism": 1
+      },
+      "smells": [
+        "Assertion Roulette"
+      ]
+    },
+    {
+      "file": "modelcontextprotocol__servers__src_memory_tests_server-version.test__1.ts",
+      "sourceCount": 3,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Assertion Roulette": 3,
+        "Hardcoded Literal": 3,
+        "Mystery Guest": 2,
+        "Resource Optimism": 1
+      },
+      "smells": [
+        "Assertion Roulette",
+        "Hardcoded Literal",
+        "Mystery Guest"
+      ]
+    },
+    {
+      "file": "modelcontextprotocol__servers__src_sequentialthinking_tests_lib.test__0.ts",
+      "sourceCount": 3,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Assertion Roulette": 3,
+        "Hardcoded Literal": 3,
+        "Magic Number": 2
+      },
+      "smells": [
+        "Assertion Roulette",
+        "Hardcoded Literal",
+        "Magic Number"
+      ]
+    },
+    {
+      "file": "modelcontextprotocol__servers__src_sequentialthinking_tests_lib.test__1.ts",
+      "sourceCount": 3,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Assertion Roulette": 3,
+        "Hardcoded Literal": 3,
+        "Magic Number": 2
+      },
+      "smells": [
+        "Assertion Roulette",
+        "Hardcoded Literal",
+        "Magic Number"
+      ]
+    },
+    {
+      "file": "modelcontextprotocol__servers__src_sequentialthinking_tests_lib.test__2.ts",
+      "sourceCount": 3,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Assertion Roulette": 3,
+        "Hardcoded Literal": 3,
+        "Magic Number": 2
+      },
+      "smells": [
+        "Assertion Roulette",
+        "Hardcoded Literal",
+        "Magic Number"
+      ]
+    },
+    {
+      "file": "modelcontextprotocol__servers__src_sequentialthinking_tests_lib.test__3.ts",
+      "sourceCount": 3,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Hardcoded Literal": 3,
+        "Magic Number": 2
+      },
+      "smells": [
+        "Hardcoded Literal",
+        "Magic Number"
+      ]
+    },
+    {
+      "file": "modelcontextprotocol__servers__src_sequentialthinking_tests_lib.test__4.ts",
+      "sourceCount": 3,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Assertion Roulette": 3,
+        "Hardcoded Literal": 3,
+        "Magic Number": 2
+      },
+      "smells": [
+        "Assertion Roulette",
+        "Hardcoded Literal",
+        "Magic Number"
+      ]
+    },
+    {
+      "file": "modelcontextprotocol__servers__src_sequentialthinking_tests_lib.test__5.ts",
+      "sourceCount": 3,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Assertion Roulette": 3,
+        "Hardcoded Literal": 3,
+        "Magic Number": 2
+      },
+      "smells": [
+        "Assertion Roulette",
+        "Hardcoded Literal",
+        "Magic Number"
+      ]
+    },
+    {
+      "file": "modelcontextprotocol__servers__src_sequentialthinking_tests_lib.test__6.ts",
+      "sourceCount": 3,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Hardcoded Literal": 2,
+        "Magic Number": 3
+      },
+      "smells": [
+        "Hardcoded Literal",
+        "Magic Number"
+      ]
+    },
+    {
+      "file": "modelcontextprotocol__servers__src_sequentialthinking_tests_lib.test__7.ts",
+      "sourceCount": 3,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Assertion Roulette": 3,
+        "Hardcoded Literal": 3,
+        "Magic Number": 2
+      },
+      "smells": [
+        "Assertion Roulette",
+        "Hardcoded Literal",
+        "Magic Number"
+      ]
+    },
+    {
+      "file": "modelcontextprotocol__servers__src_sequentialthinking_tests_lib.test__8.ts",
+      "sourceCount": 3,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Hardcoded Literal": 3,
+        "Magic Number": 2
+      },
+      "smells": [
+        "Hardcoded Literal",
+        "Magic Number"
+      ]
+    },
+    {
+      "file": "modelcontextprotocol__servers__src_sequentialthinking_tests_lib.test__9.ts",
+      "sourceCount": 3,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Assertion Roulette": 3,
+        "Hardcoded Literal": 3,
+        "Magic Number": 2
+      },
+      "smells": [
+        "Assertion Roulette",
+        "Hardcoded Literal",
+        "Magic Number"
+      ]
+    },
+    {
+      "file": "modelcontextprotocol__servers__src_sequentialthinking_tests_lib.test__10.ts",
+      "sourceCount": 3,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Hardcoded Literal": 3,
+        "Magic Number": 2
+      },
+      "smells": [
+        "Hardcoded Literal",
+        "Magic Number"
+      ]
+    },
+    {
+      "file": "modelcontextprotocol__servers__src_sequentialthinking_tests_lib.test__11.ts",
+      "sourceCount": 3,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "General Fixture": 1,
+        "Hardcoded Literal": 3,
+        "Magic Number": 2,
+        "Mystery Guest": 1
+      },
+      "smells": [
+        "Hardcoded Literal",
+        "Magic Number"
+      ]
+    },
+    {
+      "file": "modelcontextprotocol__servers__src_sequentialthinking_tests_lib.test__12.ts",
+      "sourceCount": 3,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "General Fixture": 1,
+        "Hardcoded Literal": 3,
+        "Magic Number": 2,
+        "Mystery Guest": 1
+      },
+      "smells": [
+        "Hardcoded Literal",
+        "Magic Number"
+      ]
+    },
+    {
+      "file": "modelcontextprotocol__servers__src_sequentialthinking_tests_lib.test__13.ts",
+      "sourceCount": 3,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "General Fixture": 1,
+        "Hardcoded Literal": 3,
+        "Magic Number": 2,
+        "Mystery Guest": 1
+      },
+      "smells": [
+        "Hardcoded Literal",
+        "Magic Number"
+      ]
+    },
+    {
+      "file": "modelcontextprotocol__servers__src_filesystem_tests_roots-utils.test__0.ts",
+      "sourceCount": 3,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Assertion Roulette": 3,
+        "Eager Test": 2,
+        "General Fixture": 1,
+        "Hardcoded Literal": 3,
+        "Magic Number": 1,
+        "Mystery Guest": 1
+      },
+      "smells": [
+        "Assertion Roulette",
+        "Eager Test",
+        "Hardcoded Literal"
+      ]
+    },
+    {
+      "file": "modelcontextprotocol__servers__src_filesystem_tests_roots-utils.test__1.ts",
+      "sourceCount": 3,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Assertion Roulette": 3,
+        "General Fixture": 2,
+        "Hardcoded Literal": 3,
+        "Mystery Guest": 1
+      },
+      "smells": [
+        "Assertion Roulette",
+        "General Fixture",
+        "Hardcoded Literal"
+      ]
+    },
+    {
+      "file": "modelcontextprotocol__servers__src_filesystem_tests_roots-utils.test__2.ts",
+      "sourceCount": 3,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Assertion Roulette": 3,
+        "Eager Test": 1,
+        "General Fixture": 1,
+        "Hardcoded Literal": 3,
+        "Magic Number": 1,
+        "Mystery Guest": 1
+      },
+      "smells": [
+        "Assertion Roulette",
+        "Hardcoded Literal"
+      ]
+    },
+    {
+      "file": "modelcontextprotocol__servers__src_memory_tests_delete-reporting.test__0.ts",
+      "sourceCount": 3,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Hardcoded Literal": 3,
+        "Mystery Guest": 1
+      },
+      "smells": [
+        "Hardcoded Literal"
+      ]
+    },
+    {
+      "file": "modelcontextprotocol__servers__src_memory_tests_delete-reporting.test__1.ts",
+      "sourceCount": 3,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Assertion Roulette": 3,
+        "Hardcoded Literal": 3,
+        "Magic Number": 1,
+        "Mystery Guest": 1
+      },
+      "smells": [
+        "Assertion Roulette",
+        "Hardcoded Literal"
+      ]
+    },
+    {
+      "file": "modelcontextprotocol__servers__src_memory_tests_delete-reporting.test__2.ts",
+      "sourceCount": 3,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Assertion Roulette": 3,
+        "Eager Test": 1,
+        "Hardcoded Literal": 3,
+        "Magic Number": 1,
+        "Mystery Guest": 1
+      },
+      "smells": [
+        "Assertion Roulette",
+        "Hardcoded Literal"
+      ]
+    },
+    {
+      "file": "modelcontextprotocol__servers__src_memory_tests_delete-reporting.test__3.ts",
+      "sourceCount": 3,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Hardcoded Literal": 3,
+        "Magic Number": 1,
+        "Mystery Guest": 1
+      },
+      "smells": [
+        "Hardcoded Literal"
+      ]
+    },
+    {
+      "file": "modelcontextprotocol__servers__src_memory_tests_delete-reporting.test__4.ts",
+      "sourceCount": 3,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Hardcoded Literal": 3,
+        "Magic Number": 1,
+        "Mystery Guest": 1
+      },
+      "smells": [
+        "Hardcoded Literal"
+      ]
+    },
+    {
+      "file": "modelcontextprotocol__servers__src_memory_tests_delete-reporting.test__5.ts",
+      "sourceCount": 3,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Hardcoded Literal": 3,
+        "Magic Number": 1,
+        "Mystery Guest": 1
+      },
+      "smells": [
+        "Hardcoded Literal"
+      ]
+    },
+    {
+      "file": "modelcontextprotocol__servers__src_memory_tests_delete-reporting.test__6.ts",
+      "sourceCount": 3,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Assertion Roulette": 3,
+        "Hardcoded Literal": 3,
+        "Magic Number": 1,
+        "Mystery Guest": 1
+      },
+      "smells": [
+        "Assertion Roulette",
+        "Hardcoded Literal"
+      ]
+    },
+    {
+      "file": "modelcontextprotocol__servers__src_everything_tests_registrations.test__0.ts",
+      "sourceCount": 3,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Assertion Roulette": 3,
+        "Eager Test": 1,
+        "Hardcoded Literal": 1,
+        "Magic Number": 1
+      },
+      "smells": [
+        "Assertion Roulette"
+      ]
+    },
+    {
+      "file": "modelcontextprotocol__servers__src_everything_tests_registrations.test__1.ts",
+      "sourceCount": 3,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Assertion Roulette": 3,
+        "Eager Test": 1,
+        "Hardcoded Literal": 1,
+        "Magic Number": 1
+      },
+      "smells": [
+        "Assertion Roulette"
+      ]
+    },
+    {
+      "file": "modelcontextprotocol__servers__src_everything_tests_registrations.test__2.ts",
+      "sourceCount": 3,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Hardcoded Literal": 1
+      },
+      "smells": []
+    },
+    {
+      "file": "modelcontextprotocol__servers__src_everything_tests_registrations.test__3.ts",
+      "sourceCount": 3,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Assertion Roulette": 3,
+        "Eager Test": 1,
+        "Hardcoded Literal": 1,
+        "Magic Number": 1
+      },
+      "smells": [
+        "Assertion Roulette"
+      ]
+    },
+    {
+      "file": "modelcontextprotocol__servers__src_everything_tests_registrations.test__4.ts",
+      "sourceCount": 3,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Assertion Roulette": 3,
+        "Hardcoded Literal": 1
+      },
+      "smells": [
+        "Assertion Roulette"
+      ]
+    },
+    {
+      "file": "modelcontextprotocol__servers__src_everything_tests_registrations.test__5.ts",
+      "sourceCount": 3,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Assertion Roulette": 3,
+        "Hardcoded Literal": 1,
+        "Magic Number": 1,
+        "Mystery Guest": 3,
+        "Resource Optimism": 1
+      },
+      "smells": [
+        "Assertion Roulette",
+        "Mystery Guest"
+      ]
+    },
+    {
+      "file": "modelcontextprotocol__servers__src_filesystem_tests_unicode-paths.test__0.ts",
+      "sourceCount": 3,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Hardcoded Literal": 3,
+        "Mystery Guest": 1,
+        "Resource Optimism": 1
+      },
+      "smells": [
+        "Hardcoded Literal"
+      ]
+    },
+    {
+      "file": "modelcontextprotocol__servers__src_filesystem_tests_unicode-paths.test__1.ts",
+      "sourceCount": 3,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Hardcoded Literal": 3,
+        "Mystery Guest": 1,
+        "Resource Optimism": 1
+      },
+      "smells": [
+        "Hardcoded Literal"
+      ]
+    },
+    {
+      "file": "modelcontextprotocol__servers__src_filesystem_tests_unicode-paths.test__2.ts",
+      "sourceCount": 3,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Hardcoded Literal": 3,
+        "Mystery Guest": 1,
+        "Resource Optimism": 1
+      },
+      "smells": [
+        "Hardcoded Literal"
+      ]
+    },
+    {
+      "file": "modelcontextprotocol__servers__src_filesystem_tests_nested-parents.test__0.ts",
+      "sourceCount": 3,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "General Fixture": 1,
+        "Hardcoded Literal": 2,
+        "Mystery Guest": 1
+      },
+      "smells": [
+        "Hardcoded Literal"
+      ]
+    },
+    {
+      "file": "modelcontextprotocol__servers__src_filesystem_tests_nested-parents.test__1.ts",
+      "sourceCount": 3,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Hardcoded Literal": 3,
+        "Mystery Guest": 1,
+        "Resource Optimism": 1
+      },
+      "smells": [
+        "Hardcoded Literal"
+      ]
+    },
+    {
+      "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_diff-analyzer.test__0.ts",
+      "sourceCount": 3,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Hardcoded Literal": 3
+      },
+      "smells": [
+        "Hardcoded Literal"
+      ]
+    },
+    {
+      "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_diff-analyzer.test__1.ts",
+      "sourceCount": 3,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Hardcoded Literal": 3
+      },
+      "smells": [
+        "Hardcoded Literal"
+      ]
+    },
+    {
+      "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_diff-analyzer.test__2.ts",
+      "sourceCount": 3,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Assertion Roulette": 3,
+        "Hardcoded Literal": 3
+      },
+      "smells": [
+        "Assertion Roulette",
+        "Hardcoded Literal"
+      ]
+    },
+    {
+      "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_diff-analyzer.test__3.ts",
+      "sourceCount": 3,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Hardcoded Literal": 3
+      },
+      "smells": [
+        "Hardcoded Literal"
+      ]
+    },
+    {
+      "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_diff-analyzer.test__4.ts",
+      "sourceCount": 3,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Hardcoded Literal": 3,
+        "Magic Number": 1
+      },
+      "smells": [
+        "Hardcoded Literal"
+      ]
+    },
+    {
+      "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_diff-analyzer.test__5.ts",
+      "sourceCount": 3,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Assertion Roulette": 3,
+        "Hardcoded Literal": 3,
+        "Magic Number": 1
+      },
+      "smells": [
+        "Assertion Roulette",
+        "Hardcoded Literal"
+      ]
+    },
+    {
+      "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_diff-analyzer.test__6.ts",
+      "sourceCount": 3,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Assertion Roulette": 3,
+        "Hardcoded Literal": 1,
+        "Magic Number": 1
+      },
+      "smells": [
+        "Assertion Roulette"
+      ]
+    },
+    {
+      "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_diff-analyzer.test__7.ts",
+      "sourceCount": 3,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Conditional Test Logic": 3,
+        "Hardcoded Literal": 3
+      },
+      "smells": [
+        "Conditional Test Logic",
+        "Hardcoded Literal"
+      ]
+    },
+    {
+      "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_diff-analyzer.test__8.ts",
+      "sourceCount": 3,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Assertion Roulette": 3,
+        "Hardcoded Literal": 3
+      },
+      "smells": [
+        "Assertion Roulette",
+        "Hardcoded Literal"
+      ]
+    },
+    {
+      "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_diff-analyzer.test__9.ts",
+      "sourceCount": 3,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Hardcoded Literal": 3
+      },
+      "smells": [
+        "Hardcoded Literal"
+      ]
+    },
+    {
+      "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_diff-analyzer.test__10.ts",
+      "sourceCount": 3,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Hardcoded Literal": 3
+      },
+      "smells": [
+        "Hardcoded Literal"
+      ]
+    },
+    {
+      "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_explain-builder.test__0.ts",
+      "sourceCount": 3,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Hardcoded Literal": 3
+      },
+      "smells": [
+        "Hardcoded Literal"
+      ]
+    },
+    {
+      "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_explain-builder.test__1.ts",
+      "sourceCount": 3,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Assertion Roulette": 3,
+        "Hardcoded Literal": 3
+      },
+      "smells": [
+        "Assertion Roulette",
+        "Hardcoded Literal"
+      ]
+    },
+    {
+      "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_explain-builder.test__2.ts",
+      "sourceCount": 3,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Hardcoded Literal": 3
+      },
+      "smells": [
+        "Hardcoded Literal"
+      ]
+    },
+    {
+      "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_explain-builder.test__3.ts",
+      "sourceCount": 3,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Hardcoded Literal": 3
+      },
+      "smells": [
+        "Hardcoded Literal"
+      ]
+    },
+    {
+      "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_explain-builder.test__4.ts",
+      "sourceCount": 3,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Hardcoded Literal": 3
+      },
+      "smells": [
+        "Hardcoded Literal"
+      ]
+    },
+    {
+      "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_explain-builder.test__5.ts",
+      "sourceCount": 3,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Hardcoded Literal": 3
+      },
+      "smells": [
+        "Hardcoded Literal"
+      ]
+    },
+    {
+      "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_explain-builder.test__6.ts",
+      "sourceCount": 3,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Assertion Roulette": 3,
+        "Hardcoded Literal": 3
+      },
+      "smells": [
+        "Assertion Roulette",
+        "Hardcoded Literal"
+      ]
+    },
+    {
+      "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_explain-builder.test__7.ts",
+      "sourceCount": 3,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Hardcoded Literal": 3
+      },
+      "smells": [
+        "Hardcoded Literal"
+      ]
+    },
+    {
+      "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_onboard-builder.test__0.ts",
+      "sourceCount": 3,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Assertion Roulette": 3,
+        "Hardcoded Literal": 1
+      },
+      "smells": [
+        "Assertion Roulette"
+      ]
+    },
+    {
+      "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_onboard-builder.test__1.ts",
+      "sourceCount": 3,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Assertion Roulette": 3,
+        "Hardcoded Literal": 1
+      },
+      "smells": [
+        "Assertion Roulette"
+      ]
+    },
+    {
+      "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_onboard-builder.test__2.ts",
+      "sourceCount": 3,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Assertion Roulette": 3,
+        "Hardcoded Literal": 1
+      },
+      "smells": [
+        "Assertion Roulette"
+      ]
+    },
+    {
+      "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_onboard-builder.test__3.ts",
+      "sourceCount": 3,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Assertion Roulette": 3,
+        "Hardcoded Literal": 1
+      },
+      "smells": [
+        "Assertion Roulette"
+      ]
+    },
+    {
+      "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_onboard-builder.test__4.ts",
+      "sourceCount": 3,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Assertion Roulette": 3,
+        "Hardcoded Literal": 1
+      },
+      "smells": [
+        "Assertion Roulette"
+      ]
+    },
+    {
+      "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_onboard-builder.test__5.ts",
+      "sourceCount": 2,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Assertion Roulette": 2
+      },
+      "smells": [
+        "Assertion Roulette"
+      ]
+    },
+    {
+      "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_onboard-builder.test__6.ts",
+      "sourceCount": 2,
+      "requiredVotes": 2,
+      "smellVotes": {},
+      "smells": []
+    },
+    {
+      "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_onboard-builder.test__7.ts",
+      "sourceCount": 2,
+      "requiredVotes": 2,
+      "smellVotes": {},
+      "smells": []
+    },
+    {
+      "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_onboard-builder.test__8.ts",
+      "sourceCount": 2,
+      "requiredVotes": 2,
+      "smellVotes": {},
+      "smells": []
+    },
+    {
+      "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_staleness.test__0.ts",
+      "sourceCount": 2,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Hardcoded Literal": 2
+      },
+      "smells": [
+        "Hardcoded Literal"
+      ]
+    },
+    {
+      "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_staleness.test__1.ts",
+      "sourceCount": 2,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Hardcoded Literal": 2
+      },
+      "smells": [
+        "Hardcoded Literal"
+      ]
+    },
+    {
+      "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_staleness.test__2.ts",
+      "sourceCount": 2,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Hardcoded Literal": 2
+      },
+      "smells": [
+        "Hardcoded Literal"
+      ]
+    },
+    {
+      "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_staleness.test__3.ts",
+      "sourceCount": 2,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Hardcoded Literal": 2
+      },
+      "smells": [
+        "Hardcoded Literal"
+      ]
+    },
+    {
+      "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_staleness.test__4.ts",
+      "sourceCount": 2,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Hardcoded Literal": 2
+      },
+      "smells": [
+        "Hardcoded Literal"
+      ]
+    },
+    {
+      "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_staleness.test__5.ts",
+      "sourceCount": 2,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Assertion Roulette": 2,
+        "Hardcoded Literal": 2
+      },
+      "smells": [
+        "Assertion Roulette",
+        "Hardcoded Literal"
+      ]
+    },
+    {
+      "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_staleness.test__6.ts",
+      "sourceCount": 2,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Assertion Roulette": 2,
+        "Hardcoded Literal": 2
+      },
+      "smells": [
+        "Assertion Roulette",
+        "Hardcoded Literal"
+      ]
+    },
+    {
+      "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_staleness.test__7.ts",
+      "sourceCount": 2,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Assertion Roulette": 2,
+        "Hardcoded Literal": 2
+      },
+      "smells": [
+        "Assertion Roulette",
+        "Hardcoded Literal"
+      ]
+    },
+    {
+      "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_figma_tests_merge.test__0.ts",
+      "sourceCount": 2,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Assertion Roulette": 2
+      },
+      "smells": [
+        "Assertion Roulette"
+      ]
+    },
+    {
+      "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_figma_tests_merge.test__1.ts",
+      "sourceCount": 2,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Assertion Roulette": 2,
+        "Eager Test": 1,
+        "Hardcoded Literal": 1
+      },
+      "smells": [
+        "Assertion Roulette"
+      ]
+    },
+    {
+      "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_figma_tests_merge.test__2.ts",
+      "sourceCount": 2,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Assertion Roulette": 2,
+        "Hardcoded Literal": 2
+      },
+      "smells": [
+        "Assertion Roulette",
+        "Hardcoded Literal"
+      ]
+    },
+    {
+      "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_figma_tests_merge.test__3.ts",
+      "sourceCount": 2,
+      "requiredVotes": 2,
+      "smellVotes": {},
+      "smells": []
+    },
+    {
+      "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_figma_tests_tokens.test__0.ts",
+      "sourceCount": 2,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Assertion Roulette": 2,
+        "Hardcoded Literal": 1
+      },
+      "smells": [
+        "Assertion Roulette"
+      ]
+    },
+    {
+      "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_figma_tests_tokens.test__1.ts",
+      "sourceCount": 2,
+      "requiredVotes": 2,
+      "smellVotes": {},
+      "smells": []
+    },
+    {
+      "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_figma_tests_tokens.test__2.ts",
+      "sourceCount": 2,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Assertion Roulette": 2,
+        "Hardcoded Literal": 2
+      },
+      "smells": [
+        "Assertion Roulette",
+        "Hardcoded Literal"
+      ]
+    },
+    {
+      "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_figma_tests_tokens.test__3.ts",
+      "sourceCount": 2,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Hardcoded Literal": 2
+      },
+      "smells": [
+        "Hardcoded Literal"
+      ]
+    },
+    {
+      "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_context-builder.test__0.ts",
+      "sourceCount": 2,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Assertion Roulette": 2,
+        "Hardcoded Literal": 2
+      },
+      "smells": [
+        "Assertion Roulette",
+        "Hardcoded Literal"
+      ]
+    },
+    {
+      "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_context-builder.test__1.ts",
+      "sourceCount": 2,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Assertion Roulette": 2,
+        "Hardcoded Literal": 2
+      },
+      "smells": [
+        "Assertion Roulette",
+        "Hardcoded Literal"
+      ]
+    },
+    {
+      "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_context-builder.test__2.ts",
+      "sourceCount": 2,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Assertion Roulette": 2,
+        "Hardcoded Literal": 2
+      },
+      "smells": [
+        "Assertion Roulette",
+        "Hardcoded Literal"
+      ]
+    },
+    {
+      "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_context-builder.test__3.ts",
+      "sourceCount": 2,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Hardcoded Literal": 2
+      },
+      "smells": [
+        "Hardcoded Literal"
+      ]
+    },
+    {
+      "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_context-builder.test__4.ts",
+      "sourceCount": 2,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Assertion Roulette": 2,
+        "Hardcoded Literal": 2
+      },
+      "smells": [
+        "Assertion Roulette",
+        "Hardcoded Literal"
+      ]
+    },
+    {
+      "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_context-builder.test__5.ts",
+      "sourceCount": 2,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Hardcoded Literal": 2
+      },
+      "smells": [
+        "Hardcoded Literal"
+      ]
+    },
+    {
+      "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_context-builder.test__6.ts",
+      "sourceCount": 2,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Assertion Roulette": 2,
+        "Hardcoded Literal": 2,
+        "Magic Number": 2
+      },
+      "smells": [
+        "Assertion Roulette",
+        "Hardcoded Literal",
+        "Magic Number"
+      ]
+    },
+    {
+      "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_context-builder.test__7.ts",
+      "sourceCount": 2,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Assertion Roulette": 2,
+        "Hardcoded Literal": 2
+      },
+      "smells": [
+        "Assertion Roulette",
+        "Hardcoded Literal"
+      ]
+    },
+    {
+      "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_context-builder.test__8.ts",
+      "sourceCount": 2,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Assertion Roulette": 2,
+        "Hardcoded Literal": 2
+      },
+      "smells": [
+        "Assertion Roulette",
+        "Hardcoded Literal"
+      ]
+    },
+    {
+      "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_context-builder.test__9.ts",
+      "sourceCount": 2,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Assertion Roulette": 2,
+        "Hardcoded Literal": 2
+      },
+      "smells": [
+        "Assertion Roulette",
+        "Hardcoded Literal"
+      ]
+    },
+    {
+      "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_context-builder.test__10.ts",
+      "sourceCount": 2,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Assertion Roulette": 2,
+        "Hardcoded Literal": 2
+      },
+      "smells": [
+        "Assertion Roulette",
+        "Hardcoded Literal"
+      ]
+    },
+    {
+      "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_context-builder.test__11.ts",
+      "sourceCount": 2,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Hardcoded Literal": 2
+      },
+      "smells": [
+        "Hardcoded Literal"
+      ]
+    },
+    {
+      "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_context-builder.test__12.ts",
+      "sourceCount": 2,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Hardcoded Literal": 2
+      },
+      "smells": [
+        "Hardcoded Literal"
+      ]
+    },
+    {
+      "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_context-builder.test__13.ts",
+      "sourceCount": 2,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Assertion Roulette": 2,
+        "Hardcoded Literal": 2
+      },
+      "smells": [
+        "Assertion Roulette",
+        "Hardcoded Literal"
+      ]
+    },
+    {
+      "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_domain-types.test__0.ts",
+      "sourceCount": 2,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Assertion Roulette": 2
+      },
+      "smells": [
+        "Assertion Roulette"
+      ]
+    },
+    {
+      "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_domain-types.test__1.ts",
+      "sourceCount": 2,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Assertion Roulette": 2
+      },
+      "smells": [
+        "Assertion Roulette"
+      ]
+    },
+    {
+      "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_domain-types.test__2.ts",
+      "sourceCount": 2,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Assertion Roulette": 2
+      },
+      "smells": [
+        "Assertion Roulette"
+      ]
+    },
+    {
+      "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_domain-types.test__3.ts",
+      "sourceCount": 2,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Hardcoded Literal": 2,
+        "Magic Number": 2
+      },
+      "smells": [
+        "Hardcoded Literal",
+        "Magic Number"
+      ]
+    },
+    {
+      "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_domain-types.test__4.ts",
+      "sourceCount": 2,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Assertion Roulette": 2,
+        "Hardcoded Literal": 2
+      },
+      "smells": [
+        "Assertion Roulette",
+        "Hardcoded Literal"
+      ]
+    },
+    {
+      "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_domain-types.test__5.ts",
+      "sourceCount": 2,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Assertion Roulette": 2,
+        "Hardcoded Literal": 2
+      },
+      "smells": [
+        "Assertion Roulette",
+        "Hardcoded Literal"
+      ]
+    },
+    {
+      "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_domain-types.test__6.ts",
+      "sourceCount": 2,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Assertion Roulette": 2,
+        "Hardcoded Literal": 2
+      },
+      "smells": [
+        "Assertion Roulette",
+        "Hardcoded Literal"
+      ]
+    },
+    {
+      "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_config-schema.test__0.ts",
+      "sourceCount": 2,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Hardcoded Literal": 2
+      },
+      "smells": [
+        "Hardcoded Literal"
+      ]
+    },
+    {
+      "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_config-schema.test__1.ts",
+      "sourceCount": 2,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Hardcoded Literal": 2
+      },
+      "smells": [
+        "Hardcoded Literal"
+      ]
+    },
+    {
+      "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_config-schema.test__2.ts",
+      "sourceCount": 2,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Hardcoded Literal": 2
+      },
+      "smells": [
+        "Hardcoded Literal"
+      ]
+    },
+    {
+      "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_config-schema.test__3.ts",
+      "sourceCount": 2,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Magic Number": 2
+      },
+      "smells": [
+        "Magic Number"
+      ]
+    },
+    {
+      "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_config-schema.test__4.ts",
+      "sourceCount": 2,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Hardcoded Literal": 2
+      },
+      "smells": [
+        "Hardcoded Literal"
+      ]
+    },
+    {
+      "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_config-schema.test__5.ts",
+      "sourceCount": 2,
+      "requiredVotes": 2,
+      "smellVotes": {},
+      "smells": []
+    },
+    {
+      "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_config-schema.test__6.ts",
+      "sourceCount": 2,
+      "requiredVotes": 2,
+      "smellVotes": {},
+      "smells": []
+    },
+    {
+      "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_config-schema.test__7.ts",
+      "sourceCount": 2,
+      "requiredVotes": 2,
+      "smellVotes": {
+        "Hardcoded Literal": 2
+      },
+      "smells": [
+        "Hardcoded Literal"
+      ]
+    },
+    {
+      "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_config-schema.test__8.ts",
+      "sourceCount": 2,
+      "requiredVotes": 2,
+      "smellVotes": {},
+      "smells": []
+    }
+  ]
+}

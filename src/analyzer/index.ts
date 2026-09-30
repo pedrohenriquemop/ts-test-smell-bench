@@ -9,7 +9,7 @@ import type { ModelProvider } from "./provider.ts";
 import { createProvider } from "./providers/index.ts";
 
 function parseReferenceFile(
-  filePath: string
+  filePath: string,
 ): Array<{ file: string; smells: string[] }> {
   const content = fs.readFileSync(filePath, "utf-8");
   const lines = content.split("\n");
@@ -38,7 +38,7 @@ export interface RunAnalyzerOptions {
   promptConfig?: PromptConfig;
   onPrompt?: (
     message: string,
-    type: "clean" | "next-batch" | "resume"
+    type: "clean" | "next-batch" | "resume",
   ) => Promise<boolean>;
 }
 
@@ -52,7 +52,7 @@ const GOLDSET_BATCH_SIZE = 50;
 function formatGoldset(
   entries: GoldsetEntry[],
   providerName: string,
-  batchCount: number
+  batchCount: number,
 ): string {
   const lines = [`[LLM="${providerName}"]`];
 
@@ -62,7 +62,7 @@ function formatGoldset(
       lines.push(
         `File Name: ${entry.file} - Smells: ${
           entry.smells.length > 0 ? entry.smells.join(", ") : "None"
-        }`
+        }`,
       );
     }
   }
@@ -99,26 +99,26 @@ export async function generateGoldset({
   if (fs.existsSync(goldsetPath)) {
     const existingEntries = parseReferenceFile(goldsetPath);
     const matchesCurrentTests = existingEntries.every(
-      (entry, index) => entry.file === testsToLabel[index]?.file
+      (entry, index) => entry.file === testsToLabel[index]?.file,
     );
     if (!matchesCurrentTests) {
       const clean = onPrompt
         ? await onPrompt(
             "The existing goldset is for different tests. Delete it and start over?",
-            "clean"
+            "clean",
           )
         : true;
       if (!clean) throw new Error("Goldset generation cancelled by user.");
     } else {
       const completedBatches = Math.floor(
-        existingEntries.length / GOLDSET_BATCH_SIZE
+        existingEntries.length / GOLDSET_BATCH_SIZE,
       );
 
       if (completedBatches > 0) {
         const resume = onPrompt
           ? await onPrompt(
               `Found ${completedBatches} completed goldset batch(es). Resume from batch ${completedBatches + 1}?`,
-              "resume"
+              "resume",
             )
           : true;
 
@@ -127,14 +127,14 @@ export async function generateGoldset({
             0,
             Math.min(
               completedBatches * GOLDSET_BATCH_SIZE,
-              testsToLabel.length
-            )
+              testsToLabel.length,
+            ),
           );
         } else {
           const clean = onPrompt
             ? await onPrompt(
                 "Delete the existing goldset and start over?",
-                "clean"
+                "clean",
               )
             : true;
           if (!clean) throw new Error("Goldset generation cancelled by user.");
@@ -143,7 +143,7 @@ export async function generateGoldset({
         const clean = onPrompt
           ? await onPrompt(
               "Found an incomplete goldset. Delete it and start over?",
-              "clean"
+              "clean",
             )
           : true;
         if (!clean) throw new Error("Goldset generation cancelled by user.");
@@ -164,11 +164,11 @@ export async function generateGoldset({
   ) {
     const batch = testsToLabel.slice(
       batchStart,
-      batchStart + GOLDSET_BATCH_SIZE
+      batchStart + GOLDSET_BATCH_SIZE,
     );
     const batchNumber = Math.floor(batchStart / GOLDSET_BATCH_SIZE) + 1;
     console.log(
-      `\n=== Generating goldset batch ${batchNumber}/${totalBatches} ===`
+      `\n=== Generating goldset batch ${batchNumber}/${totalBatches} ===`,
     );
 
     for (const manifestEntry of batch) {
@@ -181,18 +181,16 @@ export async function generateGoldset({
       const contextSnippets: string[] = [];
       if (includeCtx) {
         if (manifestEntry.imports?.length > 0) {
-          contextSnippets.push(
-            `IMPORTS:\n${manifestEntry.imports.join("\n")}`
-          );
+          contextSnippets.push(`IMPORTS:\n${manifestEntry.imports.join("\n")}`);
         }
         if (manifestEntry.describeContext) {
           contextSnippets.push(
-            `DESCRIBE BLOCK:\n${manifestEntry.describeContext}`
+            `DESCRIBE BLOCK:\n${manifestEntry.describeContext}`,
           );
         }
         if (manifestEntry.setupVariables?.length > 0) {
           contextSnippets.push(
-            `SETUP VARIABLES: ${manifestEntry.setupVariables.join(", ")}`
+            `SETUP VARIABLES: ${manifestEntry.setupVariables.join(", ")}`,
           );
         }
       }
@@ -200,7 +198,7 @@ export async function generateGoldset({
       console.log(`  Labeling ${manifestEntry.file}...`);
       const response = await provider.analyze({
         testCode,
-        metadata: includeAst ? manifestEntry.metrics ?? {} : {},
+        metadata: includeAst ? (manifestEntry.metrics ?? {}) : {},
         systemPrompt,
         contextSnippets:
           contextSnippets.length > 0 ? contextSnippets : undefined,
@@ -211,18 +209,18 @@ export async function generateGoldset({
     fs.mkdirSync(path.dirname(goldsetPath), { recursive: true });
     fs.writeFileSync(
       goldsetPath,
-      formatGoldset(entries, provider.name, totalBatches)
+      formatGoldset(entries, provider.name, totalBatches),
     );
     console.log(`💾 Goldset batch ${batchNumber} saved to ${goldsetPath}`);
 
     if (batchStart + GOLDSET_BATCH_SIZE < testsToLabel.length && onPrompt) {
       const proceed = await onPrompt(
         `Goldset batch ${batchNumber} finished. Generate the next batch?`,
-        "next-batch"
+        "next-batch",
       );
       if (!proceed) {
         console.log(
-          "Goldset generation stopped. You can resume from this batch later."
+          "Goldset generation stopped. You can resume from this batch later.",
         );
         return;
       }
@@ -242,7 +240,7 @@ export async function runAnalyzer({
   const manifestPath = path.resolve(process.cwd(), config.manifestPath);
   const referencePath = path.resolve(
     process.cwd(),
-    config.referenceResultsPath
+    config.referenceResultsPath,
   );
   const testsDir = path.resolve(process.cwd(), config.testsDir);
   const outputDir = path.resolve(process.cwd(), config.outputDir);
@@ -257,7 +255,7 @@ export async function runAnalyzer({
   const versionSuffix = config.version ? `_v${config.version}` : "";
   const outputPath = path.join(
     outputDir,
-    `comparison_results${versionSuffix}.json`
+    `comparison_results${versionSuffix}.json`,
   );
 
   let comparisonResults: any[] = [];
@@ -267,7 +265,24 @@ export async function runAnalyzer({
     try {
       const existingData = JSON.parse(fs.readFileSync(outputPath, "utf-8"));
       if (Array.isArray(existingData) && existingData.length > 0) {
-        testsCompleted = existingData.length;
+        // Discard any errored records from previous failed runs
+        const firstErrorIdx = existingData.findIndex(
+          (d: any) => d.modelStatus === "error" || d.error,
+        );
+        const cleanExistingData =
+          firstErrorIdx >= 0
+            ? existingData.slice(0, firstErrorIdx)
+            : existingData;
+
+        if (cleanExistingData.length < existingData.length) {
+          console.warn(
+            `⚠️ Discarding ${
+              existingData.length - cleanExistingData.length
+            } errored/incomplete test records from previous run.`,
+          );
+        }
+
+        testsCompleted = cleanExistingData.length;
         const completedBatches = Math.floor(testsCompleted / 50);
         testsCompleted = completedBatches * 50; // Align to batch boundary
 
@@ -278,20 +293,20 @@ export async function runAnalyzer({
               `Found existing results (${
                 completedBatches * 50
               } tests completed). Resume from batch ${completedBatches + 1}?`,
-              "resume"
+              "resume",
             );
           } else {
             resume = true;
           }
 
           if (resume) {
-            comparisonResults = existingData.slice(0, testsCompleted);
+            comparisonResults = cleanExistingData.slice(0, testsCompleted);
           } else {
             let clean = true;
             if (onPrompt) {
               clean = await onPrompt(
                 `Clean previous results and start over?`,
-                "clean"
+                "clean",
               );
             }
             if (!clean) {
@@ -301,12 +316,12 @@ export async function runAnalyzer({
             fs.unlinkSync(outputPath);
           }
         } else {
-          // Less than 1 full batch completed. We must clean and start over.
+          // Less than 1 full batch completed. Clean and start over.
           let clean = true;
           if (onPrompt) {
             clean = await onPrompt(
               "Found incomplete results. Clean them and start over?",
-              "clean"
+              "clean",
             );
           }
           if (!clean) {
@@ -341,6 +356,16 @@ export async function runAnalyzer({
     return;
   }
 
+  if (provider.healthCheck) {
+    console.log(`Checking health of provider "${provider.name}"...`);
+    const isHealthy = await provider.healthCheck();
+    if (!isHealthy) {
+      throw new Error(
+        `Health check failed for "${provider.name}". Please verify the model is pulled and the server is running.`,
+      );
+    }
+  }
+
   const batchSize = 50;
   const numBatches = Math.ceil(testsToRun.length / batchSize);
 
@@ -348,17 +373,20 @@ export async function runAnalyzer({
     includeCtx ? "ON" : "OFF"
   }`;
   console.log(
-    `Starting analysis with "${provider.name}" for ${testsToRun.length} remaining tests in ${numBatches} batches (${ablationLabel})...`
+    `Starting analysis with "${provider.name}" for ${testsToRun.length} remaining tests in ${numBatches} batches (${ablationLabel})...`,
   );
 
   let currentIndex = 0;
+  let consecutiveErrors = 0;
+  const MAX_CONSECUTIVE_ERRORS = 3;
 
   for (let batchIdx = 0; batchIdx < numBatches; batchIdx++) {
     const currentBatch = testsToRun.slice(
       currentIndex,
-      currentIndex + batchSize
+      currentIndex + batchSize,
     );
     console.log(`\n=== Starting Batch ${batchIdx + 1} of ${numBatches} ===`);
+    const batchErrors: Array<{ file: string; error: any }> = [];
 
     for (let i = 0; i < currentBatch.length; i++) {
       const testInfo = currentBatch[i];
@@ -367,7 +395,7 @@ export async function runAnalyzer({
       const overallIndex = testsCompleted + currentIndex + i + 1;
 
       console.log(
-        `\n[${overallIndex}/${totalTestsToRun}] Processing ${fileName}...`
+        `\n[${overallIndex}/${totalTestsToRun}] Processing ${fileName}...`,
       );
 
       const testFilePath = path.join(testsDir, fileName);
@@ -381,20 +409,20 @@ export async function runAnalyzer({
 
       if (!manifestEntry?.metrics) {
         console.warn(
-          `Warning: Metadata for ${fileName} not found. Running without AST metrics.`
+          `Warning: Metadata for ${fileName} not found. Running without AST metrics.`,
         );
       }
 
-      const metadata = includeAst ? manifestEntry?.metrics ?? {} : {};
+      const metadata = includeAst ? (manifestEntry?.metrics ?? {}) : {};
       const contextSnippets: string[] = [];
 
-      if (includeCtx) {
+      if (includeCtx && manifestEntry) {
         if (manifestEntry.imports && manifestEntry.imports.length > 0) {
           contextSnippets.push(`IMPORTS:\n${manifestEntry.imports.join("\n")}`);
         }
         if (manifestEntry.describeContext) {
           contextSnippets.push(
-            `DESCRIBE BLOCK:\n${manifestEntry.describeContext}`
+            `DESCRIBE BLOCK:\n${manifestEntry.describeContext}`,
           );
         }
         if (
@@ -402,19 +430,66 @@ export async function runAnalyzer({
           manifestEntry.setupVariables.length > 0
         ) {
           contextSnippets.push(
-            `SETUP VARIABLES: ${manifestEntry.setupVariables.join(", ")}`
+            `SETUP VARIABLES: ${manifestEntry.setupVariables.join(", ")}`,
           );
         }
       }
 
-      try {
-        const response = await provider.analyze({
-          testCode,
-          metadata,
-          systemPrompt,
-          contextSnippets:
-            contextSnippets.length > 0 ? contextSnippets : undefined,
+      let response = null;
+      let lastError: any = null;
+      const maxRetries = 1;
+
+      for (let attempt = 0; attempt <= maxRetries; attempt++) {
+        try {
+          response = await provider.analyze({
+            testCode,
+            metadata,
+            systemPrompt,
+            contextSnippets:
+              contextSnippets.length > 0 ? contextSnippets : undefined,
+          });
+          lastError = null;
+          break;
+        } catch (error) {
+          lastError = error;
+          if (attempt < maxRetries) {
+            const backoffMs = (attempt + 1) * 1000;
+            console.warn(
+              `  ⚠️ Attempt ${attempt + 1} failed for ${fileName}. Retrying in ${backoffMs}ms...`,
+            );
+            await new Promise((resolve) => setTimeout(resolve, backoffMs));
+          }
+        }
+      }
+
+      if (lastError || !response) {
+        consecutiveErrors++;
+        const errorMsg =
+          lastError instanceof Error ? lastError.message : String(lastError);
+        console.error(`  ✖ Error running analysis for ${fileName}:`, errorMsg);
+
+        comparisonResults.push({
+          file: fileName,
+          referenceSmells,
+          modelSmells: [],
+          modelName: provider.name,
+          modelStatus: "error",
+          error: errorMsg,
         });
+
+        batchErrors.push({ file: fileName, error: lastError });
+
+        if (consecutiveErrors >= MAX_CONSECUTIVE_ERRORS) {
+          fs.writeFileSync(
+            outputPath,
+            JSON.stringify(comparisonResults, null, 2),
+          );
+          throw new Error(
+            `Analysis aborted after ${MAX_CONSECUTIVE_ERRORS} consecutive failures with "${provider.name}". Latest error: ${errorMsg}`,
+          );
+        }
+      } else {
+        consecutiveErrors = 0;
 
         const status =
           response.smells.length > 0 || response.justification
@@ -436,33 +511,38 @@ export async function runAnalyzer({
         comparisonResults.push(result);
 
         console.log(
-          `  Reference Smells: ${referenceSmells.join(", ") || "None"}`
+          `  Reference Smells: ${referenceSmells.join(", ") || "None"}`,
         );
         if (status === "success") {
           console.log(
-            `  Model Smells:     ${response.smells.join(", ") || "None"}`
+            `  Model Smells:     ${response.smells.join(", ") || "None"}`,
           );
         } else {
           console.log(`  Model Smells:     [Invalid Format]`);
         }
         console.log(`  Latency:          ${response.latencyMs}ms`);
-      } catch (error) {
-        console.error(`Error running analysis for ${fileName}:`, error);
-        comparisonResults.push({
-          file: fileName,
-          referenceSmells,
-          modelSmells: [],
-          modelName: provider.name,
-          modelStatus: "error",
-          error: String(error),
-        });
       }
     }
 
     // Save intermediate results after each batch
     fs.writeFileSync(outputPath, JSON.stringify(comparisonResults, null, 2));
+
+    if (batchErrors.length > 0) {
+      console.error(
+        `\n❌ Batch ${batchIdx + 1} finished with ${batchErrors.length} error(s).`,
+      );
+      const firstErr = batchErrors[0];
+      const firstErrMsg =
+        firstErr.error instanceof Error
+          ? firstErr.error.message
+          : String(firstErr.error);
+      throw new Error(
+        `Batch ${batchIdx + 1} failed: ${batchErrors.length} test(s) encountered errors during analysis. First error on ${firstErr.file}: ${firstErrMsg}`,
+      );
+    }
+
     console.log(
-      `\n💾 Batch ${batchIdx + 1} completed and saved to ${outputPath}`
+      `\n💾 Batch ${batchIdx + 1} completed and saved to ${outputPath}`,
     );
     currentIndex += batchSize;
 
@@ -471,7 +551,7 @@ export async function runAnalyzer({
       if (onPrompt) {
         const proceed = await onPrompt(
           `Batch ${batchIdx + 1} finished. Proceed to next batch?`,
-          "next-batch"
+          "next-batch",
         );
         if (!proceed) {
           throw new Error("Pipeline stopped by user after batch completion.");

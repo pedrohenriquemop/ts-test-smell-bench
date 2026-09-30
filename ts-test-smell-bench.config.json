@@ -19,9 +19,9 @@
   },
   "models": [
     {
-      "id": "llama3-local",
+      "id": "llama3.1-8b",
       "provider": "ollama",
-      "model": "llama3",
+      "model": "llama3.1:8b",
       "baseUrl": "http://localhost:11434/api/generate",
       "temperature": 0.0
     },

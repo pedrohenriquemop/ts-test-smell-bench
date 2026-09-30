@@ -87,15 +87,43 @@ export class OllamaProvider implements ModelProvider {
 
     const start = Date.now();
 
-    const response = await axios.post(this.config.baseUrl, {
-      model: this.config.model,
-      prompt,
-      system: req.systemPrompt,
-      stream: false,
-      options: {
-        temperature: this.config.temperature,
-      },
-    });
+    let response;
+    try {
+      response = await axios.post(
+        this.config.baseUrl,
+        {
+          model: this.config.model,
+          prompt,
+          system: req.systemPrompt,
+          stream: false,
+          options: {
+            temperature: this.config.temperature,
+          },
+        },
+        { timeout: 120_000 },
+      );
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        if (error.response?.status === 404) {
+          const detail =
+            error.response?.data?.error ||
+            `model "${this.config.model}" not found or endpoint 404`;
+          throw new Error(
+            `Ollama request failed (HTTP 404): ${detail}. Run "ollama pull ${this.config.model}" or verify your baseUrl (${this.config.baseUrl}).`,
+          );
+        }
+        if (error.code === "ECONNREFUSED") {
+          throw new Error(
+            `Could not connect to Ollama at ${this.config.baseUrl}. Please ensure the Ollama service is running.`,
+          );
+        }
+        const detail = error.response?.data?.error || error.message;
+        throw new Error(
+          `Ollama request failed for model "${this.config.model}" (HTTP ${error.response?.status ?? error.code}): ${detail}`,
+        );
+      }
+      throw error;
+    }
 
     const latencyMs = Date.now() - start;
     const rawText: string = response.data?.response ?? "";
