@@ -9,10 +9,11 @@ interface Props {
   stages: {
     mine: boolean;
     prepare: boolean;
-    analyze: boolean;
-    evaluate: boolean;
-    mergeGoldset: boolean;
     humanEvaluation: boolean;
+    analyze: boolean;
+    mergeGoldset: boolean;
+    evaluate: boolean;
+    generateMetrics: boolean;
   };
   onExit: () => void;
 }
@@ -105,6 +106,13 @@ export const ResultsScreen: React.FC<Props> = ({ config, stages, onExit }) => {
         </Box>
       )}
 
+      {stages.analyze && (
+        <Box marginBottom={1}>
+          <Text color="cyan">✓ Prepare Gold Set:</Text>
+          <Text color="white"> Gold set generated and saved to {config.analyzer.referenceResultsPath}</Text>
+        </Box>
+      )}
+
       {stages.mergeGoldset && (
         <Box marginBottom={1}>
           <Text color="cyan">✓ Goldset Consensus:</Text>
@@ -112,10 +120,17 @@ export const ResultsScreen: React.FC<Props> = ({ config, stages, onExit }) => {
         </Box>
       )}
 
-      {(stages.analyze || stages.evaluate) && summary ? (
+      {stages.evaluate && (
+        <Box marginBottom={1}>
+          <Text color="cyan">✓ Evaluate Stage:</Text>
+          <Text color="white"> Model evaluations completed and saved to {config.analyzer.outputDir}</Text>
+        </Box>
+      )}
+
+      {stages.generateMetrics && summary ? (
         <Box flexDirection="column" marginBottom={1}>
           <Text bold color="cyan">
-            ✓ Evaluate Stage - Cross-Model F1 Score Summary:
+            ✓ Metrics & Analytics - Cross-Model F1 Score Summary:
           </Text>
           <Box flexDirection="column" marginY={1}>
             {Object.entries(summary).map(([smell, models]) => (
@@ -136,12 +151,12 @@ export const ResultsScreen: React.FC<Props> = ({ config, stages, onExit }) => {
             ))}
           </Box>
         </Box>
-      ) : stages.analyze || stages.evaluate ? (
+      ) : stages.generateMetrics ? (
         <Box marginBottom={1}>
-          <Text color="cyan">✓ Analyze/Evaluate Stage:</Text>
+          <Text color="cyan">✓ Metrics & Analytics Stage:</Text>
           <Text color="gray">
             {" "}
-            Detailed results saved to {config.analyzer.outputDir}
+            Detailed metrics and charts saved to {config.analyzer.outputDir}
           </Text>
         </Box>
       ) : null}

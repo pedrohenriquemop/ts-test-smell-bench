@@ -6,10 +6,11 @@ export interface TuiSettings {
   stages: {
     mine: boolean;
     prepare: boolean;
-    analyze: boolean;
-    evaluate: boolean;
-    mergeGoldset: boolean;
     humanEvaluation: boolean;
+    analyze: boolean;
+    mergeGoldset: boolean;
+    evaluate: boolean;
+    generateMetrics: boolean;
   };
 }
 
@@ -20,10 +21,11 @@ const defaultSettings = (): TuiSettings => ({
   stages: {
     mine: false,
     prepare: false,
-    analyze: false,
-    evaluate: false,
-    mergeGoldset: false,
     humanEvaluation: false,
+    analyze: false,
+    mergeGoldset: false,
+    evaluate: false,
+    generateMetrics: false,
   },
 });
 

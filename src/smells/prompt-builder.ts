@@ -21,7 +21,7 @@ import type { PromptConfig } from "../config/index.ts";
  */
 export function buildPromptForStrategy(
   smells: readonly SmellDescriptor[],
-  promptConfig?: PromptConfig
+  promptConfig?: PromptConfig,
 ): string {
   const strategy = promptConfig?.strategy ?? "standard";
 
@@ -53,6 +53,12 @@ export function buildSystemPrompt(smells: readonly SmellDescriptor[]): string {
   return `You are an expert Static Analysis & Software Quality Engine acting as a deterministic Oracular Classifier for TypeScript Test Smells.
 
 Your goal is to cross-reference the provided AST JSON metrics with the source code and classify the presence of Test Smells. You must replace human intuition with strict, cold algorithmic rules.
+### TEST FILE STRUCTURE & CONTEXT:
+Each test file provided is a self-contained skeletal TypeScript snippet with two layers:
+1. **Fixtures & Context Layer**: File-level imports, ancestor \`describe()\` wrappers, and setup hooks (\`beforeEach\`/\`beforeAll\`) containing shared variables. These provide the context required to evaluate fixture smells (such as General Fixture and Mystery Guest).
+2. **Target Test Layer**: The single unit test being evaluated is delimited between \`// ── TARGET TEST ──\` and \`// ── END TARGET TEST ──\`.
+
+Cross-reference the AST METADATA with the target test block and surrounding fixture context.
 
 ### THE VALID SMELLS & THEIR STRICT ALGORITHMIC TRIGGERS:
 
@@ -89,7 +95,7 @@ FILE: example.spec.ts - SMELLS: ${
  * 4. Adds a "confidence" qualifier to each smell decision
  */
 export function buildChainOfThoughtPrompt(
-  smells: readonly SmellDescriptor[]
+  smells: readonly SmellDescriptor[],
 ): string {
   const smellRules = smells
     .map((s, i) => `${i + 1}. ${s.promptSection}`)
@@ -140,7 +146,7 @@ Your full response must look like this:
 ${smells
   .map(
     (s) =>
-      `- ${s.displayName}: [MATCH/PASS] (confidence: HIGH/MEDIUM/LOW) — reason`
+      `- ${s.displayName}: [MATCH/PASS] (confidence: HIGH/MEDIUM/LOW) — reason`,
   )
   .join("\n")}
 

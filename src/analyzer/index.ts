@@ -283,16 +283,12 @@ export async function runAnalyzer({
         }
 
         testsCompleted = cleanExistingData.length;
-        const completedBatches = Math.floor(testsCompleted / 50);
-        testsCompleted = completedBatches * 50; // Align to batch boundary
 
-        if (completedBatches > 0) {
+        if (testsCompleted > 0) {
           let resume = true;
           if (onPrompt) {
             resume = await onPrompt(
-              `Found existing results (${
-                completedBatches * 50
-              } tests completed). Resume from batch ${completedBatches + 1}?`,
+              `Found existing progress (${testsCompleted} test(s) completed). Resume from test ${testsCompleted + 1}?`,
               "resume",
             );
           } else {
@@ -305,7 +301,7 @@ export async function runAnalyzer({
             let clean = true;
             if (onPrompt) {
               clean = await onPrompt(
-                `Clean previous results and start over?`,
+                `Delete previous progress and restart from the beginning?`,
                 "clean",
               );
             }
@@ -313,21 +309,11 @@ export async function runAnalyzer({
               throw new Error("Aborted by user.");
             }
             testsCompleted = 0;
-            fs.unlinkSync(outputPath);
+            comparisonResults = [];
+            if (fs.existsSync(outputPath)) {
+              fs.unlinkSync(outputPath);
+            }
           }
-        } else {
-          // Less than 1 full batch completed. Clean and start over.
-          let clean = true;
-          if (onPrompt) {
-            clean = await onPrompt(
-              "Found incomplete results. Clean them and start over?",
-              "clean",
-            );
-          }
-          if (!clean) {
-            throw new Error("Aborted by user.");
-          }
-          fs.unlinkSync(outputPath);
         }
       }
     } catch (error) {
@@ -509,6 +495,11 @@ export async function runAnalyzer({
         };
 
         comparisonResults.push(result);
+        // Persist immediately so progress is never lost if a crash occurs
+        fs.writeFileSync(
+          outputPath,
+          JSON.stringify(comparisonResults, null, 2),
+        );
 
         console.log(
           `  Reference Smells: ${referenceSmells.join(", ") || "None"}`,
@@ -525,6 +516,7 @@ export async function runAnalyzer({
     }
 
     // Save intermediate results after each batch
+    // Ensure final state of batch is saved
     fs.writeFileSync(outputPath, JSON.stringify(comparisonResults, null, 2));
 
     if (batchErrors.length > 0) {

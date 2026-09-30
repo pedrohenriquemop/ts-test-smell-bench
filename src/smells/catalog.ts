@@ -115,7 +115,9 @@ export const SMELL_CATALOG: readonly SmellDescriptor[] = [
     requiredMetrics: ["hardcodedLiteralCount"],
     promptSection: `Magic Number
    - TRIGGER: Raw, unexplained primitive numbers (e.g., \`42\`, \`86400\`, \`3.14\`) passed directly as behavioral inputs into SUT methods.
-   - FALSE-POSITIVE GUARD: Numbers used as expected output matchers (e.g., \`expect(count).toBe(0)\` or \`toBe(1)\`) are SAFE and must NOT be flagged as Magic Numbers.`,
+   - FALSE-POSITIVE GUARD: Numbers used as expected output matchers (e.g., \`expect(count).toBe(0)\` or \`toBe(1)\`) are SAFE and must NOT be flagged as Magic Numbers.,
+   - TRIGGER: Raw, unexplained primitive numbers (e.g., \`42\`, \`86400\`, \`3.14\`) passed directly as behavioral inputs or configuration values into SUT methods.
+   - FALSE-POSITIVE GUARD: Numbers used only as expected output values in assertions (e.g., \`expect(count).toBe(0)\`, \`toHaveLength(2)\`) or standard array indices/counters (\`0\`, \`1\`) are SAFE and must NOT be flagged.`,
   },
 
   {
@@ -126,7 +128,9 @@ export const SMELL_CATALOG: readonly SmellDescriptor[] = [
     requiredMetrics: ["hardcodedLiteralCount"],
     promptSection: `Hardcoded Literal
    - TRIGGER: Raw, unexplained domain strings (e.g., \`"SUPER_ADMIN"\`, \`"http://api.com"\`, \`"./temp.txt"\`) passed directly as behavioral inputs into SUT methods instead of using declared constants.
-   - FALSE-POSITIVE GUARD: Strings inside 'expect' matchers (e.g., \`expect(status).toBe("SUCCESS")\`) are SAFE.`,
+   - FALSE-POSITIVE GUARD: Strings inside 'expect' matchers (e.g., \`expect(status).toBe("SUCCESS")\`) are SAFE.,
+   - TRIGGER: Raw, unexplained domain/business strings (e.g., \`"SUPER_ADMIN"\`, \`"https://api.domain.com/v1"\`, \`"secret_key_123"\`) passed directly as behavioral inputs or state into SUT methods instead of using declared constants.
+   - FALSE-POSITIVE GUARD: Strings inside test titles (\`it("...")\`), strings used strictly as assertion expectations (e.g., \`expect(res).toBe("hello")\`), error message arguments, or standard property keys are SAFE and must NOT be flagged.`,
   },
 ] as const;
 

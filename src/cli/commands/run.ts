@@ -16,6 +16,7 @@ export const runCommand = new Command("run")
   .option("--skip-prepare", "Skip the prepare stage")
   .option("--skip-analyze", "Skip the analyze stage")
   .option("--skip-evaluate", "Skip the evaluate stage")
+  .option("--skip-metrics", "Skip the metrics generation stage")
   .option(
     "-m, --models <ids...>",
     "Specific model IDs to run (space separated). Defaults to all configured models.",
@@ -36,6 +37,7 @@ export const runCommand = new Command("run")
           prepare: !options.skipPrepare,
           analyze: !options.skipAnalyze,
           evaluate: !options.skipEvaluate,
+          generateMetrics: !options.skipMetrics,
         },
         modelIds: options.models,
         onStageStart: (stage, modelId) => {

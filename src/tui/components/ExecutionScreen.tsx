@@ -10,10 +10,11 @@ interface Props {
   stages: {
     mine: boolean;
     prepare: boolean;
-    analyze: boolean;
-    evaluate: boolean;
-    mergeGoldset: boolean;
     humanEvaluation: boolean;
+    analyze: boolean;
+    mergeGoldset: boolean;
+    evaluate: boolean;
+    generateMetrics: boolean;
   };
   onComplete: () => void;
   onError: (error: string) => void;
@@ -22,10 +23,11 @@ interface Props {
 const STAGE_DISPLAY_NAMES: Record<string, string> = {
   mine: "MINE",
   prepare: "PREPARE",
-  analyze: "PREPARE GOLD SET",
-  evaluate: "EVALUATE",
-  mergeGoldset: "MERGE GOLDSET RUNS",
   humanEvaluation: "GENERATE HUMAN EVALUATION",
+  analyze: "PREPARE GOLD SET",
+  mergeGoldset: "MERGE GOLDSET RUNS",
+  evaluate: "EVALUATE (RUN SLM)",
+  generateMetrics: "GENERATE METRICS & ANALYTICS",
 };
 
 function stageDisplayName(stage: string): string {

@@ -31,10 +31,11 @@ export const App: React.FC<Props> = ({ config, onExit }) => {
   const [stages, setStages] = useState({
     mine: false,
     prepare: false,
-    analyze: false,
-    evaluate: false,
-    mergeGoldset: false,
     humanEvaluation: false,
+    analyze: false,
+    mergeGoldset: false,
+    evaluate: false,
+    generateMetrics: false,
   });
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
 

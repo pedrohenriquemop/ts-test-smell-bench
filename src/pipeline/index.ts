@@ -26,10 +26,11 @@ export interface PipelineOptions {
   stages?: {
     mine?: boolean;
     prepare?: boolean;
-    analyze?: boolean;
-    evaluate?: boolean;
-    mergeGoldset?: boolean;
     humanEvaluation?: boolean;
+    analyze?: boolean;
+    mergeGoldset?: boolean;
+    evaluate?: boolean;
+    generateMetrics?: boolean;
   };
 
   /**
@@ -50,7 +51,7 @@ export interface PipelineOptions {
   /** Called when a prompt is required mid-execution. Returns true to proceed/resume, false to abort/restart. */
   onPrompt?: (
     message: string,
-    type: "clean" | "next-batch" | "resume"
+    type: "clean" | "next-batch" | "resume",
   ) => Promise<boolean>;
 }
 
@@ -61,10 +62,11 @@ export async function runPipeline(opts: PipelineOptions): Promise<void> {
   const stages = {
     mine: true,
     prepare: true,
-    analyze: true,
-    evaluate: true,
-    mergeGoldset: false,
     humanEvaluation: false,
+    analyze: true,
+    mergeGoldset: false,
+    evaluate: true,
+    generateMetrics: true,
     ...opts.stages,
   };
 
@@ -94,7 +96,7 @@ export async function runPipeline(opts: PipelineOptions): Promise<void> {
     try {
       prepareLlmLabelingDataset(
         config.dataset,
-        config.miner.outputDir || "tests"
+        config.miner.outputDir || "tests",
       );
       done("prepare");
     } catch (err) {
@@ -103,14 +105,26 @@ export async function runPipeline(opts: PipelineOptions): Promise<void> {
     }
   }
 
-  // ── 3. Analyze (per-model loop) ──────────────────────────────
+  // ── 3. Generate human-evaluation files ──────────────────────
+  if (stages.humanEvaluation) {
+    notify("humanEvaluation");
+    try {
+      generateHumanEvaluation();
+      done("humanEvaluation");
+    } catch (err) {
+      const cont = onStageError?.("humanEvaluation", err as Error);
+      if (!cont) throw err;
+    }
+  }
+
+  // ── 4. Analyze (Prepare Gold Set) ────────────────────────────
   if (stages.analyze) {
     const models = resolveModels(config, opts.modelIds).filter(
-      (model) => model.provider !== "ollama"
+      (model) => model.provider !== "ollama",
     );
     if (models.length !== 1) {
       throw new Error(
-        "Select exactly one cloud model to generate the shared goldset."
+        "Select exactly one cloud model to generate the shared goldset.",
       );
     }
     const smellIds = config.smells?.enabled ?? [];
@@ -118,8 +132,8 @@ export async function runPipeline(opts: PipelineOptions): Promise<void> {
     const promptConfig = config.prompt;
     const systemPrompt = buildPromptForStrategy(smells, promptConfig);
     const strategy = promptConfig?.strategy ?? "standard";
-    const astFlag = promptConfig?.includeAstMetrics ?? true ? "ast" : "noast";
-    const ctxFlag = promptConfig?.includeContext ?? true ? "ctx" : "noctx";
+    const astFlag = (promptConfig?.includeAstMetrics ?? true) ? "ast" : "noast";
+    const ctxFlag = (promptConfig?.includeContext ?? true) ? "ctx" : "noctx";
 
     for (const modelCfg of models) {
       notify("analyze", modelCfg.id);
@@ -135,7 +149,7 @@ export async function runPipeline(opts: PipelineOptions): Promise<void> {
         console.log(
           `  Smells (${smells.length}): ${smells
             .map((s) => s.displayName)
-            .join(", ")}`
+            .join(", ")}`,
         );
         console.log(`${"═".repeat(60)}\n`);
 
@@ -155,22 +169,33 @@ export async function runPipeline(opts: PipelineOptions): Promise<void> {
     }
   }
 
-  // ── 4. Evaluate (per-model loop) ─────────────────────────────
+  // ── 5. Merge independent goldset runs ───────────────────────
+  if (stages.mergeGoldset) {
+    notify("mergeGoldset");
+    try {
+      mergeGoldsetRuns();
+      done("mergeGoldset");
+    } catch (err) {
+      const cont = onStageError?.("mergeGoldset", err as Error);
+      if (!cont) throw err;
+    }
+  }
+
+  // ── 6. Evaluate (Run SLM inference) ─────────────────────────
   if (stages.evaluate) {
     const models = resolveModels(config, opts.modelIds).filter(
-      (model) => model.provider === "ollama"
+      (model) => model.provider === "ollama",
     );
 
-    // Rebuild the same ablation suffix used in the analyze stage
     const promptConfig = config.prompt;
     const strategy = promptConfig?.strategy ?? "standard";
-    const astFlag = promptConfig?.includeAstMetrics ?? true ? "ast" : "noast";
-    const ctxFlag = promptConfig?.includeContext ?? true ? "ctx" : "noctx";
+    const astFlag = (promptConfig?.includeAstMetrics ?? true) ? "ast" : "noast";
+    const ctxFlag = (promptConfig?.includeContext ?? true) ? "ctx" : "noctx";
     const setupSuffix = `${strategy}-${astFlag}-${ctxFlag}`;
     const smellIds = config.smells?.enabled ?? [];
     const systemPrompt = buildPromptForStrategy(
       resolveSmells(smellIds),
-      promptConfig
+      promptConfig,
     );
 
     for (const modelCfg of models) {
@@ -194,10 +219,43 @@ export async function runPipeline(opts: PipelineOptions): Promise<void> {
           promptConfig,
           onPrompt: opts.onPrompt,
         });
-        await evaluateResults(evalConfig);
         done("evaluate", modelTag);
       } catch (err) {
         const cont = onStageError?.("evaluate", err as Error, modelTag);
+        if (!cont) throw err;
+      }
+    }
+  }
+
+  // ── 7. Generate Metrics & Analytics ──────────────────────────
+  if (stages.generateMetrics) {
+    const models = resolveModels(config, opts.modelIds).filter(
+      (model) => model.provider === "ollama",
+    );
+
+    const promptConfig = config.prompt;
+    const strategy = promptConfig?.strategy ?? "standard";
+    const astFlag = (promptConfig?.includeAstMetrics ?? true) ? "ast" : "noast";
+    const ctxFlag = (promptConfig?.includeContext ?? true) ? "ctx" : "noctx";
+    const setupSuffix = `${strategy}-${astFlag}-${ctxFlag}`;
+
+    for (const modelCfg of models) {
+      const modelTag = `${modelCfg.id}__${setupSuffix}`;
+      notify("generateMetrics", modelTag);
+
+      try {
+        const evalConfig = {
+          ...config,
+          analyzer: {
+            ...config.analyzer,
+            version: modelTag,
+          },
+        };
+
+        await evaluateResults(evalConfig);
+        done("generateMetrics", modelTag);
+      } catch (err) {
+        const cont = onStageError?.("generateMetrics", err as Error, modelTag);
         if (!cont) throw err;
       }
     }
@@ -205,30 +263,6 @@ export async function runPipeline(opts: PipelineOptions): Promise<void> {
     // ── Cross-model summary ────────────────────────────────────
     if (models.length > 1) {
       generateCrossModelSummary(config, models, setupSuffix);
-    }
-  }
-
-  // ── 5. Merge independent goldset runs ───────────────────────
-  if (stages.mergeGoldset) {
-    notify("mergeGoldset");
-    try {
-      mergeGoldsetRuns();
-      done("mergeGoldset");
-    } catch (err) {
-      const cont = onStageError?.("mergeGoldset", err as Error);
-      if (!cont) throw err;
-    }
-  }
-
-  // ── 6. Generate human-evaluation files ──────────────────────
-  if (stages.humanEvaluation) {
-    notify("humanEvaluation");
-    try {
-      generateHumanEvaluation();
-      done("humanEvaluation");
-    } catch (err) {
-      const cont = onStageError?.("humanEvaluation", err as Error);
-      if (!cont) throw err;
     }
   }
 
@@ -244,7 +278,7 @@ function resolveModels(config: AppConfig, modelIds?: string[]): ModelConfig[] {
   const allModels = config.models ?? [];
   if (allModels.length === 0) {
     throw new Error(
-      'No models configured. Add a "models" array to your config file.'
+      'No models configured. Add a "models" array to your config file.',
     );
   }
 
@@ -267,7 +301,7 @@ function resolveModels(config: AppConfig, modelIds?: string[]): ModelConfig[] {
 function generateCrossModelSummary(
   config: AppConfig,
   models: ModelConfig[],
-  setupSuffix: string
+  setupSuffix: string,
 ): void {
   const outputDir = path.resolve(process.cwd(), config.analyzer.outputDir);
 
@@ -277,7 +311,7 @@ function generateCrossModelSummary(
     const modelTag = `${modelCfg.id}__${setupSuffix}`;
     const metricsPath = path.join(
       outputDir,
-      `evaluation_metrics_v${modelTag}.json`
+      `evaluation_metrics_v${modelTag}.json`,
     );
 
     if (!fs.existsSync(metricsPath)) {
@@ -286,7 +320,7 @@ function generateCrossModelSummary(
     }
 
     const metrics: Array<{ smell: string; f1: number }> = JSON.parse(
-      fs.readFileSync(metricsPath, "utf-8")
+      fs.readFileSync(metricsPath, "utf-8"),
     );
 
     for (const m of metrics) {

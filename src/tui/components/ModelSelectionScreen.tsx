@@ -49,7 +49,7 @@ export const ModelSelectionScreen: React.FC<Props> = ({
 
   // Determine which model sections to show based on selected stages
   const showLlmModels = stages.analyze;
-  const showSlmModels = stages.evaluate;
+  const showSlmModels = stages.evaluate || stages.generateMetrics;
 
   // Build the menu items dynamically
   const menuItems = useMemo(() => {
@@ -73,13 +73,13 @@ export const ModelSelectionScreen: React.FC<Props> = ({
     });
     items.push({
       type: "stage",
-      id: "analyze",
-      label: "Stage: Prepare Gold Set (Run LLM)",
+      id: "humanEvaluation",
+      label: "Stage: Generate Human Evaluation",
     });
     items.push({
       type: "stage",
-      id: "evaluate",
-      label: "Stage: Evaluate (Run SLM & Metrics)",
+      id: "analyze",
+      label: "Stage: Prepare Gold Set (Run LLM)",
     });
     items.push({
       type: "stage",
@@ -88,8 +88,13 @@ export const ModelSelectionScreen: React.FC<Props> = ({
     });
     items.push({
       type: "stage",
-      id: "humanEvaluation",
-      label: "Stage: Generate Human Evaluation",
+      id: "evaluate",
+      label: "Stage: Evaluate (Run SLMs)",
+    });
+    items.push({
+      type: "stage",
+      id: "generateMetrics",
+      label: "Stage: Generate Metrics & Analytics (Charts & Report)",
     });
 
     // ── LLM models (only when "Prepare Gold Set" is active) ───
@@ -109,12 +114,12 @@ export const ModelSelectionScreen: React.FC<Props> = ({
       }
     }
 
-    // ── SLM models (only when "Evaluate" is active) ───────────
+    // ── SLM models (when "Evaluate" or "Generate Metrics" is active) ────
     if (showSlmModels && slmModels.length > 0) {
       items.push({
         type: "separator",
         id: "sep-slm",
-        label: "── SLM Models (Evaluate) ──",
+        label: "── SLM Models (Evaluation) ──",
       });
       for (const m of slmModels) {
         items.push({
@@ -136,9 +141,14 @@ export const ModelSelectionScreen: React.FC<Props> = ({
   // Check if at least one relevant model is selected for the active stages
   const relevantModels = Array.from(selectedModels).filter((id) => {
     const model = models.find((m) => m.id === id);
-    return Boolean(model && ((stages.analyze && !isSlm(model)) || (stages.evaluate && isSlm(model))));
+    return Boolean(
+      model &&
+        ((stages.analyze && !isSlm(model)) ||
+          ((stages.evaluate || stages.generateMetrics) && isSlm(model))),
+    );
   });
-  const needsModels = stages.analyze || stages.evaluate;
+  const needsModels =
+    stages.analyze || stages.evaluate || stages.generateMetrics;
   const hasValidSelection = !needsModels || relevantModels.length > 0;
 
   useInput((input, key) => {

@@ -19,6 +19,9 @@ export interface OllamaProviderConfig {
 
   /** Sampling temperature override (sent per-request). */
   temperature?: number;
+
+  /** Max output tokens (num_predict in Ollama). @default 256 */
+  maxTokens?: number;
 }
 
 // ── Response parser ──────────────────────────────────────────────────
@@ -62,6 +65,7 @@ export class OllamaProvider implements ModelProvider {
       model: cfg.model,
       baseUrl: cfg.baseUrl ?? "http://localhost:11434/api/generate",
       temperature: cfg.temperature ?? 0.0,
+      maxTokens: cfg.maxTokens ?? 256,
     };
     this.name = `Ollama / ${this.config.model}`;
   }
@@ -70,20 +74,25 @@ export class OllamaProvider implements ModelProvider {
     const contextBlock =
       req.contextSnippets && req.contextSnippets.length > 0
         ? `\n    CONTEXT:\n${req.contextSnippets.map((s) => `    ${s}`).join("\n")}\n`
+          ? `\nCONTEXT (IMPORTS & FIXTURES):\n${req.contextSnippets.map((s) => `  ${s}`).join("\n")}\n`
+          : ""
         : "";
 
-    const prompt = `
-    Analyze the following TypeScript test:
-    
-    AST METADATA:
-    ${JSON.stringify(req.metadata, null, 2)}
-    ${contextBlock}
-    CODE:
-    ${req.testCode}
-    
-    Respond only in the following format:
-    FILE: [NAME] - SMELLS: [LIST] - JUSTIFICATION: [SHORT]
-  `;
+    const prompt = `Analyze the following TypeScript test file for Test Smells.
+
+CONTEXT & FILE STRUCTURE:
+- File imports and ancestor describe() blocks provide fixture context for the test.
+- The unit test to evaluate is located between "// ── TARGET TEST ──" and "// ── END TARGET TEST ──".
+- Cross-reference the AST METADATA with the target test code to detect all applicable smells.
+
+AST METADATA:
+${JSON.stringify(req.metadata, null, 2)}
+${contextBlock}
+TEST SOURCE:
+${req.testCode}
+
+Evaluate candidate smells against the target test and output:
+FILE: [NAME] - SMELLS: [LIST or None] - JUSTIFICATION: [SHORT]`;
 
     const start = Date.now();
 
@@ -98,6 +107,7 @@ export class OllamaProvider implements ModelProvider {
           stream: false,
           options: {
             temperature: this.config.temperature,
+            num_predict: this.config.maxTokens,
           },
         },
         { timeout: 120_000 },
