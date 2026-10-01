@@ -65,7 +65,7 @@ export class OllamaProvider implements ModelProvider {
       model: cfg.model,
       baseUrl: cfg.baseUrl ?? "http://localhost:11434/api/generate",
       temperature: cfg.temperature ?? 0.0,
-      maxTokens: cfg.maxTokens ?? 256,
+      maxTokens: cfg.maxTokens ?? 2048,
     };
     this.name = `Ollama / ${this.config.model}`;
   }
@@ -108,7 +108,7 @@ FILE: [NAME] - SMELLS: [LIST or None] - JUSTIFICATION: [SHORT]`;
             num_predict: this.config.maxTokens,
           },
         },
-        { timeout: 120_000 },
+        { timeout: 240_000 },
       );
     } catch (error) {
       if (axios.isAxiosError(error)) {
