@@ -73,9 +73,7 @@ export class OllamaProvider implements ModelProvider {
   async analyze(req: AnalysisRequest): Promise<AnalysisResponse> {
     const contextBlock =
       req.contextSnippets && req.contextSnippets.length > 0
-        ? `\n    CONTEXT:\n${req.contextSnippets.map((s) => `    ${s}`).join("\n")}\n`
-          ? `\nCONTEXT (IMPORTS & FIXTURES):\n${req.contextSnippets.map((s) => `  ${s}`).join("\n")}\n`
-          : ""
+        ? `\nCONTEXT (IMPORTS & FIXTURES):\n${req.contextSnippets.map((s) => `  ${s}`).join("\n")}\n`
         : "";
 
     const prompt = `Analyze the following TypeScript test file for Test Smells.
