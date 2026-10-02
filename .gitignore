@@ -2,7 +2,11 @@
 tests/
 node_modules/
 manifesto_tests.json
-out/
+out/*
+!out/analysis/
+out/analysis/*
+!out/analysis/evaluation_metrics*.json
+!out/analysis/comparison_results*.json
 ignore/
 # Temporary test files
 scratch/
