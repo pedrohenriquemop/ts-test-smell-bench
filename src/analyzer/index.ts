@@ -352,203 +352,140 @@ export async function runAnalyzer({
     }
   }
 
-  const batchSize = 50;
-  const numBatches = Math.ceil(testsToRun.length / batchSize);
-
   const ablationLabel = `AST=${includeAst ? "ON" : "OFF"}, Context=${
     includeCtx ? "ON" : "OFF"
   }`;
   console.log(
-    `Starting analysis with "${provider.name}" for ${testsToRun.length} remaining tests in ${numBatches} batches (${ablationLabel})...`,
+    `Starting analysis with "${provider.name}" for ${testsToRun.length} remaining tests (${ablationLabel})...`,
   );
 
-  let currentIndex = 0;
-  let consecutiveErrors = 0;
-  const MAX_CONSECUTIVE_ERRORS = 3;
-
-  for (let batchIdx = 0; batchIdx < numBatches; batchIdx++) {
-    const currentBatch = testsToRun.slice(
-      currentIndex,
-      currentIndex + batchSize,
-    );
-    console.log(`\n=== Starting Batch ${batchIdx + 1} of ${numBatches} ===`);
-    const batchErrors: Array<{ file: string; error: any }> = [];
-
-    for (let i = 0; i < currentBatch.length; i++) {
-      const testInfo = currentBatch[i];
-      const fileName = testInfo.file;
-      const referenceSmells = testInfo.smells;
-      const overallIndex = testsCompleted + currentIndex + i + 1;
-
-      console.log(
-        `\n[${overallIndex}/${totalTestsToRun}] Processing ${fileName}...`,
-      );
-
-      const testFilePath = path.join(testsDir, fileName);
-      if (!fs.existsSync(testFilePath)) {
-        console.warn(`Warning: Test file ${testFilePath} not found. Skipping.`);
-        continue;
-      }
-
-      const testCode = fs.readFileSync(testFilePath, "utf-8");
-      const manifestEntry = manifestMap.get(fileName);
-
-      if (!manifestEntry?.metrics) {
-        console.warn(
-          `Warning: Metadata for ${fileName} not found. Running without AST metrics.`,
-        );
-      }
-
-      const metadata = includeAst ? (manifestEntry?.metrics ?? {}) : {};
-      const contextSnippets: string[] = [];
-
-      if (includeCtx && manifestEntry) {
-        if (manifestEntry.imports && manifestEntry.imports.length > 0) {
-          contextSnippets.push(`IMPORTS:\n${manifestEntry.imports.join("\n")}`);
-        }
-        if (manifestEntry.describeContext) {
-          contextSnippets.push(
-            `DESCRIBE BLOCK:\n${manifestEntry.describeContext}`,
-          );
-        }
-        if (
-          manifestEntry.setupVariables &&
-          manifestEntry.setupVariables.length > 0
-        ) {
-          contextSnippets.push(
-            `SETUP VARIABLES: ${manifestEntry.setupVariables.join(", ")}`,
-          );
-        }
-      }
-
-      let response = null;
-      let lastError: any = null;
-      const maxRetries = 1;
-
-      for (let attempt = 0; attempt <= maxRetries; attempt++) {
-        try {
-          response = await provider.analyze({
-            testCode,
-            metadata,
-            systemPrompt,
-            contextSnippets:
-              contextSnippets.length > 0 ? contextSnippets : undefined,
-          });
-          lastError = null;
-          break;
-        } catch (error) {
-          lastError = error;
-          if (attempt < maxRetries) {
-            const backoffMs = (attempt + 1) * 1000;
-            console.warn(
-              `  ⚠️ Attempt ${attempt + 1} failed for ${fileName}. Retrying in ${backoffMs}ms...`,
-            );
-            await new Promise((resolve) => setTimeout(resolve, backoffMs));
-          }
-        }
-      }
-
-      if (lastError || !response) {
-        consecutiveErrors++;
-        const errorMsg =
-          lastError instanceof Error ? lastError.message : String(lastError);
-        console.error(`  ✖ Error running analysis for ${fileName}:`, errorMsg);
-
-        comparisonResults.push({
-          file: fileName,
-          referenceSmells,
-          modelSmells: [],
-          modelName: provider.name,
-          modelStatus: "error",
-          error: errorMsg,
-        });
-
-        batchErrors.push({ file: fileName, error: lastError });
-
-        if (consecutiveErrors >= MAX_CONSECUTIVE_ERRORS) {
-          fs.writeFileSync(
-            outputPath,
-            JSON.stringify(comparisonResults, null, 2),
-          );
-          throw new Error(
-            `Analysis aborted after ${MAX_CONSECUTIVE_ERRORS} consecutive failures with "${provider.name}". Latest error: ${errorMsg}`,
-          );
-        }
-      } else {
-        consecutiveErrors = 0;
-
-        const status =
-          response.smells.length > 0 || response.justification
-            ? "success"
-            : "invalid return";
-
-        const result = {
-          file: fileName,
-          referenceSmells,
-          modelSmells: response.smells,
-          modelName: response.modelName,
-          modelStatus: status,
-          modelJustification: response.justification,
-          latencyMs: response.latencyMs,
-          rawModelResponse: response.rawText,
-          tokenUsage: response.tokenUsage,
-        };
-
-        comparisonResults.push(result);
-        // Persist immediately so progress is never lost if a crash occurs
-        fs.writeFileSync(
-          outputPath,
-          JSON.stringify(comparisonResults, null, 2),
-        );
-
-        console.log(
-          `  Reference Smells: ${referenceSmells.join(", ") || "None"}`,
-        );
-        if (status === "success") {
-          console.log(
-            `  Model Smells:     ${response.smells.join(", ") || "None"}`,
-          );
-        } else {
-          console.log(`  Model Smells:     [Invalid Format]`);
-        }
-        console.log(`  Latency:          ${response.latencyMs}ms`);
-      }
-    }
-
-    // Save intermediate results after each batch
-    // Ensure final state of batch is saved
-    fs.writeFileSync(outputPath, JSON.stringify(comparisonResults, null, 2));
-
-    if (batchErrors.length > 0) {
-      console.error(
-        `\n❌ Batch ${batchIdx + 1} finished with ${batchErrors.length} error(s).`,
-      );
-      const firstErr = batchErrors[0];
-      const firstErrMsg =
-        firstErr.error instanceof Error
-          ? firstErr.error.message
-          : String(firstErr.error);
-      throw new Error(
-        `Batch ${batchIdx + 1} failed: ${batchErrors.length} test(s) encountered errors during analysis. First error on ${firstErr.file}: ${firstErrMsg}`,
-      );
-    }
+  for (let i = 0; i < testsToRun.length; i++) {
+    const testInfo = testsToRun[i];
+    const fileName = testInfo.file;
+    const referenceSmells = testInfo.smells;
+    const overallIndex = testsCompleted + i + 1;
 
     console.log(
-      `\n💾 Batch ${batchIdx + 1} completed and saved to ${outputPath}`,
+      `\n[${overallIndex}/${totalTestsToRun}] Processing ${fileName}...`,
     );
-    currentIndex += batchSize;
 
-    // Ask to continue if there are more batches
-    if (batchIdx < numBatches - 1) {
-      if (onPrompt) {
-        const proceed = await onPrompt(
-          `Batch ${batchIdx + 1} finished. Proceed to next batch?`,
-          "next-batch",
+    const testFilePath = path.join(testsDir, fileName);
+    if (!fs.existsSync(testFilePath)) {
+      console.warn(`Warning: Test file ${testFilePath} not found. Skipping.`);
+      continue;
+    }
+
+    const testCode = fs.readFileSync(testFilePath, "utf-8");
+    const manifestEntry = manifestMap.get(fileName);
+
+    if (!manifestEntry?.metrics) {
+      console.warn(
+        `Warning: Metadata for ${fileName} not found. Running without AST metrics.`,
+      );
+    }
+
+    const metadata = includeAst ? (manifestEntry?.metrics ?? {}) : {};
+    const contextSnippets: string[] = [];
+
+    if (includeCtx && manifestEntry) {
+      if (manifestEntry.imports && manifestEntry.imports.length > 0) {
+        contextSnippets.push(`IMPORTS:\n${manifestEntry.imports.join("\n")}`);
+      }
+      if (manifestEntry.describeContext) {
+        contextSnippets.push(
+          `DESCRIBE BLOCK:\n${manifestEntry.describeContext}`,
         );
-        if (!proceed) {
-          throw new Error("Pipeline stopped by user after batch completion.");
+      }
+      if (
+        manifestEntry.setupVariables &&
+        manifestEntry.setupVariables.length > 0
+      ) {
+        contextSnippets.push(
+          `SETUP VARIABLES: ${manifestEntry.setupVariables.join(", ")}`,
+        );
+      }
+    }
+
+    let response = null;
+    let lastError: any = null;
+    const maxRetries = 1;
+
+    for (let attempt = 0; attempt <= maxRetries; attempt++) {
+      try {
+        response = await provider.analyze({
+          testCode,
+          metadata,
+          systemPrompt,
+          contextSnippets:
+            contextSnippets.length > 0 ? contextSnippets : undefined,
+        });
+        lastError = null;
+        break;
+      } catch (error) {
+        lastError = error;
+        if (attempt < maxRetries) {
+          const backoffMs = (attempt + 1) * 1000;
+          console.warn(
+            `  ⚠️ Attempt ${attempt + 1} failed for ${fileName}. Retrying in ${backoffMs}ms...`,
+          );
+          await new Promise((resolve) => setTimeout(resolve, backoffMs));
         }
       }
+    }
+
+    if (lastError || !response) {
+      const errorMsg =
+        lastError instanceof Error ? lastError.message : String(lastError);
+      console.error(`  ✖ Error running analysis for ${fileName}:`, errorMsg);
+
+      comparisonResults.push({
+        file: fileName,
+        referenceSmells,
+        modelSmells: [],
+        modelName: provider.name,
+        modelStatus: "error",
+        error: errorMsg,
+      });
+
+      // Persist the failed record too; resume will discard it and retry this test.
+      fs.writeFileSync(outputPath, JSON.stringify(comparisonResults, null, 2));
+
+      throw new Error(
+        `Analysis failed for ${fileName}: ${errorMsg}. Progress saved to ${outputPath}.`,
+      );
+    } else {
+      const status =
+        response.smells.length > 0 || response.justification
+          ? "success"
+          : "invalid return";
+
+      const result = {
+        file: fileName,
+        referenceSmells,
+        modelSmells: response.smells,
+        modelName: response.modelName,
+        modelStatus: status,
+        modelJustification: response.justification,
+        latencyMs: response.latencyMs,
+        rawModelResponse: response.rawText,
+        tokenUsage: response.tokenUsage,
+      };
+
+      comparisonResults.push(result);
+      // Persist immediately so progress is never lost if a crash occurs
+      fs.writeFileSync(outputPath, JSON.stringify(comparisonResults, null, 2));
+
+      console.log(
+        `  Reference Smells: ${referenceSmells.join(", ") || "None"}`,
+      );
+      if (status === "success") {
+        console.log(
+          `  Model Smells:     ${response.smells.join(", ") || "None"}`,
+        );
+      } else {
+        console.log(`  Model Smells:     [Invalid Format]`);
+      }
+      console.log(`  Latency:          ${response.latencyMs}ms`);
     }
   }
 
