@@ -108,7 +108,7 @@ FILE: [NAME] - SMELLS: [LIST or None] - JUSTIFICATION: [SHORT]`;
             num_predict: this.config.maxTokens,
           },
         },
-        { timeout: 240_000 },
+        { timeout: 360_000 },
       );
     } catch (error) {
       if (axios.isAxiosError(error)) {
