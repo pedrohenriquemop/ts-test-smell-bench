@@ -16,6 +16,7 @@ export const runCommand = new Command("run")
   .option("--skip-prepare", "Skip the prepare stage")
   .option("--skip-analyze", "Skip the analyze stage")
   .option("--skip-evaluate", "Skip the evaluate stage")
+  .option("--skip-sanitize", "Skip the model-smell sanitization stage")
   .option("--skip-metrics", "Skip the metrics generation stage")
   .option(
     "-m, --models <ids...>",
@@ -37,6 +38,7 @@ export const runCommand = new Command("run")
           prepare: !options.skipPrepare,
           analyze: !options.skipAnalyze,
           evaluate: !options.skipEvaluate,
+          sanitize: !options.skipSanitize,
           generateMetrics: !options.skipMetrics,
         },
         modelIds: options.models,

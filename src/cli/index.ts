@@ -8,6 +8,7 @@ import { runCommand } from "./commands/run.ts";
 import { tuiCommand } from "./commands/tui.tsx";
 import { consensusCommand } from "./commands/consensus.ts";
 import { compareCommand } from "./commands/compare.ts";
+import { sanitizeCommand } from "./commands/sanitize.ts";
 import { APP_VERSION } from "../version.ts";
 
 const program = new Command();
@@ -25,6 +26,7 @@ program.addCommand(runCommand);
 program.addCommand(tuiCommand);
 program.addCommand(consensusCommand);
 program.addCommand(compareCommand);
+program.addCommand(sanitizeCommand);
 
 program.parseAsync(process.argv).catch((err) => {
   console.error("Fatal Error:", err);

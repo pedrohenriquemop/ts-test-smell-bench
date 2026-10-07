@@ -16,6 +16,7 @@ import { buildPromptForStrategy } from "../smells/prompt-builder.ts";
 import { evaluateResults } from "../evaluator/index.ts";
 import { generateHumanEvaluation } from "../human-evaluation/index.ts";
 import { mergeGoldsetRuns } from "../goldset-consensus/index.ts";
+import { sanitizeComparisonResults } from "../sanitizer/index.ts";
 
 // ── Types ────────────────────────────────────────────────────────────
 
@@ -30,6 +31,7 @@ export interface PipelineOptions {
     analyze?: boolean;
     mergeGoldset?: boolean;
     evaluate?: boolean;
+    sanitize?: boolean;
     generateMetrics?: boolean;
   };
 
@@ -66,6 +68,7 @@ export async function runPipeline(opts: PipelineOptions): Promise<void> {
     analyze: true,
     mergeGoldset: false,
     evaluate: true,
+    sanitize: true,
     generateMetrics: true,
     ...opts.stages,
   };
@@ -227,7 +230,33 @@ export async function runPipeline(opts: PipelineOptions): Promise<void> {
     }
   }
 
-  // ── 7. Generate Metrics & Analytics ──────────────────────────
+  // ── 7. Sanitize model smell labels ───────────────────────────
+  if (stages.sanitize) {
+    const models = resolveModels(config, opts.modelIds).filter(
+      (model) => model.provider === "ollama",
+    );
+    const promptConfig = config.prompt;
+    const strategy = promptConfig?.strategy ?? "standard";
+    const astFlag = (promptConfig?.includeAstMetrics ?? true) ? "ast" : "noast";
+    const ctxFlag = (promptConfig?.includeContext ?? true) ? "ctx" : "noctx";
+    const setupSuffix = `${strategy}-${astFlag}-${ctxFlag}`;
+
+    for (const modelCfg of models) {
+      const modelTag = `${modelCfg.id}__${setupSuffix}`;
+      notify("sanitize", modelTag);
+      try {
+        sanitizeComparisonResults({
+          analyzer: { ...config.analyzer, version: modelTag },
+        });
+        done("sanitize", modelTag);
+      } catch (err) {
+        const cont = onStageError?.("sanitize", err as Error, modelTag);
+        if (!cont) throw err;
+      }
+    }
+  }
+
+  // ── 8. Generate Metrics & Analytics ──────────────────────────
   if (stages.generateMetrics) {
     const models = resolveModels(config, opts.modelIds).filter(
       (model) => model.provider === "ollama",

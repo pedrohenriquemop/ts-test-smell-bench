@@ -27,6 +27,7 @@ const STAGE_DISPLAY_NAMES: Record<string, string> = {
   analyze: "PREPARE GOLD SET",
   mergeGoldset: "MERGE GOLDSET RUNS",
   evaluate: "EVALUATE (RUN SLM)",
+  sanitize: "SANITIZE MODEL SMELLS (AUTOMATIC)",
   generateMetrics: "GENERATE METRICS & ANALYTICS",
 };
 

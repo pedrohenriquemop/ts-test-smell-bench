@@ -215,6 +215,9 @@ export const ModelSelectionScreen: React.FC<Props> = ({
 
       <Box flexDirection="column" marginBottom={1}>
         <Text color="gray">Use ↑/↓ to navigate, Space/Enter to toggle.</Text>
+        <Text color="yellow">
+          Automatic stage: Sanitize model smells ([MATCH] only); it runs before metrics.
+        </Text>
       </Box>
 
       {menuItems.map((item, idx) => {
