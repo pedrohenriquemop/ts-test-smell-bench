@@ -204,6 +204,56 @@ File Name: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_c
 File Name: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_config-schema.test__7.ts - Smells: Hardcoded Literal
 File Name: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_config-schema.test__8.ts - Smells: None
 [Batch="5/20"]
+File Name: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_config-schema.test__9.ts - Smells: None
+File Name: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_config-schema.test__10.ts - Smells: Hardcoded Literal
+File Name: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_config-schema.test__11.ts - Smells: Hardcoded Literal
+File Name: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_config-schema.test__12.ts - Smells: None
+File Name: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_config-schema.test__13.ts - Smells: Hardcoded Literal
+File Name: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_config-schema.test__14.ts - Smells: None
+File Name: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_config-schema.test__15.ts - Smells: None
+File Name: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_config-schema.test__16.ts - Smells: Hardcoded Literal
+File Name: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_config-schema.test__17.ts - Smells: Hardcoded Literal
+File Name: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_config-schema.test__18.ts - Smells: Hardcoded Literal
+File Name: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_config-schema.test__19.ts - Smells: Hardcoded Literal
+File Name: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_config-schema.test__20.ts - Smells: Assertion Roulette, Conditional Test Logic
+File Name: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_config-schema.test__21.ts - Smells: None
+File Name: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_config-schema.test__22.ts - Smells: None
+File Name: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_config-schema.test__23.ts - Smells: Hardcoded Literal
+File Name: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_config-schema.test__24.ts - Smells: Hardcoded Literal
+File Name: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_config-schema.test__25.ts - Smells: None
+File Name: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_config-schema.test__26.ts - Smells: None
+File Name: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_config-schema.test__27.ts - Smells: None
+File Name: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_config-schema.test__28.ts - Smells: Hardcoded Literal
+File Name: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_config-schema.test__29.ts - Smells: Hardcoded Literal
+File Name: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_config-schema.test__30.ts - Smells: Hardcoded Literal
+File Name: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_config-schema.test__31.ts - Smells: Hardcoded Literal
+File Name: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_config-schema.test__32.ts - Smells: Conditional Test Logic
+File Name: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_config-schema.test__33.ts - Smells: Conditional Test Logic
+File Name: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_config-schema.test__34.ts - Smells: Conditional Test Logic
+File Name: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_config-schema.test__35.ts - Smells: Conditional Test Logic
+File Name: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_config-schema.test__36.ts - Smells: Conditional Test Logic
+File Name: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_config-schema.test__37.ts - Smells: Conditional Test Logic
+File Name: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_config-schema.test__38.ts - Smells: None
+File Name: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_config-schema.test__39.ts - Smells: Conditional Test Logic
+File Name: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_config-schema.test__40.ts - Smells: Assertion Roulette, Conditional Test Logic, Eager Test
+File Name: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_config-schema.test__41.ts - Smells: Conditional Test Logic
+File Name: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_config-schema.test__42.ts - Smells: Assertion Roulette, Conditional Test Logic
+File Name: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_config-schema.test__43.ts - Smells: Conditional Test Logic
+File Name: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_config-schema.test__44.ts - Smells: Conditional Test Logic
+File Name: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_config-schema.test__45.ts - Smells: Conditional Test Logic
+File Name: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_config-schema.test__46.ts - Smells: None
+File Name: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_config-schema.test__47.ts - Smells: Conditional Test Logic
+File Name: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_config-schema.test__48.ts - Smells: Assertion Roulette, Conditional Test Logic, Eager Test
+File Name: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_config-schema.test__49.ts - Smells: Conditional Test Logic
+File Name: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_config-schema.test__50.ts - Smells: Assertion Roulette, Conditional Test Logic
+File Name: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_ignore-filter.test__0.ts - Smells: General Fixture
+File Name: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_ignore-filter.test__1.ts - Smells: General Fixture
+File Name: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_ignore-filter.test__2.ts - Smells: General Fixture
+File Name: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_ignore-filter.test__3.ts - Smells: General Fixture
+File Name: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_ignore-filter.test__4.ts - Smells: General Fixture
+File Name: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_ignore-filter.test__5.ts - Smells: Assertion Roulette, General Fixture
+File Name: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_ignore-filter.test__6.ts - Smells: Assertion Roulette, Hardcoded Literal
+File Name: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_ignore-filter.test__7.ts - Smells: Assertion Roulette, Hardcoded Literal
 [Batch="6/20"]
 [Batch="7/20"]
 [Batch="8/20"]
