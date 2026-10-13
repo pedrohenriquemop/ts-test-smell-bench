@@ -1990,10 +1990,10 @@
     },
     {
       "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_onboard-builder.test__5.ts",
-      "sourceCount": 2,
+      "sourceCount": 3,
       "requiredVotes": 2,
       "smellVotes": {
-        "Assertion Roulette": 2
+        "Assertion Roulette": 3
       },
       "smells": [
         "Assertion Roulette"
@@ -2001,31 +2001,31 @@
     },
     {
       "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_onboard-builder.test__6.ts",
-      "sourceCount": 2,
+      "sourceCount": 3,
       "requiredVotes": 2,
       "smellVotes": {},
       "smells": []
     },
     {
       "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_onboard-builder.test__7.ts",
-      "sourceCount": 2,
+      "sourceCount": 3,
       "requiredVotes": 2,
       "smellVotes": {},
       "smells": []
     },
     {
       "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_onboard-builder.test__8.ts",
-      "sourceCount": 2,
+      "sourceCount": 3,
       "requiredVotes": 2,
       "smellVotes": {},
       "smells": []
     },
     {
       "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_staleness.test__0.ts",
-      "sourceCount": 2,
+      "sourceCount": 3,
       "requiredVotes": 2,
       "smellVotes": {
-        "Hardcoded Literal": 2
+        "Hardcoded Literal": 3
       },
       "smells": [
         "Hardcoded Literal"
@@ -2033,10 +2033,10 @@
     },
     {
       "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_staleness.test__1.ts",
-      "sourceCount": 2,
+      "sourceCount": 3,
       "requiredVotes": 2,
       "smellVotes": {
-        "Hardcoded Literal": 2
+        "Hardcoded Literal": 3
       },
       "smells": [
         "Hardcoded Literal"
@@ -2044,10 +2044,10 @@
     },
     {
       "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_staleness.test__2.ts",
-      "sourceCount": 2,
+      "sourceCount": 3,
       "requiredVotes": 2,
       "smellVotes": {
-        "Hardcoded Literal": 2
+        "Hardcoded Literal": 3
       },
       "smells": [
         "Hardcoded Literal"
@@ -2055,10 +2055,10 @@
     },
     {
       "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_staleness.test__3.ts",
-      "sourceCount": 2,
+      "sourceCount": 3,
       "requiredVotes": 2,
       "smellVotes": {
-        "Hardcoded Literal": 2
+        "Hardcoded Literal": 3
       },
       "smells": [
         "Hardcoded Literal"
@@ -2066,10 +2066,10 @@
     },
     {
       "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_staleness.test__4.ts",
-      "sourceCount": 2,
+      "sourceCount": 3,
       "requiredVotes": 2,
       "smellVotes": {
-        "Hardcoded Literal": 2
+        "Hardcoded Literal": 3
       },
       "smells": [
         "Hardcoded Literal"
@@ -2077,11 +2077,11 @@
     },
     {
       "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_staleness.test__5.ts",
-      "sourceCount": 2,
+      "sourceCount": 3,
       "requiredVotes": 2,
       "smellVotes": {
-        "Assertion Roulette": 2,
-        "Hardcoded Literal": 2
+        "Assertion Roulette": 3,
+        "Hardcoded Literal": 3
       },
       "smells": [
         "Assertion Roulette",
@@ -2090,11 +2090,11 @@
     },
     {
       "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_staleness.test__6.ts",
-      "sourceCount": 2,
+      "sourceCount": 3,
       "requiredVotes": 2,
       "smellVotes": {
-        "Assertion Roulette": 2,
-        "Hardcoded Literal": 2
+        "Assertion Roulette": 3,
+        "Hardcoded Literal": 3
       },
       "smells": [
         "Assertion Roulette",
@@ -2103,11 +2103,11 @@
     },
     {
       "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_staleness.test__7.ts",
-      "sourceCount": 2,
+      "sourceCount": 3,
       "requiredVotes": 2,
       "smellVotes": {
-        "Assertion Roulette": 2,
-        "Hardcoded Literal": 2
+        "Assertion Roulette": 3,
+        "Hardcoded Literal": 3
       },
       "smells": [
         "Assertion Roulette",
@@ -2116,10 +2116,10 @@
     },
     {
       "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_figma_tests_merge.test__0.ts",
-      "sourceCount": 2,
+      "sourceCount": 3,
       "requiredVotes": 2,
       "smellVotes": {
-        "Assertion Roulette": 2
+        "Assertion Roulette": 3
       },
       "smells": [
         "Assertion Roulette"
@@ -2127,24 +2127,26 @@
     },
     {
       "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_figma_tests_merge.test__1.ts",
-      "sourceCount": 2,
+      "sourceCount": 3,
       "requiredVotes": 2,
       "smellVotes": {
-        "Assertion Roulette": 2,
-        "Eager Test": 1,
-        "Hardcoded Literal": 1
+        "Assertion Roulette": 3,
+        "Eager Test": 2,
+        "Hardcoded Literal": 2
       },
       "smells": [
-        "Assertion Roulette"
+        "Assertion Roulette",
+        "Eager Test",
+        "Hardcoded Literal"
       ]
     },
     {
       "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_figma_tests_merge.test__2.ts",
-      "sourceCount": 2,
+      "sourceCount": 3,
       "requiredVotes": 2,
       "smellVotes": {
-        "Assertion Roulette": 2,
-        "Hardcoded Literal": 2
+        "Assertion Roulette": 3,
+        "Hardcoded Literal": 3
       },
       "smells": [
         "Assertion Roulette",
@@ -2153,17 +2155,17 @@
     },
     {
       "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_figma_tests_merge.test__3.ts",
-      "sourceCount": 2,
+      "sourceCount": 3,
       "requiredVotes": 2,
       "smellVotes": {},
       "smells": []
     },
     {
       "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_figma_tests_tokens.test__0.ts",
-      "sourceCount": 2,
+      "sourceCount": 3,
       "requiredVotes": 2,
       "smellVotes": {
-        "Assertion Roulette": 2,
+        "Assertion Roulette": 3,
         "Hardcoded Literal": 1
       },
       "smells": [
@@ -2172,18 +2174,18 @@
     },
     {
       "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_figma_tests_tokens.test__1.ts",
-      "sourceCount": 2,
+      "sourceCount": 3,
       "requiredVotes": 2,
       "smellVotes": {},
       "smells": []
     },
     {
       "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_figma_tests_tokens.test__2.ts",
-      "sourceCount": 2,
+      "sourceCount": 3,
       "requiredVotes": 2,
       "smellVotes": {
-        "Assertion Roulette": 2,
-        "Hardcoded Literal": 2
+        "Assertion Roulette": 3,
+        "Hardcoded Literal": 3
       },
       "smells": [
         "Assertion Roulette",
@@ -2192,10 +2194,10 @@
     },
     {
       "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_figma_tests_tokens.test__3.ts",
-      "sourceCount": 2,
+      "sourceCount": 3,
       "requiredVotes": 2,
       "smellVotes": {
-        "Hardcoded Literal": 2
+        "Hardcoded Literal": 3
       },
       "smells": [
         "Hardcoded Literal"
@@ -2203,11 +2205,11 @@
     },
     {
       "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_context-builder.test__0.ts",
-      "sourceCount": 2,
+      "sourceCount": 3,
       "requiredVotes": 2,
       "smellVotes": {
-        "Assertion Roulette": 2,
-        "Hardcoded Literal": 2
+        "Assertion Roulette": 3,
+        "Hardcoded Literal": 3
       },
       "smells": [
         "Assertion Roulette",
@@ -2216,11 +2218,11 @@
     },
     {
       "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_context-builder.test__1.ts",
-      "sourceCount": 2,
+      "sourceCount": 3,
       "requiredVotes": 2,
       "smellVotes": {
-        "Assertion Roulette": 2,
-        "Hardcoded Literal": 2
+        "Assertion Roulette": 3,
+        "Hardcoded Literal": 3
       },
       "smells": [
         "Assertion Roulette",
@@ -2229,11 +2231,11 @@
     },
     {
       "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_context-builder.test__2.ts",
-      "sourceCount": 2,
+      "sourceCount": 3,
       "requiredVotes": 2,
       "smellVotes": {
-        "Assertion Roulette": 2,
-        "Hardcoded Literal": 2
+        "Assertion Roulette": 3,
+        "Hardcoded Literal": 3
       },
       "smells": [
         "Assertion Roulette",
@@ -2242,10 +2244,10 @@
     },
     {
       "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_context-builder.test__3.ts",
-      "sourceCount": 2,
+      "sourceCount": 3,
       "requiredVotes": 2,
       "smellVotes": {
-        "Hardcoded Literal": 2
+        "Hardcoded Literal": 3
       },
       "smells": [
         "Hardcoded Literal"
@@ -2253,11 +2255,11 @@
     },
     {
       "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_context-builder.test__4.ts",
-      "sourceCount": 2,
+      "sourceCount": 3,
       "requiredVotes": 2,
       "smellVotes": {
-        "Assertion Roulette": 2,
-        "Hardcoded Literal": 2
+        "Assertion Roulette": 3,
+        "Hardcoded Literal": 3
       },
       "smells": [
         "Assertion Roulette",
@@ -2266,10 +2268,10 @@
     },
     {
       "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_context-builder.test__5.ts",
-      "sourceCount": 2,
+      "sourceCount": 3,
       "requiredVotes": 2,
       "smellVotes": {
-        "Hardcoded Literal": 2
+        "Hardcoded Literal": 3
       },
       "smells": [
         "Hardcoded Literal"
@@ -2277,11 +2279,11 @@
     },
     {
       "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_context-builder.test__6.ts",
-      "sourceCount": 2,
+      "sourceCount": 3,
       "requiredVotes": 2,
       "smellVotes": {
-        "Assertion Roulette": 2,
-        "Hardcoded Literal": 2,
+        "Assertion Roulette": 3,
+        "Hardcoded Literal": 3,
         "Magic Number": 2
       },
       "smells": [
@@ -2292,11 +2294,11 @@
     },
     {
       "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_context-builder.test__7.ts",
-      "sourceCount": 2,
+      "sourceCount": 3,
       "requiredVotes": 2,
       "smellVotes": {
-        "Assertion Roulette": 2,
-        "Hardcoded Literal": 2
+        "Assertion Roulette": 3,
+        "Hardcoded Literal": 3
       },
       "smells": [
         "Assertion Roulette",
@@ -2305,11 +2307,11 @@
     },
     {
       "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_context-builder.test__8.ts",
-      "sourceCount": 2,
+      "sourceCount": 3,
       "requiredVotes": 2,
       "smellVotes": {
-        "Assertion Roulette": 2,
-        "Hardcoded Literal": 2
+        "Assertion Roulette": 3,
+        "Hardcoded Literal": 3
       },
       "smells": [
         "Assertion Roulette",
@@ -2318,11 +2320,11 @@
     },
     {
       "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_context-builder.test__9.ts",
-      "sourceCount": 2,
+      "sourceCount": 3,
       "requiredVotes": 2,
       "smellVotes": {
-        "Assertion Roulette": 2,
-        "Hardcoded Literal": 2
+        "Assertion Roulette": 3,
+        "Hardcoded Literal": 3
       },
       "smells": [
         "Assertion Roulette",
@@ -2331,11 +2333,11 @@
     },
     {
       "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_context-builder.test__10.ts",
-      "sourceCount": 2,
+      "sourceCount": 3,
       "requiredVotes": 2,
       "smellVotes": {
-        "Assertion Roulette": 2,
-        "Hardcoded Literal": 2
+        "Assertion Roulette": 3,
+        "Hardcoded Literal": 3
       },
       "smells": [
         "Assertion Roulette",
@@ -2344,10 +2346,10 @@
     },
     {
       "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_context-builder.test__11.ts",
-      "sourceCount": 2,
+      "sourceCount": 3,
       "requiredVotes": 2,
       "smellVotes": {
-        "Hardcoded Literal": 2
+        "Hardcoded Literal": 3
       },
       "smells": [
         "Hardcoded Literal"
@@ -2355,10 +2357,10 @@
     },
     {
       "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_context-builder.test__12.ts",
-      "sourceCount": 2,
+      "sourceCount": 3,
       "requiredVotes": 2,
       "smellVotes": {
-        "Hardcoded Literal": 2
+        "Hardcoded Literal": 3
       },
       "smells": [
         "Hardcoded Literal"
@@ -2366,11 +2368,11 @@
     },
     {
       "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_context-builder.test__13.ts",
-      "sourceCount": 2,
+      "sourceCount": 3,
       "requiredVotes": 2,
       "smellVotes": {
-        "Assertion Roulette": 2,
-        "Hardcoded Literal": 2
+        "Assertion Roulette": 3,
+        "Hardcoded Literal": 3
       },
       "smells": [
         "Assertion Roulette",
@@ -2379,10 +2381,10 @@
     },
     {
       "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_domain-types.test__0.ts",
-      "sourceCount": 2,
+      "sourceCount": 3,
       "requiredVotes": 2,
       "smellVotes": {
-        "Assertion Roulette": 2
+        "Assertion Roulette": 3
       },
       "smells": [
         "Assertion Roulette"
@@ -2390,10 +2392,10 @@
     },
     {
       "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_domain-types.test__1.ts",
-      "sourceCount": 2,
+      "sourceCount": 3,
       "requiredVotes": 2,
       "smellVotes": {
-        "Assertion Roulette": 2
+        "Assertion Roulette": 3
       },
       "smells": [
         "Assertion Roulette"
@@ -2401,10 +2403,10 @@
     },
     {
       "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_domain-types.test__2.ts",
-      "sourceCount": 2,
+      "sourceCount": 3,
       "requiredVotes": 2,
       "smellVotes": {
-        "Assertion Roulette": 2
+        "Assertion Roulette": 3
       },
       "smells": [
         "Assertion Roulette"
@@ -2412,10 +2414,10 @@
     },
     {
       "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_domain-types.test__3.ts",
-      "sourceCount": 2,
+      "sourceCount": 3,
       "requiredVotes": 2,
       "smellVotes": {
-        "Hardcoded Literal": 2,
+        "Hardcoded Literal": 3,
         "Magic Number": 2
       },
       "smells": [
@@ -2425,11 +2427,11 @@
     },
     {
       "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_domain-types.test__4.ts",
-      "sourceCount": 2,
+      "sourceCount": 3,
       "requiredVotes": 2,
       "smellVotes": {
-        "Assertion Roulette": 2,
-        "Hardcoded Literal": 2
+        "Assertion Roulette": 3,
+        "Hardcoded Literal": 3
       },
       "smells": [
         "Assertion Roulette",
@@ -2438,11 +2440,11 @@
     },
     {
       "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_domain-types.test__5.ts",
-      "sourceCount": 2,
+      "sourceCount": 3,
       "requiredVotes": 2,
       "smellVotes": {
-        "Assertion Roulette": 2,
-        "Hardcoded Literal": 2
+        "Assertion Roulette": 3,
+        "Hardcoded Literal": 3
       },
       "smells": [
         "Assertion Roulette",
@@ -2451,11 +2453,11 @@
     },
     {
       "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_domain-types.test__6.ts",
-      "sourceCount": 2,
+      "sourceCount": 3,
       "requiredVotes": 2,
       "smellVotes": {
-        "Assertion Roulette": 2,
-        "Hardcoded Literal": 2
+        "Assertion Roulette": 3,
+        "Hardcoded Literal": 3
       },
       "smells": [
         "Assertion Roulette",
@@ -2464,10 +2466,10 @@
     },
     {
       "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_config-schema.test__0.ts",
-      "sourceCount": 2,
+      "sourceCount": 3,
       "requiredVotes": 2,
       "smellVotes": {
-        "Hardcoded Literal": 2
+        "Hardcoded Literal": 3
       },
       "smells": [
         "Hardcoded Literal"
@@ -2475,10 +2477,10 @@
     },
     {
       "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_config-schema.test__1.ts",
-      "sourceCount": 2,
+      "sourceCount": 3,
       "requiredVotes": 2,
       "smellVotes": {
-        "Hardcoded Literal": 2
+        "Hardcoded Literal": 3
       },
       "smells": [
         "Hardcoded Literal"
@@ -2486,10 +2488,10 @@
     },
     {
       "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_config-schema.test__2.ts",
-      "sourceCount": 2,
+      "sourceCount": 3,
       "requiredVotes": 2,
       "smellVotes": {
-        "Hardcoded Literal": 2
+        "Hardcoded Literal": 3
       },
       "smells": [
         "Hardcoded Literal"
@@ -2497,7 +2499,7 @@
     },
     {
       "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_config-schema.test__3.ts",
-      "sourceCount": 2,
+      "sourceCount": 3,
       "requiredVotes": 2,
       "smellVotes": {
         "Magic Number": 2
@@ -2508,10 +2510,10 @@
     },
     {
       "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_config-schema.test__4.ts",
-      "sourceCount": 2,
+      "sourceCount": 3,
       "requiredVotes": 2,
       "smellVotes": {
-        "Hardcoded Literal": 2
+        "Hardcoded Literal": 3
       },
       "smells": [
         "Hardcoded Literal"
@@ -2519,24 +2521,24 @@
     },
     {
       "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_config-schema.test__5.ts",
-      "sourceCount": 2,
+      "sourceCount": 3,
       "requiredVotes": 2,
       "smellVotes": {},
       "smells": []
     },
     {
       "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_config-schema.test__6.ts",
-      "sourceCount": 2,
+      "sourceCount": 3,
       "requiredVotes": 2,
       "smellVotes": {},
       "smells": []
     },
     {
       "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_config-schema.test__7.ts",
-      "sourceCount": 2,
+      "sourceCount": 3,
       "requiredVotes": 2,
       "smellVotes": {
-        "Hardcoded Literal": 2
+        "Hardcoded Literal": 3
       },
       "smells": [
         "Hardcoded Literal"
@@ -2544,7 +2546,7 @@
     },
     {
       "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_config-schema.test__8.ts",
-      "sourceCount": 2,
+      "sourceCount": 3,
       "requiredVotes": 2,
       "smellVotes": {},
       "smells": []

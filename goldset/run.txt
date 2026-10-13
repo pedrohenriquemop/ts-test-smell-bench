@@ -162,7 +162,7 @@ File Name: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_c
 File Name: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_staleness.test__6.ts - Smells: Assertion Roulette, Hardcoded Literal
 File Name: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_staleness.test__7.ts - Smells: Assertion Roulette, Hardcoded Literal
 File Name: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_figma_tests_merge.test__0.ts - Smells: Assertion Roulette
-File Name: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_figma_tests_merge.test__1.ts - Smells: Assertion Roulette
+File Name: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_figma_tests_merge.test__1.ts - Smells: Assertion Roulette, Eager Test, Hardcoded Literal
 File Name: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_figma_tests_merge.test__2.ts - Smells: Assertion Roulette, Hardcoded Literal
 File Name: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_figma_tests_merge.test__3.ts - Smells: None
 File Name: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_figma_tests_tokens.test__0.ts - Smells: Assertion Roulette
