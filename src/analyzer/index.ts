@@ -416,6 +416,7 @@ export async function runAnalyzer({
           testCode,
           metadata,
           systemPrompt,
+          useChainOfThought: promptConfig?.useChainOfThought ?? promptConfig?.strategy === "chain-of-thought",
           contextSnippets:
             contextSnippets.length > 0 ? contextSnippets : undefined,
         });
@@ -444,6 +445,7 @@ export async function runAnalyzer({
         modelSmells: [],
         modelName: provider.name,
         modelStatus: "error",
+        cotEnabled: promptConfig?.useChainOfThought ?? promptConfig?.strategy === "chain-of-thought",
         error: errorMsg,
       });
 
@@ -465,7 +467,9 @@ export async function runAnalyzer({
         modelSmells: response.smells,
         modelName: response.modelName,
         modelStatus: status,
+        cotEnabled: promptConfig?.useChainOfThought ?? promptConfig?.strategy === "chain-of-thought",
         modelJustification: response.justification,
+        reasoningLog: response.reasoningLog,
         latencyMs: response.latencyMs,
         rawModelResponse: response.rawText,
         tokenUsage: response.tokenUsage,

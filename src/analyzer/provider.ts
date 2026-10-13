@@ -22,6 +22,7 @@ export interface AnalysisRequest {
    * import statements, SUT code).
    */
   contextSnippets?: string[];
+  useChainOfThought?: boolean;
 }
 
 // ── Response ─────────────────────────────────────────────────────────
@@ -35,6 +36,7 @@ export interface AnalysisResponse {
 
   /** Short justification extracted from the model output. */
   justification: string;
+  reasoningLog?: string;
 
   /** Human-readable model identifier (e.g. "llama3:8b via Ollama"). */
   modelName: string;

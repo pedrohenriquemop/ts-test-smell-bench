@@ -31,9 +31,36 @@ export interface OllamaProviderConfig {
  * Expected format:
  *   FILE: <name> - SMELLS: <comma-list> - JUSTIFICATION: <text>
  */
-function parseOllamaResponse(
+export function parseOllamaResponse(
   response: string,
-): { smells: string[]; justification: string } | null {
+  useChainOfThought = false,
+): { smells: string[]; justification: string; reasoningLog?: string } | null {
+  let reasoningLog: string | undefined;
+  if (useChainOfThought) {
+    const classification = response.match(/<classification\s*>([\s\S]*?)<\/classification\s*>/i);
+    if (!classification) return null;
+    reasoningLog = response.match(/<thinking\s*>([\s\S]*?)<\/thinking\s*>/i)?.[1]?.trim();
+    response = classification[1].trim();
+  }
+  const jsonText = response.replace(/^```(?:json)?\s*/i, "").replace(/\s*```$/, "").trim();
+  try {
+    const value = JSON.parse(jsonText);
+    if (value && typeof value === "object") {
+      const rawSmells = value.smells ?? value.SMELLS ?? [];
+      const smells = Array.isArray(rawSmells)
+        ? rawSmells.map(String)
+        : String(rawSmells).toLowerCase() === "none" || !rawSmells
+          ? []
+          : String(rawSmells).split(",").map((s: string) => s.trim());
+      return {
+        smells,
+        justification: String(value.justification ?? value.JUSTIFICATION ?? ""),
+        reasoningLog,
+      };
+    }
+  } catch {
+    // The legacy FILE / SMELLS / JUSTIFICATION format remains supported.
+  }
   const match = response.match(
     /FILE:.*?- SMELLS:\s*(.*?)\s*- JUSTIFICATION:\s*(.*)/is,
   );
@@ -51,7 +78,7 @@ function parseOllamaResponse(
     smells = smellsStr.split(",").map((s) => s.trim());
   }
 
-  return { smells, justification };
+  return { smells, justification, reasoningLog };
 }
 
 // ── Provider ─────────────────────────────────────────────────────────
@@ -135,12 +162,13 @@ FILE: [NAME] - SMELLS: [LIST or None] - JUSTIFICATION: [SHORT]`;
 
     const latencyMs = Date.now() - start;
     const rawText: string = response.data?.response ?? "";
-    const parsed = parseOllamaResponse(rawText);
+    const parsed = parseOllamaResponse(rawText, req.useChainOfThought ?? false);
 
     return {
       rawText,
       smells: parsed?.smells ?? [],
       justification: parsed?.justification ?? "",
+      reasoningLog: parsed?.reasoningLog,
       modelName: this.name,
       latencyMs,
       // Ollama doesn't reliably report token usage in the generate API

@@ -46,6 +46,7 @@
     ]
   },
   "prompt": {
+    "useChainOfThought": true,
     "strategy": "standard",
     "includeAstMetrics": true,
     "includeContext": true

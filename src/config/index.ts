@@ -63,6 +63,8 @@ export interface SmellsConfig {
 }
 
 export interface PromptConfig {
+  /** Emit XML separated reasoning and classification output. Default: false. */
+  useChainOfThought: boolean;
   /** Prompt strategy: 'standard' or 'chain-of-thought'. Default: 'standard'. */
   strategy: "standard" | "chain-of-thought";
 
@@ -126,12 +128,14 @@ export async function loadConfig(
   // Default prompt config.
   if (!raw.prompt) {
     raw.prompt = {
+      useChainOfThought: true,
       strategy: "standard",
       includeAstMetrics: true,
       includeContext: true,
     };
   } else {
     raw.prompt = {
+      useChainOfThought: raw.prompt.useChainOfThought ?? true,
       strategy: raw.prompt.strategy ?? "standard",
       includeAstMetrics: raw.prompt.includeAstMetrics ?? true,
       includeContext: raw.prompt.includeContext ?? true,

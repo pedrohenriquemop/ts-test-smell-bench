@@ -23,15 +23,8 @@ export function buildPromptForStrategy(
   smells: readonly SmellDescriptor[],
   promptConfig?: PromptConfig,
 ): string {
-  const strategy = promptConfig?.strategy ?? "standard";
-
-  switch (strategy) {
-    case "chain-of-thought":
-      return buildChainOfThoughtPrompt(smells);
-    case "standard":
-    default:
-      return buildSystemPrompt(smells);
-  }
+  const useChainOfThought = promptConfig?.useChainOfThought ?? promptConfig?.strategy === "chain-of-thought";
+  return useChainOfThought ? buildChainOfThoughtPrompt(smells) : buildSystemPrompt(smells);
 }
 
 // ── Standard prompt ──────────────────────────────────────────────────
@@ -45,10 +38,6 @@ export function buildSystemPrompt(smells: readonly SmellDescriptor[]): string {
   const smellRules = smells
     .map((s, i) => `${i + 1}. ${s.promptSection}`)
     .join("\n\n");
-
-  const exampleEvaluationLines = smells
-    .map((s) => `- ${s.displayName}: <check metric/code> -> [MATCH] or [PASS]`)
-    .join("\n");
 
   return `You are an expert Static Analysis & Software Quality Engine acting as a deterministic Oracular Classifier for TypeScript Test Smells.
 
@@ -64,19 +53,9 @@ Cross-reference the AST METADATA with the target test block and surrounding fixt
 
 ${smellRules}
 
-### EXECUTION PROTOCOL (CRITICAL FOR YOUR ACCURACY)
+### OUTPUT FORMAT
+Respond with only the final parseable line containing the file name, smells, and a short justification. Do not include analysis, markdown, or any other text.
 
-To engage your internal reasoning layers, you MUST answer in two distinct sequential steps:
-
-STEP 1: Write a brief, private step-by-step evaluation testing all smells against the code.
-STEP 2: Output a markdown divider \`---\` followed strictly by the final parseable line containing the file name, smells, and a short justification.
-
-Example response structure:
-
-### Algorithmic Evaluation:
-${exampleEvaluationLines}
-
----
 FILE: example.spec.ts - SMELLS: ${
     smells.length > 0 ? smells[0].displayName : "None"
   } - JUSTIFICATION: Brief explanation of detected smells.`;
@@ -101,8 +80,6 @@ export function buildChainOfThoughtPrompt(
     .map((s, i) => `${i + 1}. ${s.promptSection}`)
     .join("\n\n");
 
-  const smellNames = smells.map((s) => s.displayName).join(", ");
-
   return `You are an expert Static Analysis & Software Quality Engine acting as a deterministic Oracular Classifier for TypeScript Test Smells.
 
 You will receive:
@@ -114,44 +91,15 @@ You will receive:
 
 ${smellRules}
 
-### CHAIN-OF-THOUGHT EXECUTION PROTOCOL
+### REQUIRED OUTPUT FORMAT
+Output exactly the following structure, with your actual evaluation in the designated tags and no text outside them. In <thinking>, explain the analysis step by step before deciding. In <classification>, provide only the final parseable result in this format: FILE: [NAME] - SMELLS: [LIST or None] - JUSTIFICATION: [SHORT].
 
-You MUST think step by step. Follow this exact sequence:
-
-#### STEP 1 — METRIC ANALYSIS
-For each AST metric provided (if any), state its name and value, then explain what that value implies about possible smells. If no metrics are provided, state "No AST metrics available — relying on code analysis only."
-
-#### STEP 2 — CONTEXT ANALYSIS
-Examine the imports and describe-block context (if provided). Answer:
-- Does the test import external I/O modules (fs, http, DB drivers)? → Relates to Mystery Guest, Resource Optimism
-- How many variables are set up in beforeEach/beforeAll? How many does this specific test actually use? → Relates to General Fixture
-- Are there async patterns (Promises, async/await, callbacks, subscriptions, timers)? → Consider if error handling or cleanup is adequate
-
-#### STEP 3 — CODE ANALYSIS
-Read the test source code carefully. For EACH smell in the catalog (${smellNames}), evaluate:
-1. Does the code trigger this smell based on the algorithmic rules?
-2. What specific code pattern or metric value triggers or clears it?
-3. Confidence: HIGH, MEDIUM, or LOW
-
-#### STEP 4 — FINAL CLASSIFICATION
-After completing your reasoning, output a markdown divider \`---\` followed strictly by the final parseable line.
-
-### OUTPUT FORMAT
-
-Your full response must look like this:
-
-**Step 1 — Metrics:** [your metric analysis]
-**Step 2 — Context:** [your context analysis]  
-**Step 3 — Per-smell evaluation:**
-${smells
-  .map(
-    (s) =>
-      `- ${s.displayName}: [MATCH/PASS] (confidence: HIGH/MEDIUM/LOW) — reason`,
-  )
-  .join("\n")}
-
----
-FILE: [filename] - SMELLS: [comma-separated list or None] - JUSTIFICATION: [one-sentence summary]
-
-IMPORTANT: The line after \`---\` is machine-parsed. Do NOT deviate from the format: \`FILE: ... - SMELLS: ... - JUSTIFICATION: ...\``;
+<thinking>
+Step 1: Scope & Setup Analysis (Where do variables come from?)
+Step 2: Control Flow Analysis (Are there try/catch/if blocks used for test flow or just async fallbacks?)
+Step 3: Smell Trigger Validation (Evaluate specific rules)
+</thinking>
+<classification>
+{FINAL_JSON_OR_PARSABLE_FORMAT}
+</classification>`;
 }
