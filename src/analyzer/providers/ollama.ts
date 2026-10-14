@@ -103,16 +103,21 @@ export class OllamaProvider implements ModelProvider {
         ? `\nCONTEXT (IMPORTS & FIXTURES):\n${req.contextSnippets.map((s) => `  ${s}`).join("\n")}\n`
         : "";
 
+    const includeAstMetrics = req.includeAstMetrics ?? true;
+    const astBlock = includeAstMetrics
+      ? `AST METADATA:\n${JSON.stringify(req.metadata, null, 2)}\n`
+      : "";
+    const astInstruction = includeAstMetrics
+      ? "Cross-reference the AST METADATA with the target test code to detect all applicable smells."
+      : "Evaluate the target test source and supplied context only. No AST metadata is provided.";
     const prompt = `Analyze the following TypeScript test file for Test Smells.
 
 CONTEXT & FILE STRUCTURE:
 - File imports and ancestor describe() blocks provide fixture context for the test.
 - The unit test to evaluate is located between "// ── TARGET TEST ──" and "// ── END TARGET TEST ──".
-- Cross-reference the AST METADATA with the target test code to detect all applicable smells.
+- ${astInstruction}
 
-AST METADATA:
-${JSON.stringify(req.metadata, null, 2)}
-${contextBlock}
+${astBlock}${contextBlock}
 TEST SOURCE:
 ${req.testCode}
 

@@ -3,7 +3,7 @@ import { loadConfig } from "../../config/index.ts";
 import { runAnalyzer } from "../../analyzer/index.ts";
 import { createProvider } from "../../analyzer/providers/index.ts";
 import { resolveSmells } from "../../smells/catalog.ts";
-import { buildSystemPrompt } from "../../smells/prompt-builder.ts";
+import { buildPromptForStrategy } from "../../smells/prompt-builder.ts";
 
 export const analyzeCommand = new Command("analyze")
   .description("Analyze test smells and compare with reference baseline")
@@ -55,7 +55,7 @@ export const analyzeCommand = new Command("analyze")
       // ── Resolve smells & build prompt ──────────────────────────
       const smellIds = config.smells?.enabled ?? [];
       const smells = resolveSmells(smellIds);
-      const systemPrompt = buildSystemPrompt(smells);
+      const systemPrompt = buildPromptForStrategy(smells, config.prompt);
 
       console.log(`Using model:  ${provider.name}`);
       console.log(
@@ -66,6 +66,7 @@ export const analyzeCommand = new Command("analyze")
         config: analyzerConfig,
         provider,
         systemPrompt,
+        promptConfig: config.prompt,
       });
     } catch (error) {
       console.error("Error during analysis:", error);

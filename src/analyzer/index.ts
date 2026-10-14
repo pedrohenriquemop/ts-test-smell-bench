@@ -200,6 +200,7 @@ export async function generateGoldset({
         testCode,
         metadata: includeAst ? (manifestEntry.metrics ?? {}) : {},
         systemPrompt,
+        includeAstMetrics: includeAst,
         contextSnippets:
           contextSnippets.length > 0 ? contextSnippets : undefined,
       });
@@ -417,6 +418,7 @@ export async function runAnalyzer({
           metadata,
           systemPrompt,
           useChainOfThought: promptConfig?.useChainOfThought ?? promptConfig?.strategy === "chain-of-thought",
+          includeAstMetrics: includeAst,
           contextSnippets:
             contextSnippets.length > 0 ? contextSnippets : undefined,
         });
@@ -446,6 +448,7 @@ export async function runAnalyzer({
         modelName: provider.name,
         modelStatus: "error",
         cotEnabled: promptConfig?.useChainOfThought ?? promptConfig?.strategy === "chain-of-thought",
+        astMetricsIncluded: includeAst,
         error: errorMsg,
       });
 
@@ -468,6 +471,7 @@ export async function runAnalyzer({
         modelName: response.modelName,
         modelStatus: status,
         cotEnabled: promptConfig?.useChainOfThought ?? promptConfig?.strategy === "chain-of-thought",
+        astMetricsIncluded: includeAst,
         modelJustification: response.justification,
         reasoningLog: response.reasoningLog,
         latencyMs: response.latencyMs,

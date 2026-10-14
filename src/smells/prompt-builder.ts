@@ -13,6 +13,26 @@
 import type { SmellDescriptor } from "./catalog.ts";
 import type { PromptConfig } from "../config/index.ts";
 
+function buildSmellRules(
+  smells: readonly SmellDescriptor[],
+  includeAstMetrics: boolean,
+): string {
+  return smells
+    .map((smell, index) => {
+      if (includeAstMetrics) return `${index + 1}. ${smell.promptSection}`;
+
+      // Remove metric-based trigger/gate clauses in AST ablation mode.
+      // Keep source-oriented reasoning and add an explicit source-only rule.
+      const sourceRules = smell.promptSection
+        .split("\n")
+        .filter((line) => !/metrics\s*\./i.test(line))
+        .join("\n")
+        .trim();
+      return `${index + 1}. ${smell.displayName}\n   - Evaluate from the visible test source and supplied context only; do not infer or refer to AST metric values.${sourceRules && sourceRules !== smell.displayName ? `\n${sourceRules.replace(smell.displayName, "").trim()}` : ""}`;
+    })
+    .join("\n\n");
+}
+
 // ── Strategy dispatcher ──────────────────────────────────────────────
 
 /**
@@ -24,7 +44,10 @@ export function buildPromptForStrategy(
   promptConfig?: PromptConfig,
 ): string {
   const useChainOfThought = promptConfig?.useChainOfThought ?? promptConfig?.strategy === "chain-of-thought";
-  return useChainOfThought ? buildChainOfThoughtPrompt(smells) : buildSystemPrompt(smells);
+  const includeAstMetrics = promptConfig?.includeAstMetrics ?? true;
+  return useChainOfThought
+    ? buildChainOfThoughtPrompt(smells, includeAstMetrics)
+    : buildSystemPrompt(smells, includeAstMetrics);
 }
 
 // ── Standard prompt ──────────────────────────────────────────────────
@@ -34,20 +57,21 @@ export function buildPromptForStrategy(
  * detect.  The output is a single string ready to be sent as the
  * `system` field to any LLM provider.
  */
-export function buildSystemPrompt(smells: readonly SmellDescriptor[]): string {
-  const smellRules = smells
-    .map((s, i) => `${i + 1}. ${s.promptSection}`)
-    .join("\n\n");
+export function buildSystemPrompt(
+  smells: readonly SmellDescriptor[],
+  includeAstMetrics = true,
+): string {
+  const smellRules = buildSmellRules(smells, includeAstMetrics);
 
   return `You are an expert Static Analysis & Software Quality Engine acting as a deterministic Oracular Classifier for TypeScript Test Smells.
 
-Your goal is to cross-reference the provided AST JSON metrics with the source code and classify the presence of Test Smells. You must replace human intuition with strict, cold algorithmic rules.
+Your goal is to classify the presence of Test Smells from the test source${includeAstMetrics ? " and provided AST JSON metrics" : ""}. You must replace human intuition with strict, cold algorithmic rules.
 ### TEST FILE STRUCTURE & CONTEXT:
 Each test file provided is a self-contained skeletal TypeScript snippet with two layers:
 1. **Fixtures & Context Layer**: File-level imports, ancestor \`describe()\` wrappers, and setup hooks (\`beforeEach\`/\`beforeAll\`) containing shared variables. These provide the context required to evaluate fixture smells (such as General Fixture and Mystery Guest).
 2. **Target Test Layer**: The single unit test being evaluated is delimited between \`// ── TARGET TEST ──\` and \`// ── END TARGET TEST ──\`.
 
-Cross-reference the AST METADATA with the target test block and surrounding fixture context.
+${includeAstMetrics ? "Cross-reference the AST METADATA with the target test block and surrounding fixture context." : "Use the target test block and surrounding fixture context only. No AST metadata is provided."}
 
 ### THE VALID SMELLS & THEIR STRICT ALGORITHMIC TRIGGERS:
 
@@ -75,15 +99,14 @@ FILE: example.spec.ts - SMELLS: ${
  */
 export function buildChainOfThoughtPrompt(
   smells: readonly SmellDescriptor[],
+  includeAstMetrics = true,
 ): string {
-  const smellRules = smells
-    .map((s, i) => `${i + 1}. ${s.promptSection}`)
-    .join("\n\n");
+  const smellRules = buildSmellRules(smells, includeAstMetrics);
 
   return `You are an expert Static Analysis & Software Quality Engine acting as a deterministic Oracular Classifier for TypeScript Test Smells.
 
 You will receive:
-- AST JSON METRICS extracted statically from the test code (may be empty if ablation mode is active)
+${includeAstMetrics ? "- AST JSON METRICS extracted statically from the test code" : "- Use only the source code and any provided context; no AST metrics are available."}
 - CONTEXT about the surrounding test file (imports, setup hooks, shared variables — may be empty)
 - The SOURCE CODE of a single \`it()\` / \`test()\` block
 

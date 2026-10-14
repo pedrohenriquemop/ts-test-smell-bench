@@ -23,6 +23,8 @@ export interface AnalysisRequest {
    */
   contextSnippets?: string[];
   useChainOfThought?: boolean;
+  /** Whether AST metadata is included in the user prompt. */
+  includeAstMetrics?: boolean;
 }
 
 // ── Response ─────────────────────────────────────────────────────────
