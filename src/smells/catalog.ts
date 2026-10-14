@@ -132,6 +132,39 @@ export const SMELL_CATALOG: readonly SmellDescriptor[] = [
    - TRIGGER: Raw, unexplained domain/business strings (e.g., \`"SUPER_ADMIN"\`, \`"https://api.domain.com/v1"\`, \`"secret_key_123"\`) passed directly as behavioral inputs or state into SUT methods instead of using declared constants.
    - FALSE-POSITIVE GUARD: Strings inside test titles (\`it("...")\`), strings used strictly as assertion expectations (e.g., \`expect(res).toBe("hello")\`), error message arguments, or standard property keys are SAFE and must NOT be flagged.`,
   },
+
+  {
+    id: "sleepy-test",
+    displayName: "Sleepy Test",
+    description:
+      "A test uses explicit time-based waits to synchronize asynchronous behavior.",
+    requiredMetrics: [],
+    promptSection: `Sleepy Test
+   - TRIGGER: The target test uses a fixed delay or explicit sleep (for example, `setTimeout`, a `sleep()` helper, or `waitForTimeout()`) to wait for asynchronous behavior instead of waiting for an observable condition or completion signal.
+   - FALSE-POSITIVE GUARD: Do not flag framework-managed condition waits such as `waitFor`, or fake-timer advancement used to test timer behavior.`,
+  },
+
+  {
+    id: "exception-catching-throwing",
+    displayName: "Exception Catching Throwing",
+    description:
+      "A test contains explicit throw or catch logic rather than using declarative exception assertions.",
+    requiredMetrics: [],
+    promptSection: `Exception Catching Throwing
+   - TRIGGER: The target test contains an explicit `throw` statement or a `catch` clause as part of its test logic, including manual failure signaling after an operation expected to throw.
+   - REASONING: Prefer the test framework's declarative exception assertions, such as `toThrow`, `rejects.toThrow`, or `assert.throws`, which report the expected exception directly.`,
+  },
+
+  {
+    id: "sensitive-equality",
+    displayName: "Sensitive Equality",
+    description:
+      "An assertion compares values through their string representation, making the test sensitive to formatting changes.",
+    requiredMetrics: [],
+    promptSection: `Sensitive Equality
+   - TRIGGER: An assertion compares a value's `toString()` result or other stringified representation for equality (for example, `expect(value.toString()).toBe(expected)`).
+   - REASONING: String representations can change due to formatting or implementation details even when the relevant behavior remains correct. Prefer assertions on the meaningful value or property.`,
+  },
 ] as const;
 
 // ── Lookup helpers ───────────────────────────────────────────────────

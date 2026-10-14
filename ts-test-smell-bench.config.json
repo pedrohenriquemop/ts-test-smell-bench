@@ -42,7 +42,10 @@
       "resource-optimism",
       "general-fixture",
       "hardcoded-literal",
-      "magic-number"
+      "magic-number",
+      "sleepy-test",
+      "exception-catching-throwing",
+      "sensitive-equality"
     ]
   },
   "prompt": {

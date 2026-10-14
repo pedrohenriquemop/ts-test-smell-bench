@@ -7,7 +7,7 @@ Context: I am providing one batch as two uploaded files:
 
 Analyze each manifest entry against the source block with the same file name. The source block contains the target test between `TARGET TEST` and `END TARGET TEST` markers; imports, setup, and describe context are supplied only to provide context.
 
-Task: Identify the presence of any of the following 8 Test Smells:
+Task: Identify the presence of any of the following 11 Test Smells:
 
 Assertion Roulette: Multiple assertions in one test without descriptive messages.
 
@@ -25,6 +25,12 @@ Magic Number: Raw, unexplained numbers used as behavioral inputs. Do not flag nu
 
 Resource Optimism: Assuming external resources (API, file system, database) are always available without error handling or an existence/availability check.
 
+Sleepy Test: The target test uses a fixed delay or explicit sleep (such as `setTimeout`, a `sleep()` helper, or `waitForTimeout()`) to synchronize asynchronous behavior instead of waiting for an observable condition or completion signal. Do not flag framework-managed condition waits such as `waitFor` or fake-timer advancement used to test timer behavior.
+
+Exception Catching Throwing: The target test contains an explicit `throw` statement or a `catch` clause as part of its test logic, including manual failure signaling after an operation expected to throw. Prefer declarative framework assertions such as `toThrow`, `rejects.toThrow`, or `assert.throws`.
+
+Sensitive Equality: An assertion compares a value's `toString()` result or other stringified representation for equality, making the test sensitive to formatting changes. Prefer assertions on the meaningful value or property.
+
 Instructions:
 
 - Analyze every entry in `sampled_manifesto_<N>.json`, in its listed order.
@@ -38,7 +44,7 @@ Output format — strict:
 - Return exactly 50 lines: one line for every manifest entry.
 - Keep the lines in the exact manifest order.
 - Copy the file name exactly from the manifest entry or its `[Test N: ...]` marker.
-- Use only the eight smell names written above, with the same spelling and capitalization.
+- Use only the eleven smell names written above, with the same spelling and capitalization.
 - Return plain text only: no introduction, reasoning, headings, Markdown, numbering, code fences, or explanations.
 
 Each line must be exactly:

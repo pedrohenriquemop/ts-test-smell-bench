@@ -102,3 +102,44 @@ export function mergeGoldsetRuns(
   console.log(`Created consensus goldset from ${runFiles.length} source runs: ${outputFile}`);
   console.log(`Wrote vote audit report: ${reportFile}`);
 }
+
+/**
+ * Adds labels from a supplemental run to an existing goldset by unioning
+ * smell names per file. Missing files and prior labels are preserved.
+ * Writes to a separate output by default so the base goldset stays intact.
+ */
+export function mergeGoldsetAdditions(
+  projectRoot = process.cwd(),
+  baseFileArg = "goldset/run.txt",
+  additionsFileArg = "goldset/run_new_smells.txt",
+  outputFileArg = "goldset/run_augmented.txt",
+): void {
+  const baseFile = path.resolve(projectRoot, baseFileArg);
+  const additionsFile = path.resolve(projectRoot, additionsFileArg);
+  const outputFile = path.resolve(projectRoot, outputFileArg);
+  if (outputFile === baseFile || outputFile === additionsFile) {
+    throw new Error("Augmented goldset output must be a separate file.");
+  }
+  if (!fs.existsSync(baseFile)) throw new Error(`Base goldset not found: ${baseFile}`);
+  if (!fs.existsSync(additionsFile)) throw new Error(`Supplemental goldset not found: ${additionsFile}`);
+
+  const baseEntries = parseRunFile(baseFile);
+  const additionEntries = parseRunFile(additionsFile);
+  const merged = new Map<string, string[]>();
+  for (const entry of baseEntries) merged.set(entry.file, [...entry.smells]);
+  for (const entry of additionEntries) {
+    const smells = new Set(merged.get(entry.file) ?? []);
+    for (const smell of entry.smells) smells.add(smell);
+    merged.set(entry.file, [...smells]);
+  }
+
+  const lines = [
+    '[LLM="Additive merge of existing and supplemental smell labels"]',
+    ...[...merged].map(([file, smells]) =>
+      `File Name: ${file} - Smells: ${smells.length ? smells.join(", ") : "None"}`,
+    ),
+  ];
+  fs.mkdirSync(path.dirname(outputFile), { recursive: true });
+  fs.writeFileSync(outputFile, `${lines.join("\n")}\n`, "utf8");
+  console.log(`Created augmented goldset: ${outputFile}`);
+}
