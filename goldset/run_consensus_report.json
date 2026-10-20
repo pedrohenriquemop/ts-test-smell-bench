@@ -1,9 +1,14 @@
 {
-  "strategy": "strict-majority",
+  "strategy": "existing-goldset-plus-extra-label-union",
   "sources": [
     "run_claude.txt",
     "run_gemini.txt",
     "run_gpt.txt"
+  ],
+  "extraSources": [
+    "run_claude_extra.txt",
+    "run_gemini_extra.txt",
+    "run_gpt_extra.txt"
   ],
   "files": [
     {
@@ -195,7 +200,8 @@
         "Eager Test",
         "Hardcoded Literal",
         "Magic Number",
-        "Mystery Guest"
+        "Mystery Guest",
+        "Sleepy Test"
       ]
     },
     {
@@ -210,6 +216,7 @@
       },
       "smells": [
         "Assertion Roulette",
+        "Exception Catching Throwing",
         "Hardcoded Literal",
         "Mystery Guest"
       ]
@@ -232,7 +239,8 @@
         "Eager Test",
         "Hardcoded Literal",
         "Magic Number",
-        "Mystery Guest"
+        "Mystery Guest",
+        "Sleepy Test"
       ]
     },
     {
@@ -251,7 +259,8 @@
         "Conditional Test Logic",
         "Hardcoded Literal",
         "Magic Number",
-        "Mystery Guest"
+        "Mystery Guest",
+        "Sleepy Test"
       ]
     },
     {
@@ -325,7 +334,8 @@
         "Assertion Roulette",
         "Hardcoded Literal",
         "Magic Number",
-        "Mystery Guest"
+        "Mystery Guest",
+        "Sleepy Test"
       ]
     },
     {
@@ -567,6 +577,7 @@
       },
       "smells": [
         "Assertion Roulette",
+        "Exception Catching Throwing",
         "Hardcoded Literal"
       ]
     },
@@ -583,6 +594,7 @@
       },
       "smells": [
         "Assertion Roulette",
+        "Exception Catching Throwing",
         "Hardcoded Literal"
       ]
     },
@@ -826,6 +838,7 @@
         "Hardcoded Literal": 3
       },
       "smells": [
+        "Exception Catching Throwing",
         "Hardcoded Literal"
       ]
     },
@@ -839,6 +852,7 @@
       },
       "smells": [
         "Assertion Roulette",
+        "Exception Catching Throwing",
         "Hardcoded Literal"
       ]
     },
@@ -876,7 +890,8 @@
         "Magic Number": 2
       },
       "smells": [
-        "Magic Number"
+        "Magic Number",
+        "Sensitive Equality"
       ]
     },
     {
@@ -889,7 +904,8 @@
       },
       "smells": [
         "Assertion Roulette",
-        "Magic Number"
+        "Magic Number",
+        "Sensitive Equality"
       ]
     },
     {
@@ -900,7 +916,8 @@
         "Magic Number": 2
       },
       "smells": [
-        "Magic Number"
+        "Magic Number",
+        "Sensitive Equality"
       ]
     },
     {
@@ -913,7 +930,8 @@
       },
       "smells": [
         "Assertion Roulette",
-        "Magic Number"
+        "Magic Number",
+        "Sensitive Equality"
       ]
     },
     {
@@ -927,7 +945,8 @@
       },
       "smells": [
         "Assertion Roulette",
-        "Magic Number"
+        "Magic Number",
+        "Sensitive Equality"
       ]
     },
     {
@@ -951,7 +970,8 @@
       },
       "smells": [
         "Assertion Roulette",
-        "Magic Number"
+        "Magic Number",
+        "Sensitive Equality"
       ]
     },
     {
@@ -990,6 +1010,7 @@
       },
       "smells": [
         "Assertion Roulette",
+        "Exception Catching Throwing",
         "Hardcoded Literal"
       ]
     },
@@ -1014,6 +1035,7 @@
       },
       "smells": [
         "Assertion Roulette",
+        "Exception Catching Throwing",
         "Hardcoded Literal"
       ]
     },
@@ -1205,6 +1227,7 @@
       },
       "smells": [
         "Assertion Roulette",
+        "Exception Catching Throwing",
         "Hardcoded Literal",
         "Mystery Guest"
       ]
@@ -1362,6 +1385,7 @@
         "Magic Number": 2
       },
       "smells": [
+        "Exception Catching Throwing",
         "Hardcoded Literal",
         "Magic Number"
       ]
@@ -1471,6 +1495,7 @@
         "Mystery Guest": 1
       },
       "smells": [
+        "Exception Catching Throwing",
         "Hardcoded Literal"
       ]
     },
@@ -1486,6 +1511,7 @@
       },
       "smells": [
         "Assertion Roulette",
+        "Exception Catching Throwing",
         "Hardcoded Literal"
       ]
     },
@@ -1502,6 +1528,7 @@
       },
       "smells": [
         "Assertion Roulette",
+        "Exception Catching Throwing",
         "Hardcoded Literal"
       ]
     },
@@ -1515,6 +1542,7 @@
         "Mystery Guest": 1
       },
       "smells": [
+        "Exception Catching Throwing",
         "Hardcoded Literal"
       ]
     },
@@ -1528,6 +1556,7 @@
         "Mystery Guest": 1
       },
       "smells": [
+        "Exception Catching Throwing",
         "Hardcoded Literal"
       ]
     },
@@ -1541,6 +1570,7 @@
         "Mystery Guest": 1
       },
       "smells": [
+        "Exception Catching Throwing",
         "Hardcoded Literal"
       ]
     },
@@ -1556,6 +1586,7 @@
       },
       "smells": [
         "Assertion Roulette",
+        "Exception Catching Throwing",
         "Hardcoded Literal"
       ]
     },
@@ -1674,6 +1705,7 @@
         "Resource Optimism": 1
       },
       "smells": [
+        "Exception Catching Throwing",
         "Hardcoded Literal"
       ]
     },
@@ -1700,6 +1732,7 @@
         "Resource Optimism": 1
       },
       "smells": [
+        "Exception Catching Throwing",
         "Hardcoded Literal"
       ]
     },
@@ -2050,6 +2083,7 @@
         "Hardcoded Literal": 3
       },
       "smells": [
+        "Exception Catching Throwing",
         "Hardcoded Literal"
       ]
     },

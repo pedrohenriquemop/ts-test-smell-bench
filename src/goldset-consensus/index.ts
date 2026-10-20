@@ -14,11 +14,13 @@ interface FileConsensus {
   smells: string[];
 }
 
-function parseRunFile(filePath: string): RunEntry[] {
+function parseRunFile(filePath: string, allowMissingFileNamePrefix = false): RunEntry[] {
   const entries = new Map<string, string[]>();
 
   for (const [index, line] of fs.readFileSync(filePath, "utf8").split(/\r?\n/).entries()) {
-    const match = line.match(/^\s*File Name:\s*(.+?)\s+-\s+Smells:\s*(.*?)\s*$/i);
+    const match = line.match(allowMissingFileNamePrefix
+      ? /^\s*(?:File Name:\s*)?(.+?)\s+-\s+Smells:\s*(.*?)\s*$/i
+      : /^\s*File Name:\s*(.+?)\s+-\s+Smells:\s*(.*?)\s*$/i);
     if (!match) continue;
 
     const smellsText = match[2].trim();
@@ -39,9 +41,8 @@ function parseRunFile(filePath: string): RunEntry[] {
 /**
  * Combines independently produced goldset runs into one reference file.
  *
- * A smell is accepted only when a strict majority of the sources that
- * labelled that test agree.  Thus two sources must both agree, and three
- * sources require two votes; ties are deliberately excluded.
+ * Normal runs use strict-majority voting. Supplemental *_extra.txt runs
+ * contain labels for additional smells and are unioned into that consensus.
  */
 export function mergeGoldsetRuns(
   projectRoot = process.cwd(),
@@ -52,54 +53,108 @@ export function mergeGoldsetRuns(
   const outputFile = path.resolve(projectRoot, outputFileArg);
   if (!fs.existsSync(runsDir)) throw new Error(`Goldset directory not found: ${runsDir}`);
 
-  const runFiles = fs.readdirSync(runsDir)
-    .filter((file) => /^run_.+\.txt$/i.test(file))
+  const files = fs.readdirSync(runsDir).filter((file) => /^run_.+\.txt$/i.test(file)).sort();
+  const extraFiles = files.filter((file) => /_extra\.txt$/i.test(file));
+  const runFiles = files
+    .filter((file) => !/_extra\.txt$/i.test(file))
     .sort();
   if (runFiles.length < 2) {
     throw new Error(`At least two run_*.txt files are required in ${runsDir} to build a consensus.`);
   }
 
-  const votesByFile = new Map<string, Map<string, string[]>>();
-  for (const runFile of runFiles) {
-    for (const entry of parseRunFile(path.join(runsDir, runFile))) {
-      const votes = votesByFile.get(entry.file) ?? new Map<string, string[]>();
-      votes.set(runFile, entry.smells);
-      votesByFile.set(entry.file, votes);
+  // When run.txt already exists, it defines the curated test set and normal
+  // labels. Rebuilding from the full model runs can silently expand that set.
+  const hasExistingGoldset = fs.existsSync(outputFile);
+  const consensus: FileConsensus[] = hasExistingGoldset
+    ? parseRunFile(outputFile).map(({ file, smells }) => ({
+        file, sourceCount: 0, requiredVotes: 0, smellVotes: {}, smells,
+      }))
+    : [];
+
+  if (!hasExistingGoldset) {
+    const votesByFile = new Map<string, Map<string, string[]>>();
+    for (const runFile of runFiles) {
+      for (const entry of parseRunFile(path.join(runsDir, runFile))) {
+        const votes = votesByFile.get(entry.file) ?? new Map<string, string[]>();
+        votes.set(runFile, entry.smells);
+        votesByFile.set(entry.file, votes);
+      }
+    }
+    if (!votesByFile.size) throw new Error(`No "File Name" results found in: ${runFiles.join(", ")}`);
+
+    for (const [file, sourceVotes] of votesByFile) {
+      const sourceCount = sourceVotes.size;
+      const requiredVotes = Math.floor(sourceCount / 2) + 1;
+      const counts = new Map<string, number>();
+      for (const smells of sourceVotes.values()) {
+        for (const smell of smells) counts.set(smell, (counts.get(smell) ?? 0) + 1);
+      }
+      const smellVotes = Object.fromEntries([...counts].sort(([a], [b]) => a.localeCompare(b)));
+      consensus.push({
+        file,
+        sourceCount,
+        requiredVotes,
+        smellVotes,
+        smells: [...counts]
+          .filter(([, count]) => count >= requiredVotes)
+          .map(([smell]) => smell)
+          .sort((a, b) => a.localeCompare(b)),
+      });
     }
   }
-  if (!votesByFile.size) throw new Error(`No "File Name" results found in: ${runFiles.join(", ")}`);
 
-  const consensus: FileConsensus[] = [];
-  for (const [file, sourceVotes] of votesByFile) {
-    const sourceCount = sourceVotes.size;
-    const requiredVotes = Math.floor(sourceCount / 2) + 1;
-    const counts = new Map<string, number>();
-    for (const smells of sourceVotes.values()) {
-      for (const smell of smells) counts.set(smell, (counts.get(smell) ?? 0) + 1);
+  // Extra runs annotate the same tests with additional smell categories.
+  // Union those labels after consensus so their None values cannot erase
+  // labels from the normal goldset.
+  const consensusByFile = new Map(consensus.map((entry) => [entry.file, entry]));
+  for (const extraFile of extraFiles) {
+    for (const entry of parseRunFile(path.join(runsDir, extraFile), true)) {
+      let target = consensusByFile.get(entry.file);
+      if (!target) {
+        if (hasExistingGoldset) continue;
+        target = { file: entry.file, sourceCount: 0, requiredVotes: 0, smellVotes: {}, smells: [] };
+        consensus.push(target);
+        consensusByFile.set(entry.file, target);
+      }
+      target.smells = [...new Set([...target.smells, ...entry.smells])].sort((a, b) => a.localeCompare(b));
     }
-    const smellVotes = Object.fromEntries([...counts].sort(([a], [b]) => a.localeCompare(b)));
-    consensus.push({
-      file,
-      sourceCount,
-      requiredVotes,
-      smellVotes,
-      smells: [...counts]
-        .filter(([, count]) => count >= requiredVotes)
-        .map(([smell]) => smell)
-        .sort((a, b) => a.localeCompare(b)),
-    });
   }
 
   const lines = [
-    `[LLM="Consensus: strict majority of ${runFiles.length} sources"]`,
+    hasExistingGoldset
+      ? '[LLM="Existing goldset with supplemental smell labels"]'
+      : `[LLM="Consensus: strict majority of ${runFiles.length} sources"]`,
     ...consensus.map(({ file, smells }) => `File Name: ${file} - Smells: ${smells.length ? smells.join(", ") : "None"}`),
   ];
   fs.mkdirSync(path.dirname(outputFile), { recursive: true });
   fs.writeFileSync(outputFile, `${lines.join("\n")}\n`, "utf8");
 
   const reportFile = outputFile.replace(/\.txt$/i, "_consensus_report.json");
-  fs.writeFileSync(reportFile, `${JSON.stringify({ strategy: "strict-majority", sources: runFiles, files: consensus }, null, 2)}\n`, "utf8");
-  console.log(`Created consensus goldset from ${runFiles.length} source runs: ${outputFile}`);
+  let previousReport: { sources?: string[]; files?: FileConsensus[] } = {};
+  if (hasExistingGoldset && fs.existsSync(reportFile)) {
+    try {
+      previousReport = JSON.parse(fs.readFileSync(reportFile, "utf8"));
+    } catch {
+      // A missing or outdated audit report does not prevent goldset merging.
+    }
+  }
+  const previousFiles = new Map((previousReport.files ?? []).map((entry) => [entry.file, entry]));
+  const reportFiles = consensus.map((entry) => {
+    const previous = previousFiles.get(entry.file);
+    return previous ? {
+      ...entry,
+      sourceCount: previous.sourceCount,
+      requiredVotes: previous.requiredVotes,
+      smellVotes: previous.smellVotes,
+    } : entry;
+  });
+  fs.writeFileSync(reportFile, `${JSON.stringify({
+    strategy: hasExistingGoldset ? "existing-goldset-plus-extra-label-union" : "strict-majority-plus-extra-label-union",
+    sources: hasExistingGoldset ? previousReport.sources ?? [path.basename(outputFile)] : runFiles,
+    extraSources: extraFiles,
+    files: reportFiles,
+  }, null, 2)}\n`, "utf8");
+  console.log(`Merged ${extraFiles.length} extra runs into ${outputFile}${hasExistingGoldset ? " (existing test set preserved)" : ` using ${runFiles.length} normal runs`}`);
   console.log(`Wrote vote audit report: ${reportFile}`);
 }
 
