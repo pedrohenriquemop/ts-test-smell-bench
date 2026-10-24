@@ -26,6 +26,13 @@
       "temperature": 0.0
     },
     {
+      "id": "qwen2.5-coder-7b",
+      "provider": "ollama",
+      "model": "qwen2.5-coder:7b",
+      "baseUrl": "http://localhost:11434/api/generate",
+      "temperature": 0.0
+    },
+    {
       "id": "gemini-flash",
       "provider": "gemini",
       "model": "gemini-3.6-flash",
@@ -50,7 +57,7 @@
   },
   "prompt": {
     "useChainOfThought": true,
-    "strategy": "standard",
+    "strategy": "chain-of-thought",
     "includeAstMetrics": true,
     "includeContext": true
   },
