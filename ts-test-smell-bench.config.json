@@ -33,6 +33,13 @@
       "temperature": 0.0
     },
     {
+      "id": "phi4-mini-latest",
+      "provider": "ollama",
+      "model": "phi4-mini:latest",
+      "baseUrl": "http://localhost:11434/api/generate",
+      "temperature": 0.0
+    },
+    {
       "id": "qwen2.5-coder-7b",
       "provider": "ollama",
       "model": "qwen2.5-coder:7b",
