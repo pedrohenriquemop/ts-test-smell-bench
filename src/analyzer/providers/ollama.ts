@@ -37,12 +37,20 @@ export function parseOllamaResponse(
 ): { smells: string[]; justification: string; reasoningLog?: string } | null {
   let reasoningLog: string | undefined;
   if (useChainOfThought) {
-    const classification = response.match(/<classification\s*>([\s\S]*?)<\/classification\s*>/i);
-    if (!classification) return null;
-    reasoningLog = response.match(/<thinking\s*>([\s\S]*?)<\/thinking\s*>/i)?.[1]?.trim();
-    response = classification[1].trim();
+    const classification = response.match(
+      /<classification\s*>([\s\S]*?)<\/classification\s*>/i,
+    );
+    reasoningLog = response
+      .match(/<thinking\s*>([\s\S]*?)<\/thinking\s*>/i)?.[1]
+      ?.trim();
+    // Some models ignore the requested tags but still emit the parseable
+    // FILE/SMELLS/JUSTIFICATION line. Parse that line as a fallback.
+    if (classification) response = classification[1].trim();
   }
-  const jsonText = response.replace(/^```(?:json)?\s*/i, "").replace(/\s*```$/, "").trim();
+  const jsonText = response
+    .replace(/^```(?:json)?\s*/i, "")
+    .replace(/\s*```$/, "")
+    .trim();
   try {
     const value = JSON.parse(jsonText);
     if (value && typeof value === "object") {
@@ -51,7 +59,9 @@ export function parseOllamaResponse(
         ? rawSmells.map(String)
         : String(rawSmells).toLowerCase() === "none" || !rawSmells
           ? []
-          : String(rawSmells).split(",").map((s: string) => s.trim());
+          : String(rawSmells)
+              .split(",")
+              .map((s: string) => s.trim());
       return {
         smells,
         justification: String(value.justification ?? value.JUSTIFICATION ?? ""),
@@ -110,6 +120,9 @@ export class OllamaProvider implements ModelProvider {
     const astInstruction = includeAstMetrics
       ? "Cross-reference the AST METADATA with the target test code to detect all applicable smells."
       : "Evaluate the target test source and supplied context only. No AST metadata is provided.";
+    const outputInstruction = req.useChainOfThought
+      ? `Return exactly two blocks and nothing else. Put analysis only inside <thinking>. Inside <classification>, return one line exactly in this format, using the supplied filename "${req.fileName}": FILE: ${req.fileName} - SMELLS: [valid smell names separated by commas, or None] - JUSTIFICATION: [brief explanation]. Do not add brackets around the smell names. Use only names from the system prompt. Preserve labels and separators.`
+      : `Return exactly one line and nothing else, using the supplied filename "${req.fileName}": FILE: ${req.fileName} - SMELLS: [valid smell names separated by commas, or None] - JUSTIFICATION: [brief explanation]. Do not add brackets around the smell names. Use only names from the system prompt. Preserve labels and separators.`;
     const prompt = `Analyze the following TypeScript test file for Test Smells.
 
 CONTEXT & FILE STRUCTURE:
@@ -121,8 +134,7 @@ ${astBlock}${contextBlock}
 TEST SOURCE:
 ${req.testCode}
 
-Evaluate candidate smells against the target test and output:
-FILE: [NAME] - SMELLS: [LIST or None] - JUSTIFICATION: [SHORT]`;
+${outputInstruction}`;
 
     const start = Date.now();
 
@@ -140,7 +152,7 @@ FILE: [NAME] - SMELLS: [LIST or None] - JUSTIFICATION: [SHORT]`;
             num_predict: this.config.maxTokens,
           },
         },
-        { timeout: 360_000 },
+        { timeout: 480_000 },
       );
     } catch (error) {
       if (axios.isAxiosError(error)) {

@@ -39,7 +39,13 @@ export interface GeminiProviderConfig {
  */
 function parseModelResponse(
   response: string,
+  useChainOfThought = false,
 ): { smells: string[]; justification: string } | null {
+  if (useChainOfThought) {
+    const classification = response.match(/<classification\s*>([\s\S]*?)<\/classification\s*>/i);
+    // Fall back to a parseable FILE line when a model omits the requested tags.
+    if (classification) response = classification[1].trim();
+  }
   const match = response.match(
     /FILE:.*?- SMELLS:\s*(.*?)\s*- JUSTIFICATION:\s*(.*)/is,
   );
@@ -89,6 +95,9 @@ export class GeminiProvider implements ModelProvider {
         ? `\n    CONTEXT:\n${req.contextSnippets.map((s) => `    ${s}`).join("\n")}\n`
         : "";
 
+    const outputInstruction = req.useChainOfThought
+      ? `Return exactly two blocks and nothing else. Put analysis only inside <thinking>. Inside <classification>, return one line exactly in this format, using the supplied filename "${req.fileName}": FILE: ${req.fileName} - SMELLS: [valid smell names separated by commas, or None] - JUSTIFICATION: [brief explanation]. Do not add brackets around the smell names. Use only names from the system prompt. Preserve labels and separators.`
+      : `Return exactly one line and nothing else, using the supplied filename "${req.fileName}": FILE: ${req.fileName} - SMELLS: [valid smell names separated by commas, or None] - JUSTIFICATION: [brief explanation]. Do not add brackets around the smell names. Use only names from the system prompt. Preserve labels and separators.`;
     const userPrompt = `
     Analyze the following TypeScript test:
     
@@ -98,8 +107,7 @@ export class GeminiProvider implements ModelProvider {
     CODE:
     ${req.testCode}
     
-    Respond only in the following format:
-    FILE: [NAME] - SMELLS: [LIST] - JUSTIFICATION: [SHORT]
+    ${outputInstruction}
   `;
 
     const url = `${this.config.baseUrl}/v1beta/models/${this.config.model}:generateContent?key=${this.config.apiKey}`;
@@ -156,7 +164,7 @@ export class GeminiProvider implements ModelProvider {
         }
       : undefined;
 
-    const parsed = parseModelResponse(rawText);
+    const parsed = parseModelResponse(rawText, req.useChainOfThought ?? false);
 
     return {
       rawText,

@@ -77,12 +77,14 @@ ${includeAstMetrics ? "Cross-reference the AST METADATA with the target test blo
 
 ${smellRules}
 
-### OUTPUT FORMAT
-Respond with only the final parseable line containing the file name, smells, and a short justification. Do not include analysis, markdown, or any other text.
+### OUTPUT FORMAT — MUST FOLLOW EXACTLY
+Return exactly one line in this format. Replace the example filename with the exact test filename supplied in the input. In SMELLS, write only exact display names from the valid-smell list above, separated by commas; write None when there are no matches.
 
 FILE: example.spec.ts - SMELLS: ${
     smells.length > 0 ? smells[0].displayName : "None"
-  } - JUSTIFICATION: Brief explanation of detected smells.`;
+  } - JUSTIFICATION: Brief explanation of detected smells.
+
+Do not use bullets, numbering, brackets, quotes, JSON, code fences, extra fields, line breaks, or text before or after this line. Keep JUSTIFICATION on the same line and concise. Never output a smell that is not in the valid-smell list. This format is mandatory for every model and every test.`;
 }
 
 // ── Chain-of-Thought prompt ──────────────────────────────────────────
@@ -114,8 +116,8 @@ ${includeAstMetrics ? "- AST JSON METRICS extracted statically from the test cod
 
 ${smellRules}
 
-### REQUIRED OUTPUT FORMAT
-Output exactly the following structure, with your actual evaluation in the designated tags and no text outside them. In <thinking>, explain the analysis step by step before deciding. In <classification>, provide only the final parseable result in this format: FILE: [NAME] - SMELLS: [LIST or None] - JUSTIFICATION: [SHORT].
+### REQUIRED OUTPUT FORMAT — MUST FOLLOW EXACTLY
+Return exactly these two tagged blocks, with no text before or after them. Put reasoning only inside <thinking>. Inside <classification>, return exactly one line in this format: FILE: [exact input filename] - SMELLS: [exact valid-smell display names separated by commas, or None] - JUSTIFICATION: [brief explanation]. Do not put reasoning, markdown, JSON, brackets around the smell list, or any additional text inside <classification>. Never output a smell that is not in the valid-smell list. The classification line is consumed by an automated parser, so preserve the labels, order, separators, and single-line structure exactly.
 
 <thinking>
 Step 1: Scope & Setup Analysis (Where do variables come from?)
@@ -123,6 +125,6 @@ Step 2: Control Flow Analysis (Are there try/catch/if blocks used for test flow 
 Step 3: Smell Trigger Validation (Evaluate specific rules)
 </thinking>
 <classification>
-{FINAL_JSON_OR_PARSABLE_FORMAT}
+FILE: example.spec.ts - SMELLS: None - JUSTIFICATION: No listed smells detected.
 </classification>`;
 }

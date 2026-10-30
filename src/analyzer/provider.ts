@@ -7,6 +7,8 @@
 // ── Request ──────────────────────────────────────────────────────────
 
 export interface AnalysisRequest {
+  /** Exact filename of the test being classified. */
+  fileName: string;
   /** The isolated `it()` / `test()` block source code. */
   testCode: string;
 

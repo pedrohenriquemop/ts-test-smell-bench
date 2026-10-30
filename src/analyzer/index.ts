@@ -197,6 +197,7 @@ export async function generateGoldset({
 
       console.log(`  Labeling ${manifestEntry.file}...`);
       const response = await provider.analyze({
+        fileName: manifestEntry.file,
         testCode,
         metadata: includeAst ? (manifestEntry.metrics ?? {}) : {},
         systemPrompt,
@@ -414,6 +415,7 @@ export async function runAnalyzer({
     for (let attempt = 0; attempt <= maxRetries; attempt++) {
       try {
         response = await provider.analyze({
+          fileName,
           testCode,
           metadata,
           systemPrompt,
