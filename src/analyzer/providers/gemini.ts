@@ -4,6 +4,7 @@ import type {
   AnalysisRequest,
   AnalysisResponse,
 } from "../provider.ts";
+import { standardizeSmellList } from "../../smells/catalog.ts";
 
 // ── Config ───────────────────────────────────────────────────────────
 
@@ -41,29 +42,96 @@ function parseModelResponse(
   response: string,
   useChainOfThought = false,
 ): { smells: string[]; justification: string } | null {
+  let targetText = response;
+
   if (useChainOfThought) {
-    const classification = response.match(/<classification\s*>([\s\S]*?)<\/classification\s*>/i);
-    // Fall back to a parseable FILE line when a model omits the requested tags.
-    if (classification) response = classification[1].trim();
+    const classification = response.match(
+      /<classification\s*>([\s\S]*?)(?:<\/classification\s*>|$)/i,
+    );
+    if (classification && classification[1].trim()) {
+      targetText = classification[1].trim();
+    }
   }
-  const match = response.match(
-    /FILE:.*?- SMELLS:\s*(.*?)\s*- JUSTIFICATION:\s*(.*)/is,
+
+  // 1. Try parsing JSON format
+  const jsonText = targetText
+    .replace(/^```(?:json)?\s*/i, "")
+    .replace(/\s*```$/, "")
+    .trim();
+  try {
+    const value = JSON.parse(jsonText);
+    if (value && typeof value === "object") {
+      const rawSmells = value.smells ?? value.SMELLS ?? [];
+      const smells = standardizeSmellList(rawSmells);
+      return {
+        smells,
+        justification: String(value.justification ?? value.JUSTIFICATION ?? ""),
+      };
+    }
+  } catch {
+    // Legacy / line formats continue below
+  }
+
+  // 2. Try structured line regex on targetText, then full response as fallback
+  const searchTexts =
+    targetText !== response ? [targetText, response] : [targetText];
+
+  for (const text of searchTexts) {
+    // Format A: Standard with hyphen or newline before JUSTIFICATION
+    const matchA = text.match(
+      /FILE:.*?- SMELLS:\s*(.*?)\s*(?:[-–—\n]\s*JUSTIFICATION:|\s+JUSTIFICATION:)\s*(.*)/is,
+    );
+    if (matchA) {
+      return {
+        smells: standardizeSmellList(matchA[1]),
+        justification: matchA[2].trim(),
+      };
+    }
+
+    // Format B: Case-insensitive Justification label
+    const matchB = text.match(
+      /FILE:.*?- SMELLS:\s*(.*?)(?:\s*[-–—]?\s*Justification:)\s*(.*)/is,
+    );
+    if (matchB) {
+      return {
+        smells: standardizeSmellList(matchB[1]),
+        justification: matchB[2].trim(),
+      };
+    }
+
+    // Format C: SMELLS: ... - <sentence explanation>
+    const matchC = text.match(
+      /FILE:.*?- SMELLS:\s*([^-\n]+?)\s*[-–—]\s*(.*)/is,
+    );
+    if (matchC) {
+      return {
+        smells: standardizeSmellList(matchC[1]),
+        justification: matchC[2].trim(),
+      };
+    }
+
+    // Format D: Standalone SMELLS line
+    const matchD = text.match(/FILE:.*?- SMELLS:\s*(.*)/is);
+    if (matchD) {
+      return {
+        smells: standardizeSmellList(matchD[1]),
+        justification: "",
+      };
+    }
+  }
+
+  // 3. Fallback for model conclusion statements
+  const matchConclusion = response.match(
+    /only applicable smell is\s*\*\*?([^*]+)\*\*?/i,
   );
-  if (!match) return null;
-
-  const smellsStr = match[1].trim();
-  const justification = match[2].trim();
-
-  let smells: string[] = [];
-  if (
-    smellsStr.toLowerCase() !== "none" &&
-    smellsStr !== "[]" &&
-    smellsStr !== ""
-  ) {
-    smells = smellsStr.split(",").map((s) => s.trim());
+  if (matchConclusion) {
+    return {
+      smells: standardizeSmellList(matchConclusion[1]),
+      justification: "Extracted from model concluding statement",
+    };
   }
 
-  return { smells, justification };
+  return null;
 }
 
 // ── Provider ─────────────────────────────────────────────────────────

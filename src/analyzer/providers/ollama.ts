@@ -4,6 +4,7 @@ import type {
   AnalysisRequest,
   AnalysisResponse,
 } from "../provider.ts";
+import { standardizeSmellList } from "../../smells/catalog.ts";
 
 // ── Config ───────────────────────────────────────────────────────────
 
@@ -36,18 +37,22 @@ export function parseOllamaResponse(
   useChainOfThought = false,
 ): { smells: string[]; justification: string; reasoningLog?: string } | null {
   let reasoningLog: string | undefined;
+  let targetText = response;
+
   if (useChainOfThought) {
-    const classification = response.match(
-      /<classification\s*>([\s\S]*?)<\/classification\s*>/i,
+    const cotMatch = response.match(
+      /<classification\s*>([\s\S]*?)(?:<\/classification\s*>|$)/i,
     );
     reasoningLog = response
-      .match(/<thinking\s*>([\s\S]*?)<\/thinking\s*>/i)?.[1]
+      .match(/<thinking\s*>([\s\S]*?)(?:<\/thinking\s*>|$)/i)?.[1]
       ?.trim();
-    // Some models ignore the requested tags but still emit the parseable
-    // FILE/SMELLS/JUSTIFICATION line. Parse that line as a fallback.
-    if (classification) response = classification[1].trim();
+    if (cotMatch && cotMatch[1].trim()) {
+      targetText = cotMatch[1].trim();
+    }
   }
-  const jsonText = response
+
+  // 1. Try parsing JSON format
+  const jsonText = targetText
     .replace(/^```(?:json)?\s*/i, "")
     .replace(/\s*```$/, "")
     .trim();
@@ -55,13 +60,7 @@ export function parseOllamaResponse(
     const value = JSON.parse(jsonText);
     if (value && typeof value === "object") {
       const rawSmells = value.smells ?? value.SMELLS ?? [];
-      const smells = Array.isArray(rawSmells)
-        ? rawSmells.map(String)
-        : String(rawSmells).toLowerCase() === "none" || !rawSmells
-          ? []
-          : String(rawSmells)
-              .split(",")
-              .map((s: string) => s.trim());
+      const smells = standardizeSmellList(rawSmells);
       return {
         smells,
         justification: String(value.justification ?? value.JUSTIFICATION ?? ""),
@@ -69,26 +68,74 @@ export function parseOllamaResponse(
       };
     }
   } catch {
-    // The legacy FILE / SMELLS / JUSTIFICATION format remains supported.
+    // Legacy / line formats continue below
   }
-  const match = response.match(
-    /FILE:.*?- SMELLS:\s*(.*?)\s*- JUSTIFICATION:\s*(.*)/is,
+
+  // 2. Try structured line regex on targetText, then full response as fallback
+  const searchTexts =
+    targetText !== response ? [targetText, response] : [targetText];
+
+  for (const text of searchTexts) {
+    // Format A: Standard with hyphen or newline before JUSTIFICATION
+    const matchA = text.match(
+      /FILE:.*?- SMELLS:\s*(.*?)\s*(?:[-–—\n]\s*JUSTIFICATION:|\s+JUSTIFICATION:)\s*(.*)/is,
+    );
+    if (matchA) {
+      return {
+        smells: standardizeSmellList(matchA[1]),
+        justification: matchA[2].trim(),
+        reasoningLog,
+      };
+    }
+
+    // Format B: Case-insensitive Justification label
+    const matchB = text.match(
+      /FILE:.*?- SMELLS:\s*(.*?)(?:\s*[-–—]?\s*Justification:)\s*(.*)/is,
+    );
+    if (matchB) {
+      return {
+        smells: standardizeSmellList(matchB[1]),
+        justification: matchB[2].trim(),
+        reasoningLog,
+      };
+    }
+
+    // Format C: SMELLS: ... - <sentence explanation>
+    const matchC = text.match(
+      /FILE:.*?- SMELLS:\s*([^-\n]+?)\s*[-–—]\s*(.*)/is,
+    );
+    if (matchC) {
+      return {
+        smells: standardizeSmellList(matchC[1]),
+        justification: matchC[2].trim(),
+        reasoningLog,
+      };
+    }
+
+    // Format D: Standalone SMELLS line
+    const matchD = text.match(/FILE:.*?- SMELLS:\s*(.*)/is);
+    if (matchD) {
+      return {
+        smells: standardizeSmellList(matchD[1]),
+        justification: "",
+        reasoningLog,
+      };
+    }
+  }
+
+  // 3. Fallback for model conclusion statements
+  const matchConclusion = response.match(
+    /only applicable smell is\s*\*\*?([^*]+)\*\*?/i,
   );
-  if (!match) return null;
-
-  const smellsStr = match[1].trim();
-  const justification = match[2].trim();
-
-  let smells: string[] = [];
-  if (
-    smellsStr.toLowerCase() !== "none" &&
-    smellsStr !== "[]" &&
-    smellsStr !== ""
-  ) {
-    smells = smellsStr.split(",").map((s) => s.trim());
+  if (matchConclusion) {
+    return {
+      smells: standardizeSmellList(matchConclusion[1]),
+      justification: "Extracted from model concluding statement",
+      reasoningLog,
+    };
   }
 
-  return { smells, justification, reasoningLog };
+  return null;
 }
 
 // ── Provider ─────────────────────────────────────────────────────────

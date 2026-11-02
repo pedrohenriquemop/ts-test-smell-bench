@@ -1,12 +1,16 @@
 import * as fs from "fs";
 import * as path from "path";
+import { standardizeSmellList } from "../smells/catalog.ts";
+import { parseOllamaResponse } from "../analyzer/providers/ollama.ts";
 
 /**
- * Keep only model smell labels marked MATCH in structured model output.
- * Plain smell-name arrays are already normalized and are left untouched.
+ * Keep only model smell labels marked MATCH in structured model output,
+ * or standardize plain smell-name arrays against canonical catalog display names.
  */
 export function sanitizeModelSmells(smells: unknown): string[] {
-  if (!Array.isArray(smells)) return [];
+  if (!Array.isArray(smells)) {
+    return standardizeSmellList(smells);
+  }
 
   const values = smells.filter(
     (smell): smell is string => typeof smell === "string",
@@ -15,14 +19,16 @@ export function sanitizeModelSmells(smells: unknown): string[] {
     /\[(?:MATCH|PASS)\]/i.test(smell),
   );
   if (!hasDecisionLabels) {
-    return values.map((smell) => smell.trim()).filter(Boolean);
+    return standardizeSmellList(values);
   }
 
-  return values.flatMap((smell) => {
+  const matchedLabels = values.flatMap((smell) => {
     if (!/\[MATCH\]/i.test(smell)) return [];
     const label = smell.match(/^\s*(?:[-*]\s*)?(.+?)\s*:/)?.[1]?.trim();
     return label ? [label] : [];
   });
+
+  return standardizeSmellList(matchedLabels);
 }
 
 /** Extract per-smell decisions from the model's detailed evaluation section. */
@@ -41,7 +47,7 @@ export function smellsMarkedMatch(response: string): string[] {
     if (finalStatus === "MATCH") matches.push(entry[1].trim());
   }
 
-  return matches;
+  return standardizeSmellList(matches);
 }
 
 /** Sanitize modelSmells in one comparison-results file, preserving other fields. */
@@ -54,24 +60,84 @@ export function sanitizeResultsFile(inputPath: string): number {
   let changed = 0;
   const sanitized = results.map((entry: any) => {
     if (!entry || typeof entry !== "object") return entry;
-    const current = entry.modelSmells ?? entry.ollamaSmells;
-    if (current === undefined) return entry;
 
+    let updatedEntry = { ...entry };
     const rawResponse = entry.rawModelResponse ?? entry.rawOllamaResponse;
+    const isInvalid =
+      entry.modelStatus === "invalid return" ||
+      entry.ollamaStatus === "invalid return";
+
+    // Attempt recovery for invalid return entries
+    if (isInvalid && typeof rawResponse === "string" && rawResponse.trim()) {
+      const parsed = parseOllamaResponse(
+        rawResponse,
+        entry.cotEnabled ?? true,
+      );
+      if (parsed && (parsed.smells.length > 0 || parsed.justification)) {
+        updatedEntry.modelStatus = "success";
+        if (updatedEntry.ollamaStatus !== undefined) {
+          updatedEntry.ollamaStatus = "success";
+        }
+        if (!updatedEntry.modelJustification && parsed.justification) {
+          updatedEntry.modelJustification = parsed.justification;
+        }
+        if (
+          updatedEntry.ollamaJustification !== undefined &&
+          !updatedEntry.ollamaJustification &&
+          parsed.justification
+        ) {
+          updatedEntry.ollamaJustification = parsed.justification;
+        }
+        if (!updatedEntry.reasoningLog && parsed.reasoningLog) {
+          updatedEntry.reasoningLog = parsed.reasoningLog;
+        }
+        updatedEntry.modelSmells = parsed.smells;
+        if (updatedEntry.ollamaSmells !== undefined) {
+          updatedEntry.ollamaSmells = parsed.smells;
+        }
+      }
+    }
+
+    const current =
+      updatedEntry.modelSmells ?? updatedEntry.ollamaSmells;
+    if (current === undefined && !rawResponse) return updatedEntry;
+
     const fromDetailedResponse =
       typeof rawResponse === "string" ? smellsMarkedMatch(rawResponse) : [];
     const hasDetailedDecisions =
       typeof rawResponse === "string" &&
       /\b(?:MATCH|PASS)\b/i.test(rawResponse.split(/^---\s*$/m, 1)[0]);
-    const modelSmells = fromDetailedResponse.length > 0 || hasDetailedDecisions
-      ? fromDetailedResponse
-      : sanitizeModelSmells(current);
-    if (JSON.stringify(current) !== JSON.stringify(modelSmells)) changed++;
+
+    const modelSmells =
+      fromDetailedResponse.length > 0 || hasDetailedDecisions
+        ? fromDetailedResponse
+        : sanitizeModelSmells(current ?? []);
+
+    // Also standardize reference smells if present
+    const currentRef = updatedEntry.referenceSmells ?? updatedEntry.geminiSmells;
+    const standardizedRef = currentRef ? standardizeSmellList(currentRef) : undefined;
+
+    const hadChanges =
+      JSON.stringify(entry.modelSmells) !== JSON.stringify(modelSmells) ||
+      (entry.ollamaSmells !== undefined &&
+        JSON.stringify(entry.ollamaSmells) !== JSON.stringify(modelSmells)) ||
+      entry.modelStatus !== updatedEntry.modelStatus ||
+      (standardizedRef &&
+        JSON.stringify(currentRef) !== JSON.stringify(standardizedRef));
+
+    if (hadChanges) changed++;
+
     return {
-      ...entry,
+      ...updatedEntry,
       modelSmells,
-      ...(entry.ollamaSmells !== undefined
+      ...(updatedEntry.ollamaSmells !== undefined
         ? { ollamaSmells: modelSmells }
+        : {}),
+      ...(standardizedRef && updatedEntry.referenceSmells !== undefined
+        ? { referenceSmells: standardizedRef }
+        : {}),
+      ...(standardizedRef && updatedEntry.geminiSmells !== undefined
+        ? { geminiSmells: standardizedRef }
         : {}),
     };
   });

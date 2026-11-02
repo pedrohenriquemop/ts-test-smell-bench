@@ -197,3 +197,136 @@ export function resolveSmells(ids: readonly string[]): SmellDescriptor[] {
 export function allSmellIds(): string[] {
   return SMELL_CATALOG.map((s) => s.id);
 }
+
+// ── Normalization helpers ─────────────────────────────────────────────
+
+// Map normalized alphanumeric keys to canonical displayName
+// e.g. "assertionroulette" -> "Assertion Roulette"
+const CANONICAL_BY_KEY = new Map<string, string>();
+for (const smell of SMELL_CATALOG) {
+  const key = smell.displayName.toLowerCase().replace(/[^a-z0-9]/g, "");
+  CANONICAL_BY_KEY.set(key, smell.displayName);
+  const idKey = smell.id.toLowerCase().replace(/[^a-z0-9]/g, "");
+  CANONICAL_BY_KEY.set(idKey, smell.displayName);
+}
+
+/**
+ * Normalizes a single raw smell name into its canonical catalog display name.
+ * Returns null if the raw string represents "None", a false-positive guard,
+ * an empty string, or does not correspond to any known catalog smell.
+ */
+export function normalizeSmellName(raw: string): string | null {
+  if (!raw || typeof raw !== "string") return null;
+
+  // Strip brackets, quotes, backticks, asterisks, whitespace
+  const s = raw
+    .trim()
+    .replace(/^[\[\("'`*\s]+|[\]\)"'`*\s]+$/g, "")
+    .trim();
+  if (!s) return null;
+
+  const lower = s.toLowerCase();
+
+  // Exclude explicit none / pass / guard annotations
+  if (
+    lower === "none" ||
+    lower === "null" ||
+    lower === "[]" ||
+    lower === "pass" ||
+    lower === "safe" ||
+    lower.startsWith("false-positive") ||
+    lower.startsWith("false positive") ||
+    lower.includes("false positive guard") ||
+    lower.endsWith(" none") ||
+    lower.includes(" none ")
+  ) {
+    return null;
+  }
+
+  // Handle prefix matches with annotations (e.g. "Hardcoded Literal Count = 4", "General Fixture (Potential)")
+  if (/^hardcoded\s*literal/i.test(s)) return "Hardcoded Literal";
+  if (/^magic\s*number/i.test(s)) return "Magic Number";
+  if (/^general\s*fixture/i.test(s)) return "General Fixture";
+  if (/^sleepy\s*test/i.test(s)) return "Sleepy Test";
+  if (/^eager\s*test/i.test(s)) return "Eager Test";
+  if (/^resource\s*optimism/i.test(s)) return "Resource Optimism";
+  if (/^assertion\s*roulette/i.test(s)) return "Assertion Roulette";
+  if (/^conditional\s*test\s*logic/i.test(s)) return "Conditional Test Logic";
+  if (/^exception\s*catching\s*throwing/i.test(s))
+    return "Exception Catching Throwing";
+  if (/^sensitive\s*equality/i.test(s)) return "Sensitive Equality";
+  if (/^mystery\s*guest/i.test(s)) return "Mystery Guest";
+
+  // Alphanumeric lookup (handles PascalCase, camelCase, kebab-case, snake_case)
+  const key = lower.replace(/[^a-z0-9]/g, "");
+  const found = CANONICAL_BY_KEY.get(key);
+  if (found) return found;
+
+  return null;
+}
+
+/**
+ * Given a raw smell list (array, comma-delimited string, or JSON array string),
+ * normalizes and deduplicates all entries, returning strictly canonical
+ * display names from SMELL_CATALOG.
+ */
+export function standardizeSmellList(input: unknown): string[] {
+  if (input === null || input === undefined) return [];
+
+  const rawItems: string[] = [];
+
+  if (Array.isArray(input)) {
+    for (const item of input) {
+      if (typeof item === "string") {
+        const trimmed = item.trim();
+        if (trimmed.startsWith("[") && trimmed.endsWith("]")) {
+          try {
+            const parsed = JSON.parse(trimmed);
+            if (Array.isArray(parsed)) {
+              rawItems.push(...parsed.map(String));
+              continue;
+            }
+          } catch {
+            const inner = trimmed.slice(1, -1);
+            rawItems.push(...inner.split(","));
+            continue;
+          }
+        }
+        if (trimmed.includes(",") && !trimmed.includes("Count =")) {
+          rawItems.push(...trimmed.split(","));
+        } else {
+          rawItems.push(trimmed);
+        }
+      }
+    }
+  } else if (typeof input === "string") {
+    const trimmed = input.trim();
+    if (trimmed.startsWith("[") && trimmed.endsWith("]")) {
+      try {
+        const parsed = JSON.parse(trimmed);
+        if (Array.isArray(parsed)) {
+          return standardizeSmellList(parsed);
+        }
+      } catch {
+        // Fall back to slice
+      }
+      const inner = trimmed.slice(1, -1);
+      rawItems.push(...inner.split(","));
+    } else {
+      rawItems.push(...trimmed.split(","));
+    }
+  }
+
+  const result: string[] = [];
+  const seen = new Set<string>();
+
+  for (const raw of rawItems) {
+    const normalized = normalizeSmellName(raw);
+    if (normalized && !seen.has(normalized)) {
+      seen.add(normalized);
+      result.push(normalized);
+    }
+  }
+
+  return result;
+}

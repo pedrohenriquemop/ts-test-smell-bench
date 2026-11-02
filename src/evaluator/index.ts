@@ -2,6 +2,7 @@ import * as fs from "fs";
 import * as path from "path";
 import { ChartJSNodeCanvas } from "chartjs-node-canvas";
 import type { ChartConfiguration } from "chart.js";
+import { standardizeSmellList } from "../smells/catalog.ts";
 
 export interface ComparisonResult {
   file: string;
@@ -45,11 +46,13 @@ export async function evaluateResults(config: any) {
 
   const rawData: any[] = JSON.parse(fs.readFileSync(inputPath, "utf-8"));
 
-  // Normalize legacy field names → new generic names
+  // Normalize legacy field names → new generic names and standardize smell lists
   const data: ComparisonResult[] = rawData.map((d: any) => ({
     ...d,
-    referenceSmells: d.referenceSmells ?? d.geminiSmells ?? [],
-    modelSmells: d.modelSmells ?? d.ollamaSmells ?? [],
+    referenceSmells: standardizeSmellList(
+      d.referenceSmells ?? d.geminiSmells ?? [],
+    ),
+    modelSmells: standardizeSmellList(d.modelSmells ?? d.ollamaSmells ?? []),
     modelStatus: d.modelStatus ?? d.ollamaStatus ?? "unknown",
     modelJustification: d.modelJustification ?? d.ollamaJustification ?? "",
   }));
