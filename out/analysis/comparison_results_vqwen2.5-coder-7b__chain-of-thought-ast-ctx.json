@@ -86,7 +86,7 @@
       "Mystery Guest"
     ],
     "modelSmells": [
-      "[\"Hardcoded Literal\"]"
+      "Hardcoded Literal"
     ],
     "modelName": "Ollama / qwen2.5-coder:7b",
     "modelStatus": "success",
@@ -190,7 +190,7 @@
       "Mystery Guest"
     ],
     "modelSmells": [
-      "ConditionalTestLogic"
+      "Conditional Test Logic"
     ],
     "modelName": "Ollama / qwen2.5-coder:7b",
     "modelStatus": "success",
@@ -259,8 +259,8 @@
       "Sleepy Test"
     ],
     "modelSmells": [
-      "Mystery_Guest",
-      "Sleepy_Test"
+      "Mystery Guest",
+      "Sleepy Test"
     ],
     "modelName": "Ollama / qwen2.5-coder:7b",
     "modelStatus": "success",
@@ -302,7 +302,7 @@
       "Mystery Guest"
     ],
     "modelSmells": [
-      "MysteryGuest"
+      "Mystery Guest"
     ],
     "modelName": "Ollama / qwen2.5-coder:7b",
     "modelStatus": "success",
@@ -414,10 +414,10 @@
       "Resource Optimism"
     ],
     "modelSmells": [
-      "AssertionRoulette",
-      "MysteryGuest",
-      "HardcodedLiteral",
-      "SleepyTest"
+      "Assertion Roulette",
+      "Mystery Guest",
+      "Hardcoded Literal",
+      "Sleepy Test"
     ],
     "modelName": "Ollama / qwen2.5-coder:7b",
     "modelStatus": "success",
@@ -785,9 +785,7 @@
     "referenceSmells": [
       "Hardcoded Literal"
     ],
-    "modelSmells": [
-      "[None]"
-    ],
+    "modelSmells": [],
     "modelName": "Ollama / qwen2.5-coder:7b",
     "modelStatus": "success",
     "cotEnabled": true,
@@ -803,7 +801,7 @@
       "Hardcoded Literal"
     ],
     "modelSmells": [
-      "[Hardcoded Literal]"
+      "Hardcoded Literal"
     ],
     "modelName": "Ollama / qwen2.5-coder:7b",
     "modelStatus": "success",
@@ -820,7 +818,7 @@
       "Hardcoded Literal"
     ],
     "modelSmells": [
-      "[Hardcoded Literal]"
+      "Hardcoded Literal"
     ],
     "modelName": "Ollama / qwen2.5-coder:7b",
     "modelStatus": "success",
@@ -837,7 +835,7 @@
       "Hardcoded Literal"
     ],
     "modelSmells": [
-      "[Hardcoded Literal]"
+      "Hardcoded Literal"
     ],
     "modelName": "Ollama / qwen2.5-coder:7b",
     "modelStatus": "success",
@@ -854,7 +852,7 @@
       "Hardcoded Literal"
     ],
     "modelSmells": [
-      "[\"Hardcoded Literal\"]"
+      "Hardcoded Literal"
     ],
     "modelName": "Ollama / qwen2.5-coder:7b",
     "modelStatus": "success",
@@ -947,7 +945,7 @@
       "Hardcoded Literal"
     ],
     "modelSmells": [
-      "[Hardcoded Literal]"
+      "Hardcoded Literal"
     ],
     "modelName": "Ollama / qwen2.5-coder:7b",
     "modelStatus": "success",
@@ -1033,14 +1031,19 @@
       "Eager Test",
       "Hardcoded Literal"
     ],
-    "modelSmells": [],
+    "modelSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal",
+      "General Fixture"
+    ],
     "modelName": "Ollama / qwen2.5-coder:7b",
-    "modelStatus": "invalid return",
+    "modelStatus": "success",
     "cotEnabled": true,
     "astMetricsIncluded": true,
-    "modelJustification": "",
+    "modelJustification": "The test has multiple assertions without messages, uses hardcoded literals, and utilizes all setup variables.",
     "latencyMs": 146096,
-    "rawModelResponse": "<thinking>\nStep 1: Scope & Setup Analysis (Where do variables come from?)\n- The test uses `createMockServer()` to set up a mock server, which is defined in the same file. This setup does not rely on external files or variables.\n\nStep 2: Control Flow Analysis (Are there try/catch/if blocks used for test flow or just async fallbacks?)\n- The test body contains no conditional logic (`if`, `for`, `switch`, `while`), loops, or control flow statements. It is purely linear (Arrange -> Act -> Assert).\n\nStep 3: Smell Trigger Validation (Evaluate specific rules)\n1. **Assertion Roulette**: \n   - `metrics.assertionCount = 5`\n   - `metrics.assertionsWithoutMessages = 5`\n   - This test has multiple assertions without custom failure messages, which could lead to ambiguous failures.\n   \n2. **Conditional Test Logic**:\n   - `metrics.controlFlowCount = 0`\n   - The test does not contain any conditional logic.\n\n3. **Eager Test**:\n   - The test invokes only one distinct method (`registerPromptWithCompletions`) and writes multiple assertions, which is not an eager test.\n\n4. **Mystery Guest**:\n   - No external variables or files are referenced within the test body.\n\n5. **Resource Optimism**:\n   - No external I/O objects are referenced in this test.\n\n6. **General Fixture**:\n   - The test file sets up broad shared state, but this specific test body utilizes all 50% of those setup variables.\n\n7. **Hardcoded Literal**:\n   - `metrics.hardcodedLiteralCount = 15`\n   - There are multiple hardcoded literals in the test, which should be avoided using constants.\n\n8. **Magic Number**:\n   - No magic numbers are present in this test.\n\n9. **Sleepy Test**:\n   - The test does not use any fixed delays or explicit sleep mechanisms.\n\n10. **Exception Catching Throwing**:\n    - There is no exception catching or throwing logic in the test.\n\n11. **Sensitive Equality**:\n    - No sensitive equality checks are present in this test.\n</thinking>\n<classification>\nFILE: Prompts.test.ts - SMELLS: Assertion Roulette, Hardcoded Literal, General Fixture - JUSTIFICATION: The test has multiple assertions without messages, uses hardcoded literals, and utilizes all setup variables."
+    "rawModelResponse": "<thinking>\nStep 1: Scope & Setup Analysis (Where do variables come from?)\n- The test uses `createMockServer()` to set up a mock server, which is defined in the same file. This setup does not rely on external files or variables.\n\nStep 2: Control Flow Analysis (Are there try/catch/if blocks used for test flow or just async fallbacks?)\n- The test body contains no conditional logic (`if`, `for`, `switch`, `while`), loops, or control flow statements. It is purely linear (Arrange -> Act -> Assert).\n\nStep 3: Smell Trigger Validation (Evaluate specific rules)\n1. **Assertion Roulette**: \n   - `metrics.assertionCount = 5`\n   - `metrics.assertionsWithoutMessages = 5`\n   - This test has multiple assertions without custom failure messages, which could lead to ambiguous failures.\n   \n2. **Conditional Test Logic**:\n   - `metrics.controlFlowCount = 0`\n   - The test does not contain any conditional logic.\n\n3. **Eager Test**:\n   - The test invokes only one distinct method (`registerPromptWithCompletions`) and writes multiple assertions, which is not an eager test.\n\n4. **Mystery Guest**:\n   - No external variables or files are referenced within the test body.\n\n5. **Resource Optimism**:\n   - No external I/O objects are referenced in this test.\n\n6. **General Fixture**:\n   - The test file sets up broad shared state, but this specific test body utilizes all 50% of those setup variables.\n\n7. **Hardcoded Literal**:\n   - `metrics.hardcodedLiteralCount = 15`\n   - There are multiple hardcoded literals in the test, which should be avoided using constants.\n\n8. **Magic Number**:\n   - No magic numbers are present in this test.\n\n9. **Sleepy Test**:\n   - The test does not use any fixed delays or explicit sleep mechanisms.\n\n10. **Exception Catching Throwing**:\n    - There is no exception catching or throwing logic in the test.\n\n11. **Sensitive Equality**:\n    - No sensitive equality checks are present in this test.\n</thinking>\n<classification>\nFILE: Prompts.test.ts - SMELLS: Assertion Roulette, Hardcoded Literal, General Fixture - JUSTIFICATION: The test has multiple assertions without messages, uses hardcoded literals, and utilizes all setup variables.",
+    "reasoningLog": "Step 1: Scope & Setup Analysis (Where do variables come from?)\n- The test uses `createMockServer()` to set up a mock server, which is defined in the same file. This setup does not rely on external files or variables.\n\nStep 2: Control Flow Analysis (Are there try/catch/if blocks used for test flow or just async fallbacks?)\n- The test body contains no conditional logic (`if`, `for`, `switch`, `while`), loops, or control flow statements. It is purely linear (Arrange -> Act -> Assert).\n\nStep 3: Smell Trigger Validation (Evaluate specific rules)\n1. **Assertion Roulette**: \n   - `metrics.assertionCount = 5`\n   - `metrics.assertionsWithoutMessages = 5`\n   - This test has multiple assertions without custom failure messages, which could lead to ambiguous failures.\n   \n2. **Conditional Test Logic**:\n   - `metrics.controlFlowCount = 0`\n   - The test does not contain any conditional logic.\n\n3. **Eager Test**:\n   - The test invokes only one distinct method (`registerPromptWithCompletions`) and writes multiple assertions, which is not an eager test.\n\n4. **Mystery Guest**:\n   - No external variables or files are referenced within the test body.\n\n5. **Resource Optimism**:\n   - No external I/O objects are referenced in this test.\n\n6. **General Fixture**:\n   - The test file sets up broad shared state, but this specific test body utilizes all 50% of those setup variables.\n\n7. **Hardcoded Literal**:\n   - `metrics.hardcodedLiteralCount = 15`\n   - There are multiple hardcoded literals in the test, which should be avoided using constants.\n\n8. **Magic Number**:\n   - No magic numbers are present in this test.\n\n9. **Sleepy Test**:\n   - The test does not use any fixed delays or explicit sleep mechanisms.\n\n10. **Exception Catching Throwing**:\n    - There is no exception catching or throwing logic in the test.\n\n11. **Sensitive Equality**:\n    - No sensitive equality checks are present in this test."
   },
   {
     "file": "modelcontextprotocol__servers__src_everything_tests_prompts.test__6.ts",
@@ -1101,14 +1104,17 @@
       "Assertion Roulette",
       "Hardcoded Literal"
     ],
-    "modelSmells": [],
+    "modelSmells": [
+      "Hardcoded Literal"
+    ],
     "modelName": "Ollama / qwen2.5-coder:7b",
-    "modelStatus": "invalid return",
+    "modelStatus": "success",
     "cotEnabled": true,
     "astMetricsIncluded": true,
-    "modelJustification": "",
+    "modelJustification": "The test contains 10 hardcoded literals that should be replaced with constants to avoid hardcoding.",
     "latencyMs": 178871,
-    "rawModelResponse": "<thinking>\nStep 1: Scope & Setup Analysis (Where do variables come from?)\n- The test uses `createMockServer()` to set up a mock server, which is defined in the same file. This setup is local and does not rely on external files or global variables.\n\nStep 2: Control Flow Analysis (Are there try/catch/if blocks used for test flow or just async fallbacks?)\n- The test does not contain any `if`, `for`, `switch`, `while` statements, nor does it use `try/catch`. It is a straightforward linear test following the Arrange -> Act -> Assert pattern.\n\nStep 3: Smell Trigger Validation (Evaluate specific rules)\n1. **Assertion Roulette**: \n   - The assertion count is 3, and all assertions have custom failure messages.\n   - This test does not meet the trigger for Assertion Roulette.\n\n2. **Conditional Test Logic**:\n   - The control flow count is 0, indicating no conditional logic in the test.\n   - This test does not meet the trigger for Conditional Test Logic.\n\n3. **Eager Test**:\n   - The test invokes only one distinct method (`registerEmbeddedResourcePrompt`) and makes multiple assertions on its behavior.\n   - This test does not meet the trigger for Eager Test.\n\n4. **Mystery Guest**:\n   - There are no imports or references to external files or variables that are not defined within the test file.\n   - This test does not meet the trigger for Mystery Guest.\n\n5. **Resource Optimism**:\n   - The test does not reference any external I/O objects (`fs.`, `path.join`, `http.`, etc.) and does not require a `try/catch` block or assertion of their existence.\n   - This test does not meet the trigger for Resource Optimism.\n\n6. **General Fixture**:\n   - The test file sets up broad shared state in `createMockServer()`, but this specific test body utilizes all 3 setup variables (`mockServer`, `handlers`, and `configs`).\n   - This test does not meet the trigger for General Fixture.\n\n7. **Hardcoded Literal**:\n   - There are 10 hardcoded literals in the test, including strings like `'Text'`, `'resource-prompt'`, and error messages.\n   - These literals should be replaced with constants to avoid Hardcoded Literal smell.\n\n8. **Magic Number**:\n   - The test does not contain any magic numbers.\n   - This test does not meet the trigger for Magic Number.\n\n9. **Sleepy Test**:\n   - There are no fixed delays or explicit sleep statements in the test.\n   - This test does not meet the trigger for Sleepy Test.\n\n10. **Exception Catching Throwing**:\n    - The test uses `toThrow` to assert exceptions, which is a declarative approach and does not require manual failure signaling after an operation expected to throw.\n    - This test does not meet the trigger for Exception Catching Throwing.\n\n11. **Sensitive Equality**:\n    - There are no assertions comparing stringified representations of values.\n    - This test does not meet the trigger for Sensitive Equality.\n</thinking>\n<classification>\nFILE: Prompts.test.ts - SMELLS: Hardcoded Literal - JUSTIFICATION: The test contains 10 hardcoded literals that should be replaced with constants to avoid hardcoding."
+    "rawModelResponse": "<thinking>\nStep 1: Scope & Setup Analysis (Where do variables come from?)\n- The test uses `createMockServer()` to set up a mock server, which is defined in the same file. This setup is local and does not rely on external files or global variables.\n\nStep 2: Control Flow Analysis (Are there try/catch/if blocks used for test flow or just async fallbacks?)\n- The test does not contain any `if`, `for`, `switch`, `while` statements, nor does it use `try/catch`. It is a straightforward linear test following the Arrange -> Act -> Assert pattern.\n\nStep 3: Smell Trigger Validation (Evaluate specific rules)\n1. **Assertion Roulette**: \n   - The assertion count is 3, and all assertions have custom failure messages.\n   - This test does not meet the trigger for Assertion Roulette.\n\n2. **Conditional Test Logic**:\n   - The control flow count is 0, indicating no conditional logic in the test.\n   - This test does not meet the trigger for Conditional Test Logic.\n\n3. **Eager Test**:\n   - The test invokes only one distinct method (`registerEmbeddedResourcePrompt`) and makes multiple assertions on its behavior.\n   - This test does not meet the trigger for Eager Test.\n\n4. **Mystery Guest**:\n   - There are no imports or references to external files or variables that are not defined within the test file.\n   - This test does not meet the trigger for Mystery Guest.\n\n5. **Resource Optimism**:\n   - The test does not reference any external I/O objects (`fs.`, `path.join`, `http.`, etc.) and does not require a `try/catch` block or assertion of their existence.\n   - This test does not meet the trigger for Resource Optimism.\n\n6. **General Fixture**:\n   - The test file sets up broad shared state in `createMockServer()`, but this specific test body utilizes all 3 setup variables (`mockServer`, `handlers`, and `configs`).\n   - This test does not meet the trigger for General Fixture.\n\n7. **Hardcoded Literal**:\n   - There are 10 hardcoded literals in the test, including strings like `'Text'`, `'resource-prompt'`, and error messages.\n   - These literals should be replaced with constants to avoid Hardcoded Literal smell.\n\n8. **Magic Number**:\n   - The test does not contain any magic numbers.\n   - This test does not meet the trigger for Magic Number.\n\n9. **Sleepy Test**:\n   - There are no fixed delays or explicit sleep statements in the test.\n   - This test does not meet the trigger for Sleepy Test.\n\n10. **Exception Catching Throwing**:\n    - The test uses `toThrow` to assert exceptions, which is a declarative approach and does not require manual failure signaling after an operation expected to throw.\n    - This test does not meet the trigger for Exception Catching Throwing.\n\n11. **Sensitive Equality**:\n    - There are no assertions comparing stringified representations of values.\n    - This test does not meet the trigger for Sensitive Equality.\n</thinking>\n<classification>\nFILE: Prompts.test.ts - SMELLS: Hardcoded Literal - JUSTIFICATION: The test contains 10 hardcoded literals that should be replaced with constants to avoid hardcoding.",
+    "reasoningLog": "Step 1: Scope & Setup Analysis (Where do variables come from?)\n- The test uses `createMockServer()` to set up a mock server, which is defined in the same file. This setup is local and does not rely on external files or global variables.\n\nStep 2: Control Flow Analysis (Are there try/catch/if blocks used for test flow or just async fallbacks?)\n- The test does not contain any `if`, `for`, `switch`, `while` statements, nor does it use `try/catch`. It is a straightforward linear test following the Arrange -> Act -> Assert pattern.\n\nStep 3: Smell Trigger Validation (Evaluate specific rules)\n1. **Assertion Roulette**: \n   - The assertion count is 3, and all assertions have custom failure messages.\n   - This test does not meet the trigger for Assertion Roulette.\n\n2. **Conditional Test Logic**:\n   - The control flow count is 0, indicating no conditional logic in the test.\n   - This test does not meet the trigger for Conditional Test Logic.\n\n3. **Eager Test**:\n   - The test invokes only one distinct method (`registerEmbeddedResourcePrompt`) and makes multiple assertions on its behavior.\n   - This test does not meet the trigger for Eager Test.\n\n4. **Mystery Guest**:\n   - There are no imports or references to external files or variables that are not defined within the test file.\n   - This test does not meet the trigger for Mystery Guest.\n\n5. **Resource Optimism**:\n   - The test does not reference any external I/O objects (`fs.`, `path.join`, `http.`, etc.) and does not require a `try/catch` block or assertion of their existence.\n   - This test does not meet the trigger for Resource Optimism.\n\n6. **General Fixture**:\n   - The test file sets up broad shared state in `createMockServer()`, but this specific test body utilizes all 3 setup variables (`mockServer`, `handlers`, and `configs`).\n   - This test does not meet the trigger for General Fixture.\n\n7. **Hardcoded Literal**:\n   - There are 10 hardcoded literals in the test, including strings like `'Text'`, `'resource-prompt'`, and error messages.\n   - These literals should be replaced with constants to avoid Hardcoded Literal smell.\n\n8. **Magic Number**:\n   - The test does not contain any magic numbers.\n   - This test does not meet the trigger for Magic Number.\n\n9. **Sleepy Test**:\n   - There are no fixed delays or explicit sleep statements in the test.\n   - This test does not meet the trigger for Sleepy Test.\n\n10. **Exception Catching Throwing**:\n    - The test uses `toThrow` to assert exceptions, which is a declarative approach and does not require manual failure signaling after an operation expected to throw.\n    - This test does not meet the trigger for Exception Catching Throwing.\n\n11. **Sensitive Equality**:\n    - There are no assertions comparing stringified representations of values.\n    - This test does not meet the trigger for Sensitive Equality."
   },
   {
     "file": "modelcontextprotocol__servers__src_everything_tests_prompts.test__10.ts",
@@ -1134,8 +1140,8 @@
       "Assertion Roulette"
     ],
     "modelSmells": [
-      "AssertionRoulette",
-      "HardcodedLiteral"
+      "Assertion Roulette",
+      "Hardcoded Literal"
     ],
     "modelName": "Ollama / qwen2.5-coder:7b",
     "modelStatus": "success",
@@ -1227,9 +1233,9 @@
       "Sensitive Equality"
     ],
     "modelSmells": [
-      "AssertionRoulette",
-      "HardcodedLiteral",
-      "MagicNumber"
+      "Assertion Roulette",
+      "Hardcoded Literal",
+      "Magic Number"
     ],
     "modelName": "Ollama / qwen2.5-coder:7b",
     "modelStatus": "success",
@@ -1265,9 +1271,9 @@
       "Sensitive Equality"
     ],
     "modelSmells": [
-      "AssertionRoulette",
-      "HardcodedLiteral",
-      "MagicNumber"
+      "Assertion Roulette",
+      "Hardcoded Literal",
+      "Magic Number"
     ],
     "modelName": "Ollama / qwen2.5-coder:7b",
     "modelStatus": "success",
@@ -1286,8 +1292,8 @@
       "Magic Number"
     ],
     "modelSmells": [
-      "AssertionRoulette",
-      "HardcodedLiteral"
+      "Assertion Roulette",
+      "Hardcoded Literal"
     ],
     "modelName": "Ollama / qwen2.5-coder:7b",
     "modelStatus": "success",
@@ -1323,8 +1329,8 @@
       "Hardcoded Literal"
     ],
     "modelSmells": [
-      "AssertionRoulette",
-      "HardcodedLiteral"
+      "Assertion Roulette",
+      "Hardcoded Literal"
     ],
     "modelName": "Ollama / qwen2.5-coder:7b",
     "modelStatus": "success",
@@ -1341,8 +1347,8 @@
       "Assertion Roulette"
     ],
     "modelSmells": [
-      "AssertionRoulette",
-      "HardcodedLiteral"
+      "Assertion Roulette",
+      "Hardcoded Literal"
     ],
     "modelName": "Ollama / qwen2.5-coder:7b",
     "modelStatus": "success",
@@ -1435,7 +1441,7 @@
       "Hardcoded Literal"
     ],
     "modelSmells": [
-      "HardcodedLiteral"
+      "Hardcoded Literal"
     ],
     "modelName": "Ollama / qwen2.5-coder:7b",
     "modelStatus": "success",
@@ -1678,8 +1684,8 @@
       "Magic Number"
     ],
     "modelSmells": [
-      "AssertionRoulette",
-      "HardcodedLiteral"
+      "Assertion Roulette",
+      "Hardcoded Literal"
     ],
     "modelName": "Ollama / qwen2.5-coder:7b",
     "modelStatus": "success",
@@ -1749,7 +1755,7 @@
       "Magic Number"
     ],
     "modelSmells": [
-      "[Hardcoded Literal]"
+      "Hardcoded Literal"
     ],
     "modelName": "Ollama / qwen2.5-coder:7b",
     "modelStatus": "success",
@@ -1985,10 +1991,10 @@
       "Hardcoded Literal"
     ],
     "modelSmells": [
-      "AssertionRoulette",
-      "MysteryGuest",
-      "GeneralFixture",
-      "HardcodedLiteral"
+      "Assertion Roulette",
+      "Mystery Guest",
+      "General Fixture",
+      "Hardcoded Literal"
     ],
     "modelName": "Ollama / qwen2.5-coder:7b",
     "modelStatus": "success",
@@ -2347,8 +2353,8 @@
       "Hardcoded Literal"
     ],
     "modelSmells": [
-      "AssertionRoulette",
-      "HardcodedLiteral"
+      "Assertion Roulette",
+      "Hardcoded Literal"
     ],
     "modelName": "Ollama / qwen2.5-coder:7b",
     "modelStatus": "success",
@@ -2365,8 +2371,8 @@
       "Assertion Roulette"
     ],
     "modelSmells": [
-      "AssertionRoulette",
-      "MysteryGuest"
+      "Assertion Roulette",
+      "Mystery Guest"
     ],
     "modelName": "Ollama / qwen2.5-coder:7b",
     "modelStatus": "success",
@@ -2512,7 +2518,7 @@
       "Hardcoded Literal"
     ],
     "modelSmells": [
-      "[Hardcoded Literal]"
+      "Hardcoded Literal"
     ],
     "modelName": "Ollama / qwen2.5-coder:7b",
     "modelStatus": "success",
@@ -2758,7 +2764,7 @@
       "Hardcoded Literal"
     ],
     "modelSmells": [
-      "[\"Hardcoded Literal\"]"
+      "Hardcoded Literal"
     ],
     "modelName": "Ollama / qwen2.5-coder:7b",
     "modelStatus": "success",
@@ -2776,8 +2782,8 @@
       "Hardcoded Literal"
     ],
     "modelSmells": [
-      "[Hardcoded Literal",
-      "Exception Catching Throwing]"
+      "Hardcoded Literal",
+      "Exception Catching Throwing"
     ],
     "modelName": "Ollama / qwen2.5-coder:7b",
     "modelStatus": "success",
@@ -2916,8 +2922,8 @@
       "Hardcoded Literal"
     ],
     "modelSmells": [
-      "AssertionRoulette",
-      "MysteryGuest"
+      "Assertion Roulette",
+      "Mystery Guest"
     ],
     "modelName": "Ollama / qwen2.5-coder:7b",
     "modelStatus": "success",
@@ -3108,14 +3114,18 @@
     "referenceSmells": [
       "Hardcoded Literal"
     ],
-    "modelSmells": [],
+    "modelSmells": [
+      "Mystery Guest",
+      "Hardcoded Literal"
+    ],
     "modelName": "Ollama / qwen2.5-coder:7b",
-    "modelStatus": "invalid return",
+    "modelStatus": "success",
     "cotEnabled": true,
     "astMetricsIncluded": true,
-    "modelJustification": "",
+    "modelJustification": "The test relies on external data (`sampleGraph`) and contains a hardcoded literal string.",
     "latencyMs": 168421,
-    "rawModelResponse": "<thinking>\nStep 1: Scope & Setup Analysis (Where do variables come from?)\n- The target test uses `sampleGraph` which is defined in the surrounding context. This indicates that the test relies on external data, making it a Mystery Guest.\n\nStep 2: Control Flow Analysis (Are there try/catch/if blocks used for test flow or just async fallbacks?)\n- The control flow count is 0, indicating that there are no conditional logic, loops, or try/catch blocks in the test. This means the test follows the Arrange -> Act -> Assert pattern.\n\nStep 3: Smell Trigger Validation (Evaluate specific rules)\n- **Assertion Roulette**: Not applicable since there's only one assertion and it has a message.\n- **Conditional Test Logic**: Not applicable as control flow count is 0.\n- **Eager Test**: Not applicable as the test invokes only one method (`buildChatContext`) and makes one assertion.\n- **Mystery Guest**: Triggered because `sampleGraph` is defined outside the test block, making it unreadable on its own.\n- **Resource Optimism**: Not applicable as there are no external I/O objects referenced.\n- **General Fixture**: Not applicable as there's no broad shared state in setup that isn't used by this test.\n- **Hardcoded Literal**: Triggered because \"database pool\" is a hardcoded literal string passed directly into the SUT method.\n- **Magic Number**: Not applicable as there are no unexplained primitive numbers.\n- **Sleepy Test**: Not applicable as there's no fixed delay or explicit sleep.\n- **Exception Catching Throwing**: Not applicable as there's no explicit `throw` statement or `catch` clause.\n- **Sensitive Equality**: Not applicable as there's no comparison of stringified representations.\n\n</thinking>\n<classification>\nFILE: buildChatContext.test.ts - SMELLS: Mystery Guest, Hardcoded Literal - JUSTIFICATION: The test relies on external data (`sampleGraph`) and contains a hardcoded literal string."
+    "rawModelResponse": "<thinking>\nStep 1: Scope & Setup Analysis (Where do variables come from?)\n- The target test uses `sampleGraph` which is defined in the surrounding context. This indicates that the test relies on external data, making it a Mystery Guest.\n\nStep 2: Control Flow Analysis (Are there try/catch/if blocks used for test flow or just async fallbacks?)\n- The control flow count is 0, indicating that there are no conditional logic, loops, or try/catch blocks in the test. This means the test follows the Arrange -> Act -> Assert pattern.\n\nStep 3: Smell Trigger Validation (Evaluate specific rules)\n- **Assertion Roulette**: Not applicable since there's only one assertion and it has a message.\n- **Conditional Test Logic**: Not applicable as control flow count is 0.\n- **Eager Test**: Not applicable as the test invokes only one method (`buildChatContext`) and makes one assertion.\n- **Mystery Guest**: Triggered because `sampleGraph` is defined outside the test block, making it unreadable on its own.\n- **Resource Optimism**: Not applicable as there are no external I/O objects referenced.\n- **General Fixture**: Not applicable as there's no broad shared state in setup that isn't used by this test.\n- **Hardcoded Literal**: Triggered because \"database pool\" is a hardcoded literal string passed directly into the SUT method.\n- **Magic Number**: Not applicable as there are no unexplained primitive numbers.\n- **Sleepy Test**: Not applicable as there's no fixed delay or explicit sleep.\n- **Exception Catching Throwing**: Not applicable as there's no explicit `throw` statement or `catch` clause.\n- **Sensitive Equality**: Not applicable as there's no comparison of stringified representations.\n\n</thinking>\n<classification>\nFILE: buildChatContext.test.ts - SMELLS: Mystery Guest, Hardcoded Literal - JUSTIFICATION: The test relies on external data (`sampleGraph`) and contains a hardcoded literal string.",
+    "reasoningLog": "Step 1: Scope & Setup Analysis (Where do variables come from?)\n- The target test uses `sampleGraph` which is defined in the surrounding context. This indicates that the test relies on external data, making it a Mystery Guest.\n\nStep 2: Control Flow Analysis (Are there try/catch/if blocks used for test flow or just async fallbacks?)\n- The control flow count is 0, indicating that there are no conditional logic, loops, or try/catch blocks in the test. This means the test follows the Arrange -> Act -> Assert pattern.\n\nStep 3: Smell Trigger Validation (Evaluate specific rules)\n- **Assertion Roulette**: Not applicable since there's only one assertion and it has a message.\n- **Conditional Test Logic**: Not applicable as control flow count is 0.\n- **Eager Test**: Not applicable as the test invokes only one method (`buildChatContext`) and makes one assertion.\n- **Mystery Guest**: Triggered because `sampleGraph` is defined outside the test block, making it unreadable on its own.\n- **Resource Optimism**: Not applicable as there are no external I/O objects referenced.\n- **General Fixture**: Not applicable as there's no broad shared state in setup that isn't used by this test.\n- **Hardcoded Literal**: Triggered because \"database pool\" is a hardcoded literal string passed directly into the SUT method.\n- **Magic Number**: Not applicable as there are no unexplained primitive numbers.\n- **Sleepy Test**: Not applicable as there's no fixed delay or explicit sleep.\n- **Exception Catching Throwing**: Not applicable as there's no explicit `throw` statement or `catch` clause.\n- **Sensitive Equality**: Not applicable as there's no comparison of stringified representations."
   },
   {
     "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_context-builder.test__6.ts",
@@ -3124,14 +3134,19 @@
       "Hardcoded Literal",
       "Magic Number"
     ],
-    "modelSmells": [],
+    "modelSmells": [
+      "Mystery Guest",
+      "Hardcoded Literal",
+      "Magic Number"
+    ],
     "modelName": "Ollama / qwen2.5-coder:7b",
-    "modelStatus": "invalid return",
+    "modelStatus": "success",
     "cotEnabled": true,
     "astMetricsIncluded": true,
-    "modelJustification": "",
+    "modelJustification": "The test relies on external variables and uses hardcoded strings and numbers without constants.",
     "latencyMs": 169006,
-    "rawModelResponse": "<thinking>\nStep 1: Scope & Setup Analysis (Where do variables come from?)\n- The test uses `sampleGraph`, `sampleNodes`, `sampleEdges`, and `sampleLayers` which are defined in the context. These variables are not local to the test, making it a Mystery Guest.\n\nStep 2: Control Flow Analysis (Are there try/catch/if blocks used for test flow or just async fallbacks?)\n- The test does not contain any conditional logic (`if`, `for`, `switch`, `while`) or control flow constructs. It is purely linear and straightforward.\n\nStep 3: Smell Trigger Validation (Evaluate specific rules)\n- **Assertion Roulette**: Not applicable as there are only two assertions, both with messages.\n- **Conditional Test Logic**: Not applicable as there is no conditional logic.\n- **Eager Test**: Not applicable as the test does not invoke multiple distinct state-changing methods.\n- **Mystery Guest**: Triggered because the test relies on variables (`sampleGraph`, `sampleNodes`, etc.) defined outside the test block.\n- **Resource Optimism**: Not applicable as there are no external I/O operations.\n- **General Fixture**: Not applicable as the test does not use broad shared state from `beforeEach`/`beforeAll`.\n- **Hardcoded Literal**: Triggered by the hardcoded string `\"auth\"` in the test title and the number `1` in the assertion.\n- **Magic Number**: Triggered by the number `1` in the assertion.\n- **Sleepy Test**: Not applicable as there is no explicit sleep or delay.\n- **Exception Catching Throwing**: Not applicable as there are no exception handling constructs.\n- **Sensitive Equality**: Not applicable as there is no stringification for equality checks.\n\n</thinking>\n<classification>\nFILE: buildChatContext.test.ts - SMELLS: Mystery Guest, Hardcoded Literal, Magic Number - JUSTIFICATION: The test relies on external variables and uses hardcoded strings and numbers without constants."
+    "rawModelResponse": "<thinking>\nStep 1: Scope & Setup Analysis (Where do variables come from?)\n- The test uses `sampleGraph`, `sampleNodes`, `sampleEdges`, and `sampleLayers` which are defined in the context. These variables are not local to the test, making it a Mystery Guest.\n\nStep 2: Control Flow Analysis (Are there try/catch/if blocks used for test flow or just async fallbacks?)\n- The test does not contain any conditional logic (`if`, `for`, `switch`, `while`) or control flow constructs. It is purely linear and straightforward.\n\nStep 3: Smell Trigger Validation (Evaluate specific rules)\n- **Assertion Roulette**: Not applicable as there are only two assertions, both with messages.\n- **Conditional Test Logic**: Not applicable as there is no conditional logic.\n- **Eager Test**: Not applicable as the test does not invoke multiple distinct state-changing methods.\n- **Mystery Guest**: Triggered because the test relies on variables (`sampleGraph`, `sampleNodes`, etc.) defined outside the test block.\n- **Resource Optimism**: Not applicable as there are no external I/O operations.\n- **General Fixture**: Not applicable as the test does not use broad shared state from `beforeEach`/`beforeAll`.\n- **Hardcoded Literal**: Triggered by the hardcoded string `\"auth\"` in the test title and the number `1` in the assertion.\n- **Magic Number**: Triggered by the number `1` in the assertion.\n- **Sleepy Test**: Not applicable as there is no explicit sleep or delay.\n- **Exception Catching Throwing**: Not applicable as there are no exception handling constructs.\n- **Sensitive Equality**: Not applicable as there is no stringification for equality checks.\n\n</thinking>\n<classification>\nFILE: buildChatContext.test.ts - SMELLS: Mystery Guest, Hardcoded Literal, Magic Number - JUSTIFICATION: The test relies on external variables and uses hardcoded strings and numbers without constants.",
+    "reasoningLog": "Step 1: Scope & Setup Analysis (Where do variables come from?)\n- The test uses `sampleGraph`, `sampleNodes`, `sampleEdges`, and `sampleLayers` which are defined in the context. These variables are not local to the test, making it a Mystery Guest.\n\nStep 2: Control Flow Analysis (Are there try/catch/if blocks used for test flow or just async fallbacks?)\n- The test does not contain any conditional logic (`if`, `for`, `switch`, `while`) or control flow constructs. It is purely linear and straightforward.\n\nStep 3: Smell Trigger Validation (Evaluate specific rules)\n- **Assertion Roulette**: Not applicable as there are only two assertions, both with messages.\n- **Conditional Test Logic**: Not applicable as there is no conditional logic.\n- **Eager Test**: Not applicable as the test does not invoke multiple distinct state-changing methods.\n- **Mystery Guest**: Triggered because the test relies on variables (`sampleGraph`, `sampleNodes`, etc.) defined outside the test block.\n- **Resource Optimism**: Not applicable as there are no external I/O operations.\n- **General Fixture**: Not applicable as the test does not use broad shared state from `beforeEach`/`beforeAll`.\n- **Hardcoded Literal**: Triggered by the hardcoded string `\"auth\"` in the test title and the number `1` in the assertion.\n- **Magic Number**: Triggered by the number `1` in the assertion.\n- **Sleepy Test**: Not applicable as there is no explicit sleep or delay.\n- **Exception Catching Throwing**: Not applicable as there are no exception handling constructs.\n- **Sensitive Equality**: Not applicable as there is no stringification for equality checks."
   },
   {
     "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_context-builder.test__7.ts",
@@ -3158,8 +3173,8 @@
       "Hardcoded Literal"
     ],
     "modelSmells": [
-      "AssertionRoulette",
-      "HardcodedLiteral"
+      "Assertion Roulette",
+      "Hardcoded Literal"
     ],
     "modelName": "Ollama / qwen2.5-coder:7b",
     "modelStatus": "success",
@@ -3177,8 +3192,8 @@
       "Hardcoded Literal"
     ],
     "modelSmells": [
-      "AssertionRoulette",
-      "HardcodedLiteral"
+      "Assertion Roulette",
+      "Hardcoded Literal"
     ],
     "modelName": "Ollama / qwen2.5-coder:7b",
     "modelStatus": "success",
@@ -3309,7 +3324,7 @@
       "Magic Number"
     ],
     "modelSmells": [
-      "[\"Hardcoded Literal\"]"
+      "Hardcoded Literal"
     ],
     "modelName": "Ollama / qwen2.5-coder:7b",
     "modelStatus": "success",
@@ -3395,7 +3410,7 @@
       "Hardcoded Literal"
     ],
     "modelSmells": [
-      "[Hardcoded Literal]"
+      "Hardcoded Literal"
     ],
     "modelName": "Ollama / qwen2.5-coder:7b",
     "modelStatus": "success",

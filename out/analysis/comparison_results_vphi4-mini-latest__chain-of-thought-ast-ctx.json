@@ -84,7 +84,7 @@
       "Mystery Guest"
     ],
     "modelSmells": [
-      "Hardcoded Literal Count = 4"
+      "Hardcoded Literal"
     ],
     "modelName": "Ollama / phi4-mini:latest",
     "modelStatus": "success",
@@ -105,7 +105,7 @@
       "Mystery Guest"
     ],
     "modelSmells": [
-      "Hardcoded Literal Count (10)"
+      "Hardcoded Literal"
     ],
     "modelName": "Ollama / phi4-mini:latest",
     "modelStatus": "success",
@@ -188,7 +188,7 @@
     ],
     "modelSmells": [
       "Conditional Test Logic",
-      "Hardcoded Literal Count > 10 (part of Magic Number smell)"
+      "Hardcoded Literal"
     ],
     "modelName": "Ollama / phi4-mini:latest",
     "modelStatus": "success",
@@ -211,7 +211,7 @@
       "Sleepy Test"
     ],
     "modelSmells": [
-      "Hardcoded Literal Count",
+      "Hardcoded Literal",
       "Conditional Test Logic"
     ],
     "modelName": "Ollama / phi4-mini:latest",
@@ -255,8 +255,7 @@
       "Sleepy Test"
     ],
     "modelSmells": [
-      "Hardcoded Literal Count",
-      "None"
+      "Hardcoded Literal"
     ],
     "modelName": "Ollama / phi4-mini:latest",
     "modelStatus": "success",
@@ -280,8 +279,8 @@
     "modelSmells": [
       "Resource Optimism",
       "Hardcoded Literal",
-      "General Fixture (Potential)",
-      "Sleepy Test (Potential)"
+      "General Fixture",
+      "Sleepy Test"
     ],
     "modelName": "Ollama / phi4-mini:latest",
     "modelStatus": "success",
@@ -299,14 +298,17 @@
       "Hardcoded Literal",
       "Mystery Guest"
     ],
-    "modelSmells": [],
+    "modelSmells": [
+      "Hardcoded Literal"
+    ],
     "modelName": "Ollama / phi4-mini:latest",
-    "modelStatus": "invalid return",
+    "modelStatus": "success",
     "cotEnabled": true,
     "astMetricsIncluded": true,
-    "modelJustification": "",
+    "modelJustification": "Multiple raw numbers and strings detected as hard-coded literals. No eager test behavior observed.",
     "latencyMs": 101660,
-    "rawModelResponse": "<thinking>\nStep 1: Scope & Setup Analysis (Where do variables come from?)\n- The test imports several modules but does not seem to use any setup hooks or beforeEach vars.\n- There are no external module references, indicating that all necessary context is provided within the file.\n\nStep 2: Control Flow Analysis (Are there try/catch/if blocks used for test flow or just async fallbacks?)\n- The controlFlowCount indicates one instance of conditional logic. However, this does not necessarily mean a smell unless it disrupts linearity.\n- There are no explicit sleep statements detected in the target test code.\n\nStep 3: Smell Trigger Validation (Evaluate specific rules)\n- HardcodedLiteralCount is high with many raw numbers and strings passed directly into methods or assertions without being declared as constants. This triggers Magic Number smells for both hardcoded literals count > 0.\n</thinking>\n\n<classification>\nFILE: earendil-works__pi__packages_agent_test_harness_pico3_spec-plugins-lifecycle.test__11.ts - SMELLS: Hardcoded Literal, Eager Test (False Positive Guarded) None\nJUSTIFICATION: Multiple raw numbers and strings detected as hard-coded literals. No eager test behavior observed.\n</classification>"
+    "rawModelResponse": "<thinking>\nStep 1: Scope & Setup Analysis (Where do variables come from?)\n- The test imports several modules but does not seem to use any setup hooks or beforeEach vars.\n- There are no external module references, indicating that all necessary context is provided within the file.\n\nStep 2: Control Flow Analysis (Are there try/catch/if blocks used for test flow or just async fallbacks?)\n- The controlFlowCount indicates one instance of conditional logic. However, this does not necessarily mean a smell unless it disrupts linearity.\n- There are no explicit sleep statements detected in the target test code.\n\nStep 3: Smell Trigger Validation (Evaluate specific rules)\n- HardcodedLiteralCount is high with many raw numbers and strings passed directly into methods or assertions without being declared as constants. This triggers Magic Number smells for both hardcoded literals count > 0.\n</thinking>\n\n<classification>\nFILE: earendil-works__pi__packages_agent_test_harness_pico3_spec-plugins-lifecycle.test__11.ts - SMELLS: Hardcoded Literal, Eager Test (False Positive Guarded) None\nJUSTIFICATION: Multiple raw numbers and strings detected as hard-coded literals. No eager test behavior observed.\n</classification>",
+    "reasoningLog": "Step 1: Scope & Setup Analysis (Where do variables come from?)\n- The test imports several modules but does not seem to use any setup hooks or beforeEach vars.\n- There are no external module references, indicating that all necessary context is provided within the file.\n\nStep 2: Control Flow Analysis (Are there try/catch/if blocks used for test flow or just async fallbacks?)\n- The controlFlowCount indicates one instance of conditional logic. However, this does not necessarily mean a smell unless it disrupts linearity.\n- There are no explicit sleep statements detected in the target test code.\n\nStep 3: Smell Trigger Validation (Evaluate specific rules)\n- HardcodedLiteralCount is high with many raw numbers and strings passed directly into methods or assertions without being declared as constants. This triggers Magic Number smells for both hardcoded literals count > 0."
   },
   {
     "file": "earendil-works__pi__packages_agent_test_harness_pico3_spec-plugins-lifecycle.test__12.ts",
@@ -316,7 +318,7 @@
       "Mystery Guest"
     ],
     "modelSmells": [
-      "Hardcoded Literal Count (10)"
+      "Hardcoded Literal"
     ],
     "modelName": "Ollama / phi4-mini:latest",
     "modelStatus": "success",
@@ -353,7 +355,7 @@
       "Mystery Guest"
     ],
     "modelSmells": [
-      "Hardcoded Literal Count = 11"
+      "Hardcoded Literal"
     ],
     "modelName": "Ollama / phi4-mini:latest",
     "modelStatus": "success",
@@ -374,7 +376,7 @@
       "Sleepy Test"
     ],
     "modelSmells": [
-      "Hardcoded Literal Count = 17"
+      "Hardcoded Literal"
     ],
     "modelName": "Ollama / phi4-mini:latest",
     "modelStatus": "success",
@@ -674,7 +676,7 @@
     ],
     "modelSmells": [
       "Assertion Roulette",
-      "General Fixture (potentially)",
+      "General Fixture",
       "Hardcoded Literal"
     ],
     "modelName": "Ollama / phi4-mini:latest",
@@ -745,7 +747,7 @@
     ],
     "modelSmells": [
       "Assertion Roulette",
-      "Hardcoded Literal (2)"
+      "Hardcoded Literal"
     ],
     "modelName": "Ollama / phi4-mini:latest",
     "modelStatus": "success",
@@ -974,9 +976,7 @@
     "referenceSmells": [
       "Hardcoded Literal"
     ],
-    "modelSmells": [
-      "Eager Test None"
-    ],
+    "modelSmells": [],
     "modelName": "Ollama / phi4-mini:latest",
     "modelStatus": "success",
     "cotEnabled": true,
@@ -1172,8 +1172,7 @@
       "Sensitive Equality"
     ],
     "modelSmells": [
-      "Assertion Roulette",
-      "None"
+      "Assertion Roulette"
     ],
     "modelName": "Ollama / phi4-mini:latest",
     "modelStatus": "success",
@@ -1301,12 +1300,13 @@
     ],
     "modelSmells": [],
     "modelName": "Ollama / phi4-mini:latest",
-    "modelStatus": "invalid return",
+    "modelStatus": "success",
     "cotEnabled": true,
     "astMetricsIncluded": true,
-    "modelJustification": "",
+    "modelJustification": "(metrics.assertionCount >= 2) AND (metrics.assertionsWithoutMessages >= 2).",
     "latencyMs": 70696,
-    "rawModelResponse": "<thinking>\nStep 1: Scope & Setup Analysis (Where do variables come from?)\n- The test imports necessary modules but does not seem to use any setup hooks like `beforeEach` or global mocks.\n  \nStep 2: Control Flow Analysis (Are there try/catch/if blocks used for test flow or just async fallbacks?)\n- There are no control structures indicating complex logic flows.\n\nStep 3: Smell Trigger Validation\n- Assertion Roulette is triggered because the assertions lack custom failure explanation strings and have multiple assertions.\n</thinking>\n\n<classification>\nFILE: modelcontextprotocol__servers__src_everything_tests_resources.test__8.ts - SMELLS: Assertion Roulette - The test contains two assertions without messages, making it ambiguous if they fail or pass. Justification: (metrics.assertionCount >= 2) AND (metrics.assertionsWithoutMessages >= 2).\n</classification>"
+    "rawModelResponse": "<thinking>\nStep 1: Scope & Setup Analysis (Where do variables come from?)\n- The test imports necessary modules but does not seem to use any setup hooks like `beforeEach` or global mocks.\n  \nStep 2: Control Flow Analysis (Are there try/catch/if blocks used for test flow or just async fallbacks?)\n- There are no control structures indicating complex logic flows.\n\nStep 3: Smell Trigger Validation\n- Assertion Roulette is triggered because the assertions lack custom failure explanation strings and have multiple assertions.\n</thinking>\n\n<classification>\nFILE: modelcontextprotocol__servers__src_everything_tests_resources.test__8.ts - SMELLS: Assertion Roulette - The test contains two assertions without messages, making it ambiguous if they fail or pass. Justification: (metrics.assertionCount >= 2) AND (metrics.assertionsWithoutMessages >= 2).\n</classification>",
+    "reasoningLog": "Step 1: Scope & Setup Analysis (Where do variables come from?)\n- The test imports necessary modules but does not seem to use any setup hooks like `beforeEach` or global mocks.\n  \nStep 2: Control Flow Analysis (Are there try/catch/if blocks used for test flow or just async fallbacks?)\n- There are no control structures indicating complex logic flows.\n\nStep 3: Smell Trigger Validation\n- Assertion Roulette is triggered because the assertions lack custom failure explanation strings and have multiple assertions."
   },
   {
     "file": "modelcontextprotocol__servers__src_everything_tests_resources.test__9.ts",
@@ -1314,8 +1314,7 @@
       "Assertion Roulette"
     ],
     "modelSmells": [
-      "Assertion Roulette",
-      "None"
+      "Assertion Roulette"
     ],
     "modelName": "Ollama / phi4-mini:latest",
     "modelStatus": "success",
@@ -1332,14 +1331,17 @@
       "Assertion Roulette",
       "Hardcoded Literal"
     ],
-    "modelSmells": [],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
     "modelName": "Ollama / phi4-mini:latest",
-    "modelStatus": "invalid return",
+    "modelStatus": "success",
     "cotEnabled": true,
     "astMetricsIncluded": true,
-    "modelJustification": "",
+    "modelJustification": "(metrics.assertionCount >= 2) AND (metrics.assertionsWithoutMessages >= 2).",
     "latencyMs": 63332,
-    "rawModelResponse": "<thinking>\nStep 1: Scope & Setup Analysis (Where do variables come from?)\n- The test imports are consistent with fixture context.\n- No external module references detected.\n\nStep 2: Control Flow Analysis (Are there try/catch/if blocks used for test flow or just async fallbacks?)\n- controlFlowCount is zero, indicating no complex logic like if statements within the target test block itself. \n\nStep 3: Smell Trigger Validation\n- Assertion Roulette triggers because assertionCount >= 2 and assertionsWithoutMessages >= 2.\n</thinking>\n<classification>\nFILE: modelcontextprotocol__servers__src_everything_tests_resources.test__10.ts - SMELLS: Assertion Roulette - The target test contains two assertions without custom failure explanation strings, making failing ambiguous. Justification: (metrics.assertionCount >= 2) AND (metrics.assertionsWithoutMessages >= 2).\n</classification>"
+    "rawModelResponse": "<thinking>\nStep 1: Scope & Setup Analysis (Where do variables come from?)\n- The test imports are consistent with fixture context.\n- No external module references detected.\n\nStep 2: Control Flow Analysis (Are there try/catch/if blocks used for test flow or just async fallbacks?)\n- controlFlowCount is zero, indicating no complex logic like if statements within the target test block itself. \n\nStep 3: Smell Trigger Validation\n- Assertion Roulette triggers because assertionCount >= 2 and assertionsWithoutMessages >= 2.\n</thinking>\n<classification>\nFILE: modelcontextprotocol__servers__src_everything_tests_resources.test__10.ts - SMELLS: Assertion Roulette - The target test contains two assertions without custom failure explanation strings, making failing ambiguous. Justification: (metrics.assertionCount >= 2) AND (metrics.assertionsWithoutMessages >= 2).\n</classification>",
+    "reasoningLog": "Step 1: Scope & Setup Analysis (Where do variables come from?)\n- The test imports are consistent with fixture context.\n- No external module references detected.\n\nStep 2: Control Flow Analysis (Are there try/catch/if blocks used for test flow or just async fallbacks?)\n- controlFlowCount is zero, indicating no complex logic like if statements within the target test block itself. \n\nStep 3: Smell Trigger Validation\n- Assertion Roulette triggers because assertionCount >= 2 and assertionsWithoutMessages >= 2."
   },
   {
     "file": "modelcontextprotocol__servers__src_everything_tests_resources.test__11.ts",
@@ -1400,14 +1402,17 @@
       "Assertion Roulette",
       "Hardcoded Literal"
     ],
-    "modelSmells": [],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
     "modelName": "Ollama / phi4-mini:latest",
-    "modelStatus": "invalid return",
+    "modelStatus": "success",
     "cotEnabled": true,
     "astMetricsIncluded": true,
-    "modelJustification": "",
+    "modelJustification": "(metrics.assertionCount >= 2) AND (metrics.assertionsWithoutMessages >= 2).",
     "latencyMs": 65553,
-    "rawModelResponse": "<thinking>\nStep 1: Scope & Setup Analysis (Where do variables come from?)\n- The test imports are consistent with fixture context.\n- No external module references detected.\n\nStep 2: Control Flow Analysis (Are there try/catch/if blocks used for test flow or just async fallbacks?)\n- controlFlowCount is zero, indicating no complex logic flows like if statements within the target test block itself. \n\nStep 3: Smell Trigger Validation\n- Assertion Roulette triggers because assertionCount equals 3 and assertionsWithoutMessages also equal 3.\n</thinking>\n\n<classification>\nFILE: modelcontextprotocol__servers__src_everything_tests_resources.test__14.ts - SMELLS: Assertion Roulette - The test contains three assertions without custom failure explanation strings, making it ambiguous if failing will be clear or not. Justification: (metrics.assertionCount >= 2) AND (metrics.assertionsWithoutMessages >= 2).\n</classification>"
+    "rawModelResponse": "<thinking>\nStep 1: Scope & Setup Analysis (Where do variables come from?)\n- The test imports are consistent with fixture context.\n- No external module references detected.\n\nStep 2: Control Flow Analysis (Are there try/catch/if blocks used for test flow or just async fallbacks?)\n- controlFlowCount is zero, indicating no complex logic flows like if statements within the target test block itself. \n\nStep 3: Smell Trigger Validation\n- Assertion Roulette triggers because assertionCount equals 3 and assertionsWithoutMessages also equal 3.\n</thinking>\n\n<classification>\nFILE: modelcontextprotocol__servers__src_everything_tests_resources.test__14.ts - SMELLS: Assertion Roulette - The test contains three assertions without custom failure explanation strings, making it ambiguous if failing will be clear or not. Justification: (metrics.assertionCount >= 2) AND (metrics.assertionsWithoutMessages >= 2).\n</classification>",
+    "reasoningLog": "Step 1: Scope & Setup Analysis (Where do variables come from?)\n- The test imports are consistent with fixture context.\n- No external module references detected.\n\nStep 2: Control Flow Analysis (Are there try/catch/if blocks used for test flow or just async fallbacks?)\n- controlFlowCount is zero, indicating no complex logic flows like if statements within the target test block itself. \n\nStep 3: Smell Trigger Validation\n- Assertion Roulette triggers because assertionCount equals 3 and assertionsWithoutMessages also equal 3."
   },
   {
     "file": "modelcontextprotocol__servers__src_everything_tests_resources.test__15.ts",
@@ -1453,14 +1458,17 @@
       "Assertion Roulette",
       "Hardcoded Literal"
     ],
-    "modelSmells": [],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
     "modelName": "Ollama / phi4-mini:latest",
-    "modelStatus": "invalid return",
+    "modelStatus": "success",
     "cotEnabled": true,
     "astMetricsIncluded": true,
-    "modelJustification": "",
+    "modelJustification": "The test contains 2 assertions without messages.",
     "latencyMs": 69262,
-    "rawModelResponse": "<thinking>\nStep 1: Scope & Setup Analysis (Where do variables come from?)\n- The test imports various resources like textResource, blobResource etc.\n- There are no external module references indicating reliance on undefined context.\n\nStep 2: Control Flow Analysis (Are there try/catch/if blocks used for test flow or just async fallbacks?)\n- No control flow constructs such as if statements found in the target code block. The use of 'expect' suggests synchronous assertions without explicit asynchronous handling like promises, callbacks etc.\n  \nStep 3: Smell Trigger Validation\n- Assertion Roulette is triggered since there are multiple assertionCount (2) and they lack custom failure explanation strings ('msg').\n</thinking>\n<classification>\nFILE: modelcontextprotocol__servers__src_everything_tests_resources.test__17.ts - SMELLS: Assertion Roulette - The test contains 2 assertions without messages.\n</classification>"
+    "rawModelResponse": "<thinking>\nStep 1: Scope & Setup Analysis (Where do variables come from?)\n- The test imports various resources like textResource, blobResource etc.\n- There are no external module references indicating reliance on undefined context.\n\nStep 2: Control Flow Analysis (Are there try/catch/if blocks used for test flow or just async fallbacks?)\n- No control flow constructs such as if statements found in the target code block. The use of 'expect' suggests synchronous assertions without explicit asynchronous handling like promises, callbacks etc.\n  \nStep 3: Smell Trigger Validation\n- Assertion Roulette is triggered since there are multiple assertionCount (2) and they lack custom failure explanation strings ('msg').\n</thinking>\n<classification>\nFILE: modelcontextprotocol__servers__src_everything_tests_resources.test__17.ts - SMELLS: Assertion Roulette - The test contains 2 assertions without messages.\n</classification>",
+    "reasoningLog": "Step 1: Scope & Setup Analysis (Where do variables come from?)\n- The test imports various resources like textResource, blobResource etc.\n- There are no external module references indicating reliance on undefined context.\n\nStep 2: Control Flow Analysis (Are there try/catch/if blocks used for test flow or just async fallbacks?)\n- No control flow constructs such as if statements found in the target code block. The use of 'expect' suggests synchronous assertions without explicit asynchronous handling like promises, callbacks etc.\n  \nStep 3: Smell Trigger Validation\n- Assertion Roulette is triggered since there are multiple assertionCount (2) and they lack custom failure explanation strings ('msg')."
   },
   {
     "file": "modelcontextprotocol__servers__src_everything_tests_resources.test__18.ts",
@@ -1718,14 +1726,17 @@
       "Hardcoded Literal",
       "Magic Number"
     ],
-    "modelSmells": [],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
     "modelName": "Ollama / phi4-mini:latest",
-    "modelStatus": "invalid return",
+    "modelStatus": "success",
     "cotEnabled": true,
     "astMetricsIncluded": true,
-    "modelJustification": "",
+    "modelJustification": "The target test contains four assertions without custom failure explanation strings. None",
     "latencyMs": 71724,
-    "rawModelResponse": "<thinking>\nStep 1: Scope & Setup Analysis (Where do variables come from?)\n- The test imports SequentialThinkingServer but does not instantiate any mocks or external modules.\n- Variables are set up in a beforeEach hook, which is standard practice.\n\nStep 2: Control Flow Analysis (Are there try/catch/if blocks used for test flow or just async fallbacks?)\n- There are no control structures like if statements detected within the target test code block. The asynchronous behavior seems to be handled implicitly by Vitest's testing framework rather than explicit waits.\n  \nStep 3: Smell Trigger Validation\n- Assertion Roulette is triggered because there are four assertions without custom failure explanation strings (e.g., expect(data.branches).toContain('branch-a')).\n- Resource Optimism could potentially apply if the test interacted with external I/O objects, but none such interactions exist in this code block.\n</thinking>\n\n<classification>\nFILE: modelcontextprotocol__servers__src_sequentialthinking_tests_lib.test__4.ts - SMELLS: Assertion Roulette - The target test contains four assertions without custom failure explanation strings. None\n</classification>"
+    "rawModelResponse": "<thinking>\nStep 1: Scope & Setup Analysis (Where do variables come from?)\n- The test imports SequentialThinkingServer but does not instantiate any mocks or external modules.\n- Variables are set up in a beforeEach hook, which is standard practice.\n\nStep 2: Control Flow Analysis (Are there try/catch/if blocks used for test flow or just async fallbacks?)\n- There are no control structures like if statements detected within the target test code block. The asynchronous behavior seems to be handled implicitly by Vitest's testing framework rather than explicit waits.\n  \nStep 3: Smell Trigger Validation\n- Assertion Roulette is triggered because there are four assertions without custom failure explanation strings (e.g., expect(data.branches).toContain('branch-a')).\n- Resource Optimism could potentially apply if the test interacted with external I/O objects, but none such interactions exist in this code block.\n</thinking>\n\n<classification>\nFILE: modelcontextprotocol__servers__src_sequentialthinking_tests_lib.test__4.ts - SMELLS: Assertion Roulette - The target test contains four assertions without custom failure explanation strings. None\n</classification>",
+    "reasoningLog": "Step 1: Scope & Setup Analysis (Where do variables come from?)\n- The test imports SequentialThinkingServer but does not instantiate any mocks or external modules.\n- Variables are set up in a beforeEach hook, which is standard practice.\n\nStep 2: Control Flow Analysis (Are there try/catch/if blocks used for test flow or just async fallbacks?)\n- There are no control structures like if statements detected within the target test code block. The asynchronous behavior seems to be handled implicitly by Vitest's testing framework rather than explicit waits.\n  \nStep 3: Smell Trigger Validation\n- Assertion Roulette is triggered because there are four assertions without custom failure explanation strings (e.g., expect(data.branches).toContain('branch-a')).\n- Resource Optimism could potentially apply if the test interacted with external I/O objects, but none such interactions exist in this code block."
   },
   {
     "file": "modelcontextprotocol__servers__src_sequentialthinking_tests_lib.test__5.ts",
@@ -1810,8 +1821,7 @@
       "Magic Number"
     ],
     "modelSmells": [
-      "Assertion Roulette",
-      "None"
+      "Assertion Roulette"
     ],
     "modelName": "Ollama / phi4-mini:latest",
     "modelStatus": "success",
@@ -1938,8 +1948,7 @@
       "Hardcoded Literal"
     ],
     "modelSmells": [
-      "Assertion Roulette",
-      "None"
+      "Assertion Roulette"
     ],
     "modelName": "Ollama / phi4-mini:latest",
     "modelStatus": "success",
@@ -2033,7 +2042,7 @@
       "Hardcoded Literal"
     ],
     "modelSmells": [
-      "Hardcoded Literal (42 literals detected)"
+      "Hardcoded Literal"
     ],
     "modelName": "Ollama / phi4-mini:latest",
     "modelStatus": "success",
@@ -2104,7 +2113,7 @@
     ],
     "modelSmells": [
       "Assertion Roulette",
-      "Hardcoded Literal (7 instances)"
+      "Hardcoded Literal"
     ],
     "modelName": "Ollama / phi4-mini:latest",
     "modelStatus": "success",
@@ -2205,8 +2214,7 @@
       "Hardcoded Literal"
     ],
     "modelSmells": [
-      "Hardcoded Literal",
-      "None"
+      "Hardcoded Literal"
     ],
     "modelName": "Ollama / phi4-mini:latest",
     "modelStatus": "success",
@@ -2223,8 +2231,7 @@
       "Hardcoded Literal"
     ],
     "modelSmells": [
-      "Hardcoded Literal Count = 5",
-      "None"
+      "Hardcoded Literal"
     ],
     "modelName": "Ollama / phi4-mini:latest",
     "modelStatus": "success",
@@ -2256,8 +2263,7 @@
       "Hardcoded Literal"
     ],
     "modelSmells": [
-      "Assertion Roulette",
-      "None"
+      "Assertion Roulette"
     ],
     "modelName": "Ollama / phi4-mini:latest",
     "modelStatus": "success",
@@ -2274,8 +2280,7 @@
       "Hardcoded Literal"
     ],
     "modelSmells": [
-      "Resource Optimism",
-      "General Fixture None"
+      "Resource Optimism"
     ],
     "modelName": "Ollama / phi4-mini:latest",
     "modelStatus": "success",
@@ -2292,8 +2297,7 @@
       "Hardcoded Literal"
     ],
     "modelSmells": [
-      "Resource Optimism",
-      "None"
+      "Resource Optimism"
     ],
     "modelName": "Ollama / phi4-mini:latest",
     "modelStatus": "success",
@@ -2329,8 +2333,7 @@
       "Hardcoded Literal"
     ],
     "modelSmells": [
-      "Hardcoded Literal Count",
-      "False-POSITIVE GUARD (numbers used as expected output values in assertions)"
+      "Hardcoded Literal"
     ],
     "modelName": "Ollama / phi4-mini:latest",
     "modelStatus": "success",
@@ -2490,8 +2493,7 @@
       "Hardcoded Literal"
     ],
     "modelSmells": [
-      "Assertion Roulette",
-      "General Fixture None"
+      "Assertion Roulette"
     ],
     "modelName": "Ollama / phi4-mini:latest",
     "modelStatus": "success",
@@ -2526,8 +2528,7 @@
       "Hardcoded Literal"
     ],
     "modelSmells": [
-      "Magic Number",
-      "None"
+      "Magic Number"
     ],
     "modelName": "Ollama / phi4-mini:latest",
     "modelStatus": "success",
@@ -2559,8 +2560,7 @@
       "Hardcoded Literal"
     ],
     "modelSmells": [
-      "Magic Number",
-      "None"
+      "Magic Number"
     ],
     "modelName": "Ollama / phi4-mini:latest",
     "modelStatus": "success",
@@ -3019,8 +3019,7 @@
       "Hardcoded Literal"
     ],
     "modelSmells": [
-      "Resource Optimism",
-      "None"
+      "Resource Optimism"
     ],
     "modelName": "Ollama / phi4-mini:latest",
     "modelStatus": "success",
@@ -3074,8 +3073,7 @@
       "Hardcoded Literal"
     ],
     "modelSmells": [
-      "Assertion Roulette",
-      "None"
+      "Assertion Roulette"
     ],
     "modelName": "Ollama / phi4-mini:latest",
     "modelStatus": "success",
@@ -3202,9 +3200,7 @@
       "Hardcoded Literal"
     ],
     "modelSmells": [
-      "Assertion Roulette",
-      "False-POSITIVE GUARD (Sleepy Test)",
-      "None"
+      "Assertion Roulette"
     ],
     "modelName": "Ollama / phi4-mini:latest",
     "modelStatus": "success",
@@ -3240,12 +3236,13 @@
     ],
     "modelSmells": [],
     "modelName": "Ollama / phi4-mini:latest",
-    "modelStatus": "invalid return",
+    "modelStatus": "success",
     "cotEnabled": true,
     "astMetricsIncluded": true,
-    "modelJustification": "",
+    "modelJustification": "Hardcoded literals are used for comparison but not in a sensitive equality context. They should be considered safe.",
     "latencyMs": 115534,
-    "rawModelResponse": "<thinking>\nStep 1: Scope & Setup Analysis (Where do variables come from?)\n- The test imports necessary modules but does not seem to rely on any external or shared state beyond what is provided in its own scope.\n\nStep 2: Control Flow Analysis (Are there try/catch/if blocks used for test flow or just async fallbacks?)\n- There are no control structures like `try`, `catch`, nor conditional statements (`if`) present within the target test block. The code appears to be synchronous and straightforward without any asynchronous handling that would typically require such constructs.\n\nStep 3: Smell Trigger Validation (Evaluate specific rules)\n- Assertion Roulette is not triggered as there’s only one assertion with a message.\n- Conditional Test Logic, Eager Test, Mystery Guest are all absent based on the provided AST metadata which shows no complex control flow or external dependencies that would necessitate these smells being present in this test code block.\n\nHardcoded Literal: There might be an issue here since two hardcoded literals (`\"authentication\"` and `\"API Layer\"`) appear to come from a context not directly related to what is expected within the unit under scrutiny. However, they are used as strings for comparison which could potentially lead them being flagged if considered out of scope.\n\n- Sensitive Equality: Not triggered because there’s no use of `toString()` or similar methods that would compare values in an unidiomatic way.\n</thinking>\n\n<classification>\nFILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_context-builder.test__11.ts - SMELLS: None, False Positives (Hardcoded Literal) Justification: Hardcoded literals are used for comparison but not in a sensitive equality context. They should be considered safe.\n</classification>"
+    "rawModelResponse": "<thinking>\nStep 1: Scope & Setup Analysis (Where do variables come from?)\n- The test imports necessary modules but does not seem to rely on any external or shared state beyond what is provided in its own scope.\n\nStep 2: Control Flow Analysis (Are there try/catch/if blocks used for test flow or just async fallbacks?)\n- There are no control structures like `try`, `catch`, nor conditional statements (`if`) present within the target test block. The code appears to be synchronous and straightforward without any asynchronous handling that would typically require such constructs.\n\nStep 3: Smell Trigger Validation (Evaluate specific rules)\n- Assertion Roulette is not triggered as there’s only one assertion with a message.\n- Conditional Test Logic, Eager Test, Mystery Guest are all absent based on the provided AST metadata which shows no complex control flow or external dependencies that would necessitate these smells being present in this test code block.\n\nHardcoded Literal: There might be an issue here since two hardcoded literals (`\"authentication\"` and `\"API Layer\"`) appear to come from a context not directly related to what is expected within the unit under scrutiny. However, they are used as strings for comparison which could potentially lead them being flagged if considered out of scope.\n\n- Sensitive Equality: Not triggered because there’s no use of `toString()` or similar methods that would compare values in an unidiomatic way.\n</thinking>\n\n<classification>\nFILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_context-builder.test__11.ts - SMELLS: None, False Positives (Hardcoded Literal) Justification: Hardcoded literals are used for comparison but not in a sensitive equality context. They should be considered safe.\n</classification>",
+    "reasoningLog": "Step 1: Scope & Setup Analysis (Where do variables come from?)\n- The test imports necessary modules but does not seem to rely on any external or shared state beyond what is provided in its own scope.\n\nStep 2: Control Flow Analysis (Are there try/catch/if blocks used for test flow or just async fallbacks?)\n- There are no control structures like `try`, `catch`, nor conditional statements (`if`) present within the target test block. The code appears to be synchronous and straightforward without any asynchronous handling that would typically require such constructs.\n\nStep 3: Smell Trigger Validation (Evaluate specific rules)\n- Assertion Roulette is not triggered as there’s only one assertion with a message.\n- Conditional Test Logic, Eager Test, Mystery Guest are all absent based on the provided AST metadata which shows no complex control flow or external dependencies that would necessitate these smells being present in this test code block.\n\nHardcoded Literal: There might be an issue here since two hardcoded literals (`\"authentication\"` and `\"API Layer\"`) appear to come from a context not directly related to what is expected within the unit under scrutiny. However, they are used as strings for comparison which could potentially lead them being flagged if considered out of scope.\n\n- Sensitive Equality: Not triggered because there’s no use of `toString()` or similar methods that would compare values in an unidiomatic way."
   },
   {
     "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_context-builder.test__12.ts",
@@ -3394,7 +3391,6 @@
     ],
     "modelSmells": [
       "Assertion Roulette",
-      "Eager Test (False Positive Guard)",
       "Hardcoded Literal"
     ],
     "modelName": "Ollama / phi4-mini:latest",

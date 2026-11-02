@@ -42,7 +42,7 @@
       "Mystery Guest"
     ],
     "modelSmells": [
-      "[\"Assertion Roulette\"]"
+      "Assertion Roulette"
     ],
     "modelName": "Ollama / llama3.1:8b",
     "modelStatus": "success",
@@ -60,7 +60,7 @@
       "Mystery Guest"
     ],
     "modelSmells": [
-      "AssertionRoulette"
+      "Assertion Roulette"
     ],
     "modelName": "Ollama / llama3.1:8b",
     "modelStatus": "success",
@@ -99,7 +99,7 @@
       "Mystery Guest"
     ],
     "modelSmells": [
-      "[HardcodedLiteral]"
+      "Hardcoded Literal"
     ],
     "modelName": "Ollama / llama3.1:8b",
     "modelStatus": "success",
@@ -138,8 +138,8 @@
       "Mystery Guest"
     ],
     "modelSmells": [
-      "[Hardcoded Literal",
-      "Magic Number]"
+      "Hardcoded Literal",
+      "Magic Number"
     ],
     "modelName": "Ollama / llama3.1:8b",
     "modelStatus": "success",
@@ -160,7 +160,7 @@
       "Mystery Guest"
     ],
     "modelSmells": [
-      "[HardcodedLiteral]"
+      "Hardcoded Literal"
     ],
     "modelName": "Ollama / llama3.1:8b",
     "modelStatus": "success",
@@ -181,8 +181,8 @@
       "Mystery Guest"
     ],
     "modelSmells": [
-      "[ConditionalTestLogic",
-      "HardcodedLiteral]"
+      "Conditional Test Logic",
+      "Hardcoded Literal"
     ],
     "modelName": "Ollama / llama3.1:8b",
     "modelStatus": "success",
@@ -205,8 +205,8 @@
       "Sleepy Test"
     ],
     "modelSmells": [
-      "[ConditionalTestLogic",
-      "SleepyTest]"
+      "Conditional Test Logic",
+      "Sleepy Test"
     ],
     "modelName": "Ollama / llama3.1:8b",
     "modelStatus": "success",
@@ -247,7 +247,7 @@
       "Sleepy Test"
     ],
     "modelSmells": [
-      "[SleepyTest]"
+      "Sleepy Test"
     ],
     "modelName": "Ollama / llama3.1:8b",
     "modelStatus": "success",
@@ -269,10 +269,10 @@
       "Sleepy Test"
     ],
     "modelSmells": [
-      "[Conditional Test Logic",
+      "Conditional Test Logic",
       "Eager Test",
       "Resource Optimism",
-      "Sleepy Test]"
+      "Sleepy Test"
     ],
     "modelName": "Ollama / llama3.1:8b",
     "modelStatus": "success",
@@ -291,7 +291,7 @@
       "Mystery Guest"
     ],
     "modelSmells": [
-      "[Hardcoded Literal]"
+      "Hardcoded Literal"
     ],
     "modelName": "Ollama / llama3.1:8b",
     "modelStatus": "success",
@@ -325,7 +325,7 @@
       "Mystery Guest"
     ],
     "modelSmells": [
-      "[HardcodedLiteral]"
+      "Hardcoded Literal"
     ],
     "modelName": "Ollama / llama3.1:8b",
     "modelStatus": "success",
@@ -343,7 +343,7 @@
       "Mystery Guest"
     ],
     "modelSmells": [
-      "[HardcodedLiteral]"
+      "Hardcoded Literal"
     ],
     "modelName": "Ollama / llama3.1:8b",
     "modelStatus": "success",
@@ -364,7 +364,7 @@
       "Sleepy Test"
     ],
     "modelSmells": [
-      "[Resource Optimism]"
+      "Resource Optimism"
     ],
     "modelName": "Ollama / llama3.1:8b",
     "modelStatus": "success",
@@ -382,14 +382,17 @@
       "Hardcoded Literal",
       "Mystery Guest"
     ],
-    "modelSmells": [],
+    "modelSmells": [
+      "Hardcoded Literal"
+    ],
     "modelName": "Ollama / llama3.1:8b",
-    "modelStatus": "invalid return",
+    "modelStatus": "success",
     "cotEnabled": true,
     "astMetricsIncluded": true,
-    "modelJustification": "",
+    "modelJustification": "The test contains several hardcoded literals that might be considered as such, but their usage is mostly expected and not necessarily a smell without further context.",
     "latencyMs": 205939,
-    "rawModelResponse": "<thinking>\nStep 1: Scope & Setup Analysis\n- The file imports various modules, including `vitest` for testing and several types from a custom `pico3` harness.\n- The test uses fixtures provided by the `open` function to set up an environment (`env`) with a registered task kind.\n- Variables like `calls`, `make`, `old`, `replacement`, and `ref` are defined within the target test.\n\nStep 2: Control Flow Analysis\n- There's no explicit try-catch block in the target test, but it does use `assert.rejects` to assert that a specific error is thrown.\n- The test uses async/await for handling promises, which is typical for tests involving asynchronous behavior.\n\nStep 3: Smell Trigger Validation\n\n1. **Assertion Roulette**: Not applicable since there are no assertions in the target test (`metrics.assertionCount == 0`).\n\n2. **Conditional Test Logic**: Not applicable as there's no conditional logic within the test body itself, but rather a series of asynchronous operations.\n\n3. **Eager Test**: The test invokes multiple methods on the `env` object (e.g., `registerTaskKind`, `commit`, `waitForTask`) which could be considered \"state-changing.\" However, each method call is part of a specific sequence that tests different aspects of task kind registration and unregistration.\n\n4. **Mystery Guest**: The test relies on variables (`calls`, `old`, `replacement`, `ref`) defined within the test itself, so it's not a mystery guest.\n\n5. **Resource Optimism**: There are no external I/O objects used without proper handling or assertion of their existence.\n\n6. **General Fixture**: This test utilizes specific setup provided by the `open` function and doesn't seem to use broad shared state in its body.\n\n7. **Hardcoded Literal**: The AST metadata indicates 11 hardcoded literals, but upon reviewing the target test, most of these appear to be used as expected (e.g., `\"spec.reload-kind\"`). However, some might be considered hardcoded literals if they're not properly explained or reused elsewhere.\n\n8. **Magic Number**: There are no raw numbers passed directly into SUT methods that would qualify as magic numbers.\n\n9. **Sleepy Test**: The test uses `waitForTask` which is likely a framework-managed condition wait and not an explicit sleep.\n\n10. **Exception Catching Throwing**: The test does use `assert.rejects`, but this is a declarative way to assert expected exceptions, so it's not considered a smell here.\n\n11. **Sensitive Equality**: There are no assertions comparing stringified representations of values for equality.\n</thinking>\n\n<classification>\nFILE: target_test.ts - SMELLS: [HardcodedLiteral] - JUSTIFICATION: The test contains several hardcoded literals that might be considered as such, but their usage is mostly expected and not necessarily a smell without further context."
+    "rawModelResponse": "<thinking>\nStep 1: Scope & Setup Analysis\n- The file imports various modules, including `vitest` for testing and several types from a custom `pico3` harness.\n- The test uses fixtures provided by the `open` function to set up an environment (`env`) with a registered task kind.\n- Variables like `calls`, `make`, `old`, `replacement`, and `ref` are defined within the target test.\n\nStep 2: Control Flow Analysis\n- There's no explicit try-catch block in the target test, but it does use `assert.rejects` to assert that a specific error is thrown.\n- The test uses async/await for handling promises, which is typical for tests involving asynchronous behavior.\n\nStep 3: Smell Trigger Validation\n\n1. **Assertion Roulette**: Not applicable since there are no assertions in the target test (`metrics.assertionCount == 0`).\n\n2. **Conditional Test Logic**: Not applicable as there's no conditional logic within the test body itself, but rather a series of asynchronous operations.\n\n3. **Eager Test**: The test invokes multiple methods on the `env` object (e.g., `registerTaskKind`, `commit`, `waitForTask`) which could be considered \"state-changing.\" However, each method call is part of a specific sequence that tests different aspects of task kind registration and unregistration.\n\n4. **Mystery Guest**: The test relies on variables (`calls`, `old`, `replacement`, `ref`) defined within the test itself, so it's not a mystery guest.\n\n5. **Resource Optimism**: There are no external I/O objects used without proper handling or assertion of their existence.\n\n6. **General Fixture**: This test utilizes specific setup provided by the `open` function and doesn't seem to use broad shared state in its body.\n\n7. **Hardcoded Literal**: The AST metadata indicates 11 hardcoded literals, but upon reviewing the target test, most of these appear to be used as expected (e.g., `\"spec.reload-kind\"`). However, some might be considered hardcoded literals if they're not properly explained or reused elsewhere.\n\n8. **Magic Number**: There are no raw numbers passed directly into SUT methods that would qualify as magic numbers.\n\n9. **Sleepy Test**: The test uses `waitForTask` which is likely a framework-managed condition wait and not an explicit sleep.\n\n10. **Exception Catching Throwing**: The test does use `assert.rejects`, but this is a declarative way to assert expected exceptions, so it's not considered a smell here.\n\n11. **Sensitive Equality**: There are no assertions comparing stringified representations of values for equality.\n</thinking>\n\n<classification>\nFILE: target_test.ts - SMELLS: [HardcodedLiteral] - JUSTIFICATION: The test contains several hardcoded literals that might be considered as such, but their usage is mostly expected and not necessarily a smell without further context.",
+    "reasoningLog": "Step 1: Scope & Setup Analysis\n- The file imports various modules, including `vitest` for testing and several types from a custom `pico3` harness.\n- The test uses fixtures provided by the `open` function to set up an environment (`env`) with a registered task kind.\n- Variables like `calls`, `make`, `old`, `replacement`, and `ref` are defined within the target test.\n\nStep 2: Control Flow Analysis\n- There's no explicit try-catch block in the target test, but it does use `assert.rejects` to assert that a specific error is thrown.\n- The test uses async/await for handling promises, which is typical for tests involving asynchronous behavior.\n\nStep 3: Smell Trigger Validation\n\n1. **Assertion Roulette**: Not applicable since there are no assertions in the target test (`metrics.assertionCount == 0`).\n\n2. **Conditional Test Logic**: Not applicable as there's no conditional logic within the test body itself, but rather a series of asynchronous operations.\n\n3. **Eager Test**: The test invokes multiple methods on the `env` object (e.g., `registerTaskKind`, `commit`, `waitForTask`) which could be considered \"state-changing.\" However, each method call is part of a specific sequence that tests different aspects of task kind registration and unregistration.\n\n4. **Mystery Guest**: The test relies on variables (`calls`, `old`, `replacement`, `ref`) defined within the test itself, so it's not a mystery guest.\n\n5. **Resource Optimism**: There are no external I/O objects used without proper handling or assertion of their existence.\n\n6. **General Fixture**: This test utilizes specific setup provided by the `open` function and doesn't seem to use broad shared state in its body.\n\n7. **Hardcoded Literal**: The AST metadata indicates 11 hardcoded literals, but upon reviewing the target test, most of these appear to be used as expected (e.g., `\"spec.reload-kind\"`). However, some might be considered hardcoded literals if they're not properly explained or reused elsewhere.\n\n8. **Magic Number**: There are no raw numbers passed directly into SUT methods that would qualify as magic numbers.\n\n9. **Sleepy Test**: The test uses `waitForTask` which is likely a framework-managed condition wait and not an explicit sleep.\n\n10. **Exception Catching Throwing**: The test does use `assert.rejects`, but this is a declarative way to assert expected exceptions, so it's not considered a smell here.\n\n11. **Sensitive Equality**: There are no assertions comparing stringified representations of values for equality."
   },
   {
     "file": "earendil-works__pi__packages_ai_test_zen.test__0.ts",
@@ -400,8 +403,8 @@
       "Resource Optimism"
     ],
     "modelSmells": [
-      "[\"Assertion Roulette\"",
-      "\"Hardcoded Literal\"]"
+      "Assertion Roulette",
+      "Hardcoded Literal"
     ],
     "modelName": "Ollama / llama3.1:8b",
     "modelStatus": "success",
@@ -420,10 +423,10 @@
       "Magic Number"
     ],
     "modelSmells": [
-      "[\"Assertion Roulette\"",
-      "\"Eager Test\"",
-      "\"Hardcoded Literal\"",
-      "\"Magic Number\"]"
+      "Assertion Roulette",
+      "Eager Test",
+      "Hardcoded Literal",
+      "Magic Number"
     ],
     "modelName": "Ollama / llama3.1:8b",
     "modelStatus": "success",
@@ -499,8 +502,8 @@
       "Hardcoded Literal"
     ],
     "modelSmells": [
-      "[\"Assertion Roulette\"",
-      "\"Hardcoded Literal\"]"
+      "Assertion Roulette",
+      "Hardcoded Literal"
     ],
     "modelName": "Ollama / llama3.1:8b",
     "modelStatus": "success",
@@ -600,7 +603,7 @@
       "Hardcoded Literal"
     ],
     "modelSmells": [
-      "[Hardcoded Literal]"
+      "Hardcoded Literal"
     ],
     "modelName": "Ollama / llama3.1:8b",
     "modelStatus": "success",
@@ -712,7 +715,7 @@
       "Hardcoded Literal"
     ],
     "modelSmells": [
-      "[AssertionRoulette]"
+      "Assertion Roulette"
     ],
     "modelName": "Ollama / llama3.1:8b",
     "modelStatus": "success",
@@ -730,7 +733,7 @@
       "Resource Optimism"
     ],
     "modelSmells": [
-      "[Hardcoded Literal]"
+      "Hardcoded Literal"
     ],
     "modelName": "Ollama / llama3.1:8b",
     "modelStatus": "success",
@@ -773,7 +776,7 @@
       "Hardcoded Literal"
     ],
     "modelSmells": [
-      "[Resource Optimism]"
+      "Resource Optimism"
     ],
     "modelName": "Ollama / llama3.1:8b",
     "modelStatus": "success",
@@ -790,7 +793,7 @@
       "Hardcoded Literal"
     ],
     "modelSmells": [
-      "[HardcodedLiteral]"
+      "Hardcoded Literal"
     ],
     "modelName": "Ollama / llama3.1:8b",
     "modelStatus": "success",
@@ -807,8 +810,8 @@
       "Hardcoded Literal"
     ],
     "modelSmells": [
-      "[\"Assertion Roulette\"",
-      "\"Hardcoded Literal\"]"
+      "Assertion Roulette",
+      "Hardcoded Literal"
     ],
     "modelName": "Ollama / llama3.1:8b",
     "modelStatus": "success",
@@ -855,8 +858,8 @@
       "Assertion Roulette"
     ],
     "modelSmells": [
-      "[\"Assertion Roulette\"",
-      "\"Hardcoded Literal\"]"
+      "Assertion Roulette",
+      "Hardcoded Literal"
     ],
     "modelName": "Ollama / llama3.1:8b",
     "modelStatus": "success",
@@ -899,7 +902,7 @@
     "file": "modelcontextprotocol__servers__src_everything_tests_server.test__3.ts",
     "referenceSmells": [],
     "modelSmells": [
-      "AssertionRoulette"
+      "Assertion Roulette"
     ],
     "modelName": "Ollama / llama3.1:8b",
     "modelStatus": "success",
@@ -916,7 +919,7 @@
       "Assertion Roulette"
     ],
     "modelSmells": [
-      "[EagerTest]"
+      "Eager Test"
     ],
     "modelName": "Ollama / llama3.1:8b",
     "modelStatus": "success",
@@ -1081,7 +1084,7 @@
       "Hardcoded Literal"
     ],
     "modelSmells": [
-      "[Eager Test]"
+      "Eager Test"
     ],
     "modelName": "Ollama / llama3.1:8b",
     "modelStatus": "success",
@@ -1099,8 +1102,8 @@
       "Hardcoded Literal"
     ],
     "modelSmells": [
-      "[\"Assertion Roulette\"",
-      "\"Hardcoded Literal\"]"
+      "Assertion Roulette",
+      "Hardcoded Literal"
     ],
     "modelName": "Ollama / llama3.1:8b",
     "modelStatus": "success",
@@ -1117,8 +1120,8 @@
       "Assertion Roulette"
     ],
     "modelSmells": [
-      "[Assertion Roulette",
-      "Hardcoded Literal]"
+      "Assertion Roulette",
+      "Hardcoded Literal"
     ],
     "modelName": "Ollama / llama3.1:8b",
     "modelStatus": "success",
@@ -1136,7 +1139,7 @@
       "Sensitive Equality"
     ],
     "modelSmells": [
-      "[Hardcoded Literal]"
+      "Hardcoded Literal"
     ],
     "modelName": "Ollama / llama3.1:8b",
     "modelStatus": "success",
@@ -1190,9 +1193,9 @@
       "Sensitive Equality"
     ],
     "modelSmells": [
-      "[\"Assertion Roulette\"",
-      "\"Hardcoded Literal\"",
-      "\"Magic Number\"]"
+      "Assertion Roulette",
+      "Hardcoded Literal",
+      "Magic Number"
     ],
     "modelName": "Ollama / llama3.1:8b",
     "modelStatus": "success",
@@ -1211,8 +1214,8 @@
       "Sensitive Equality"
     ],
     "modelSmells": [
-      "[\"Assertion Roulette\"",
-      "\"Hardcoded Literal\"]"
+      "Assertion Roulette",
+      "Hardcoded Literal"
     ],
     "modelName": "Ollama / llama3.1:8b",
     "modelStatus": "success",
@@ -1268,8 +1271,8 @@
       "Magic Number"
     ],
     "modelSmells": [
-      "[Eager Test",
-      "Magic Number]"
+      "Eager Test",
+      "Magic Number"
     ],
     "modelName": "Ollama / llama3.1:8b",
     "modelStatus": "success",
@@ -1302,8 +1305,8 @@
       "Hardcoded Literal"
     ],
     "modelSmells": [
-      "[Assertion Roulette",
-      "Hardcoded Literal]"
+      "Assertion Roulette",
+      "Hardcoded Literal"
     ],
     "modelName": "Ollama / llama3.1:8b",
     "modelStatus": "success",
@@ -1320,7 +1323,7 @@
       "Assertion Roulette"
     ],
     "modelSmells": [
-      "AssertionRoulette"
+      "Assertion Roulette"
     ],
     "modelName": "Ollama / llama3.1:8b",
     "modelStatus": "success",
@@ -1375,8 +1378,8 @@
       "Hardcoded Literal"
     ],
     "modelSmells": [
-      "[Assertion Roulette",
-      "Hardcoded Literal]"
+      "Assertion Roulette",
+      "Hardcoded Literal"
     ],
     "modelName": "Ollama / llama3.1:8b",
     "modelStatus": "success",
@@ -1395,7 +1398,7 @@
       "Hardcoded Literal"
     ],
     "modelSmells": [
-      "[EagerTest]"
+      "Eager Test"
     ],
     "modelName": "Ollama / llama3.1:8b",
     "modelStatus": "success",
@@ -1448,7 +1451,7 @@
       "Hardcoded Literal"
     ],
     "modelSmells": [
-      "[\"Assertion Roulette\"]"
+      "Assertion Roulette"
     ],
     "modelName": "Ollama / llama3.1:8b",
     "modelStatus": "success",
@@ -1497,7 +1500,7 @@
       "Mystery Guest"
     ],
     "modelSmells": [
-      "[SleepyTest]"
+      "Sleepy Test"
     ],
     "modelName": "Ollama / llama3.1:8b",
     "modelStatus": "success",
@@ -1512,9 +1515,9 @@
     "file": "modelcontextprotocol__servers__src_everything_tests_resources.test__22.ts",
     "referenceSmells": [],
     "modelSmells": [
-      "[Eager Test",
+      "Eager Test",
       "General Fixture",
-      "Hardcoded Literal]"
+      "Hardcoded Literal"
     ],
     "modelName": "Ollama / llama3.1:8b",
     "modelStatus": "success",
@@ -1546,7 +1549,7 @@
       "Hardcoded Literal"
     ],
     "modelSmells": [
-      "[EagerTest]"
+      "Eager Test"
     ],
     "modelName": "Ollama / llama3.1:8b",
     "modelStatus": "success",
@@ -1597,8 +1600,8 @@
       "Mystery Guest"
     ],
     "modelSmells": [
-      "[Assertion Roulette",
-      "Mystery Guest]"
+      "Assertion Roulette",
+      "Mystery Guest"
     ],
     "modelName": "Ollama / llama3.1:8b",
     "modelStatus": "success",
@@ -1617,7 +1620,7 @@
       "Magic Number"
     ],
     "modelSmells": [
-      "[HardcodedLiteral]"
+      "Hardcoded Literal"
     ],
     "modelName": "Ollama / llama3.1:8b",
     "modelStatus": "success",
@@ -1636,12 +1639,12 @@
       "Magic Number"
     ],
     "modelSmells": [
-      "[Assertion Roulette",
+      "Assertion Roulette",
       "Eager Test",
       "General Fixture",
       "Hardcoded Literal",
       "Magic Number",
-      "Sensitive Equality]"
+      "Sensitive Equality"
     ],
     "modelName": "Ollama / llama3.1:8b",
     "modelStatus": "success",
@@ -1767,7 +1770,7 @@
       "Magic Number"
     ],
     "modelSmells": [
-      "[HardcodedLiteral]"
+      "Hardcoded Literal"
     ],
     "modelName": "Ollama / llama3.1:8b",
     "modelStatus": "success",
@@ -1786,7 +1789,7 @@
       "Magic Number"
     ],
     "modelSmells": [
-      "[HardcodedLiteral]"
+      "Hardcoded Literal"
     ],
     "modelName": "Ollama / llama3.1:8b",
     "modelStatus": "success",
@@ -1804,7 +1807,7 @@
       "Magic Number"
     ],
     "modelSmells": [
-      "[Hardcoded Literal]"
+      "Hardcoded Literal"
     ],
     "modelName": "Ollama / llama3.1:8b",
     "modelStatus": "success",
@@ -1871,8 +1874,8 @@
       "Hardcoded Literal"
     ],
     "modelSmells": [
-      "[\"Assertion Roulette\"",
-      "\"Hardcoded Literal\"]"
+      "Assertion Roulette",
+      "Hardcoded Literal"
     ],
     "modelName": "Ollama / llama3.1:8b",
     "modelStatus": "success",
@@ -1927,8 +1930,8 @@
       "Hardcoded Literal"
     ],
     "modelSmells": [
-      "[HardcodedLiteral",
-      "SensitiveEquality]"
+      "Hardcoded Literal",
+      "Sensitive Equality"
     ],
     "modelName": "Ollama / llama3.1:8b",
     "modelStatus": "success",
@@ -1963,9 +1966,7 @@
       "Assertion Roulette",
       "Hardcoded Literal"
     ],
-    "modelSmells": [
-      "[None]"
-    ],
+    "modelSmells": [],
     "modelName": "Ollama / llama3.1:8b",
     "modelStatus": "success",
     "cotEnabled": true,
@@ -2011,7 +2012,7 @@
       "Hardcoded Literal"
     ],
     "modelSmells": [
-      "[\"Hardcoded Literal\"]"
+      "Hardcoded Literal"
     ],
     "modelName": "Ollama / llama3.1:8b",
     "modelStatus": "success",
@@ -2029,7 +2030,7 @@
       "Hardcoded Literal"
     ],
     "modelSmells": [
-      "AssertionRoulette"
+      "Assertion Roulette"
     ],
     "modelName": "Ollama / llama3.1:8b",
     "modelStatus": "success",
@@ -2046,7 +2047,7 @@
       "Assertion Roulette"
     ],
     "modelSmells": [
-      "[Assertion Roulette]"
+      "Assertion Roulette"
     ],
     "modelName": "Ollama / llama3.1:8b",
     "modelStatus": "success",
@@ -2063,7 +2064,7 @@
       "Assertion Roulette"
     ],
     "modelSmells": [
-      "[Hardcoded Literal]"
+      "Hardcoded Literal"
     ],
     "modelName": "Ollama / llama3.1:8b",
     "modelStatus": "success",
@@ -2111,7 +2112,7 @@
       "Assertion Roulette"
     ],
     "modelSmells": [
-      "[\"Assertion Roulette\"]"
+      "Assertion Roulette"
     ],
     "modelName": "Ollama / llama3.1:8b",
     "modelStatus": "success",
@@ -2129,8 +2130,8 @@
       "Mystery Guest"
     ],
     "modelSmells": [
-      "[\"Assertion Roulette\"",
-      "\"Magic Number\"]"
+      "Assertion Roulette",
+      "Magic Number"
     ],
     "modelName": "Ollama / llama3.1:8b",
     "modelStatus": "success",
@@ -2147,8 +2148,8 @@
       "Hardcoded Literal"
     ],
     "modelSmells": [
-      "[Mystery Guest",
-      "Hardcoded Literal]"
+      "Mystery Guest",
+      "Hardcoded Literal"
     ],
     "modelName": "Ollama / llama3.1:8b",
     "modelStatus": "success",
@@ -2180,8 +2181,8 @@
       "Hardcoded Literal"
     ],
     "modelSmells": [
-      "[Resource Optimism",
-      "Hardcoded Literal]"
+      "Resource Optimism",
+      "Hardcoded Literal"
     ],
     "modelName": "Ollama / llama3.1:8b",
     "modelStatus": "success",
@@ -2198,7 +2199,7 @@
       "Hardcoded Literal"
     ],
     "modelSmells": [
-      "[GeneralFixture]"
+      "General Fixture"
     ],
     "modelName": "Ollama / llama3.1:8b",
     "modelStatus": "success",
@@ -2215,7 +2216,7 @@
       "Hardcoded Literal"
     ],
     "modelSmells": [
-      "[Eager Test]"
+      "Eager Test"
     ],
     "modelName": "Ollama / llama3.1:8b",
     "modelStatus": "success",
@@ -2395,8 +2396,8 @@
       "Hardcoded Literal"
     ],
     "modelSmells": [
-      "[\"Assertion Roulette\"",
-      "\"Hardcoded Literal\"]"
+      "Assertion Roulette",
+      "Hardcoded Literal"
     ],
     "modelName": "Ollama / llama3.1:8b",
     "modelStatus": "success",
@@ -2446,7 +2447,7 @@
       "Hardcoded Literal"
     ],
     "modelSmells": [
-      "[HardcodedLiteral]"
+      "Hardcoded Literal"
     ],
     "modelName": "Ollama / llama3.1:8b",
     "modelStatus": "success",
@@ -2512,7 +2513,7 @@
       "Hardcoded Literal"
     ],
     "modelSmells": [
-      "[\"Assertion Roulette\"]"
+      "Assertion Roulette"
     ],
     "modelName": "Ollama / llama3.1:8b",
     "modelStatus": "success",
@@ -2529,7 +2530,7 @@
       "Hardcoded Literal"
     ],
     "modelSmells": [
-      "[\"Hardcoded Literal\"]"
+      "Hardcoded Literal"
     ],
     "modelName": "Ollama / llama3.1:8b",
     "modelStatus": "success",
@@ -2561,8 +2562,8 @@
       "Assertion Roulette"
     ],
     "modelSmells": [
-      "[Assertion Roulette",
-      "Hardcoded Literal]"
+      "Assertion Roulette",
+      "Hardcoded Literal"
     ],
     "modelName": "Ollama / llama3.1:8b",
     "modelStatus": "success",
@@ -2596,8 +2597,8 @@
       "Assertion Roulette"
     ],
     "modelSmells": [
-      "[Assertion Roulette",
-      "Hardcoded Literal]"
+      "Assertion Roulette",
+      "Hardcoded Literal"
     ],
     "modelName": "Ollama / llama3.1:8b",
     "modelStatus": "success",
@@ -2614,8 +2615,8 @@
       "Assertion Roulette"
     ],
     "modelSmells": [
-      "[\"Assertion Roulette\"",
-      "\"Hardcoded Literal\"]"
+      "Assertion Roulette",
+      "Hardcoded Literal"
     ],
     "modelName": "Ollama / llama3.1:8b",
     "modelStatus": "success",
@@ -2648,7 +2649,7 @@
     "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_onboard-builder.test__6.ts",
     "referenceSmells": [],
     "modelSmells": [
-      "[\"Assertion Roulette\"]"
+      "Assertion Roulette"
     ],
     "modelName": "Ollama / llama3.1:8b",
     "modelStatus": "success",
@@ -2676,8 +2677,8 @@
     "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_onboard-builder.test__8.ts",
     "referenceSmells": [],
     "modelSmells": [
-      "[\"Assertion Roulette\"",
-      "\"Hardcoded Literal\"]"
+      "Assertion Roulette",
+      "Hardcoded Literal"
     ],
     "modelName": "Ollama / llama3.1:8b",
     "modelStatus": "success",
@@ -2694,7 +2695,7 @@
       "Hardcoded Literal"
     ],
     "modelSmells": [
-      "[HardcodedLiteral]"
+      "Hardcoded Literal"
     ],
     "modelName": "Ollama / llama3.1:8b",
     "modelStatus": "success",
@@ -2789,8 +2790,8 @@
       "Hardcoded Literal"
     ],
     "modelSmells": [
-      "[Assertion Roulette",
-      "Resource Optimism]"
+      "Assertion Roulette",
+      "Resource Optimism"
     ],
     "modelName": "Ollama / llama3.1:8b",
     "modelStatus": "success",
@@ -2921,14 +2922,17 @@
       "Assertion Roulette",
       "Hardcoded Literal"
     ],
-    "modelSmells": [],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
     "modelName": "Ollama / llama3.1:8b",
-    "modelStatus": "invalid return",
+    "modelStatus": "success",
     "cotEnabled": true,
     "astMetricsIncluded": true,
-    "modelJustification": "",
+    "modelJustification": "Extracted from model concluding statement",
     "latencyMs": 225536,
-    "rawModelResponse": "<thinking>\nStep 1: Scope & Setup Analysis (Where do variables come from?)\n- The `nestedDoc`, `nestedStyles`, and `nestedStructural` objects are defined in the describe block above the target test.\n- These objects seem to be fixtures for testing the `extractTokens` function, which is imported from another module.\n\nStep 2: Control Flow Analysis (Are there try/catch/if blocks used for test flow or just async fallbacks?)\n- There are no explicit try-catch blocks in the target test code.\n- The test uses expect statements to assert the existence of certain nodes and edges in the extracted tokens, but it does not handle any potential errors that might occur during the extraction process.\n\nStep 3: Smell Trigger Validation (Evaluate specific rules)\n- **Assertion Roulette**: The target test has two assertions without messages (`expect(token).toBeTruthy()` and `expect(edges).toEqual(expect.arrayContaining([...]))`), which could make it difficult to understand what is failing if the test fails.\n- **Conditional Test Logic**: There are no control flow statements in the target test code, so this smell does not apply.\n- **Eager Test**: The target test calls only one method (`extractTokens`) on the SUT, and it does not seem to be an eager test because it is not setting up multiple states or performing multiple actions on the system under test.\n- **Mystery Guest**: There are no external variables or mocks used in the target test code that would make it unreadable on its own.\n- **Resource Optimism**: The target test does not use any external I/O objects, so this smell does not apply.\n- **General Fixture**: The target test uses only a subset of the fixtures defined in the describe block above it, but this is not necessarily a bad thing. It's actually good practice to keep tests focused on specific scenarios.\n- **Hardcoded Literal**: There are no hardcoded literals in the target test code that would make it difficult to understand or maintain.\n- **Magic Number**: There are no magic numbers in the target test code.\n- **Sleepy Test**: The target test does not use any fixed delays or explicit sleeps, so this smell does not apply.\n- **Exception Catching Throwing**: The target test does not contain any explicit throw statements or catch clauses as part of its test logic.\n- **Sensitive Equality**: There are no assertions comparing stringified representations of values for equality.\n\nBased on the analysis above, the only applicable smell is **Assertion Roulette**."
+    "rawModelResponse": "<thinking>\nStep 1: Scope & Setup Analysis (Where do variables come from?)\n- The `nestedDoc`, `nestedStyles`, and `nestedStructural` objects are defined in the describe block above the target test.\n- These objects seem to be fixtures for testing the `extractTokens` function, which is imported from another module.\n\nStep 2: Control Flow Analysis (Are there try/catch/if blocks used for test flow or just async fallbacks?)\n- There are no explicit try-catch blocks in the target test code.\n- The test uses expect statements to assert the existence of certain nodes and edges in the extracted tokens, but it does not handle any potential errors that might occur during the extraction process.\n\nStep 3: Smell Trigger Validation (Evaluate specific rules)\n- **Assertion Roulette**: The target test has two assertions without messages (`expect(token).toBeTruthy()` and `expect(edges).toEqual(expect.arrayContaining([...]))`), which could make it difficult to understand what is failing if the test fails.\n- **Conditional Test Logic**: There are no control flow statements in the target test code, so this smell does not apply.\n- **Eager Test**: The target test calls only one method (`extractTokens`) on the SUT, and it does not seem to be an eager test because it is not setting up multiple states or performing multiple actions on the system under test.\n- **Mystery Guest**: There are no external variables or mocks used in the target test code that would make it unreadable on its own.\n- **Resource Optimism**: The target test does not use any external I/O objects, so this smell does not apply.\n- **General Fixture**: The target test uses only a subset of the fixtures defined in the describe block above it, but this is not necessarily a bad thing. It's actually good practice to keep tests focused on specific scenarios.\n- **Hardcoded Literal**: There are no hardcoded literals in the target test code that would make it difficult to understand or maintain.\n- **Magic Number**: There are no magic numbers in the target test code.\n- **Sleepy Test**: The target test does not use any fixed delays or explicit sleeps, so this smell does not apply.\n- **Exception Catching Throwing**: The target test does not contain any explicit throw statements or catch clauses as part of its test logic.\n- **Sensitive Equality**: There are no assertions comparing stringified representations of values for equality.\n\nBased on the analysis above, the only applicable smell is **Assertion Roulette**.",
+    "reasoningLog": "Step 1: Scope & Setup Analysis (Where do variables come from?)\n- The `nestedDoc`, `nestedStyles`, and `nestedStructural` objects are defined in the describe block above the target test.\n- These objects seem to be fixtures for testing the `extractTokens` function, which is imported from another module.\n\nStep 2: Control Flow Analysis (Are there try/catch/if blocks used for test flow or just async fallbacks?)\n- There are no explicit try-catch blocks in the target test code.\n- The test uses expect statements to assert the existence of certain nodes and edges in the extracted tokens, but it does not handle any potential errors that might occur during the extraction process.\n\nStep 3: Smell Trigger Validation (Evaluate specific rules)\n- **Assertion Roulette**: The target test has two assertions without messages (`expect(token).toBeTruthy()` and `expect(edges).toEqual(expect.arrayContaining([...]))`), which could make it difficult to understand what is failing if the test fails.\n- **Conditional Test Logic**: There are no control flow statements in the target test code, so this smell does not apply.\n- **Eager Test**: The target test calls only one method (`extractTokens`) on the SUT, and it does not seem to be an eager test because it is not setting up multiple states or performing multiple actions on the system under test.\n- **Mystery Guest**: There are no external variables or mocks used in the target test code that would make it unreadable on its own.\n- **Resource Optimism**: The target test does not use any external I/O objects, so this smell does not apply.\n- **General Fixture**: The target test uses only a subset of the fixtures defined in the describe block above it, but this is not necessarily a bad thing. It's actually good practice to keep tests focused on specific scenarios.\n- **Hardcoded Literal**: There are no hardcoded literals in the target test code that would make it difficult to understand or maintain.\n- **Magic Number**: There are no magic numbers in the target test code.\n- **Sleepy Test**: The target test does not use any fixed delays or explicit sleeps, so this smell does not apply.\n- **Exception Catching Throwing**: The target test does not contain any explicit throw statements or catch clauses as part of its test logic.\n- **Sensitive Equality**: There are no assertions comparing stringified representations of values for equality.\n\nBased on the analysis above, the only applicable smell is **Assertion Roulette**."
   },
   {
     "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_figma_tests_tokens.test__3.ts",
@@ -3003,8 +3007,8 @@
       "Hardcoded Literal"
     ],
     "modelSmells": [
-      "[Assertion Roulette",
-      "Hardcoded Literal]"
+      "Assertion Roulette",
+      "Hardcoded Literal"
     ],
     "modelName": "Ollama / llama3.1:8b",
     "modelStatus": "success",
@@ -3073,8 +3077,8 @@
       "Hardcoded Literal"
     ],
     "modelSmells": [
-      "AssertionRoulette",
-      "HardcodedLiteral"
+      "Assertion Roulette",
+      "Hardcoded Literal"
     ],
     "modelName": "Ollama / llama3.1:8b",
     "modelStatus": "success",
@@ -3178,11 +3182,11 @@
       "Hardcoded Literal"
     ],
     "modelSmells": [
-      "[Assertion Roulette",
+      "Assertion Roulette",
       "Eager Test",
       "General Fixture",
       "Hardcoded Literal",
-      "Sensitive Equality]"
+      "Sensitive Equality"
     ],
     "modelName": "Ollama / llama3.1:8b",
     "modelStatus": "success",
@@ -3199,8 +3203,8 @@
       "Assertion Roulette"
     ],
     "modelSmells": [
-      "[\"Assertion Roulette\"",
-      "\"Hardcoded Literal\"]"
+      "Assertion Roulette",
+      "Hardcoded Literal"
     ],
     "modelName": "Ollama / llama3.1:8b",
     "modelStatus": "success",
@@ -3253,8 +3257,8 @@
       "Magic Number"
     ],
     "modelSmells": [
-      "[\"Hardcoded Literal\"",
-      "\"Magic Number\"]"
+      "Hardcoded Literal",
+      "Magic Number"
     ],
     "modelName": "Ollama / llama3.1:8b",
     "modelStatus": "success",
@@ -3308,7 +3312,7 @@
       "Hardcoded Literal"
     ],
     "modelSmells": [
-      "[\"Assertion Roulette\"]"
+      "Assertion Roulette"
     ],
     "modelName": "Ollama / llama3.1:8b",
     "modelStatus": "success",
@@ -3340,7 +3344,7 @@
       "Hardcoded Literal"
     ],
     "modelSmells": [
-      "[\"Hardcoded Literal\"]"
+      "Hardcoded Literal"
     ],
     "modelName": "Ollama / llama3.1:8b",
     "modelStatus": "success",
@@ -3371,8 +3375,8 @@
       "Magic Number"
     ],
     "modelSmells": [
-      "[Hardcoded Literal",
-      "Magic Number]"
+      "Hardcoded Literal",
+      "Magic Number"
     ],
     "modelName": "Ollama / llama3.1:8b",
     "modelStatus": "success",
@@ -3432,7 +3436,7 @@
       "Hardcoded Literal"
     ],
     "modelSmells": [
-      "[\"Hardcoded Literal\"]"
+      "Hardcoded Literal"
     ],
     "modelName": "Ollama / llama3.1:8b",
     "modelStatus": "success",
