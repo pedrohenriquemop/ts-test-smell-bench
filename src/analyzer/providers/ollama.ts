@@ -71,6 +71,11 @@ export class OllamaProvider implements ModelProvider {
     }
   }
 
+  /** An empty prompt makes Ollama load the model into memory without generating. */
+  async warmUp(): Promise<void> {
+    await this.post({ model: this.config.model, prompt: "", stream: false });
+  }
+
   private async post(body: unknown) {
     try {
       return await axios.post(this.config.baseUrl, body, {

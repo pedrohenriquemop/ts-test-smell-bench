@@ -26,6 +26,8 @@ export interface ModelProvider {
   analyze(req: AnalysisRequest): Promise<AnalysisResponse>;
   /** Returns true when the backend is reachable and the model is available. */
   healthCheck?(): Promise<boolean>;
+  /** Loads the model up front so its load time is not counted in the first test's latency. */
+  warmUp?(): Promise<void>;
 }
 
 export function buildUserPrompt(req: AnalysisRequest): string {

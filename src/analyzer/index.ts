@@ -276,6 +276,13 @@ export async function runAnalyzer(options: RunAnalyzerOptions): Promise<void> {
     }
   }
 
+  if (provider.warmUp) {
+    console.log(`Warming up "${provider.name}"...`);
+    const warmUpStart = Date.now();
+    await provider.warmUp();
+    console.log(`Model ready in ${((Date.now() - warmUpStart) / 1000).toFixed(1)}s.`);
+  }
+
   const setup = `AST=${promptConfig.includeAstMetrics ? "ON" : "OFF"}, Context=${promptConfig.includeContext ? "ON" : "OFF"}`;
   console.log(`Starting analysis with "${provider.name}" for ${pending.length} remaining tests (${setup})...`);
 
