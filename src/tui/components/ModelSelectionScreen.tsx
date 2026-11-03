@@ -2,22 +2,27 @@ import React, { useState, useMemo } from "react";
 import { Box, Text, useInput } from "ink";
 import type { ModelConfig } from "../../config/index.ts";
 import { APP_VERSION } from "../../version.ts";
-import type { TuiSettings } from "../settings.ts";
+import type { TuiSettings, TuiStages } from "../settings.ts";
 
 interface Props {
   models: ModelConfig[];
-  onStart: (
-    selectedModelIds: string[],
-    stages: Record<string, boolean>,
-  ) => void;
+  onStart: (selectedModelIds: string[], stages: TuiStages) => void;
   onExit: () => void;
   initialSettings: TuiSettings;
   onSettingsChange: (settings: TuiSettings) => void;
 }
 
-/**
- * Classifies a model as SLM (local/ollama) or LLM (cloud API: gemini, openai).
- */
+const STAGE_LABELS: Array<[keyof TuiStages, string]> = [
+  ["mine", "Stage: Mine (Download tests)"],
+  ["prepare", "Stage: Prepare (Slice data)"],
+  ["humanEvaluation", "Stage: Generate Human Evaluation"],
+  ["analyze", "Stage: Prepare Gold Set (Run LLM)"],
+  ["mergeGoldset", "Stage: Merge Goldset Runs (Strict Majority)"],
+  ["evaluate", "Stage: Evaluate (Run SLMs)"],
+  ["generateMetrics", "Stage: Generate Metrics & Analytics (Charts & Report)"],
+];
+
+/** Local Ollama models are the evaluated SLMs; cloud models label the goldset. */
 function isSlm(model: ModelConfig): boolean {
   return model.provider === "ollama";
 }
@@ -35,9 +40,7 @@ export const ModelSelectionScreen: React.FC<Props> = ({
   const [selectedModels, setSelectedModels] = useState<Set<string>>(
     new Set(initialSettings.selectedModelIds.filter((id) => models.some((model) => model.id === id))),
   );
-  const [stages, setStages] = useState({
-    ...initialSettings.stages,
-  });
+  const [stages, setStages] = useState<TuiStages>({ ...initialSettings.stages });
 
   const persistSettings = (nextModels: Set<string>, nextStages: typeof stages) => {
     onSettingsChange({ selectedModelIds: Array.from(nextModels), stages: nextStages });
@@ -60,44 +63,8 @@ export const ModelSelectionScreen: React.FC<Props> = ({
       category?: "llm" | "slm";
     }> = [];
 
-    // ── Stage toggles ──────────────────────────────────────────
-    items.push({
-      type: "stage",
-      id: "mine",
-      label: "Stage: Mine (Download tests)",
-    });
-    items.push({
-      type: "stage",
-      id: "prepare",
-      label: "Stage: Prepare (Slice data)",
-    });
-    items.push({
-      type: "stage",
-      id: "humanEvaluation",
-      label: "Stage: Generate Human Evaluation",
-    });
-    items.push({
-      type: "stage",
-      id: "analyze",
-      label: "Stage: Prepare Gold Set (Run LLM)",
-    });
-    items.push({
-      type: "stage",
-      id: "mergeGoldset",
-      label: "Stage: Merge Goldset Runs (Strict Majority)",
-    });
-    items.push({
-      type: "stage",
-      id: "evaluate",
-      label: "Stage: Evaluate (Run SLMs)",
-    });
-    items.push({
-      type: "stage",
-      id: "generateMetrics",
-      label: "Stage: Generate Metrics & Analytics (Charts & Report)",
-    });
+    for (const [id, label] of STAGE_LABELS) items.push({ type: "stage", id, label });
 
-    // ── LLM models (only when "Prepare Gold Set" is active) ───
     if (showLlmModels && llmModels.length > 0) {
       items.push({
         type: "separator",
@@ -108,13 +75,12 @@ export const ModelSelectionScreen: React.FC<Props> = ({
         items.push({
           type: "model",
           id: m.id,
-          label: `${m.name || m.id} (${m.provider})`,
+          label: `${m.id} (${m.provider})`,
           category: "llm",
         });
       }
     }
 
-    // ── SLM models (when "Evaluate" or "Generate Metrics" is active) ────
     if (showSlmModels && slmModels.length > 0) {
       items.push({
         type: "separator",
@@ -125,20 +91,18 @@ export const ModelSelectionScreen: React.FC<Props> = ({
         items.push({
           type: "model",
           id: m.id,
-          label: `${m.name || m.id} (${m.provider})`,
+          label: `${m.id} (${m.provider})`,
           category: "slm",
         });
       }
     }
 
-    // ── Actions ───────────────────────────────────────────────
     items.push({ type: "action", id: "start", label: "▶ START PIPELINE" });
     items.push({ type: "action", id: "exit", label: "✖ EXIT" });
 
     return items;
   }, [showLlmModels, showSlmModels, llmModels, slmModels]);
 
-  // Check if at least one relevant model is selected for the active stages
   const relevantModels = Array.from(selectedModels).filter((id) => {
     const model = models.find((m) => m.id === id);
     return Boolean(
@@ -239,12 +203,7 @@ export const ModelSelectionScreen: React.FC<Props> = ({
         if (item.type === "stage")
           isChecked = stages[item.id as keyof typeof stages];
 
-        let prefix = "  ";
-        if (item.type !== "action") {
-          prefix = isChecked ? " [x] " : " [ ] ";
-        } else {
-          prefix = "  ";
-        }
+        const prefix = item.type === "action" ? "  " : isChecked ? " [x] " : " [ ] ";
 
         const color = isSelected ? "green" : "white";
         const bg = isSelected ? "blackBright" : undefined;

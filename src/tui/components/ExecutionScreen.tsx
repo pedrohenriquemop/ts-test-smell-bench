@@ -1,26 +1,21 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Box, Text, useInput } from "ink";
 import Spinner from "ink-spinner";
-import { runPipeline } from "../../pipeline/index.ts";
+import { runPipeline, type StageName } from "../../pipeline/index.ts";
 import type { AppConfig } from "../../config/index.ts";
+import type { TuiStages } from "../settings.ts";
 
 interface Props {
   config: AppConfig;
   modelIds: string[];
-  stages: {
-    mine: boolean;
-    prepare: boolean;
-    humanEvaluation: boolean;
-    analyze: boolean;
-    mergeGoldset: boolean;
-    evaluate: boolean;
-    generateMetrics: boolean;
-  };
+  stages: TuiStages;
   onComplete: () => void;
   onError: (error: string) => void;
 }
 
-const STAGE_DISPLAY_NAMES: Record<string, string> = {
+const MAX_LOG_LINES = 15;
+
+const STAGE_DISPLAY_NAMES: Record<StageName, string> = {
   mine: "MINE",
   prepare: "PREPARE",
   humanEvaluation: "GENERATE HUMAN EVALUATION",
@@ -31,127 +26,85 @@ const STAGE_DISPLAY_NAMES: Record<string, string> = {
   generateMetrics: "GENERATE METRICS & ANALYTICS",
 };
 
-function stageDisplayName(stage: string): string {
-  return STAGE_DISPLAY_NAMES[stage] ?? stage.toUpperCase();
+/** Redirects console output into the screen while the pipeline runs. */
+function captureConsole(push: (line: string) => void): () => void {
+  const original = { log: console.log, warn: console.warn, error: console.error };
+  console.log = (...args) => push(args.join(" "));
+  console.warn = (...args) => push(`⚠ ${args.join(" ")}`);
+  console.error = (...args) => push(`✖ ${args.join(" ")}`);
+  return () => Object.assign(console, original);
 }
 
-export const ExecutionScreen: React.FC<Props> = ({
-  config,
-  modelIds,
-  stages,
-  onComplete,
-  onError,
-}) => {
-  const [currentStage, setCurrentStage] = useState<string>("Initializing...");
+export const ExecutionScreen: React.FC<Props> = ({ config, modelIds, stages, onComplete, onError }) => {
+  const [currentStage, setCurrentStage] = useState<StageName | undefined>();
   const [currentModel, setCurrentModel] = useState<string | undefined>();
   const [logs, setLogs] = useState<string[]>([]);
-  const [prompt, setPrompt] = useState<{ message: string; resolve: (val: boolean) => void } | null>(null);
+  const [prompt, setPrompt] = useState<{ message: string; resolve: (answer: boolean) => void } | null>(null);
 
-  useInput((input, key) => {
+  // The pipeline must start exactly once, even if the parent re-renders.
+  const callbacks = useRef({ onComplete, onError });
+  callbacks.current = { onComplete, onError };
+
+  useInput((input) => {
     if (!prompt) return;
-    
-    if (input.toLowerCase() === "y") {
-      prompt.resolve(true);
-      setPrompt(null);
-    } else if (input.toLowerCase() === "n") {
-      prompt.resolve(false);
-      setPrompt(null);
-    }
+    const answer = input.toLowerCase();
+    if (answer !== "y" && answer !== "n") return;
+    prompt.resolve(answer === "y");
+    setPrompt(null);
   });
 
   useEffect(() => {
     let isMounted = true;
+    const restoreConsole = captureConsole((line) => {
+      if (isMounted) setLogs((prev) => [...prev, line].slice(-MAX_LOG_LINES));
+    });
 
-    // Override console.log/warn/error to capture logs in TUI
-    const originalLog = console.log;
-    const originalWarn = console.warn;
-    const originalError = console.error;
-
-    const pushLog = (msg: string) => {
-      if (!isMounted) return;
-      setLogs((prev) => {
-        const next = [...prev, msg];
-        return next.slice(-15); // keep last 15 logs
-      });
-    };
-
-    console.log = (...args) => pushLog(args.join(" "));
-    console.warn = (...args) => pushLog("⚠ " + args.join(" "));
-    console.error = (...args) => pushLog("✖ " + args.join(" "));
-
-    const execute = async () => {
-      try {
-        await runPipeline({
-          config,
-          modelIds,
-          stages,
-          onStageStart: (stage, modelId) => {
-            if (!isMounted) return;
-            setCurrentStage(stage);
-            setCurrentModel(modelId);
-          },
-          onStageComplete: () => {
-            // Let it spin until next stage
-          },
-          onStageError: (stage, error, modelId) => {
-            if (!isMounted) return false;
-            // Let it crash
-            return false;
-          },
-          onPrompt: (message) => {
-            return new Promise((resolve) => {
-              if (!isMounted) {
-                resolve(false);
-                return;
-              }
-              setPrompt({ message, resolve });
-            });
-          },
-        });
-
-        if (isMounted) {
-          onComplete();
-        }
-      } catch (err) {
-        if (isMounted) {
-          onError(err instanceof Error ? err.message : String(err));
-        }
-      }
-    };
-
-    execute();
+    runPipeline({
+      config,
+      modelIds,
+      stages,
+      onStageStart: (stage, modelTag) => {
+        if (!isMounted) return;
+        setCurrentStage(stage);
+        setCurrentModel(modelTag);
+      },
+      onStageError: () => false,
+      onPrompt: (message) =>
+        new Promise((resolve) => {
+          if (isMounted) setPrompt({ message, resolve });
+          else resolve(false);
+        }),
+    })
+      .then(() => isMounted && callbacks.current.onComplete())
+      .catch((err) => isMounted && callbacks.current.onError(err instanceof Error ? err.message : String(err)));
 
     return () => {
       isMounted = false;
-      console.log = originalLog;
-      console.warn = originalWarn;
-      console.error = originalError;
+      restoreConsole();
     };
-  }, [config, modelIds, stages, onComplete, onError]);
+  }, []);
 
+  const accent = prompt ? "cyan" : "yellow";
   return (
-    <Box
-      flexDirection="column"
-      padding={1}
-      borderStyle="round"
-      borderColor={prompt ? "cyan" : "yellow"}
-    >
+    <Box flexDirection="column" padding={1} borderStyle="round" borderColor={accent}>
       <Box marginBottom={1}>
-        <Text color={prompt ? "cyan" : "yellow"} bold>
-          {prompt ? <Text>❓ Waiting for Input</Text> : <Text><Spinner type="dots" /> Running Pipeline...</Text>}
+        <Text color={accent} bold>
+          {prompt ? "❓ Waiting for Input" : <><Spinner type="dots" /> Running Pipeline...</>}
         </Text>
       </Box>
 
       {prompt && (
         <Box marginBottom={1} padding={1} borderStyle="single" borderColor="cyan">
-          <Text color="white" bold>{prompt.message} (y/n)</Text>
+          <Text color="white" bold>
+            {prompt.message} (y/n)
+          </Text>
         </Box>
       )}
 
       <Box flexDirection="row" marginBottom={1}>
         <Text color="white">Stage: </Text>
         <Text color="cyan" bold>
-          {stageDisplayName(currentStage)}
+          {currentStage ? STAGE_DISPLAY_NAMES[currentStage] : "Initializing..."}
         </Text>
         {currentModel && (
           <>
@@ -163,12 +116,7 @@ export const ExecutionScreen: React.FC<Props> = ({
         )}
       </Box>
 
-      <Box
-        flexDirection="column"
-        borderStyle="single"
-        borderColor="gray"
-        paddingX={1}
-      >
+      <Box flexDirection="column" borderStyle="single" borderColor="gray" paddingX={1}>
         {logs.length === 0 && <Text color="gray">Waiting for output...</Text>}
         {logs.map((log, idx) => (
           <Text key={idx} color="gray">

@@ -1,117 +1,79 @@
 import React, { useState } from "react";
-import { Box, Text } from "ink";
+import { Box, Text, useInput } from "ink";
 import * as fs from "fs";
 import * as path from "path";
 import type { AppConfig } from "../config/index.ts";
 import { ModelSelectionScreen } from "./components/ModelSelectionScreen.tsx";
 import { ExecutionScreen } from "./components/ExecutionScreen.tsx";
 import { ResultsScreen } from "./components/ResultsScreen.tsx";
-import { ConfirmMineScreen } from "./components/ConfirmMineScreen.tsx";
-import { ConfirmPrepareScreen } from "./components/ConfirmPrepareScreen.tsx";
-import { loadTuiSettings, saveTuiSettings } from "./settings.ts";
+import { ConfirmOverwriteScreen } from "./components/ConfirmOverwriteScreen.tsx";
+import { loadTuiSettings, saveTuiSettings, type TuiStages } from "./settings.ts";
 
 interface Props {
   config: AppConfig;
   onExit: () => void;
 }
 
-type ScreenState =
-  | "select"
-  | "confirm-mine"
-  | "confirm-prepare"
-  | "execute"
-  | "results"
-  | "error";
+type Screen = "select" | "confirm-mine" | "confirm-prepare" | "execute" | "results" | "error";
+
+function directoryHasFile(dir: string, matches: (file: string) => boolean): boolean {
+  try {
+    return fs.readdirSync(path.resolve(dir)).some(matches);
+  } catch {
+    return false;
+  }
+}
+
+const ErrorScreen: React.FC<{ message: string | null; onExit: () => void }> = ({ message, onExit }) => {
+  useInput(() => onExit());
+  return (
+    <Box flexDirection="column" padding={1} borderStyle="round" borderColor="red">
+      <Text color="red" bold>
+        Pipeline Failed
+      </Text>
+      <Text color="white">{message}</Text>
+      <Box marginTop={1}>
+        <Text color="gray">Press any key to exit.</Text>
+      </Box>
+    </Box>
+  );
+};
 
 export const App: React.FC<Props> = ({ config, onExit }) => {
-  const [screen, setScreen] = useState<ScreenState>("select");
-
-  // Execution state
+  const [screen, setScreen] = useState<Screen>("select");
   const [selectedModels, setSelectedModels] = useState<string[]>([]);
-  const [stages, setStages] = useState({
-    mine: false,
-    prepare: false,
-    humanEvaluation: false,
-    analyze: false,
-    mergeGoldset: false,
-    evaluate: false,
-    generateMetrics: false,
-  });
+  const [stages, setStages] = useState<TuiStages>(() => loadTuiSettings().stages);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
 
-  const checkMineFiles = (stgs: Record<string, boolean>) => {
-    if (!stgs.mine) return false;
-    const testsDir = path.resolve(
-      process.cwd(),
-      config.miner.outputDir || "tests"
-    );
-    if (fs.existsSync(testsDir)) {
-      try {
-        return fs.readdirSync(testsDir).some((f) => f.endsWith(".ts"));
-      } catch {
-        return false;
-      }
-    }
-    return false;
-  };
+  const testsDir = config.miner.outputDir || "tests";
+  const preparedDir = config.dataset.outputDir;
 
-  const checkPrepareFiles = (stgs: Record<string, boolean>) => {
-    if (!stgs.prepare) return false;
-    const prepareDir = path.resolve(
-      process.cwd(),
-      config.dataset.outputDir || "tests"
+  const minedFilesWouldBeDeleted = (s: TuiStages) =>
+    s.mine && directoryHasFile(testsDir, (f) => f.endsWith(".ts"));
+  const preparedFilesWouldBeDeleted = (s: TuiStages) =>
+    s.prepare &&
+    directoryHasFile(
+      preparedDir,
+      (f) =>
+        (f.startsWith("sampled_manifesto_") && f.endsWith(".json")) ||
+        (f.startsWith("aggregated_tests_") && f.endsWith(".txt")),
     );
-    if (fs.existsSync(prepareDir)) {
-      try {
-        return fs
-          .readdirSync(prepareDir)
-          .some(
-            (f) =>
-              (f.startsWith("sampled_manifesto_") && f.endsWith(".json")) ||
-              (f.startsWith("aggregated_tests_") && f.endsWith(".txt"))
-          );
-      } catch {
-        return false;
-      }
-    }
-    return false;
-  };
 
-  const handleStart = (models: string[], stgs: Record<string, boolean>) => {
+  const afterMineConfirmation = (s: TuiStages) =>
+    setScreen(preparedFilesWouldBeDeleted(s) ? "confirm-prepare" : "execute");
+
+  const handleStart = (models: string[], selectedStages: TuiStages) => {
     setSelectedModels(models);
-    setStages(stgs as any);
-
-    if (checkMineFiles(stgs)) {
-      setScreen("confirm-mine");
-    } else if (checkPrepareFiles(stgs)) {
-      setScreen("confirm-prepare");
-    } else {
-      setScreen("execute");
-    }
-  };
-
-  const handleConfirmMine = () => {
-    if (checkPrepareFiles(stages)) {
-      setScreen("confirm-prepare");
-    } else {
-      setScreen("execute");
-    }
-  };
-
-  const handleExecutionComplete = () => {
-    setScreen("results");
-  };
-
-  const handleError = (msg: string) => {
-    setErrorMsg(msg);
-    setScreen("error");
+    setStages(selectedStages);
+    if (minedFilesWouldBeDeleted(selectedStages)) setScreen("confirm-mine");
+    else afterMineConfirmation(selectedStages);
   };
 
   return (
     <Box flexDirection="column">
       {screen === "select" && (
         <ModelSelectionScreen
-          models={config.models || []}
+          models={config.models}
           onStart={handleStart}
           onExit={onExit}
           initialSettings={loadTuiSettings()}
@@ -120,16 +82,24 @@ export const App: React.FC<Props> = ({ config, onExit }) => {
       )}
 
       {screen === "confirm-mine" && (
-        <ConfirmMineScreen
-          testsDir={config.miner.outputDir || "tests"}
-          onConfirm={handleConfirmMine}
+        <ConfirmOverwriteScreen
+          title="Existing Test Files Found"
+          directory={testsDir}
+          contents="test files"
+          deletes="all existing .ts files"
+          question="Are you sure you want to clear these files and mine again?"
+          onConfirm={() => afterMineConfirmation(stages)}
           onCancel={() => setScreen("select")}
         />
       )}
 
       {screen === "confirm-prepare" && (
-        <ConfirmPrepareScreen
-          outputDir={config.dataset.outputDir || "tests"}
+        <ConfirmOverwriteScreen
+          title="Existing Prepared Data Found"
+          directory={preparedDir}
+          contents="prepared sliced data"
+          deletes="the previous prepared dataset files"
+          question="Are you sure you want to clean this previous data and prepare again?"
           onConfirm={() => setScreen("execute")}
           onCancel={() => setScreen("select")}
         />
@@ -140,31 +110,17 @@ export const App: React.FC<Props> = ({ config, onExit }) => {
           config={config}
           modelIds={selectedModels}
           stages={stages}
-          onComplete={handleExecutionComplete}
-          onError={handleError}
+          onComplete={() => setScreen("results")}
+          onError={(message) => {
+            setErrorMsg(message);
+            setScreen("error");
+          }}
         />
       )}
 
-      {screen === "results" && (
-        <ResultsScreen config={config} stages={stages} onExit={onExit} />
-      )}
+      {screen === "results" && <ResultsScreen config={config} stages={stages} onExit={onExit} />}
 
-      {screen === "error" && (
-        <Box
-          flexDirection="column"
-          padding={1}
-          borderStyle="round"
-          borderColor="red"
-        >
-          <Text color="red" bold>
-            Pipeline Failed
-          </Text>
-          <Text color="white">{errorMsg}</Text>
-          <Box marginTop={1}>
-            <Text color="gray">Press any key to exit.</Text>
-          </Box>
-        </Box>
-      )}
+      {screen === "error" && <ErrorScreen message={errorMsg} onExit={onExit} />}
     </Box>
   );
 };

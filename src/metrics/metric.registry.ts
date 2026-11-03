@@ -1,5 +1,28 @@
-import { Node, SyntaxKind } from "ts-morph";
+import { CallExpression, Node, SyntaxKind } from "ts-morph";
 import type { MetricDescriptor, FileMetricDescriptor } from "./metric.ts";
+
+/** `expect(...)` calls inside the test callback. */
+function expectCalls(testCall: CallExpression): CallExpression[] {
+  const testBody = testCall.getArguments()[1];
+  if (!testBody) return [];
+  return testBody.getDescendantsOfKind(SyntaxKind.CallExpression).filter((call) => {
+    const callee = call.getExpression();
+    return Node.isIdentifier(callee) && callee.getText() === "expect";
+  });
+}
+
+const MATCHER_MODIFIERS = new Set(["not", "resolves", "rejects"]);
+
+/** The matcher applied to an expect call, e.g. "toBe" for `expect(a).not.toBe(b)`. */
+function matcherName(expectCall: CallExpression): string | undefined {
+  let node: Node = expectCall;
+  for (let parent = node.getParent(); Node.isPropertyAccessExpression(parent); parent = node.getParent()) {
+    const name = parent.getName();
+    if (!MATCHER_MODIFIERS.has(name)) return name;
+    node = parent;
+  }
+  return undefined;
+}
 
 export const lineCountMetric: MetricDescriptor<number> = {
   name: "lineCount",
@@ -12,17 +35,7 @@ export const assertionCountMetric: MetricDescriptor<number> = {
   name: "assertionCount",
   description:
     "Counts the total number of expect calls; high values often signal the presence of the Assertion Roulette smell.",
-  extract: (testCall) => {
-    const testBody = testCall.getArguments()[1];
-    if (!testBody) return 0;
-
-    return testBody
-      .getDescendantsOfKind(SyntaxKind.CallExpression)
-      .filter((c) => {
-        const exp = c.getExpression();
-        return Node.isIdentifier(exp) && exp.getText() === "expect";
-      }).length;
-  },
+  extract: (testCall) => expectCalls(testCall).length,
 };
 
 export const assertionsWithoutMessagesMetric: MetricDescriptor<number> = {
@@ -30,14 +43,7 @@ export const assertionsWithoutMessagesMetric: MetricDescriptor<number> = {
   description:
     "Identifies assertions lacking custom diagnostic messages, making it harder to pinpoint specific failures in large suites.",
   extract: (testCall) => {
-    const testBody = testCall.getArguments()[1];
-    if (!testBody) return 0;
-
-    const assertions = testBody
-      .getDescendantsOfKind(SyntaxKind.CallExpression)
-      .filter((c) => c.getExpression().getText() === "expect");
-
-    return assertions.filter((assertion) => {
+    return expectCalls(testCall).filter((assertion) => {
       const parent = assertion.getParent();
       if (Node.isPropertyAccessExpression(parent)) {
         const matcherCall = parent.getParent();
@@ -98,17 +104,8 @@ export const distinctMatchersMetric: MetricDescriptor<number> = {
   name: "distinctMatchersCount",
   description:
     "Calculates the variety of matchers used (e.g., toBe, toMatch); high diversity can indicate a lack of test cohesion and focus.",
-  extract: (testCall) => {
-    const testBody = testCall.getArguments()[1];
-    if (!testBody) return 0;
-
-    const matchers = testBody
-      .getDescendantsOfKind(SyntaxKind.PropertyAccessExpression)
-      .filter((p) => p.getExpression().getText() === "expect")
-      .map((p) => p.getName());
-
-    return new Set(matchers).size;
-  },
+  extract: (testCall) =>
+    new Set(expectCalls(testCall).map(matcherName).filter(Boolean)).size,
 };
 
 export const hardcodedLiteralCountMetric: MetricDescriptor<number> = {
@@ -136,15 +133,13 @@ export const DEFAULT_METRICS = [
   hardcodedLiteralCountMetric,
 ] as const;
 
-// ── File-level metrics (Phase 3) ─────────────────────────────────────
+// ── File-level metrics ───────────────────────────────────────────────
 
-/** Patterns that indicate external I/O modules. */
+/** Modules that perform disk, network or database I/O (`path` does not). */
 const EXTERNAL_IO_PATTERNS = [
   /^fs$/,
   /^fs\/promises$/,
   /^node:fs/,
-  /^path$/,
-  /^node:path$/,
   /^http$/,
   /^https$/,
   /^node:http/,

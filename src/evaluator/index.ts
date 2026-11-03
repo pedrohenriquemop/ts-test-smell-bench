@@ -2,21 +2,8 @@ import * as fs from "fs";
 import * as path from "path";
 import { ChartJSNodeCanvas } from "chartjs-node-canvas";
 import type { ChartConfiguration } from "chart.js";
+import { resultsSuffix, type AnalyzerConfig } from "../config/index.ts";
 import { standardizeSmellList } from "../smells/catalog.ts";
-
-export interface ComparisonResult {
-  file: string;
-  referenceSmells: string[];
-  modelSmells: string[];
-  modelStatus: string;
-  modelJustification?: string;
-  modelName?: string;
-  // Legacy field names (for backward compat with old result files)
-  geminiSmells?: string[];
-  ollamaSmells?: string[];
-  ollamaStatus?: string;
-  ollamaJustification?: string;
-}
 
 export interface Metric {
   smell: string;
@@ -29,103 +16,67 @@ export interface Metric {
   f1: number;
 }
 
-export async function evaluateResults(config: any) {
-  const versionSuffix = config.analyzer.version
-    ? `_v${config.analyzer.version}`
-    : "";
-  const inputPath = path.resolve(
-    process.cwd(),
-    config.analyzer.outputDir,
-    `comparison_results${versionSuffix}.json`,
-  );
+interface ScoredResult {
+  referenceSmells: string[];
+  modelSmells: string[];
+}
 
-  if (!fs.existsSync(inputPath)) {
-    console.error(`Error: Comparison results not found at ${inputPath}`);
-    process.exit(1);
+const LITERAL_SMELLS = new Set(["Magic Number", "Hardcoded Literal"]);
+
+/** Magic Number and Hardcoded Literal are scored as one raw-literal category. */
+function evaluationCategory(smell: string): string {
+  return LITERAL_SMELLS.has(smell) ? "Magic Number/Hardcoded Literal" : smell;
+}
+
+const round4 = (value: number) => parseFloat(value.toFixed(4));
+
+function scoreSmell(smell: string, results: ScoredResult[]): Metric {
+  let tp = 0, fp = 0, fn = 0, tn = 0;
+  for (const result of results) {
+    const refHas = result.referenceSmells.some((s) => evaluationCategory(s) === smell);
+    const modelHas = result.modelSmells.some((s) => evaluationCategory(s) === smell);
+    if (refHas && modelHas) tp++;
+    else if (modelHas) fp++;
+    else if (refHas) fn++;
+    else tn++;
   }
 
-  const rawData: any[] = JSON.parse(fs.readFileSync(inputPath, "utf-8"));
-
-  // Normalize legacy field names → new generic names and standardize smell lists
-  const data: ComparisonResult[] = rawData.map((d: any) => ({
-    ...d,
-    referenceSmells: standardizeSmellList(
-      d.referenceSmells ?? d.geminiSmells ?? [],
-    ),
-    modelSmells: standardizeSmellList(d.modelSmells ?? d.ollamaSmells ?? []),
-    modelStatus: d.modelStatus ?? d.ollamaStatus ?? "unknown",
-    modelJustification: d.modelJustification ?? d.ollamaJustification ?? "",
-  }));
-
-  const smellTypes = new Set<string>();
-
-  // Normalize and collect all unique smell types
-  const normalizeSmell = (smell: string) => {
-    const s = smell.trim();
-    if (s === "Magic Number" || s === "Hardcoded Literal") {
-      return "Magic Number/Hardcoded Literal";
-    }
-    return s;
+  const precision = tp + fp > 0 ? tp / (tp + fp) : 0;
+  const recall = tp + fn > 0 ? tp / (tp + fn) : 0;
+  const f1 = precision + recall > 0 ? (2 * precision * recall) / (precision + recall) : 0;
+  return {
+    smell, tp, fp, fn, tn,
+    precision: round4(precision),
+    recall: round4(recall),
+    f1: round4(f1),
   };
+}
 
-  for (const result of data) {
-    if (result.modelStatus !== "success") continue;
-
-    result.referenceSmells.forEach((s) => smellTypes.add(normalizeSmell(s)));
-    result.modelSmells.forEach((s) => smellTypes.add(normalizeSmell(s)));
+/** Scores successful predictions per smell and writes JSON, HTML and PNG reports. */
+export async function evaluateResults(analyzer: AnalyzerConfig): Promise<void> {
+  const versionSuffix = resultsSuffix(analyzer);
+  const outputDir = path.resolve(analyzer.outputDir);
+  const inputPath = path.join(outputDir, `comparison_results${versionSuffix}.json`);
+  if (!fs.existsSync(inputPath)) {
+    throw new Error(`Comparison results not found at ${inputPath}`);
   }
 
-  smellTypes.delete("None");
-  smellTypes.delete("");
+  const rawResults: Array<{ referenceSmells?: unknown; modelSmells?: unknown; modelStatus?: string }> =
+    JSON.parse(fs.readFileSync(inputPath, "utf-8"));
+  const results: ScoredResult[] = rawResults
+    .filter((r) => r.modelStatus === "success")
+    .map((r) => ({
+      referenceSmells: standardizeSmellList(r.referenceSmells ?? []),
+      modelSmells: standardizeSmellList(r.modelSmells ?? []),
+    }));
 
-  const metrics: Metric[] = [];
-  const validData = data.filter((d) => d.modelStatus === "success");
-  const totalFiles = validData.length;
+  const smells = new Set(
+    results.flatMap((r) => [...r.referenceSmells, ...r.modelSmells]).map(evaluationCategory),
+  );
+  const metrics = [...smells].map((smell) => scoreSmell(smell, results));
+  const totalFiles = results.length;
 
-  for (const smell of Array.from(smellTypes)) {
-    let tp = 0;
-    let fp = 0;
-    let fn = 0;
-    let tn = 0;
-
-    for (const result of validData) {
-      const refHas = result.referenceSmells.some(
-        (s) => normalizeSmell(s) === smell,
-      );
-      const modelHas = result.modelSmells.some(
-        (s) => normalizeSmell(s) === smell,
-      );
-
-      if (refHas && modelHas) tp++;
-      else if (!refHas && modelHas) fp++;
-      else if (refHas && !modelHas) fn++;
-      else tn++;
-    }
-
-    const precision = tp + fp > 0 ? tp / (tp + fp) : 0;
-    const recall = tp + fn > 0 ? tp / (tp + fn) : 0;
-    const f1 =
-      precision + recall > 0
-        ? (2 * precision * recall) / (precision + recall)
-        : 0;
-
-    metrics.push({
-      smell,
-      tp,
-      fp,
-      fn,
-      tn,
-      precision: parseFloat(precision.toFixed(4)),
-      recall: parseFloat(recall.toFixed(4)),
-      f1: parseFloat(f1.toFixed(4)),
-    });
-  }
-
-  const outputDir = path.resolve(process.cwd(), config.analyzer.outputDir);
-  if (!fs.existsSync(outputDir)) {
-    fs.mkdirSync(outputDir, { recursive: true });
-  }
-
+  fs.mkdirSync(outputDir, { recursive: true });
   const jsonOutputPath = path.join(
     outputDir,
     `evaluation_metrics${versionSuffix}.json`,
@@ -327,10 +278,12 @@ function generateHtmlReport(
                 maintainAspectRatio: false,
                 scales: {
                     r: {
+                        min: 0,
+                        max: 1,
                         angleLines: { color: 'rgba(255, 255, 255, 0.1)' },
                         grid: { color: 'rgba(255, 255, 255, 0.1)' },
                         pointLabels: { color: '#94a3b8', font: { size: 12 } },
-                        ticks: { display: false, max: 1, min: 0 }
+                        ticks: { display: false }
                     }
                 },
                 plugins: {
@@ -462,6 +415,8 @@ async function generatePngCharts(
       },
       scales: {
         r: {
+          min: 0,
+          max: 1,
           angleLines: { color: "#cccccc" },
           grid: { color: "#cccccc" },
           pointLabels: { font: fontOptions, color: "#000000" },
@@ -469,8 +424,6 @@ async function generatePngCharts(
             backdropColor: "transparent",
             font: fontOptions,
             color: "#000000",
-            max: 1,
-            min: 0,
           },
         },
       },

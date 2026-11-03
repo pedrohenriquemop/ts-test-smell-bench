@@ -3,18 +3,11 @@ import { Box, Text, useInput } from "ink";
 import * as fs from "fs";
 import * as path from "path";
 import type { AppConfig } from "../../config/index.ts";
+import type { TuiStages } from "../settings.ts";
 
 interface Props {
   config: AppConfig;
-  stages: {
-    mine: boolean;
-    prepare: boolean;
-    humanEvaluation: boolean;
-    analyze: boolean;
-    mergeGoldset: boolean;
-    evaluate: boolean;
-    generateMetrics: boolean;
-  };
+  stages: TuiStages;
   onExit: () => void;
 }
 
@@ -26,29 +19,20 @@ export const ResultsScreen: React.FC<Props> = ({ config, stages, onExit }) => {
   const [minedFilesCount, setMinedFilesCount] = useState<number>(0);
 
   useEffect(() => {
-    // If evaluation ran, try to load summary
-    if (stages.evaluate) {
-      const summaryPath = path.join(
-        process.cwd(),
-        config.analyzer.outputDir,
-        "cross_model_summary.json",
-      );
+    if (stages.generateMetrics) {
+      const summaryPath = path.resolve(config.analyzer.outputDir, "cross_model_summary.json");
       if (fs.existsSync(summaryPath)) {
         try {
           const data = JSON.parse(fs.readFileSync(summaryPath, "utf-8"));
           setSummary(data);
         } catch {
-          // Ignore
+          // A missing or malformed summary just hides the F1 table.
         }
       }
     }
 
-    // If mine ran, count the files
     if (stages.mine) {
-      const testsDir = path.join(
-        process.cwd(),
-        config.miner.outputDir || "tests",
-      );
+      const testsDir = path.resolve(config.miner.outputDir || "tests");
       if (fs.existsSync(testsDir)) {
         try {
           const files = fs
@@ -56,7 +40,7 @@ export const ResultsScreen: React.FC<Props> = ({ config, stages, onExit }) => {
             .filter((f) => f.endsWith(".ts"));
           setMinedFilesCount(files.length);
         } catch {
-          // Ignore
+          setMinedFilesCount(0);
         }
       }
     }

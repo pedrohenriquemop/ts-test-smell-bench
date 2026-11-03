@@ -1,5 +1,8 @@
 import * as fs from "fs";
 import * as path from "path";
+import { allSmellIds } from "../smells/catalog.ts";
+
+export const DEFAULT_CONFIG_PATH = "ts-test-smell-bench.config.json";
 
 export interface MinerConfig {
   minStars: number;
@@ -22,56 +25,33 @@ export interface DatasetConfig {
 }
 
 export interface ModelConfig {
-  /** Unique identifier used in CLI and output file names (e.g. "llama3-local"). */
+  /** Identifier used in the CLI and in output file names. */
   id: string;
-  /** Backend provider type. */
-  provider: "ollama" | "openai" | "gemini";
+  provider: "ollama" | "gemini";
   /** Model name understood by the provider API. */
   model: string;
-  /** Override the provider's default endpoint URL. */
   baseUrl?: string;
-  /**
-   * API key — either a literal value or an env-var reference
-   * prefixed with "$" (e.g. "$OPENAI_API_KEY").
-   */
+  /** Literal key, or an env-var reference prefixed with "$". */
   apiKey?: string;
-  /** Sampling temperature override. */
   temperature?: number;
-  /** Max tokens / max output length override. */
   maxTokens?: number;
-  /** Path to a file containing a custom system prompt for this model. */
-  systemPromptFile?: string;
 }
 
 export interface AnalyzerConfig {
-  /** @deprecated Use the top-level `models` array instead. */
-  model?: string;
-  /** @deprecated Use the top-level `models` array instead. */
-  ollamaUrl?: string;
   numTests: number;
   manifestPath: string;
   testsDir: string;
-  /** Path to the reference/gold-standard results file. */
+  /** Goldset file the model predictions are compared against. */
   referenceResultsPath: string;
   outputDir: string;
+  /** Suffix appended to result file names (e.g. "llama3.1-8b__chain-of-thought-ast-ctx"). */
   version?: string;
 }
 
-export interface SmellsConfig {
-  /** List of smell IDs to detect (from the smell catalog). */
-  enabled: string[];
-}
-
 export interface PromptConfig {
-  /** Emit XML separated reasoning and classification output. Default: false. */
   useChainOfThought: boolean;
-  /** Prompt strategy: 'standard' or 'chain-of-thought'. Default: 'standard'. */
-  strategy: "standard" | "chain-of-thought";
-
-  /** If false, AST metrics are NOT sent to the LLM. Default: true. */
   includeAstMetrics: boolean;
-
-  /** If false, context snippets (imports, describe, setupVars) are NOT sent. Default: true. */
+  /** Imports, describe block and setup variables. */
   includeContext: boolean;
 }
 
@@ -79,68 +59,75 @@ export interface AppConfig {
   miner: MinerConfig;
   dataset: DatasetConfig;
   analyzer: AnalyzerConfig;
-  /** Configured model backends (multi-model support). */
-  models?: ModelConfig[];
-  /** Which smells to detect. Defaults to all if omitted. */
-  smells?: SmellsConfig;
-  /** Prompt strategy and ablation toggles. */
-  prompt?: PromptConfig;
+  models: ModelConfig[];
+  smells: { enabled: string[] };
+  prompt: PromptConfig;
 }
 
 export async function loadConfig(
-  configPath: string = "ts-test-smell-bench.config.json",
+  configPath: string = DEFAULT_CONFIG_PATH,
 ): Promise<AppConfig> {
   const fullPath = path.resolve(process.cwd(), configPath);
   if (!fs.existsSync(fullPath)) {
     throw new Error(`Configuration file not found at ${fullPath}`);
   }
-  const content = fs.readFileSync(fullPath, "utf-8");
-  const raw = JSON.parse(content);
+  const raw = JSON.parse(fs.readFileSync(fullPath, "utf-8"));
 
-  // ── Backward-compatibility shims ──────────────────────────────
-  // Rename old `geminiResultsPath` → `referenceResultsPath`
-  if (raw.analyzer?.geminiResultsPath && !raw.analyzer?.referenceResultsPath) {
-    raw.analyzer.referenceResultsPath = raw.analyzer.geminiResultsPath;
-    delete raw.analyzer.geminiResultsPath;
+  return {
+    ...raw,
+    models: raw.models ?? [],
+    smells: raw.smells ?? { enabled: allSmellIds() },
+    prompt: resolvePromptConfig(raw.prompt ?? {}),
+  };
+}
+
+/**
+ * `strategy` is accepted as an alias of `useChainOfThought`. Both feed the
+ * run tag, so a mismatch would label a CoT run as "standard" (or vice versa).
+ */
+function resolvePromptConfig(raw: {
+  useChainOfThought?: boolean;
+  strategy?: "standard" | "chain-of-thought";
+  includeAstMetrics?: boolean;
+  includeContext?: boolean;
+}): PromptConfig {
+  const fromStrategy =
+    raw.strategy === undefined ? undefined : raw.strategy === "chain-of-thought";
+  if (
+    raw.useChainOfThought !== undefined &&
+    fromStrategy !== undefined &&
+    raw.useChainOfThought !== fromStrategy
+  ) {
+    throw new Error(
+      `Conflicting prompt config: useChainOfThought=${raw.useChainOfThought} but strategy="${raw.strategy}".`,
+    );
   }
 
-  // If no top-level `models` array exists, synthesize one from the
-  // legacy `analyzer.model` + `analyzer.ollamaUrl` fields.
-  if (!raw.models && raw.analyzer?.model) {
-    raw.models = [
-      {
-        id: raw.analyzer.model,
-        provider: "ollama" as const,
-        model: raw.analyzer.model,
-        baseUrl:
-          raw.analyzer.ollamaUrl ?? "http://localhost:11434/api/generate",
-      },
-    ];
-  }
+  return {
+    useChainOfThought: raw.useChainOfThought ?? fromStrategy ?? true,
+    includeAstMetrics: raw.includeAstMetrics ?? true,
+    includeContext: raw.includeContext ?? true,
+  };
+}
 
-  // Default smells to the full catalog when not specified.
-  // Import is dynamic to avoid circular deps at module-load time.
-  if (!raw.smells) {
-    const { allSmellIds } = await import("../smells/catalog.ts");
-    raw.smells = { enabled: allSmellIds() };
-  }
+/** Run tag used to version result files, e.g. "chain-of-thought-ast-ctx". */
+export function promptSetupTag(prompt: PromptConfig): string {
+  return [
+    prompt.useChainOfThought ? "chain-of-thought" : "standard",
+    prompt.includeAstMetrics ? "ast" : "noast",
+    prompt.includeContext ? "ctx" : "noctx",
+  ].join("-");
+}
 
-  // Default prompt config.
-  if (!raw.prompt) {
-    raw.prompt = {
-      useChainOfThought: true,
-      strategy: "standard",
-      includeAstMetrics: true,
-      includeContext: true,
-    };
-  } else {
-    raw.prompt = {
-      useChainOfThought: raw.prompt.useChainOfThought ?? true,
-      strategy: raw.prompt.strategy ?? "standard",
-      includeAstMetrics: raw.prompt.includeAstMetrics ?? true,
-      includeContext: raw.prompt.includeContext ?? true,
-    };
+export function findModel(config: AppConfig, id: string): ModelConfig {
+  const model = config.models.find((m) => m.id === id);
+  if (!model) {
+    const known = config.models.map((m) => m.id).join(", ");
+    throw new Error(`Model "${id}" not found in config. Available: ${known}`);
   }
+  return model;
+}
 
-  return raw as AppConfig;
+export function resultsSuffix(analyzer: AnalyzerConfig): string {
+  return analyzer.version ? `_v${analyzer.version}` : "";
 }

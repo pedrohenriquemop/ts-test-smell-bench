@@ -1,360 +1,207 @@
-/**
- * Pipeline orchestrator — chains mine → prepare → analyze → evaluate
- * in a single automated flow.  Supports multi-model sequential runs
- * with per-model output versioning.
- */
-
 import * as fs from "fs";
 import * as path from "path";
-import type { AppConfig, ModelConfig } from "../config/index.ts";
+import {
+  findModel,
+  promptSetupTag,
+  type AppConfig,
+  type ModelConfig,
+} from "../config/index.ts";
 import { Miner } from "../miner/index.ts";
 import { prepareLlmLabelingDataset } from "../dataset/index.ts";
-import { generateGoldset, runAnalyzer } from "../analyzer/index.ts";
+import {
+  generateGoldset,
+  runAnalyzer,
+  type PromptHandler,
+} from "../analyzer/index.ts";
 import { createProvider } from "../analyzer/providers/index.ts";
 import { resolveSmells } from "../smells/catalog.ts";
-import { buildPromptForStrategy } from "../smells/prompt-builder.ts";
+import { buildSystemPrompt } from "../smells/prompt-builder.ts";
 import { evaluateResults } from "../evaluator/index.ts";
 import { generateHumanEvaluation } from "../human-evaluation/index.ts";
-import { mergeGoldsetRuns } from "../goldset-consensus/index.ts";
+import { mergeGoldsetRuns } from "../goldset/merge.ts";
 import { sanitizeComparisonResults } from "../sanitizer/index.ts";
 
-// ── Types ────────────────────────────────────────────────────────────
+/**
+ * `analyze` labels the goldset with one cloud model; `evaluate` runs the
+ * local models against it; `sanitize` and `generateMetrics` post-process
+ * those runs.
+ */
+export interface PipelineStages {
+  mine: boolean;
+  prepare: boolean;
+  humanEvaluation: boolean;
+  analyze: boolean;
+  mergeGoldset: boolean;
+  evaluate: boolean;
+  sanitize: boolean;
+  generateMetrics: boolean;
+}
+
+export type StageName = keyof PipelineStages;
 
 export interface PipelineOptions {
   config: AppConfig;
-
-  /** Which pipeline stages to execute. Defaults to all. */
-  stages?: {
-    mine?: boolean;
-    prepare?: boolean;
-    humanEvaluation?: boolean;
-    analyze?: boolean;
-    mergeGoldset?: boolean;
-    evaluate?: boolean;
-    sanitize?: boolean;
-    generateMetrics?: boolean;
-  };
-
-  /**
-   * Subset of model IDs to run.  If omitted, runs all models
-   * defined in config.models[].
-   */
+  stages?: Partial<PipelineStages>;
+  /** Model IDs to run; defaults to every configured model. */
   modelIds?: string[];
-
-  /** Called at the start of each stage with stage name and model (if applicable). */
-  onStageStart?: (stage: string, modelId?: string) => void;
-
-  /** Called when a stage completes. */
-  onStageComplete?: (stage: string, modelId?: string) => void;
-
-  /** Called on stage error. Return `true` to continue, `false` to abort. */
-  onStageError?: (stage: string, error: Error, modelId?: string) => boolean;
-
-  /** Called when a prompt is required mid-execution. Returns true to proceed/resume, false to abort/restart. */
-  onPrompt?: (
-    message: string,
-    type: "clean" | "next-batch" | "resume",
-  ) => Promise<boolean>;
+  onStageStart?: (stage: StageName, modelTag?: string) => void;
+  onStageComplete?: (stage: StageName, modelTag?: string) => void;
+  /** Return true to continue with the next stage, false to abort. */
+  onStageError?: (stage: StageName, error: Error, modelTag?: string) => boolean;
+  onPrompt?: PromptHandler;
 }
 
-// ── Pipeline ─────────────────────────────────────────────────────────
+const DEFAULT_STAGES: PipelineStages = {
+  mine: true,
+  prepare: true,
+  humanEvaluation: false,
+  analyze: true,
+  mergeGoldset: false,
+  evaluate: true,
+  sanitize: true,
+  generateMetrics: true,
+};
 
 export async function runPipeline(opts: PipelineOptions): Promise<void> {
-  const { config, onStageStart, onStageComplete, onStageError } = opts;
-  const stages = {
-    mine: true,
-    prepare: true,
-    humanEvaluation: false,
-    analyze: true,
-    mergeGoldset: false,
-    evaluate: true,
-    sanitize: true,
-    generateMetrics: true,
-    ...opts.stages,
+  const { config } = opts;
+  const stages = { ...DEFAULT_STAGES, ...opts.stages };
+
+  const runStage = async (stage: StageName, action: () => unknown, modelTag?: string) => {
+    opts.onStageStart?.(stage, modelTag);
+    try {
+      await action();
+      opts.onStageComplete?.(stage, modelTag);
+    } catch (err) {
+      if (!opts.onStageError?.(stage, err as Error, modelTag)) throw err;
+    }
   };
 
-  const notify = (stage: string, modelId?: string) => {
-    onStageStart?.(stage, modelId);
-  };
-  const done = (stage: string, modelId?: string) => {
-    onStageComplete?.(stage, modelId);
-  };
+  const systemPrompt = () =>
+    buildSystemPrompt(resolveSmells(config.smells.enabled), config.prompt);
+  const localModels = () =>
+    selectModels(config, opts.modelIds).filter((m) => m.provider === "ollama");
+  const runVersion = (model: ModelConfig) => `${model.id}__${promptSetupTag(config.prompt)}`;
+  const versionedAnalyzer = (model: ModelConfig) => ({
+    ...config.analyzer,
+    version: runVersion(model),
+  });
 
-  // ── 1. Mine ──────────────────────────────────────────────────
   if (stages.mine) {
-    notify("mine");
-    try {
-      const miner = new Miner(config.miner);
-      await miner.run();
-      done("mine");
-    } catch (err) {
-      const cont = onStageError?.("mine", err as Error);
-      if (!cont) throw err;
-    }
+    await runStage("mine", () => new Miner(config.miner).run());
   }
 
-  // ── 2. Prepare ───────────────────────────────────────────────
   if (stages.prepare) {
-    notify("prepare");
-    try {
-      prepareLlmLabelingDataset(
-        config.dataset,
-        config.miner.outputDir || "tests",
-      );
-      done("prepare");
-    } catch (err) {
-      const cont = onStageError?.("prepare", err as Error);
-      if (!cont) throw err;
-    }
-  }
-
-  // ── 3. Generate human-evaluation files ──────────────────────
-  if (stages.humanEvaluation) {
-    notify("humanEvaluation");
-    try {
-      generateHumanEvaluation();
-      done("humanEvaluation");
-    } catch (err) {
-      const cont = onStageError?.("humanEvaluation", err as Error);
-      if (!cont) throw err;
-    }
-  }
-
-  // ── 4. Analyze (Prepare Gold Set) ────────────────────────────
-  if (stages.analyze) {
-    const models = resolveModels(config, opts.modelIds).filter(
-      (model) => model.provider !== "ollama",
+    await runStage("prepare", () =>
+      prepareLlmLabelingDataset(config.dataset, config.miner.outputDir || "tests"),
     );
-    if (models.length !== 1) {
-      throw new Error(
-        "Select exactly one cloud model to generate the shared goldset.",
-      );
+  }
+
+  if (stages.humanEvaluation) {
+    await runStage("humanEvaluation", () => generateHumanEvaluation());
+  }
+
+  if (stages.analyze) {
+    const cloudModels = selectModels(config, opts.modelIds).filter((m) => m.provider !== "ollama");
+    if (cloudModels.length !== 1) {
+      throw new Error("Select exactly one cloud model to generate the shared goldset.");
     }
-    const smellIds = config.smells?.enabled ?? [];
-    const smells = resolveSmells(smellIds);
-    const promptConfig = config.prompt;
-    const systemPrompt = buildPromptForStrategy(smells, promptConfig);
-    const strategy = promptConfig?.strategy ?? "standard";
-    const astFlag = (promptConfig?.includeAstMetrics ?? true) ? "ast" : "noast";
-    const ctxFlag = (promptConfig?.includeContext ?? true) ? "ctx" : "noctx";
-
-    for (const modelCfg of models) {
-      notify("analyze", modelCfg.id);
-
-      try {
-        const provider = createProvider(modelCfg);
-
-        console.log(`\n${"═".repeat(60)}`);
-        console.log(`  Model:    ${provider.name}`);
-        console.log(`  Strategy: ${strategy}`);
-        console.log(`  AST:      ${astFlag === "ast" ? "ON" : "OFF"}`);
-        console.log(`  Context:  ${ctxFlag === "ctx" ? "ON" : "OFF"}`);
-        console.log(
-          `  Smells (${smells.length}): ${smells
-            .map((s) => s.displayName)
-            .join(", ")}`,
-        );
-        console.log(`${"═".repeat(60)}\n`);
-
-        await generateGoldset({
+    const [model] = cloudModels;
+    await runStage(
+      "analyze",
+      () => {
+        const provider = createProvider(model);
+        logRunHeader(provider.name, config);
+        return generateGoldset({
           config: config.analyzer,
           provider,
-          systemPrompt,
-          promptConfig,
+          systemPrompt: systemPrompt(),
+          promptConfig: config.prompt,
           onPrompt: opts.onPrompt,
         });
-
-        done("analyze", modelCfg.id);
-      } catch (err) {
-        const cont = onStageError?.("analyze", err as Error, modelCfg.id);
-        if (!cont) throw err;
-      }
-    }
+      },
+      model.id,
+    );
   }
 
-  // ── 5. Merge independent goldset runs ───────────────────────
   if (stages.mergeGoldset) {
-    notify("mergeGoldset");
-    try {
-      mergeGoldsetRuns();
-      done("mergeGoldset");
-    } catch (err) {
-      const cont = onStageError?.("mergeGoldset", err as Error);
-      if (!cont) throw err;
-    }
+    await runStage("mergeGoldset", () => mergeGoldsetRuns());
   }
 
-  // ── 6. Evaluate (Run SLM inference) ─────────────────────────
   if (stages.evaluate) {
-    const models = resolveModels(config, opts.modelIds).filter(
-      (model) => model.provider === "ollama",
-    );
-
-    const promptConfig = config.prompt;
-    const strategy = promptConfig?.strategy ?? "standard";
-    const astFlag = (promptConfig?.includeAstMetrics ?? true) ? "ast" : "noast";
-    const ctxFlag = (promptConfig?.includeContext ?? true) ? "ctx" : "noctx";
-    const setupSuffix = `${strategy}-${astFlag}-${ctxFlag}`;
-    const smellIds = config.smells?.enabled ?? [];
-    const systemPrompt = buildPromptForStrategy(
-      resolveSmells(smellIds),
-      promptConfig,
-    );
-
-    for (const modelCfg of models) {
-      const modelTag = `${modelCfg.id}__${setupSuffix}`;
-      notify("evaluate", modelTag);
-
-      try {
-        const provider = createProvider(modelCfg);
-        const evalConfig = {
-          ...config,
-          analyzer: {
-            ...config.analyzer,
-            version: modelTag,
-          },
-        };
-
-        await runAnalyzer({
-          config: evalConfig.analyzer,
-          provider,
-          systemPrompt,
-          promptConfig,
-          onPrompt: opts.onPrompt,
-        });
-        done("evaluate", modelTag);
-      } catch (err) {
-        const cont = onStageError?.("evaluate", err as Error, modelTag);
-        if (!cont) throw err;
-      }
+    for (const model of localModels()) {
+      await runStage(
+        "evaluate",
+        () =>
+          runAnalyzer({
+            config: versionedAnalyzer(model),
+            provider: createProvider(model),
+            systemPrompt: systemPrompt(),
+            promptConfig: config.prompt,
+            onPrompt: opts.onPrompt,
+          }),
+        runVersion(model),
+      );
     }
   }
 
-  // ── 7. Sanitize model smell labels ───────────────────────────
   if (stages.sanitize) {
-    const models = resolveModels(config, opts.modelIds).filter(
-      (model) => model.provider === "ollama",
-    );
-    const promptConfig = config.prompt;
-    const strategy = promptConfig?.strategy ?? "standard";
-    const astFlag = (promptConfig?.includeAstMetrics ?? true) ? "ast" : "noast";
-    const ctxFlag = (promptConfig?.includeContext ?? true) ? "ctx" : "noctx";
-    const setupSuffix = `${strategy}-${astFlag}-${ctxFlag}`;
-
-    for (const modelCfg of models) {
-      const modelTag = `${modelCfg.id}__${setupSuffix}`;
-      notify("sanitize", modelTag);
-      try {
-        sanitizeComparisonResults({
-          analyzer: { ...config.analyzer, version: modelTag },
-        });
-        done("sanitize", modelTag);
-      } catch (err) {
-        const cont = onStageError?.("sanitize", err as Error, modelTag);
-        if (!cont) throw err;
-      }
+    for (const model of localModels()) {
+      await runStage(
+        "sanitize",
+        () => sanitizeComparisonResults(versionedAnalyzer(model)),
+        runVersion(model),
+      );
     }
   }
 
-  // ── 8. Generate Metrics & Analytics ──────────────────────────
   if (stages.generateMetrics) {
-    const models = resolveModels(config, opts.modelIds).filter(
-      (model) => model.provider === "ollama",
-    );
-
-    const promptConfig = config.prompt;
-    const strategy = promptConfig?.strategy ?? "standard";
-    const astFlag = (promptConfig?.includeAstMetrics ?? true) ? "ast" : "noast";
-    const ctxFlag = (promptConfig?.includeContext ?? true) ? "ctx" : "noctx";
-    const setupSuffix = `${strategy}-${astFlag}-${ctxFlag}`;
-
-    for (const modelCfg of models) {
-      const modelTag = `${modelCfg.id}__${setupSuffix}`;
-      notify("generateMetrics", modelTag);
-
-      try {
-        const evalConfig = {
-          ...config,
-          analyzer: {
-            ...config.analyzer,
-            version: modelTag,
-          },
-        };
-
-        await evaluateResults(evalConfig);
-        done("generateMetrics", modelTag);
-      } catch (err) {
-        const cont = onStageError?.("generateMetrics", err as Error, modelTag);
-        if (!cont) throw err;
-      }
+    const models = localModels();
+    for (const model of models) {
+      await runStage(
+        "generateMetrics",
+        () => evaluateResults(versionedAnalyzer(model)),
+        runVersion(model),
+      );
     }
-
-    // ── Cross-model summary ────────────────────────────────────
-    if (models.length > 1) {
-      generateCrossModelSummary(config, models, setupSuffix);
-    }
+    if (models.length > 1) writeCrossModelSummary(config, models.map(runVersion));
   }
 
   console.log("\n✅ Pipeline complete.");
 }
 
-// ── Helpers ──────────────────────────────────────────────────────────
-
-/**
- * Resolve which models to run: either a subset by ID or all configured.
- */
-function resolveModels(config: AppConfig, modelIds?: string[]): ModelConfig[] {
-  const allModels = config.models ?? [];
-  if (allModels.length === 0) {
-    throw new Error(
-      'No models configured. Add a "models" array to your config file.',
-    );
+function selectModels(config: AppConfig, modelIds?: string[]): ModelConfig[] {
+  if (config.models.length === 0) {
+    throw new Error('No models configured. Add a "models" array to your config file.');
   }
-
-  if (!modelIds || modelIds.length === 0) return allModels;
-
-  return modelIds.map((id) => {
-    const m = allModels.find((m) => m.id === id);
-    if (!m) {
-      const known = allModels.map((m) => m.id).join(", ");
-      throw new Error(`Model "${id}" not found in config. Available: ${known}`);
-    }
-    return m;
-  });
+  return modelIds?.length ? modelIds.map((id) => findModel(config, id)) : config.models;
 }
 
-/**
- * After all models have been evaluated, generate a cross-model
- * comparison table (JSON) that side-by-side compares F1 scores.
- */
-function generateCrossModelSummary(
-  config: AppConfig,
-  models: ModelConfig[],
-  setupSuffix: string,
-): void {
-  const outputDir = path.resolve(process.cwd(), config.analyzer.outputDir);
+function logRunHeader(providerName: string, config: AppConfig): void {
+  const smells = resolveSmells(config.smells.enabled);
+  console.log(`\n${"═".repeat(60)}`);
+  console.log(`  Model:    ${providerName}`);
+  console.log(`  Setup:    ${promptSetupTag(config.prompt)}`);
+  console.log(`  Smells (${smells.length}): ${smells.map((s) => s.displayName).join(", ")}`);
+  console.log(`${"═".repeat(60)}\n`);
+}
 
+/** Writes smell → run version → F1 for every evaluated run. */
+function writeCrossModelSummary(config: AppConfig, versions: string[]): void {
+  const outputDir = path.resolve(config.analyzer.outputDir);
   const summary: Record<string, Record<string, number>> = {};
 
-  for (const modelCfg of models) {
-    const modelTag = `${modelCfg.id}__${setupSuffix}`;
-    const metricsPath = path.join(
-      outputDir,
-      `evaluation_metrics_v${modelTag}.json`,
-    );
-
+  for (const version of versions) {
+    const metricsPath = path.join(outputDir, `evaluation_metrics_v${version}.json`);
     if (!fs.existsSync(metricsPath)) {
-      console.warn(`  Skipping ${modelCfg.id} — metrics file not found.`);
+      console.warn(`  Skipping ${version} — metrics file not found.`);
       continue;
     }
-
     const metrics: Array<{ smell: string; f1: number }> = JSON.parse(
       fs.readFileSync(metricsPath, "utf-8"),
     );
-
-    for (const m of metrics) {
-      if (!summary[m.smell]) summary[m.smell] = {};
-      summary[m.smell][modelCfg.id] = m.f1;
+    const modelId = version.split("__")[0];
+    for (const { smell, f1 } of metrics) {
+      summary[smell] = { ...summary[smell], [modelId]: f1 };
     }
   }
 

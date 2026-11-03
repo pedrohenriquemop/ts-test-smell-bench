@@ -1,56 +1,91 @@
 import * as fs from "fs";
 import * as path from "path";
+import { resultsSuffix, type AnalyzerConfig } from "../config/index.ts";
 import { standardizeSmellList } from "../smells/catalog.ts";
-import { parseOllamaResponse } from "../analyzer/providers/ollama.ts";
+import { parseModelResponse } from "../analyzer/response-parser.ts";
+
+type ResultEntry = Record<string, any>;
+
+/** The per-smell MATCH/PASS walkthrough some models emit before a `---` divider. */
+function evaluationSection(response: string): string {
+  return response.split(/^---\s*$/m, 1)[0];
+}
 
 /**
- * Keep only model smell labels marked MATCH in structured model output,
- * or standardize plain smell-name arrays against canonical catalog display names.
+ * Keeps only smells marked [MATCH] when the list carries decision labels;
+ * otherwise standardizes the names against the catalog.
  */
 export function sanitizeModelSmells(smells: unknown): string[] {
-  if (!Array.isArray(smells)) {
-    return standardizeSmellList(smells);
-  }
+  if (!Array.isArray(smells)) return standardizeSmellList(smells);
 
-  const values = smells.filter(
-    (smell): smell is string => typeof smell === "string",
-  );
-  const hasDecisionLabels = values.some((smell) =>
-    /\[(?:MATCH|PASS)\]/i.test(smell),
-  );
-  if (!hasDecisionLabels) {
+  const values = smells.filter((smell): smell is string => typeof smell === "string");
+  if (!values.some((smell) => /\[(?:MATCH|PASS)\]/i.test(smell))) {
     return standardizeSmellList(values);
   }
 
-  const matchedLabels = values.flatMap((smell) => {
+  const matched = values.flatMap((smell) => {
     if (!/\[MATCH\]/i.test(smell)) return [];
     const label = smell.match(/^\s*(?:[-*]\s*)?(.+?)\s*:/)?.[1]?.trim();
     return label ? [label] : [];
   });
-
-  return standardizeSmellList(matchedLabels);
+  return standardizeSmellList(matched);
 }
 
-/** Extract per-smell decisions from the model's detailed evaluation section. */
+/** Smells whose decision line in the evaluation section ends in MATCH. */
 export function smellsMarkedMatch(response: string): string[] {
-  const evaluation = response.split(/^---\s*$/m, 1)[0];
   const matches: string[] = [];
-
-  for (const line of evaluation.split(/\r?\n/)) {
+  for (const line of evaluationSection(response).split(/\r?\n/)) {
     const entry = line.match(/^\s*[-*]\s*([^:]+):\s*(.*)$/);
     if (!entry) continue;
 
-    // The final status on the decision line wins, since some models mention
-    // both MATCH and PASS in their explanatory text before the actual verdict.
+    // Models often mention both words while reasoning; the last one is the verdict.
     const statuses = [...entry[2].matchAll(/\b(MATCH|PASS)\b/gi)];
-    const finalStatus = statuses.at(-1)?.[1]?.toUpperCase();
-    if (finalStatus === "MATCH") matches.push(entry[1].trim());
+    if (statuses.at(-1)?.[1]?.toUpperCase() === "MATCH") matches.push(entry[1].trim());
   }
-
   return standardizeSmellList(matches);
 }
 
-/** Sanitize modelSmells in one comparison-results file, preserving other fields. */
+/** Re-parses responses that were saved as "invalid return" with the current parser. */
+function recoverInvalidEntry(entry: ResultEntry): ResultEntry {
+  const raw = entry.rawModelResponse;
+  if (entry.modelStatus !== "invalid return" || typeof raw !== "string" || !raw.trim()) {
+    return entry;
+  }
+
+  const parsed = parseModelResponse(raw, entry.cotEnabled ?? true);
+  if (!parsed || (parsed.smells.length === 0 && !parsed.justification)) return entry;
+
+  const recovered: ResultEntry = { ...entry, modelStatus: "success", modelSmells: parsed.smells };
+  if (!recovered.modelJustification && parsed.justification) {
+    recovered.modelJustification = parsed.justification;
+  }
+  if (!recovered.reasoningLog && parsed.reasoningLog) {
+    recovered.reasoningLog = parsed.reasoningLog;
+  }
+  return recovered;
+}
+
+function sanitizeEntry(entry: ResultEntry): ResultEntry {
+  const recovered = recoverInvalidEntry(entry);
+  const raw = recovered.rawModelResponse;
+  if (recovered.modelSmells === undefined && !raw) return recovered;
+
+  const hasDetailedDecisions =
+    typeof raw === "string" && /\b(?:MATCH|PASS)\b/i.test(evaluationSection(raw));
+  const modelSmells = hasDetailedDecisions
+    ? smellsMarkedMatch(raw)
+    : sanitizeModelSmells(recovered.modelSmells ?? []);
+
+  return {
+    ...recovered,
+    modelSmells,
+    ...(recovered.referenceSmells
+      ? { referenceSmells: standardizeSmellList(recovered.referenceSmells) }
+      : {}),
+  };
+}
+
+/** Sanitizes modelSmells in one comparison-results file, preserving other fields. */
 export function sanitizeResultsFile(inputPath: string): number {
   const results: unknown = JSON.parse(fs.readFileSync(inputPath, "utf-8"));
   if (!Array.isArray(results)) {
@@ -58,111 +93,26 @@ export function sanitizeResultsFile(inputPath: string): number {
   }
 
   let changed = 0;
-  const sanitized = results.map((entry: any) => {
+  const sanitized = results.map((entry) => {
     if (!entry || typeof entry !== "object") return entry;
-
-    let updatedEntry = { ...entry };
-    const rawResponse = entry.rawModelResponse ?? entry.rawOllamaResponse;
-    const isInvalid =
-      entry.modelStatus === "invalid return" ||
-      entry.ollamaStatus === "invalid return";
-
-    // Attempt recovery for invalid return entries
-    if (isInvalid && typeof rawResponse === "string" && rawResponse.trim()) {
-      const parsed = parseOllamaResponse(
-        rawResponse,
-        entry.cotEnabled ?? true,
-      );
-      if (parsed && (parsed.smells.length > 0 || parsed.justification)) {
-        updatedEntry.modelStatus = "success";
-        if (updatedEntry.ollamaStatus !== undefined) {
-          updatedEntry.ollamaStatus = "success";
-        }
-        if (!updatedEntry.modelJustification && parsed.justification) {
-          updatedEntry.modelJustification = parsed.justification;
-        }
-        if (
-          updatedEntry.ollamaJustification !== undefined &&
-          !updatedEntry.ollamaJustification &&
-          parsed.justification
-        ) {
-          updatedEntry.ollamaJustification = parsed.justification;
-        }
-        if (!updatedEntry.reasoningLog && parsed.reasoningLog) {
-          updatedEntry.reasoningLog = parsed.reasoningLog;
-        }
-        updatedEntry.modelSmells = parsed.smells;
-        if (updatedEntry.ollamaSmells !== undefined) {
-          updatedEntry.ollamaSmells = parsed.smells;
-        }
-      }
-    }
-
-    const current =
-      updatedEntry.modelSmells ?? updatedEntry.ollamaSmells;
-    if (current === undefined && !rawResponse) return updatedEntry;
-
-    const fromDetailedResponse =
-      typeof rawResponse === "string" ? smellsMarkedMatch(rawResponse) : [];
-    const hasDetailedDecisions =
-      typeof rawResponse === "string" &&
-      /\b(?:MATCH|PASS)\b/i.test(rawResponse.split(/^---\s*$/m, 1)[0]);
-
-    const modelSmells =
-      fromDetailedResponse.length > 0 || hasDetailedDecisions
-        ? fromDetailedResponse
-        : sanitizeModelSmells(current ?? []);
-
-    // Also standardize reference smells if present
-    const currentRef = updatedEntry.referenceSmells ?? updatedEntry.geminiSmells;
-    const standardizedRef = currentRef ? standardizeSmellList(currentRef) : undefined;
-
-    const hadChanges =
-      JSON.stringify(entry.modelSmells) !== JSON.stringify(modelSmells) ||
-      (entry.ollamaSmells !== undefined &&
-        JSON.stringify(entry.ollamaSmells) !== JSON.stringify(modelSmells)) ||
-      entry.modelStatus !== updatedEntry.modelStatus ||
-      (standardizedRef &&
-        JSON.stringify(currentRef) !== JSON.stringify(standardizedRef));
-
-    if (hadChanges) changed++;
-
-    return {
-      ...updatedEntry,
-      modelSmells,
-      ...(updatedEntry.ollamaSmells !== undefined
-        ? { ollamaSmells: modelSmells }
-        : {}),
-      ...(standardizedRef && updatedEntry.referenceSmells !== undefined
-        ? { referenceSmells: standardizedRef }
-        : {}),
-      ...(standardizedRef && updatedEntry.geminiSmells !== undefined
-        ? { geminiSmells: standardizedRef }
-        : {}),
-    };
+    const next = sanitizeEntry(entry);
+    if (JSON.stringify(next) !== JSON.stringify(entry)) changed++;
+    return next;
   });
 
   fs.writeFileSync(inputPath, JSON.stringify(sanitized, null, 2));
   return changed;
 }
 
-export function sanitizeComparisonResults(config: {
-  analyzer: { outputDir: string; version?: string };
-}): number {
-  const suffix = config.analyzer.version
-    ? `_v${config.analyzer.version}`
-    : "";
+export function sanitizeComparisonResults(analyzer: AnalyzerConfig): number {
   const inputPath = path.resolve(
-    process.cwd(),
-    config.analyzer.outputDir,
-    `comparison_results${suffix}.json`,
+    analyzer.outputDir,
+    `comparison_results${resultsSuffix(analyzer)}.json`,
   );
   if (!fs.existsSync(inputPath)) {
     throw new Error(`Comparison results not found at ${inputPath}`);
   }
   const changed = sanitizeResultsFile(inputPath);
-  console.log(
-    `Sanitized ${changed} result entr${changed === 1 ? "y" : "ies"} in ${inputPath}`,
-  );
+  console.log(`Sanitized ${changed} result entr${changed === 1 ? "y" : "ies"} in ${inputPath}`);
   return changed;
 }

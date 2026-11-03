@@ -31,6 +31,6 @@ program.addCommand(sanitizeCommand);
 program.addCommand(augmentGoldsetCommand);
 
 program.parseAsync(process.argv).catch((err) => {
-  console.error("Fatal Error:", err);
+  console.error("Error:", err);
   process.exit(1);
 });

@@ -1,9 +1,4 @@
-import { type CallExpression, type SourceFile } from "ts-morph";
-
-export type MetricReading<T> = {
-  readonly name: string;
-  readonly value: T;
-};
+import type { CallExpression, SourceFile } from "ts-morph";
 
 export type MetricDescriptor<T> = {
   readonly name: string;
@@ -11,10 +6,7 @@ export type MetricDescriptor<T> = {
   readonly extract: (testCall: CallExpression) => T;
 };
 
-/**
- * A metric that operates on the whole source file rather than a single
- * test call.  Used for imports, setup hooks, and other file-level data.
- */
+/** A metric over the whole source file (imports, setup hooks, …). */
 export type FileMetricDescriptor<T> = {
   readonly name: string;
   readonly description: string;

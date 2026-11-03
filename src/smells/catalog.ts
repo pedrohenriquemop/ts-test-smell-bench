@@ -1,41 +1,14 @@
-/**
- * Master catalog of all known test smells.
- *
- * Each SmellDescriptor contains:
- *  - A stable ID used in config files and result JSON
- *  - A human-readable display name for reports
- *  - A description for documentation
- *  - A `promptSection` that gets injected into the LLM system prompt
- *  - A list of AST metrics the smell depends on
- */
-
-// ── Types ────────────────────────────────────────────────────────────
-
 export interface SmellDescriptor {
-  /** Stable kebab-case identifier (e.g. "assertion-roulette"). */
+  /** Stable kebab-case identifier used in config files. */
   readonly id: string;
-
-  /** Human-readable name shown in reports (e.g. "Assertion Roulette"). */
+  /** Name used in prompts, goldsets and reports. */
   readonly displayName: string;
-
-  /** One-liner for docs / tooltips. */
   readonly description: string;
-
-  /**
-   * The algorithmic trigger / rule text injected into the LLM system
-   * prompt.  Should be self-contained — the prompt builder concatenates
-   * these sections.
-   */
+  /** Trigger rules injected into the system prompt, starting with the display name. */
   readonly promptSection: string;
-
-  /**
-   * Which AST metric names this smell relies on for its trigger rules.
-   * Used to validate that the required metrics are enabled in config.
-   */
+  /** AST metrics referenced by the trigger rules. */
   readonly requiredMetrics: readonly string[];
 }
-
-// ── Catalog entries ──────────────────────────────────────────────────
 
 export const SMELL_CATALOG: readonly SmellDescriptor[] = [
   {
@@ -81,8 +54,9 @@ export const SMELL_CATALOG: readonly SmellDescriptor[] = [
       "Assuming external resources (API, file system, DB) are always available without error handling.",
     requiredMetrics: [],
     promptSection: `Resource Optimism
-   - TRIGGER: The test references external I/O objects (\`fs.\`, \`path.join\`, \`http.\`, \`axios.\`, \`fetch(\`, \`db.\`, \`pool.query\`, \`process.env\`) AND DOES NOT wrap them in a \`try/catch\` block or assert their existence prior to acting.
-   - REASONING: Assuming a local file or network exists without handling its potential absence.`,
+   - TRIGGER: The test performs an actual network, disk, or database I/O call (\`fs.readFile\`, \`fs.writeFile\` and other \`fs.*\` reads/writes, \`fetch(\`, \`axios.\`, \`http.\`/\`https.\` requests, \`db.\`, \`pool.query\`) AND DOES NOT wrap it in a \`try/catch\` block or check the resource's existence (e.g. \`fs.existsSync\`) prior to acting.
+   - FALSE-POSITIVE GUARD: \`path.join\`, \`path.resolve\`, and other \`path.*\` helpers are in-memory string formatting, NOT I/O, and must NOT be flagged. Reading \`process.env\` is an in-memory lookup, NOT I/O, and must NOT be flagged.
+   - REASONING: Assuming a local file, network, or database exists without handling its potential absence.`,
   },
 
   {
@@ -101,10 +75,11 @@ export const SMELL_CATALOG: readonly SmellDescriptor[] = [
     displayName: "General Fixture",
     description:
       "Excessive setup in beforeEach/beforeAll where only a fraction is used by the test.",
-    requiredMetrics: [],
+    requiredMetrics: ["setupHookCount", "beforeEachVarCount"],
     promptSection: `General Fixture
    - TRIGGER: The test file sets up broad shared state in \`beforeEach\`/\`beforeAll\`, but this specific test body utilizes less than 50% of those setup variables.
-   - REASONING: Loading 5 different database repository mocks in setup, but the test only uses 1.`,
+   - REASONING: Loading 5 different database repository mocks in setup, but the test only uses 1.
+   - ABSOLUTE GATE: If metrics.setupHookCount === 0 OR metrics.beforeEachVarCount === 0, answer PASS (Impossible to have a General Fixture without a populated beforeEach/beforeAll hook).`,
   },
 
   {
@@ -162,29 +137,17 @@ export const SMELL_CATALOG: readonly SmellDescriptor[] = [
       "An assertion compares values through their string representation, making the test sensitive to formatting changes.",
     requiredMetrics: [],
     promptSection: `Sensitive Equality
-   - TRIGGER: An assertion compares a value's \`toString()\` result or other stringified representation for equality (for example, \`expect(value.toString()).toBe(expected)\`).
+   - TRIGGER: Any \`.toString()\` or \`JSON.stringify()\` call appearing inside the argument of an \`expect()\`/\`assert()\` (either side of the comparison, e.g. \`expect(value.toString()).toBe(...)\` or \`expect(x).toBe(value.toString())\`) is an UNCONDITIONAL MATCH. Do not evaluate developer intent, readability, or whether the comparison "looks reasonable" — the syntactic pattern alone is sufficient.
    - REASONING: String representations can change due to formatting or implementation details even when the relevant behavior remains correct. Prefer assertions on the meaningful value or property.`,
   },
 ] as const;
 
-// ── Lookup helpers ───────────────────────────────────────────────────
+const SMELLS_BY_ID = new Map(SMELL_CATALOG.map((s) => [s.id, s]));
 
-const _byId = new Map<string, SmellDescriptor>(
-  SMELL_CATALOG.map((s) => [s.id, s]),
-);
-
-/** Look up a smell descriptor by its stable ID. */
-export function getSmellById(id: string): SmellDescriptor | undefined {
-  return _byId.get(id);
-}
-
-/**
- * Given a list of enabled smell IDs, return the matching descriptors.
- * Throws if any ID is unknown.
- */
+/** Throws if any ID is not in the catalog. */
 export function resolveSmells(ids: readonly string[]): SmellDescriptor[] {
   return ids.map((id) => {
-    const smell = _byId.get(id);
+    const smell = SMELLS_BY_ID.get(id);
     if (!smell) {
       const known = SMELL_CATALOG.map((s) => s.id).join(", ");
       throw new Error(`Unknown smell ID "${id}". Known smells: ${known}`);
@@ -193,27 +156,31 @@ export function resolveSmells(ids: readonly string[]): SmellDescriptor[] {
   });
 }
 
-/** Return all smell IDs in the catalog. */
 export function allSmellIds(): string[] {
   return SMELL_CATALOG.map((s) => s.id);
 }
 
-// ── Normalization helpers ─────────────────────────────────────────────
+// ── Normalization ────────────────────────────────────────────────────
 
-// Map normalized alphanumeric keys to canonical displayName
-// e.g. "assertionroulette" -> "Assertion Roulette"
-const CANONICAL_BY_KEY = new Map<string, string>();
-for (const smell of SMELL_CATALOG) {
-  const key = smell.displayName.toLowerCase().replace(/[^a-z0-9]/g, "");
-  CANONICAL_BY_KEY.set(key, smell.displayName);
-  const idKey = smell.id.toLowerCase().replace(/[^a-z0-9]/g, "");
-  CANONICAL_BY_KEY.set(idKey, smell.displayName);
-}
+const alphanumericKey = (text: string) => text.toLowerCase().replace(/[^a-z0-9]/g, "");
+
+/** "assertionroulette" / "assertion-roulette" key → "Assertion Roulette". */
+const DISPLAY_NAME_BY_KEY = new Map(
+  SMELL_CATALOG.flatMap((s) => [
+    [alphanumericKey(s.displayName), s.displayName],
+    [alphanumericKey(s.id), s.displayName],
+  ]),
+);
+
+/** Matches a name followed by annotations, e.g. "General Fixture (Potential)". */
+const DISPLAY_NAME_PREFIXES = SMELL_CATALOG.map((s) => ({
+  pattern: new RegExp(`^${s.displayName.split(" ").join("\\s*")}`, "i"),
+  displayName: s.displayName,
+}));
 
 /**
- * Normalizes a single raw smell name into its canonical catalog display name.
- * Returns null if the raw string represents "None", a false-positive guard,
- * an empty string, or does not correspond to any known catalog smell.
+ * Maps a raw smell label to its catalog display name. Returns null for
+ * "None", false-positive-guard annotations, and unknown names.
  */
 export function normalizeSmellName(raw: string): string | null {
   if (!raw || typeof raw !== "string") return null;
@@ -243,26 +210,11 @@ export function normalizeSmellName(raw: string): string | null {
     return null;
   }
 
-  // Handle prefix matches with annotations (e.g. "Hardcoded Literal Count = 4", "General Fixture (Potential)")
-  if (/^hardcoded\s*literal/i.test(s)) return "Hardcoded Literal";
-  if (/^magic\s*number/i.test(s)) return "Magic Number";
-  if (/^general\s*fixture/i.test(s)) return "General Fixture";
-  if (/^sleepy\s*test/i.test(s)) return "Sleepy Test";
-  if (/^eager\s*test/i.test(s)) return "Eager Test";
-  if (/^resource\s*optimism/i.test(s)) return "Resource Optimism";
-  if (/^assertion\s*roulette/i.test(s)) return "Assertion Roulette";
-  if (/^conditional\s*test\s*logic/i.test(s)) return "Conditional Test Logic";
-  if (/^exception\s*catching\s*throwing/i.test(s))
-    return "Exception Catching Throwing";
-  if (/^sensitive\s*equality/i.test(s)) return "Sensitive Equality";
-  if (/^mystery\s*guest/i.test(s)) return "Mystery Guest";
+  const prefixed = DISPLAY_NAME_PREFIXES.find(({ pattern }) => pattern.test(s));
+  if (prefixed) return prefixed.displayName;
 
-  // Alphanumeric lookup (handles PascalCase, camelCase, kebab-case, snake_case)
-  const key = lower.replace(/[^a-z0-9]/g, "");
-  const found = CANONICAL_BY_KEY.get(key);
-  if (found) return found;
-
-  return null;
+  // PascalCase, camelCase, kebab-case, snake_case.
+  return DISPLAY_NAME_BY_KEY.get(alphanumericKey(s)) ?? null;
 }
 
 /**

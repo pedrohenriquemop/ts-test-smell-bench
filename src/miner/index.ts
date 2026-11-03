@@ -1,19 +1,16 @@
 import { Octokit } from "@octokit/rest";
 import * as fs from "fs";
 import * as path from "path";
-import { DEFAULT_METRICS } from "../metrics/metric.helpers.ts";
+import type { MinerConfig } from "../config/index.ts";
 import {
   assertionCountMetric,
   lineCountMetric,
 } from "../metrics/metric.registry.ts";
-import { MinerHelpers } from "./miner.helpers.ts";
-import type { ExtractedTestCase, MinerConfig } from "../types.ts";
-import type { MetricDescriptor } from "../metrics/metric.ts";
+import { MinerHelpers, type ExtractedTestCase } from "./miner.helpers.ts";
 
 export class Miner {
   private readonly octokit: Octokit;
   private readonly config: MinerConfig;
-  private readonly metrics: readonly MetricDescriptor<unknown>[];
 
   constructor(config: MinerConfig) {
     if (!process.env.GITHUB_TOKEN) {
@@ -23,7 +20,6 @@ export class Miner {
     }
 
     this.config = config;
-    this.metrics = config.metrics ?? DEFAULT_METRICS;
     this.octokit = new Octokit({
       auth: process.env.GITHUB_TOKEN,
     });
@@ -107,7 +103,6 @@ export class Miner {
                 extracted = MinerHelpers.extractTestCasesFromSource(
                   content,
                   path.basename(file.path),
-                  this.metrics,
                 );
               } catch {
                 continue;
@@ -115,11 +110,8 @@ export class Miner {
 
               let savedAnyFromThisSourceFile = false;
               const repoSlug = repo.full_name.replace(/\//g, "__");
-              const pathWithoutExt = file.path.replace(/\.[^/.]+$/, "");
               const baseStem = MinerHelpers.sanitizePathSegment(
-                path.basename(file.name, path.extname(file.name)),
-                48,
-                pathWithoutExt,
+                file.path.replace(/\.[^/.]+$/, ""),
                 96,
               );
 
@@ -141,7 +133,6 @@ export class Miner {
                   originalPath: file.path,
                   testName: tc.testName,
                   testIndexInFile: i,
-                  // Context fields (Phase 3)
                   describeContext: tc.describeContext,
                   imports: tc.imports,
                   setupVariables: tc.setupVariables,

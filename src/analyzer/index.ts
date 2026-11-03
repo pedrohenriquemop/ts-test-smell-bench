@@ -1,93 +1,134 @@
 import * as fs from "fs";
 import * as path from "path";
-import type {
-  AnalyzerConfig,
-  ModelConfig,
-  PromptConfig,
+import {
+  resultsSuffix,
+  type AnalyzerConfig,
+  type PromptConfig,
 } from "../config/index.ts";
-import type { ModelProvider } from "./provider.ts";
-import { createProvider } from "./providers/index.ts";
+import {
+  formatGoldsetLine,
+  readGoldsetFile,
+  type GoldsetEntry,
+} from "../goldset/format.ts";
+import type { AnalysisResponse, ModelProvider } from "./provider.ts";
 
-function parseReferenceFile(
-  filePath: string,
-): Array<{ file: string; smells: string[] }> {
-  const content = fs.readFileSync(filePath, "utf-8");
-  const lines = content.split("\n");
-  const results: Array<{ file: string; smells: string[] }> = [];
-
-  for (const line of lines) {
-    const match = line.match(/File Name:\s*(.*?)\s*-\s*Smells:\s*(.*)/i);
-    if (match) {
-      const fileName = match[1].trim();
-      const smellsStr = match[2].trim();
-      let smells: string[] = [];
-      if (smellsStr.toLowerCase() !== "none") {
-        smells = smellsStr.split(",").map((s) => s.trim());
-      }
-      results.push({ file: fileName, smells });
-    }
-  }
-
-  return results;
-}
+export type PromptKind = "clean" | "next-batch" | "resume";
+export type PromptHandler = (message: string, kind: PromptKind) => Promise<boolean>;
 
 export interface RunAnalyzerOptions {
   config: AnalyzerConfig;
   provider: ModelProvider;
   systemPrompt: string;
-  promptConfig?: PromptConfig;
-  onPrompt?: (
-    message: string,
-    type: "clean" | "next-batch" | "resume",
-  ) => Promise<boolean>;
+  promptConfig: PromptConfig;
+  /** Asks the user a yes/no question. Without it, every question is answered yes. */
+  onPrompt?: PromptHandler;
 }
 
-interface GoldsetEntry {
+interface ManifestEntry {
   file: string;
-  smells: string[];
+  metrics?: Record<string, unknown>;
+  imports?: string[];
+  describeContext?: string;
+  setupVariables?: string[];
 }
 
 const GOLDSET_BATCH_SIZE = 50;
+const MAX_RETRIES = 1;
 
-function formatGoldset(
-  entries: GoldsetEntry[],
-  providerName: string,
-  batchCount: number,
-): string {
+function readManifest(manifestPath: string): ManifestEntry[] {
+  return JSON.parse(fs.readFileSync(path.resolve(manifestPath), "utf-8"));
+}
+
+function buildContextSnippets(entry: ManifestEntry | undefined): string[] | undefined {
+  if (!entry) return undefined;
+  const snippets: string[] = [];
+  if (entry.imports?.length) snippets.push(`IMPORTS:\n${entry.imports.join("\n")}`);
+  if (entry.describeContext) snippets.push(`DESCRIBE BLOCK:\n${entry.describeContext}`);
+  if (entry.setupVariables?.length) {
+    snippets.push(`SETUP VARIABLES: ${entry.setupVariables.join(", ")}`);
+  }
+  return snippets.length > 0 ? snippets : undefined;
+}
+
+function analyzeEntry(
+  options: RunAnalyzerOptions,
+  entry: ManifestEntry | undefined,
+  fileName: string,
+  testCode: string,
+): Promise<AnalysisResponse> {
+  const { provider, systemPrompt, promptConfig } = options;
+  return provider.analyze({
+    fileName,
+    testCode,
+    metadata: promptConfig.includeAstMetrics ? (entry?.metrics ?? {}) : {},
+    systemPrompt,
+    useChainOfThought: promptConfig.useChainOfThought,
+    includeAstMetrics: promptConfig.includeAstMetrics,
+    contextSnippets: promptConfig.includeContext ? buildContextSnippets(entry) : undefined,
+  });
+}
+
+async function ask(onPrompt: PromptHandler | undefined, message: string, kind: PromptKind) {
+  return onPrompt ? onPrompt(message, kind) : true;
+}
+
+async function confirmRestart(onPrompt: PromptHandler | undefined, message: string) {
+  if (!(await ask(onPrompt, message, "clean"))) {
+    throw new Error("Aborted by user.");
+  }
+}
+
+// ── Goldset generation ───────────────────────────────────────────────
+
+function formatGoldset(entries: GoldsetEntry[], providerName: string, batchCount: number): string {
   const lines = [`[LLM="${providerName}"]`];
-
   for (let index = 0; index < entries.length; index += GOLDSET_BATCH_SIZE) {
     lines.push(`[Batch="${index / GOLDSET_BATCH_SIZE + 1}/${batchCount}"]`);
-    for (const entry of entries.slice(index, index + GOLDSET_BATCH_SIZE)) {
-      lines.push(
-        `File Name: ${entry.file} - Smells: ${
-          entry.smells.length > 0 ? entry.smells.join(", ") : "None"
-        }`,
-      );
-    }
+    lines.push(...entries.slice(index, index + GOLDSET_BATCH_SIZE).map(formatGoldsetLine));
   }
-
   return `${lines.join("\n")}\n`;
 }
 
-/**
- * Creates the goldset labels in batches.  Unlike runAnalyzer, this function
- * uses the manifest as its input and writes the LLM's labels to run.txt.
- */
-export async function generateGoldset({
-  config,
-  provider,
-  systemPrompt,
-  promptConfig,
-  onPrompt,
-}: RunAnalyzerOptions) {
-  const manifestPath = path.resolve(process.cwd(), config.manifestPath);
-  const testsDir = path.resolve(process.cwd(), config.testsDir);
-  const goldsetPath = path.resolve(process.cwd(), config.referenceResultsPath);
-  const includeAst = promptConfig?.includeAstMetrics ?? true;
-  const includeCtx = promptConfig?.includeContext ?? true;
-  const manifestData = JSON.parse(fs.readFileSync(manifestPath, "utf-8"));
-  const testsToLabel = manifestData.slice(0, config.numTests);
+/** Returns the labels to keep from an existing goldset (only whole batches). */
+async function resumableGoldsetEntries(
+  goldsetPath: string,
+  testsToLabel: ManifestEntry[],
+  onPrompt: PromptHandler | undefined,
+): Promise<GoldsetEntry[]> {
+  if (!fs.existsSync(goldsetPath)) return [];
+
+  const existing = readGoldsetFile(goldsetPath);
+  const matchesCurrentTests = existing.every(
+    (entry, index) => entry.file === testsToLabel[index]?.file,
+  );
+  if (!matchesCurrentTests) {
+    await confirmRestart(onPrompt, "The existing goldset is for different tests. Delete it and start over?");
+    return [];
+  }
+
+  const completedBatches = Math.floor(existing.length / GOLDSET_BATCH_SIZE);
+  if (completedBatches === 0) {
+    await confirmRestart(onPrompt, "Found an incomplete goldset. Delete it and start over?");
+    return [];
+  }
+
+  const resume = await ask(
+    onPrompt,
+    `Found ${completedBatches} completed goldset batch(es). Resume from batch ${completedBatches + 1}?`,
+    "resume",
+  );
+  if (resume) return existing.slice(0, completedBatches * GOLDSET_BATCH_SIZE);
+
+  await confirmRestart(onPrompt, "Delete the existing goldset and start over?");
+  return [];
+}
+
+/** Labels the first `numTests` manifest entries in batches and writes them as a goldset. */
+export async function generateGoldset(options: RunAnalyzerOptions): Promise<void> {
+  const { config, provider, onPrompt } = options;
+  const testsDir = path.resolve(config.testsDir);
+  const goldsetPath = path.resolve(config.referenceResultsPath);
+  const testsToLabel = readManifest(config.manifestPath).slice(0, config.numTests);
   const totalBatches = Math.ceil(testsToLabel.length / GOLDSET_BATCH_SIZE);
 
   if (testsToLabel.length === 0) {
@@ -95,135 +136,40 @@ export async function generateGoldset({
     return;
   }
 
-  let entries: GoldsetEntry[] = [];
-  if (fs.existsSync(goldsetPath)) {
-    const existingEntries = parseReferenceFile(goldsetPath);
-    const matchesCurrentTests = existingEntries.every(
-      (entry, index) => entry.file === testsToLabel[index]?.file,
-    );
-    if (!matchesCurrentTests) {
-      const clean = onPrompt
-        ? await onPrompt(
-            "The existing goldset is for different tests. Delete it and start over?",
-            "clean",
-          )
-        : true;
-      if (!clean) throw new Error("Goldset generation cancelled by user.");
-    } else {
-      const completedBatches = Math.floor(
-        existingEntries.length / GOLDSET_BATCH_SIZE,
-      );
-
-      if (completedBatches > 0) {
-        const resume = onPrompt
-          ? await onPrompt(
-              `Found ${completedBatches} completed goldset batch(es). Resume from batch ${completedBatches + 1}?`,
-              "resume",
-            )
-          : true;
-
-        if (resume) {
-          entries = existingEntries.slice(
-            0,
-            Math.min(
-              completedBatches * GOLDSET_BATCH_SIZE,
-              testsToLabel.length,
-            ),
-          );
-        } else {
-          const clean = onPrompt
-            ? await onPrompt(
-                "Delete the existing goldset and start over?",
-                "clean",
-              )
-            : true;
-          if (!clean) throw new Error("Goldset generation cancelled by user.");
-        }
-      } else {
-        const clean = onPrompt
-          ? await onPrompt(
-              "Found an incomplete goldset. Delete it and start over?",
-              "clean",
-            )
-          : true;
-        if (!clean) throw new Error("Goldset generation cancelled by user.");
-      }
-    }
-  }
-
-  const completedTests = entries.length;
-  if (completedTests >= testsToLabel.length) {
+  const entries = await resumableGoldsetEntries(goldsetPath, testsToLabel, onPrompt);
+  if (entries.length >= testsToLabel.length) {
     console.log("Goldset already contains all requested tests.");
     return;
   }
 
-  for (
-    let batchStart = completedTests;
-    batchStart < testsToLabel.length;
-    batchStart += GOLDSET_BATCH_SIZE
-  ) {
-    const batch = testsToLabel.slice(
-      batchStart,
-      batchStart + GOLDSET_BATCH_SIZE,
-    );
-    const batchNumber = Math.floor(batchStart / GOLDSET_BATCH_SIZE) + 1;
-    console.log(
-      `\n=== Generating goldset batch ${batchNumber}/${totalBatches} ===`,
-    );
+  for (let batchStart = entries.length; batchStart < testsToLabel.length; batchStart += GOLDSET_BATCH_SIZE) {
+    const batchNumber = batchStart / GOLDSET_BATCH_SIZE + 1;
+    console.log(`\n=== Generating goldset batch ${batchNumber}/${totalBatches} ===`);
 
-    for (const manifestEntry of batch) {
+    for (const manifestEntry of testsToLabel.slice(batchStart, batchStart + GOLDSET_BATCH_SIZE)) {
       const testFilePath = path.join(testsDir, manifestEntry.file);
       if (!fs.existsSync(testFilePath)) {
         throw new Error(`Goldset test file not found: ${testFilePath}`);
       }
 
-      const testCode = fs.readFileSync(testFilePath, "utf-8");
-      const contextSnippets: string[] = [];
-      if (includeCtx) {
-        if (manifestEntry.imports?.length > 0) {
-          contextSnippets.push(`IMPORTS:\n${manifestEntry.imports.join("\n")}`);
-        }
-        if (manifestEntry.describeContext) {
-          contextSnippets.push(
-            `DESCRIBE BLOCK:\n${manifestEntry.describeContext}`,
-          );
-        }
-        if (manifestEntry.setupVariables?.length > 0) {
-          contextSnippets.push(
-            `SETUP VARIABLES: ${manifestEntry.setupVariables.join(", ")}`,
-          );
-        }
-      }
-
       console.log(`  Labeling ${manifestEntry.file}...`);
-      const response = await provider.analyze({
-        fileName: manifestEntry.file,
-        testCode,
-        metadata: includeAst ? (manifestEntry.metrics ?? {}) : {},
-        systemPrompt,
-        includeAstMetrics: includeAst,
-        contextSnippets:
-          contextSnippets.length > 0 ? contextSnippets : undefined,
-      });
+      const testCode = fs.readFileSync(testFilePath, "utf-8");
+      const response = await analyzeEntry(options, manifestEntry, manifestEntry.file, testCode);
       entries.push({ file: manifestEntry.file, smells: response.smells });
     }
 
     fs.mkdirSync(path.dirname(goldsetPath), { recursive: true });
-    fs.writeFileSync(
-      goldsetPath,
-      formatGoldset(entries, provider.name, totalBatches),
-    );
+    fs.writeFileSync(goldsetPath, formatGoldset(entries, provider.name, totalBatches));
     console.log(`💾 Goldset batch ${batchNumber} saved to ${goldsetPath}`);
 
-    if (batchStart + GOLDSET_BATCH_SIZE < testsToLabel.length && onPrompt) {
+    const hasNextBatch = batchStart + GOLDSET_BATCH_SIZE < testsToLabel.length;
+    if (hasNextBatch && onPrompt) {
       const proceed = await onPrompt(
         `Goldset batch ${batchNumber} finished. Generate the next batch?`,
         "next-batch",
       );
       if (!proceed) {
-        console.log(
-          "Goldset generation stopped. You can resume from this batch later.",
-        );
+        console.log("Goldset generation stopped. You can resume from this batch later.");
         return;
       }
     }
@@ -232,144 +178,116 @@ export async function generateGoldset({
   console.log(`\n✅ Goldset generation complete: ${goldsetPath}`);
 }
 
-export async function runAnalyzer({
-  config,
-  provider,
-  systemPrompt,
-  promptConfig,
-  onPrompt,
-}: RunAnalyzerOptions) {
-  const manifestPath = path.resolve(process.cwd(), config.manifestPath);
-  const referencePath = path.resolve(
-    process.cwd(),
-    config.referenceResultsPath,
-  );
-  const testsDir = path.resolve(process.cwd(), config.testsDir);
-  const outputDir = path.resolve(process.cwd(), config.outputDir);
+// ── Benchmark inference ──────────────────────────────────────────────
 
-  const includeAst = promptConfig?.includeAstMetrics ?? true;
-  const includeCtx = promptConfig?.includeContext ?? true;
+interface ComparisonRecord {
+  file: string;
+  modelStatus: string;
+  error?: string;
+  [field: string]: unknown;
+}
 
-  if (!fs.existsSync(outputDir)) {
-    fs.mkdirSync(outputDir, { recursive: true });
+/** Loads previous results up to the first errored record, which will be retried. */
+async function resumableResults(
+  outputPath: string,
+  onPrompt: PromptHandler | undefined,
+): Promise<ComparisonRecord[]> {
+  if (!fs.existsSync(outputPath)) return [];
+
+  let existing: ComparisonRecord[];
+  try {
+    existing = JSON.parse(fs.readFileSync(outputPath, "utf-8"));
+  } catch (error) {
+    if (!(error instanceof SyntaxError)) throw error;
+    console.warn("Could not read existing results, starting fresh.", error);
+    return [];
   }
+  if (!Array.isArray(existing) || existing.length === 0) return [];
 
-  const versionSuffix = config.version ? `_v${config.version}` : "";
-  const outputPath = path.join(
-    outputDir,
-    `comparison_results${versionSuffix}.json`,
+  const firstError = existing.findIndex((r) => r.modelStatus === "error" || r.error);
+  const clean = firstError >= 0 ? existing.slice(0, firstError) : existing;
+  if (clean.length < existing.length) {
+    console.warn(`⚠️ Discarding ${existing.length - clean.length} errored/incomplete test records from previous run.`);
+  }
+  if (clean.length === 0) return [];
+
+  const resume = await ask(
+    onPrompt,
+    `Found existing progress (${clean.length} test(s) completed). Resume where it stopped?`,
+    "resume",
   );
+  if (resume) return clean;
 
-  let comparisonResults: any[] = [];
-  let testsCompleted = 0;
+  await confirmRestart(onPrompt, "Delete previous progress and restart from the beginning?");
+  fs.unlinkSync(outputPath);
+  return [];
+}
 
-  if (fs.existsSync(outputPath)) {
+async function analyzeWithRetry(
+  options: RunAnalyzerOptions,
+  entry: ManifestEntry | undefined,
+  fileName: string,
+  testCode: string,
+): Promise<AnalysisResponse> {
+  for (let attempt = 0; ; attempt++) {
     try {
-      const existingData = JSON.parse(fs.readFileSync(outputPath, "utf-8"));
-      if (Array.isArray(existingData) && existingData.length > 0) {
-        // Discard any errored records from previous failed runs
-        const firstErrorIdx = existingData.findIndex(
-          (d: any) => d.modelStatus === "error" || d.error,
-        );
-        const cleanExistingData =
-          firstErrorIdx >= 0
-            ? existingData.slice(0, firstErrorIdx)
-            : existingData;
-
-        if (cleanExistingData.length < existingData.length) {
-          console.warn(
-            `⚠️ Discarding ${
-              existingData.length - cleanExistingData.length
-            } errored/incomplete test records from previous run.`,
-          );
-        }
-
-        testsCompleted = cleanExistingData.length;
-
-        if (testsCompleted > 0) {
-          let resume = true;
-          if (onPrompt) {
-            resume = await onPrompt(
-              `Found existing progress (${testsCompleted} test(s) completed). Resume from test ${testsCompleted + 1}?`,
-              "resume",
-            );
-          } else {
-            resume = true;
-          }
-
-          if (resume) {
-            comparisonResults = cleanExistingData.slice(0, testsCompleted);
-          } else {
-            let clean = true;
-            if (onPrompt) {
-              clean = await onPrompt(
-                `Delete previous progress and restart from the beginning?`,
-                "clean",
-              );
-            }
-            if (!clean) {
-              throw new Error("Aborted by user.");
-            }
-            testsCompleted = 0;
-            comparisonResults = [];
-            if (fs.existsSync(outputPath)) {
-              fs.unlinkSync(outputPath);
-            }
-          }
-        }
-      }
+      return await analyzeEntry(options, entry, fileName, testCode);
     } catch (error) {
-      if (error instanceof SyntaxError) {
-        console.warn("Could not read existing results, starting fresh.", error);
-      } else {
-        throw error;
-      }
+      if (attempt >= MAX_RETRIES) throw error;
+      const backoffMs = (attempt + 1) * 1000;
+      console.warn(`  ⚠️ Attempt ${attempt + 1} failed for ${fileName}. Retrying in ${backoffMs}ms...`);
+      await new Promise((resolve) => setTimeout(resolve, backoffMs));
     }
   }
+}
+
+/**
+ * Runs the model over every goldset test and records its prediction next to
+ * the reference labels. Results are saved after each test so a crash or an
+ * API failure can be resumed.
+ */
+export async function runAnalyzer(options: RunAnalyzerOptions): Promise<void> {
+  const { config, provider, promptConfig, onPrompt } = options;
+  const testsDir = path.resolve(config.testsDir);
+  const outputDir = path.resolve(config.outputDir);
+  const outputPath = path.join(outputDir, `comparison_results${resultsSuffix(config)}.json`);
+  fs.mkdirSync(outputDir, { recursive: true });
+
+  const results = await resumableResults(outputPath, onPrompt);
+  const completedFiles = new Set(results.map((r) => r.file));
 
   console.log("Loading metadata...");
-  const manifestData = JSON.parse(fs.readFileSync(manifestPath, "utf-8"));
-  const manifestMap = new Map<string, any>();
-  for (const item of manifestData) {
-    manifestMap.set(item.file, item);
-  }
+  const manifest = new Map(readManifest(config.manifestPath).map((entry) => [entry.file, entry]));
 
   console.log("Parsing reference results...");
-  const referenceResults = parseReferenceFile(referencePath);
-  const totalTestsToRun = Math.min(config.numTests, referenceResults.length);
-  const testsToRun = referenceResults.slice(testsCompleted, totalTestsToRun);
-
-  if (testsToRun.length === 0) {
+  const reference = readGoldsetFile(path.resolve(config.referenceResultsPath)).slice(0, config.numTests);
+  const pending = reference.filter((test) => !completedFiles.has(test.file));
+  if (pending.length === 0) {
     console.log("No more tests to run.");
     return;
   }
 
   if (provider.healthCheck) {
     console.log(`Checking health of provider "${provider.name}"...`);
-    const isHealthy = await provider.healthCheck();
-    if (!isHealthy) {
+    if (!(await provider.healthCheck())) {
       throw new Error(
         `Health check failed for "${provider.name}". Please verify the model is pulled and the server is running.`,
       );
     }
   }
 
-  const ablationLabel = `AST=${includeAst ? "ON" : "OFF"}, Context=${
-    includeCtx ? "ON" : "OFF"
-  }`;
-  console.log(
-    `Starting analysis with "${provider.name}" for ${testsToRun.length} remaining tests (${ablationLabel})...`,
-  );
+  const setup = `AST=${promptConfig.includeAstMetrics ? "ON" : "OFF"}, Context=${promptConfig.includeContext ? "ON" : "OFF"}`;
+  console.log(`Starting analysis with "${provider.name}" for ${pending.length} remaining tests (${setup})...`);
 
-  for (let i = 0; i < testsToRun.length; i++) {
-    const testInfo = testsToRun[i];
-    const fileName = testInfo.file;
-    const referenceSmells = testInfo.smells;
-    const overallIndex = testsCompleted + i + 1;
+  const save = () => fs.writeFileSync(outputPath, JSON.stringify(results, null, 2));
+  const runInfo = {
+    cotEnabled: promptConfig.useChainOfThought,
+    astMetricsIncluded: promptConfig.includeAstMetrics,
+  };
 
-    console.log(
-      `\n[${overallIndex}/${totalTestsToRun}] Processing ${fileName}...`,
-    );
+  for (const [index, { file: fileName, smells: referenceSmells }] of reference.entries()) {
+    if (completedFiles.has(fileName)) continue;
+    console.log(`\n[${index + 1}/${reference.length}] Processing ${fileName}...`);
 
     const testFilePath = path.join(testsDir, fileName);
     if (!fs.existsSync(testFilePath)) {
@@ -377,147 +295,53 @@ export async function runAnalyzer({
       continue;
     }
 
-    const testCode = fs.readFileSync(testFilePath, "utf-8");
-    const manifestEntry = manifestMap.get(fileName);
-
+    const manifestEntry = manifest.get(fileName);
     if (!manifestEntry?.metrics) {
-      console.warn(
-        `Warning: Metadata for ${fileName} not found. Running without AST metrics.`,
-      );
+      console.warn(`Warning: Metadata for ${fileName} not found. Running without AST metrics.`);
     }
 
-    const metadata = includeAst ? (manifestEntry?.metrics ?? {}) : {};
-    const contextSnippets: string[] = [];
-
-    if (includeCtx && manifestEntry) {
-      if (manifestEntry.imports && manifestEntry.imports.length > 0) {
-        contextSnippets.push(`IMPORTS:\n${manifestEntry.imports.join("\n")}`);
-      }
-      if (manifestEntry.describeContext) {
-        contextSnippets.push(
-          `DESCRIBE BLOCK:\n${manifestEntry.describeContext}`,
-        );
-      }
-      if (
-        manifestEntry.setupVariables &&
-        manifestEntry.setupVariables.length > 0
-      ) {
-        contextSnippets.push(
-          `SETUP VARIABLES: ${manifestEntry.setupVariables.join(", ")}`,
-        );
-      }
-    }
-
-    let response = null;
-    let lastError: any = null;
-    const maxRetries = 1;
-
-    for (let attempt = 0; attempt <= maxRetries; attempt++) {
-      try {
-        response = await provider.analyze({
-          fileName,
-          testCode,
-          metadata,
-          systemPrompt,
-          useChainOfThought: promptConfig?.useChainOfThought ?? promptConfig?.strategy === "chain-of-thought",
-          includeAstMetrics: includeAst,
-          contextSnippets:
-            contextSnippets.length > 0 ? contextSnippets : undefined,
-        });
-        lastError = null;
-        break;
-      } catch (error) {
-        lastError = error;
-        if (attempt < maxRetries) {
-          const backoffMs = (attempt + 1) * 1000;
-          console.warn(
-            `  ⚠️ Attempt ${attempt + 1} failed for ${fileName}. Retrying in ${backoffMs}ms...`,
-          );
-          await new Promise((resolve) => setTimeout(resolve, backoffMs));
-        }
-      }
-    }
-
-    if (lastError || !response) {
-      const errorMsg =
-        lastError instanceof Error ? lastError.message : String(lastError);
+    let response: AnalysisResponse;
+    try {
+      response = await analyzeWithRetry(options, manifestEntry, fileName, fs.readFileSync(testFilePath, "utf-8"));
+    } catch (error) {
+      const errorMsg = error instanceof Error ? error.message : String(error);
       console.error(`  ✖ Error running analysis for ${fileName}:`, errorMsg);
-
-      comparisonResults.push({
+      // The errored record is discarded on resume, so this test is retried.
+      results.push({
         file: fileName,
         referenceSmells,
         modelSmells: [],
         modelName: provider.name,
         modelStatus: "error",
-        cotEnabled: promptConfig?.useChainOfThought ?? promptConfig?.strategy === "chain-of-thought",
-        astMetricsIncluded: includeAst,
+        ...runInfo,
         error: errorMsg,
       });
-
-      // Persist the failed record too; resume will discard it and retry this test.
-      fs.writeFileSync(outputPath, JSON.stringify(comparisonResults, null, 2));
-
-      throw new Error(
-        `Analysis failed for ${fileName}: ${errorMsg}. Progress saved to ${outputPath}.`,
-      );
-    } else {
-      const status =
-        response.smells.length > 0 || response.justification
-          ? "success"
-          : "invalid return";
-
-      const result = {
-        file: fileName,
-        referenceSmells,
-        modelSmells: response.smells,
-        modelName: response.modelName,
-        modelStatus: status,
-        cotEnabled: promptConfig?.useChainOfThought ?? promptConfig?.strategy === "chain-of-thought",
-        astMetricsIncluded: includeAst,
-        modelJustification: response.justification,
-        reasoningLog: response.reasoningLog,
-        latencyMs: response.latencyMs,
-        rawModelResponse: response.rawText,
-        tokenUsage: response.tokenUsage,
-      };
-
-      comparisonResults.push(result);
-      // Persist immediately so progress is never lost if a crash occurs
-      fs.writeFileSync(outputPath, JSON.stringify(comparisonResults, null, 2));
-
-      console.log(
-        `  Reference Smells: ${referenceSmells.join(", ") || "None"}`,
-      );
-      if (status === "success") {
-        console.log(
-          `  Model Smells:     ${response.smells.join(", ") || "None"}`,
-        );
-      } else {
-        console.log(`  Model Smells:     [Invalid Format]`);
-      }
-      console.log(`  Latency:          ${response.latencyMs}ms`);
+      save();
+      throw new Error(`Analysis failed for ${fileName}: ${errorMsg}. Progress saved to ${outputPath}.`);
     }
+
+    const status = response.smells.length > 0 || response.justification ? "success" : "invalid return";
+    results.push({
+      file: fileName,
+      referenceSmells,
+      modelSmells: response.smells,
+      modelName: response.modelName,
+      modelStatus: status,
+      ...runInfo,
+      modelJustification: response.justification,
+      reasoningLog: response.reasoningLog,
+      latencyMs: response.latencyMs,
+      rawModelResponse: response.rawText,
+      tokenUsage: response.tokenUsage,
+    });
+    save();
+
+    console.log(`  Reference Smells: ${referenceSmells.join(", ") || "None"}`);
+    console.log(
+      `  Model Smells:     ${status === "success" ? response.smells.join(", ") || "None" : "[Invalid Format]"}`,
+    );
+    console.log(`  Latency:          ${response.latencyMs}ms`);
   }
 
   console.log(`\n✅ Analysis complete. Final results saved to ${outputPath}`);
-}
-
-const DEFAULT_SYSTEM_PROMPT = `You are an expert Static Analysis & Software Quality Engine acting as a deterministic Oracular Classifier for TypeScript Test Smells.
-Your goal is to cross-reference the provided AST JSON metrics with the source code and classify the presence of Test Smells.
-Respond only in the following format:
-FILE: [NAME] - SMELLS: [LIST] - JUSTIFICATION: [SHORT]`;
-
-export async function runAnalyzerLegacy(analyzerConfig: AnalyzerConfig) {
-  const modelConfig: ModelConfig = {
-    id: analyzerConfig.model ?? "detector-smells",
-    provider: "ollama",
-    model: analyzerConfig.model ?? "detector-smells",
-    baseUrl: analyzerConfig.ollamaUrl ?? "http://localhost:11434/api/generate",
-  };
-  const provider = createProvider(modelConfig);
-  return runAnalyzer({
-    config: analyzerConfig,
-    provider,
-    systemPrompt: DEFAULT_SYSTEM_PROMPT,
-  });
 }

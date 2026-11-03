@@ -6,13 +6,21 @@ import {
   Statement,
   SyntaxKind,
 } from "ts-morph";
-import {
-  DEFAULT_METRICS,
-  metricsRecord,
-  fileMetricsRecord,
-} from "../metrics/metric.helpers.ts";
-import type { MetricDescriptor } from "../metrics/metric.ts";
-import type { ExtractedTestCase } from "../types.ts";
+import { fileMetricsRecord, metricsRecord } from "../metrics/metric.helpers.ts";
+
+export interface ExtractedTestCase {
+  /** Skeletal file: imports, ancestor describes, hooks and the target test. */
+  text: string;
+  testName: string;
+  metrics: Record<string, unknown>;
+  /** Nearest describe() with only its variables and hooks, or "". */
+  describeContext: string;
+  imports: string[];
+  /** Variables declared or assigned in the nearest beforeEach/beforeAll. */
+  setupVariables: string[];
+}
+
+const SETUP_HOOKS = ["beforeEach", "beforeAll", "afterEach", "afterAll"];
 
 export class MinerHelpers {
   static sleep(ms: number): Promise<void> {
@@ -34,14 +42,12 @@ export class MinerHelpers {
   static extractTestCasesFromSource(
     content: string,
     virtualFilename = "tests.ts",
-    metrics: readonly MetricDescriptor<unknown>[] = DEFAULT_METRICS
   ): ExtractedTestCase[] {
     const project = new Project({ useInMemoryFileSystem: true });
     const sourceFile = project.createSourceFile(virtualFilename, content, {
       overwrite: true,
     });
 
-    // ── File-level context (computed once) ──────────────────────
     const imports = MinerHelpers.extractImports(sourceFile);
     const fileLevelMetrics = fileMetricsRecord(sourceFile);
 
@@ -57,26 +63,13 @@ export class MinerHelpers {
       const testBody = args[1];
       if (!testBody) continue;
 
-      // ── Build skeletal test file (AST-pruned) ─────────────────
-      const text = MinerHelpers.buildSkeletalTestFile(sourceFile, testCall);
-
-      // ── Per-test context (kept for manifesto / analyzer) ──────
-      const describeContext = MinerHelpers.extractDescribeContext(testCall);
-      const setupVariables = MinerHelpers.extractSetupVariables(testCall);
-
-      // Merge per-test metrics with file-level metrics
-      const testMetrics = {
-        ...metricsRecord(testCall, metrics),
-        ...fileLevelMetrics,
-      };
-
       tests.push({
-        text,
+        text: MinerHelpers.buildSkeletalTestFile(sourceFile, testCall),
         testName,
-        metrics: testMetrics,
-        describeContext,
+        metrics: { ...metricsRecord(testCall), ...fileLevelMetrics },
+        describeContext: MinerHelpers.extractDescribeContext(testCall),
         imports,
-        setupVariables,
+        setupVariables: MinerHelpers.extractSetupVariables(testCall),
       });
     }
 
@@ -226,29 +219,16 @@ export class MinerHelpers {
             continue; // sibling test or non-ancestor describe → prune
           }
 
-          // Catch custom test wrappers like concurrentIf()("name", () => {})
-          const knownHooks = [
-            "beforeEach",
-            "beforeAll",
-            "afterEach",
-            "afterAll",
-            "before",
-            "after",
-            "setup",
-            "teardown",
-          ];
-
+          // A non-hook call taking a callback is most likely a custom test or
+          // describe wrapper, e.g. concurrentIf(cond)("name", () => {}).
+          const knownHooks = [...SETUP_HOOKS, "before", "after", "setup", "teardown"];
           if (rootName && !knownHooks.includes(rootName)) {
-            // If the call contains an ArrowFunction or FunctionExpression,
-            // it is very likely a custom test block or describe block.
             const hasFunctionArg =
               expr.getDescendantsOfKind(SyntaxKind.ArrowFunction).length > 0 ||
               expr.getDescendantsOfKind(SyntaxKind.FunctionExpression).length >
                 0;
 
-            if (hasFunctionArg) {
-              continue; // Prune custom test/describe wrappers
-            }
+            if (hasFunctionArg) continue;
           }
         }
       }
@@ -347,12 +327,7 @@ export class MinerHelpers {
           const hookName = MinerHelpers.getRootIdentifierName(
             expr.getExpression()
           );
-          if (
-            hookName &&
-            ["beforeEach", "beforeAll", "afterEach", "afterAll"].includes(
-              hookName
-            )
-          ) {
+          if (hookName && SETUP_HOOKS.includes(hookName)) {
             parts.push(`  ${stmt.getText()}`);
           }
         }

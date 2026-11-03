@@ -1,80 +1,53 @@
-import { Command } from "commander";
+import * as fs from "fs";
 import * as path from "path";
-import { loadConfig } from "../../config/index.ts";
+import { Command } from "commander";
+import { DEFAULT_CONFIG_PATH, loadConfig } from "../../config/index.ts";
 import {
   buildComparisonMatrix,
   generateComparisonHtml,
+  type ComparisonMatrix,
 } from "../../evaluator/compare.ts";
-import * as fs from "fs";
+
+const TAG_WIDTH = 40;
+const COL_WIDTH = 8;
+const SMELL_WIDTH = 30;
+
+function printMatrix({ runs, smells, data, averages }: ComparisonMatrix): void {
+  const percent = (value: number) => (value * 100).toFixed(1).padStart(COL_WIDTH);
+  const header =
+    "Smell".padEnd(SMELL_WIDTH) +
+    runs.map((r) => r.tag.slice(-TAG_WIDTH).padStart(COL_WIDTH)).join(" | ");
+  const divider = "─".repeat(header.length);
+
+  console.log(header);
+  console.log(divider);
+  for (const smell of smells) {
+    const cells = runs.map((r) => percent(data[smell]?.[r.tag] ?? 0));
+    console.log(smell.padEnd(SMELL_WIDTH) + cells.join(" | "));
+  }
+  console.log(divider);
+  console.log("AVERAGE".padEnd(SMELL_WIDTH) + runs.map((r) => percent(averages[r.tag])).join(" | "));
+}
 
 export const compareCommand = new Command("compare")
-  .description(
-    "Compare F1 scores across different model runs and prompt setups (ablation analysis)",
-  )
-  .option(
-    "-c, --config <path>",
-    "Path to config file",
-    "ts-test-smell-bench.config.json",
-  )
+  .description("Compare F1 scores across model runs and prompt setups (ablation analysis)")
+  .option("-c, --config <path>", "Path to config file", DEFAULT_CONFIG_PATH)
   .option("-f, --filter <modelId>", "Only compare runs for a specific model ID")
   .option("--json", "Also output raw comparison matrix as JSON", false)
   .action(async (options) => {
-    try {
-      const config = await loadConfig(options.config);
-      const outputDir = path.resolve(process.cwd(), config.analyzer.outputDir);
+    const config = await loadConfig(options.config);
+    const outputDir = path.resolve(config.analyzer.outputDir);
 
-      const matrix = buildComparisonMatrix(outputDir, options.filter);
+    const matrix = buildComparisonMatrix(outputDir, options.filter);
+    if (matrix.runs.length === 0) throw new Error("No evaluation results found. Run the pipeline first.");
 
-      if (matrix.runs.length === 0) {
-        console.error("No evaluation results found. Run the pipeline first.");
-        process.exit(1);
-      }
+    console.log(`\nFound ${matrix.runs.length} run(s) across ${matrix.smells.length} smell type(s):\n`);
+    printMatrix(matrix);
 
-      console.log(
-        `\nFound ${matrix.runs.length} run(s) across ${matrix.smells.length} smell type(s):\n`,
-      );
-
-      // Print a text table to console
-      const tagWidth = 40;
-      const colWidth = 8;
-
-      // Header
-      const header =
-        "Smell".padEnd(30) +
-        matrix.runs
-          .map((r) => r.tag.slice(-tagWidth).padStart(colWidth))
-          .join(" | ");
-      console.log(header);
-      console.log("─".repeat(header.length));
-
-      // Rows
-      for (const smell of matrix.smells) {
-        const cells = matrix.runs.map((r) => {
-          const f1 = matrix.data[smell]?.[r.tag] ?? 0;
-          return (f1 * 100).toFixed(1).padStart(colWidth);
-        });
-        console.log(smell.padEnd(30) + cells.join(" | "));
-      }
-
-      // Average row
-      console.log("─".repeat(header.length));
-      const avgCells = matrix.runs.map((r) =>
-        (matrix.averages[r.tag] * 100).toFixed(1).padStart(colWidth),
-      );
-      console.log("AVERAGE".padEnd(30) + avgCells.join(" | "));
-
-      // HTML report
-      const htmlPath = path.join(outputDir, "cross_setup_comparison.html");
-      generateComparisonHtml(matrix, htmlPath);
-
-      // JSON output
-      if (options.json) {
-        const jsonPath = path.join(outputDir, "cross_setup_comparison.json");
-        fs.writeFileSync(jsonPath, JSON.stringify(matrix, null, 2));
-        console.log(`📄 JSON matrix saved to ${jsonPath}`);
-      }
-    } catch (error) {
-      console.error("Error during comparison:", error);
-      process.exit(1);
+    generateComparisonHtml(matrix, path.join(outputDir, "cross_setup_comparison.html"));
+    if (options.json) {
+      const jsonPath = path.join(outputDir, "cross_setup_comparison.json");
+      fs.writeFileSync(jsonPath, JSON.stringify(matrix, null, 2));
+      console.log(`📄 JSON matrix saved to ${jsonPath}`);
     }
   });

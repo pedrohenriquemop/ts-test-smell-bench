@@ -1,15 +1,3 @@
-/**
- * Generates a complete LLM system prompt from a set of selected smell
- * descriptors.  This replaces the static Modelfile — the prompt now
- * adapts to whatever smells the user has enabled in config.
- *
- * Supports two strategies:
- * - 'standard': Direct classification with a brief evaluation step.
- * - 'chain-of-thought': Forces deep step-by-step reasoning about
- *    async flows, metric values, and dependency chains before emitting
- *    the final classification.
- */
-
 import type { SmellDescriptor } from "./catalog.ts";
 import type { PromptConfig } from "../config/index.ts";
 
@@ -21,8 +9,7 @@ function buildSmellRules(
     .map((smell, index) => {
       if (includeAstMetrics) return `${index + 1}. ${smell.promptSection}`;
 
-      // Remove metric-based trigger/gate clauses in AST ablation mode.
-      // Keep source-oriented reasoning and add an explicit source-only rule.
+      // AST ablation: drop the rule lines that reference metrics.
       const sourceRules = smell.promptSection
         .split("\n")
         .filter((line) => !/metrics\s*\./i.test(line))
@@ -33,33 +20,19 @@ function buildSmellRules(
     .join("\n\n");
 }
 
-// ── Strategy dispatcher ──────────────────────────────────────────────
-
-/**
- * Build the system prompt for the requested strategy.
- * Falls back to 'standard' if strategy is unknown.
- */
-export function buildPromptForStrategy(
-  smells: readonly SmellDescriptor[],
-  promptConfig?: PromptConfig,
-): string {
-  const useChainOfThought = promptConfig?.useChainOfThought ?? promptConfig?.strategy === "chain-of-thought";
-  const includeAstMetrics = promptConfig?.includeAstMetrics ?? true;
-  return useChainOfThought
-    ? buildChainOfThoughtPrompt(smells, includeAstMetrics)
-    : buildSystemPrompt(smells, includeAstMetrics);
-}
-
-// ── Standard prompt ──────────────────────────────────────────────────
-
-/**
- * Build the full system prompt given the smells the user wants to
- * detect.  The output is a single string ready to be sent as the
- * `system` field to any LLM provider.
- */
+/** System prompt listing the trigger rules of the enabled smells. */
 export function buildSystemPrompt(
   smells: readonly SmellDescriptor[],
-  includeAstMetrics = true,
+  prompt: PromptConfig,
+): string {
+  return prompt.useChainOfThought
+    ? buildChainOfThoughtPrompt(smells, prompt.includeAstMetrics)
+    : buildStandardPrompt(smells, prompt.includeAstMetrics);
+}
+
+function buildStandardPrompt(
+  smells: readonly SmellDescriptor[],
+  includeAstMetrics: boolean,
 ): string {
   const smellRules = buildSmellRules(smells, includeAstMetrics);
 
@@ -87,21 +60,10 @@ FILE: example.spec.ts - SMELLS: ${
 Do not use bullets, numbering, brackets, quotes, JSON, code fences, extra fields, line breaks, or text before or after this line. Keep JUSTIFICATION on the same line and concise. Never output a smell that is not in the valid-smell list. This format is mandatory for every model and every test.`;
 }
 
-// ── Chain-of-Thought prompt ──────────────────────────────────────────
-
-/**
- * Build a Chain-of-Thought (CoT) system prompt that forces the model
- * to reason deeply and sequentially before classifying.
- *
- * Key differences from 'standard':
- * 1. Explicit "think step by step" instruction
- * 2. Requires reasoning about async flows (Promises, callbacks, subscriptions)
- * 3. Demands the model list which metrics it checked and their values
- * 4. Adds a "confidence" qualifier to each smell decision
- */
-export function buildChainOfThoughtPrompt(
+/** Asks for reasoning inside <thinking> before a <classification> line. */
+function buildChainOfThoughtPrompt(
   smells: readonly SmellDescriptor[],
-  includeAstMetrics = true,
+  includeAstMetrics: boolean,
 ): string {
   const smellRules = buildSmellRules(smells, includeAstMetrics);
 
