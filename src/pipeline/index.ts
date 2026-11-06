@@ -1,5 +1,3 @@
-import * as fs from "fs";
-import * as path from "path";
 import {
   findModel,
   promptSetupTag,
@@ -17,6 +15,7 @@ import { createProvider } from "../analyzer/providers/index.ts";
 import { resolveSmells } from "../smells/catalog.ts";
 import { buildSystemPrompt } from "../smells/prompt-builder.ts";
 import { evaluateResults } from "../evaluator/index.ts";
+import { writeCrossModelReport } from "../evaluator/cross-model.ts";
 import { generateHumanEvaluation } from "../human-evaluation/index.ts";
 import { mergeGoldsetRuns } from "../goldset/merge.ts";
 import { sanitizeComparisonResults } from "../sanitizer/index.ts";
@@ -163,7 +162,7 @@ export async function runPipeline(opts: PipelineOptions): Promise<void> {
         runVersion(model),
       );
     }
-    if (models.length > 1) writeCrossModelSummary(config, models.map(runVersion));
+    if (models.length > 1) writeCrossModelReport(config.analyzer, models.map(runVersion));
   }
 
   console.log("\n✅ Pipeline complete.");
@@ -183,29 +182,4 @@ function logRunHeader(providerName: string, config: AppConfig): void {
   console.log(`  Setup:    ${promptSetupTag(config.prompt)}`);
   console.log(`  Smells (${smells.length}): ${smells.map((s) => s.displayName).join(", ")}`);
   console.log(`${"═".repeat(60)}\n`);
-}
-
-/** Writes smell → run version → F1 for every evaluated run. */
-function writeCrossModelSummary(config: AppConfig, versions: string[]): void {
-  const outputDir = path.resolve(config.analyzer.outputDir);
-  const summary: Record<string, Record<string, number>> = {};
-
-  for (const version of versions) {
-    const metricsPath = path.join(outputDir, `evaluation_metrics_v${version}.json`);
-    if (!fs.existsSync(metricsPath)) {
-      console.warn(`  Skipping ${version} — metrics file not found.`);
-      continue;
-    }
-    const metrics: Array<{ smell: string; f1: number }> = JSON.parse(
-      fs.readFileSync(metricsPath, "utf-8"),
-    );
-    const modelId = version.split("__")[0];
-    for (const { smell, f1 } of metrics) {
-      summary[smell] = { ...summary[smell], [modelId]: f1 };
-    }
-  }
-
-  const summaryPath = path.join(outputDir, "cross_model_summary.json");
-  fs.writeFileSync(summaryPath, JSON.stringify(summary, null, 2));
-  console.log(`\n📊 Cross-model summary saved to ${summaryPath}`);
 }

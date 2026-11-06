@@ -531,7 +531,9 @@
   {
     "file": "modelcontextprotocol__servers__src_memory_tests_resource.test__0.ts",
     "referenceSmells": [],
-    "modelSmells": [],
+    "modelSmells": [
+      "Hardcoded Literal"
+    ],
     "modelName": "Ollama / phi4-mini:latest",
     "modelStatus": "success",
     "cotEnabled": true,
@@ -565,12 +567,13 @@
     "referenceSmells": [],
     "modelSmells": [],
     "modelName": "Ollama / phi4-mini:latest",
-    "modelStatus": "invalid return",
+    "modelStatus": "success",
     "cotEnabled": true,
     "astMetricsIncluded": true,
-    "modelJustification": "",
+    "modelJustification": "No listed test smelly detected in this target test block. The code follows best practices with no violations of defined smells triggers or guards.>",
     "latencyMs": 100075,
-    "rawModelResponse": "<thinking>\nStep 1: Scope & Setup Analysis (Where do variables come from?)\n- The test imports are consistent with fixture context.\n- No setup hooks or beforeEach blocks detected.\n\nStep 2: Control Flow Analysis\n- There is no control flow complexity like if/for/switch statements within the target test block itself. It directly calls functions and expects outcomes without any conditional logic inside it, which aligns well for a unit test's linearity (Arrange -> Act -> Assert).\n\nStep 3: Smell Trigger Validation\n\n1. Assertion Roulette\n   - The assertion count is exactly one.\n   - There are no assertions lacking custom failure explanation strings.\n\n2. Conditional Test Logic\n   - controlFlowCount = 0, which means there’s a lack of conditional logic within the test block itself (no if/for/switch statements).\n\n3. Eager Test\n   - The target code does not invoke more than one distinct state-changing method/action on SUT in this single `it()` block.\n\n4. Mystery Guest\n   - No variables, mocks or files instantiated outside of what's imported and used within the test file itself are detected here; everything is self-contained with imports from '@modelcontextprotocol/sdk/server/mcp.js' etc., which seem to be part of a mock setup for testing purposes but not external dependencies.\n\n5. Resource Optimism\n   - No actual I/O calls (like fs.readFile, fetch) or database queries that would require handling their potential absence are detected in this test block.\n   \n6. General Fixture\n   - The `setupHookCount` and `beforeEachVarCount` both equal 0; there’s no setup performed before the target test.\n\n7. Hardcoded Literal\n   - No raw, unexplained primitive numbers or strings passed directly as behavioral inputs into SUT methods are detected in this block of code.\n   \n8. Sleepy Test\n   - There is an absence of any explicit delay (setTimeout), fake-timer advancement used to simulate timer behavior.\n\n9. Exception Catching Throwing\n   - No `throw` statements or manual failure signaling after operations expected to throw within the target test are detected here; it directly expects outcomes from function calls without catching exceptions.\n   \n10. Sensitive Equality\n    - There is no `.toString()` call appearing inside an argument of any expectation in this block.\n\nBased on these observations, there appear not to be Test Smells present according to our defined smells and their triggers/guards as per the provided context metadata for AST analysis:\n</thinking>\n\n<FILENAME>modelcontextprotocol__servers__src_memory_tests_resource.test__2.ts - SMELLS: None - JUSTIFICATION: No listed test smelly detected in this target test block. The code follows best practices with no violations of defined smells triggers or guards.>\n"
+    "rawModelResponse": "<thinking>\nStep 1: Scope & Setup Analysis (Where do variables come from?)\n- The test imports are consistent with fixture context.\n- No setup hooks or beforeEach blocks detected.\n\nStep 2: Control Flow Analysis\n- There is no control flow complexity like if/for/switch statements within the target test block itself. It directly calls functions and expects outcomes without any conditional logic inside it, which aligns well for a unit test's linearity (Arrange -> Act -> Assert).\n\nStep 3: Smell Trigger Validation\n\n1. Assertion Roulette\n   - The assertion count is exactly one.\n   - There are no assertions lacking custom failure explanation strings.\n\n2. Conditional Test Logic\n   - controlFlowCount = 0, which means there’s a lack of conditional logic within the test block itself (no if/for/switch statements).\n\n3. Eager Test\n   - The target code does not invoke more than one distinct state-changing method/action on SUT in this single `it()` block.\n\n4. Mystery Guest\n   - No variables, mocks or files instantiated outside of what's imported and used within the test file itself are detected here; everything is self-contained with imports from '@modelcontextprotocol/sdk/server/mcp.js' etc., which seem to be part of a mock setup for testing purposes but not external dependencies.\n\n5. Resource Optimism\n   - No actual I/O calls (like fs.readFile, fetch) or database queries that would require handling their potential absence are detected in this test block.\n   \n6. General Fixture\n   - The `setupHookCount` and `beforeEachVarCount` both equal 0; there’s no setup performed before the target test.\n\n7. Hardcoded Literal\n   - No raw, unexplained primitive numbers or strings passed directly as behavioral inputs into SUT methods are detected in this block of code.\n   \n8. Sleepy Test\n   - There is an absence of any explicit delay (setTimeout), fake-timer advancement used to simulate timer behavior.\n\n9. Exception Catching Throwing\n   - No `throw` statements or manual failure signaling after operations expected to throw within the target test are detected here; it directly expects outcomes from function calls without catching exceptions.\n   \n10. Sensitive Equality\n    - There is no `.toString()` call appearing inside an argument of any expectation in this block.\n\nBased on these observations, there appear not to be Test Smells present according to our defined smells and their triggers/guards as per the provided context metadata for AST analysis:\n</thinking>\n\n<FILENAME>modelcontextprotocol__servers__src_memory_tests_resource.test__2.ts - SMELLS: None - JUSTIFICATION: No listed test smelly detected in this target test block. The code follows best practices with no violations of defined smells triggers or guards.>\n",
+    "reasoningLog": "Step 1: Scope & Setup Analysis (Where do variables come from?)\n- The test imports are consistent with fixture context.\n- No setup hooks or beforeEach blocks detected.\n\nStep 2: Control Flow Analysis\n- There is no control flow complexity like if/for/switch statements within the target test block itself. It directly calls functions and expects outcomes without any conditional logic inside it, which aligns well for a unit test's linearity (Arrange -> Act -> Assert).\n\nStep 3: Smell Trigger Validation\n\n1. Assertion Roulette\n   - The assertion count is exactly one.\n   - There are no assertions lacking custom failure explanation strings.\n\n2. Conditional Test Logic\n   - controlFlowCount = 0, which means there’s a lack of conditional logic within the test block itself (no if/for/switch statements).\n\n3. Eager Test\n   - The target code does not invoke more than one distinct state-changing method/action on SUT in this single `it()` block.\n\n4. Mystery Guest\n   - No variables, mocks or files instantiated outside of what's imported and used within the test file itself are detected here; everything is self-contained with imports from '@modelcontextprotocol/sdk/server/mcp.js' etc., which seem to be part of a mock setup for testing purposes but not external dependencies.\n\n5. Resource Optimism\n   - No actual I/O calls (like fs.readFile, fetch) or database queries that would require handling their potential absence are detected in this test block.\n   \n6. General Fixture\n   - The `setupHookCount` and `beforeEachVarCount` both equal 0; there’s no setup performed before the target test.\n\n7. Hardcoded Literal\n   - No raw, unexplained primitive numbers or strings passed directly as behavioral inputs into SUT methods are detected in this block of code.\n   \n8. Sleepy Test\n   - There is an absence of any explicit delay (setTimeout), fake-timer advancement used to simulate timer behavior.\n\n9. Exception Catching Throwing\n   - No `throw` statements or manual failure signaling after operations expected to throw within the target test are detected here; it directly expects outcomes from function calls without catching exceptions.\n   \n10. Sensitive Equality\n    - There is no `.toString()` call appearing inside an argument of any expectation in this block.\n\nBased on these observations, there appear not to be Test Smells present according to our defined smells and their triggers/guards as per the provided context metadata for AST analysis:"
   },
   {
     "file": "modelcontextprotocol__servers__src_memory_tests_resource.test__3.ts",
@@ -1379,7 +1382,9 @@
       "Assertion Roulette",
       "Hardcoded Literal"
     ],
-    "modelSmells": [],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
     "modelName": "Ollama / phi4-mini:latest",
     "modelStatus": "success",
     "cotEnabled": true,
@@ -2654,7 +2659,9 @@
     "referenceSmells": [
       "Assertion Roulette"
     ],
-    "modelSmells": [],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
     "modelName": "Ollama / phi4-mini:latest",
     "modelStatus": "success",
     "cotEnabled": true,
@@ -3027,7 +3034,9 @@
       "Assertion Roulette",
       "Hardcoded Literal"
     ],
-    "modelSmells": [],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
     "modelName": "Ollama / phi4-mini:latest",
     "modelStatus": "success",
     "cotEnabled": true,
@@ -3042,7 +3051,9 @@
     "referenceSmells": [
       "Hardcoded Literal"
     ],
-    "modelSmells": [],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
     "modelName": "Ollama / phi4-mini:latest",
     "modelStatus": "success",
     "cotEnabled": true,
@@ -3220,7 +3231,10 @@
       "Assertion Roulette",
       "Hardcoded Literal"
     ],
-    "modelSmells": [],
+    "modelSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
     "modelName": "Ollama / phi4-mini:latest",
     "modelStatus": "success",
     "cotEnabled": true,

@@ -7,6 +7,7 @@ import {
   generateComparisonHtml,
   type ComparisonMatrix,
 } from "../../evaluator/compare.ts";
+import { writeCrossModelReport } from "../../evaluator/cross-model.ts";
 
 const TAG_WIDTH = 40;
 const COL_WIDTH = 8;
@@ -30,7 +31,7 @@ function printMatrix({ runs, smells, data, averages }: ComparisonMatrix): void {
 }
 
 export const compareCommand = new Command("compare")
-  .description("Compare F1 scores across model runs and prompt setups (ablation analysis)")
+  .description("Compare runs: F1 heatmap across setups plus the cross-model report")
   .option("-c, --config <path>", "Path to config file", DEFAULT_CONFIG_PATH)
   .option("-f, --filter <modelId>", "Only compare runs for a specific model ID")
   .option("--json", "Also output raw comparison matrix as JSON", false)
@@ -45,6 +46,7 @@ export const compareCommand = new Command("compare")
     printMatrix(matrix);
 
     generateComparisonHtml(matrix, path.join(outputDir, "cross_setup_comparison.html"));
+    writeCrossModelReport(config.analyzer, matrix.runs.map((r) => r.tag));
     if (options.json) {
       const jsonPath = path.join(outputDir, "cross_setup_comparison.json");
       fs.writeFileSync(jsonPath, JSON.stringify(matrix, null, 2));

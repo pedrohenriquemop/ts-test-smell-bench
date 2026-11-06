@@ -71,11 +71,12 @@ function parseJson(
   }
 }
 
+// The label also matches "<FILENAME>name - SMELLS: …", which small models sometimes emit.
 function parseClassificationLine(
   text: string,
 ): Omit<ParsedModelResponse, "reasoningLog"> | null {
   const labelled = text.match(
-    /FILE:.*?- SMELLS:\s*(.*?)\s*[-–—]?\s*JUSTIFICATION:\s*(.*)/is,
+    /FILE(?:NAME)?\s*[:>].*?- SMELLS:\s*(.*?)\s*[-–—]?\s*JUSTIFICATION:\s*(.*)/is,
   );
   if (labelled) {
     return {
@@ -85,7 +86,7 @@ function parseClassificationLine(
   }
 
   // The justification label is sometimes dropped: "SMELLS: X - explanation".
-  const unlabelled = text.match(/FILE:.*?- SMELLS:\s*([^-\n]+?)\s*[-–—]\s*(.*)/is);
+  const unlabelled = text.match(/FILE(?:NAME)?\s*[:>].*?- SMELLS:\s*([^-\n]+?)\s*[-–—]\s*(.*)/is);
   if (unlabelled) {
     return {
       smells: standardizeSmellList(unlabelled[1]),
@@ -93,7 +94,7 @@ function parseClassificationLine(
     };
   }
 
-  const smellsOnly = text.match(/FILE:.*?- SMELLS:\s*(.*)/is);
+  const smellsOnly = text.match(/FILE(?:NAME)?\s*[:>].*?- SMELLS:\s*(.*)/is);
   if (smellsOnly) {
     return { smells: standardizeSmellList(smellsOnly[1]), justification: "" };
   }

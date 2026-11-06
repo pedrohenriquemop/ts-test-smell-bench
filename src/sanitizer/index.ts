@@ -65,16 +65,24 @@ function recoverInvalidEntry(entry: ResultEntry): ResultEntry {
   return recovered;
 }
 
+/**
+ * In chain-of-thought replies the <classification> line is the model's answer;
+ * its <thinking> often quotes "answer PASS" or says "match" in prose, so the
+ * MATCH/PASS decision lines are only read from replies without that block.
+ */
+function finalAnswerSmells(raw: unknown): string[] | undefined {
+  if (typeof raw !== "string") return undefined;
+  if (/<classification\s*>/i.test(raw)) return parseModelResponse(raw, true)?.smells;
+  if (/\b(?:MATCH|PASS)\b/i.test(evaluationSection(raw))) return smellsMarkedMatch(raw);
+  return undefined;
+}
+
 function sanitizeEntry(entry: ResultEntry): ResultEntry {
   const recovered = recoverInvalidEntry(entry);
   const raw = recovered.rawModelResponse;
   if (recovered.modelSmells === undefined && !raw) return recovered;
 
-  const hasDetailedDecisions =
-    typeof raw === "string" && /\b(?:MATCH|PASS)\b/i.test(evaluationSection(raw));
-  const modelSmells = hasDetailedDecisions
-    ? smellsMarkedMatch(raw)
-    : sanitizeModelSmells(recovered.modelSmells ?? []);
+  const modelSmells = finalAnswerSmells(raw) ?? sanitizeModelSmells(recovered.modelSmells ?? []);
 
   return {
     ...recovered,

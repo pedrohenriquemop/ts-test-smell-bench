@@ -422,7 +422,8 @@
       "Magic Number"
     ],
     "modelSmells": [
-      "Sensitive Equality"
+      "Assertion Roulette",
+      "Resource Optimism"
     ],
     "modelName": "Ollama / llama3.1:8b",
     "modelStatus": "success",
@@ -1003,7 +1004,10 @@
       "Assertion Roulette",
       "Hardcoded Literal"
     ],
-    "modelSmells": [],
+    "modelSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
     "modelName": "Ollama / llama3.1:8b",
     "modelStatus": "success",
     "cotEnabled": true,
@@ -1281,7 +1285,11 @@
       "Magic Number",
       "Sensitive Equality"
     ],
-    "modelSmells": [],
+    "modelSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal",
+      "Magic Number"
+    ],
     "modelName": "Ollama / llama3.1:8b",
     "modelStatus": "success",
     "cotEnabled": true,
@@ -1298,7 +1306,10 @@
       "Hardcoded Literal",
       "Magic Number"
     ],
-    "modelSmells": [],
+    "modelSmells": [
+      "Assertion Roulette",
+      "General Fixture"
+    ],
     "modelName": "Ollama / llama3.1:8b",
     "modelStatus": "success",
     "cotEnabled": true,
@@ -1503,7 +1514,10 @@
       "Assertion Roulette",
       "Hardcoded Literal"
     ],
-    "modelSmells": [],
+    "modelSmells": [
+      "Assertion Roulette",
+      "General Fixture"
+    ],
     "modelName": "Ollama / llama3.1:8b",
     "modelStatus": "success",
     "cotEnabled": true,
@@ -1990,7 +2004,11 @@
       "Assertion Roulette",
       "Hardcoded Literal"
     ],
-    "modelSmells": [],
+    "modelSmells": [
+      "Assertion Roulette",
+      "Mystery Guest",
+      "Resource Optimism"
+    ],
     "modelName": "Ollama / llama3.1:8b",
     "modelStatus": "success",
     "cotEnabled": true,
@@ -2216,7 +2234,9 @@
     "referenceSmells": [
       "Hardcoded Literal"
     ],
-    "modelSmells": [],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
     "modelName": "Ollama / llama3.1:8b",
     "modelStatus": "success",
     "cotEnabled": true,
@@ -2532,7 +2552,9 @@
     "referenceSmells": [
       "Hardcoded Literal"
     ],
-    "modelSmells": [],
+    "modelSmells": [
+      "Hardcoded Literal"
+    ],
     "modelName": "Ollama / llama3.1:8b",
     "modelStatus": "success",
     "cotEnabled": true,
@@ -2565,7 +2587,12 @@
       "Assertion Roulette",
       "Hardcoded Literal"
     ],
-    "modelSmells": [],
+    "modelSmells": [
+      "Assertion Roulette",
+      "Mystery Guest",
+      "Hardcoded Literal",
+      "Sensitive Equality"
+    ],
     "modelName": "Ollama / llama3.1:8b",
     "modelStatus": "success",
     "cotEnabled": true,
@@ -2580,7 +2607,9 @@
     "referenceSmells": [
       "Hardcoded Literal"
     ],
-    "modelSmells": [],
+    "modelSmells": [
+      "Hardcoded Literal"
+    ],
     "modelName": "Ollama / llama3.1:8b",
     "modelStatus": "success",
     "cotEnabled": true,
@@ -2610,7 +2639,10 @@
     "referenceSmells": [
       "Assertion Roulette"
     ],
-    "modelSmells": [],
+    "modelSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
     "modelName": "Ollama / llama3.1:8b",
     "modelStatus": "success",
     "cotEnabled": true,
@@ -2946,6 +2978,7 @@
       "Assertion Roulette"
     ],
     "modelSmells": [
+      "Assertion Roulette",
       "Hardcoded Literal"
     ],
     "modelName": "Ollama / llama3.1:8b",
@@ -3039,7 +3072,10 @@
       "Assertion Roulette",
       "Hardcoded Literal"
     ],
-    "modelSmells": [],
+    "modelSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
     "modelName": "Ollama / llama3.1:8b",
     "modelStatus": "success",
     "cotEnabled": true,
@@ -3179,7 +3215,10 @@
       "Assertion Roulette",
       "Hardcoded Literal"
     ],
-    "modelSmells": [],
+    "modelSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
     "modelName": "Ollama / llama3.1:8b",
     "modelStatus": "success",
     "cotEnabled": true,
@@ -3194,7 +3233,9 @@
     "referenceSmells": [
       "Hardcoded Literal"
     ],
-    "modelSmells": [],
+    "modelSmells": [
+      "Hardcoded Literal"
+    ],
     "modelName": "Ollama / llama3.1:8b",
     "modelStatus": "success",
     "cotEnabled": true,
