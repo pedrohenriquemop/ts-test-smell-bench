@@ -1,5 +1,5 @@
 {
-  "strategy": "source-reviewed-existing-goldset-plus-extra-labels",
+  "strategy": "strict-majority-plus-voted-extra-labels",
   "sources": [
     "run_claude.txt",
     "run_gemini.txt",
@@ -192,7 +192,8 @@
         "Eager Test": 2,
         "Hardcoded Literal": 3,
         "Magic Number": 2,
-        "Mystery Guest": 2
+        "Mystery Guest": 2,
+        "Sleepy Test": 3
       },
       "smells": [
         "Assertion Roulette",
@@ -210,6 +211,7 @@
       "requiredVotes": 2,
       "smellVotes": {
         "Assertion Roulette": 3,
+        "Exception Catching Throwing": 2,
         "Hardcoded Literal": 3,
         "Magic Number": 1,
         "Mystery Guest": 2
@@ -231,7 +233,8 @@
         "Eager Test": 2,
         "Hardcoded Literal": 3,
         "Magic Number": 2,
-        "Mystery Guest": 2
+        "Mystery Guest": 2,
+        "Sleepy Test": 3
       },
       "smells": [
         "Assertion Roulette",
@@ -252,7 +255,8 @@
         "Conditional Test Logic": 3,
         "Hardcoded Literal": 3,
         "Magic Number": 2,
-        "Mystery Guest": 2
+        "Mystery Guest": 2,
+        "Sleepy Test": 3
       },
       "smells": [
         "Assertion Roulette",
@@ -328,7 +332,8 @@
         "Assertion Roulette": 3,
         "Hardcoded Literal": 3,
         "Magic Number": 2,
-        "Mystery Guest": 2
+        "Mystery Guest": 2,
+        "Sleepy Test": 3
       },
       "smells": [
         "Assertion Roulette",
@@ -571,6 +576,7 @@
       "requiredVotes": 2,
       "smellVotes": {
         "Assertion Roulette": 3,
+        "Exception Catching Throwing": 2,
         "Hardcoded Literal": 3,
         "Mystery Guest": 1,
         "Resource Optimism": 1
@@ -588,6 +594,7 @@
       "smellVotes": {
         "Assertion Roulette": 3,
         "Eager Test": 1,
+        "Exception Catching Throwing": 2,
         "Hardcoded Literal": 3,
         "Mystery Guest": 1,
         "Resource Optimism": 1
@@ -835,6 +842,7 @@
       "sourceCount": 3,
       "requiredVotes": 2,
       "smellVotes": {
+        "Exception Catching Throwing": 1,
         "Hardcoded Literal": 3
       },
       "smells": [
@@ -847,6 +855,7 @@
       "requiredVotes": 2,
       "smellVotes": {
         "Assertion Roulette": 3,
+        "Exception Catching Throwing": 1,
         "Hardcoded Literal": 3
       },
       "smells": [
@@ -885,7 +894,8 @@
       "sourceCount": 3,
       "requiredVotes": 2,
       "smellVotes": {
-        "Magic Number": 2
+        "Magic Number": 2,
+        "Sensitive Equality": 2
       },
       "smells": [
         "Magic Number",
@@ -898,7 +908,8 @@
       "requiredVotes": 2,
       "smellVotes": {
         "Assertion Roulette": 3,
-        "Magic Number": 3
+        "Magic Number": 3,
+        "Sensitive Equality": 2
       },
       "smells": [
         "Assertion Roulette",
@@ -911,7 +922,8 @@
       "sourceCount": 3,
       "requiredVotes": 2,
       "smellVotes": {
-        "Magic Number": 2
+        "Magic Number": 2,
+        "Sensitive Equality": 2
       },
       "smells": [
         "Magic Number",
@@ -924,7 +936,8 @@
       "requiredVotes": 2,
       "smellVotes": {
         "Assertion Roulette": 3,
-        "Magic Number": 3
+        "Magic Number": 3,
+        "Sensitive Equality": 2
       },
       "smells": [
         "Assertion Roulette",
@@ -939,12 +952,12 @@
       "smellVotes": {
         "Assertion Roulette": 3,
         "Hardcoded Literal": 1,
-        "Magic Number": 2
+        "Magic Number": 2,
+        "Sensitive Equality": 1
       },
       "smells": [
         "Assertion Roulette",
-        "Magic Number",
-        "Sensitive Equality"
+        "Magic Number"
       ]
     },
     {
@@ -964,12 +977,12 @@
       "requiredVotes": 2,
       "smellVotes": {
         "Assertion Roulette": 3,
-        "Magic Number": 2
+        "Magic Number": 2,
+        "Sensitive Equality": 1
       },
       "smells": [
         "Assertion Roulette",
-        "Magic Number",
-        "Sensitive Equality"
+        "Magic Number"
       ]
     },
     {
@@ -1004,6 +1017,7 @@
       "requiredVotes": 2,
       "smellVotes": {
         "Assertion Roulette": 3,
+        "Exception Catching Throwing": 1,
         "Hardcoded Literal": 3
       },
       "smells": [
@@ -1028,6 +1042,7 @@
       "requiredVotes": 2,
       "smellVotes": {
         "Assertion Roulette": 3,
+        "Exception Catching Throwing": 1,
         "Hardcoded Literal": 3
       },
       "smells": [
@@ -1217,6 +1232,7 @@
       "requiredVotes": 2,
       "smellVotes": {
         "Assertion Roulette": 3,
+        "Exception Catching Throwing": 1,
         "Hardcoded Literal": 3,
         "Mystery Guest": 2,
         "Resource Optimism": 1
@@ -1376,6 +1392,7 @@
       "sourceCount": 3,
       "requiredVotes": 2,
       "smellVotes": {
+        "Exception Catching Throwing": 1,
         "Hardcoded Literal": 3,
         "Magic Number": 2
       },
@@ -1485,6 +1502,7 @@
       "sourceCount": 3,
       "requiredVotes": 2,
       "smellVotes": {
+        "Exception Catching Throwing": 1,
         "Hardcoded Literal": 3,
         "Mystery Guest": 1
       },
@@ -1498,6 +1516,7 @@
       "requiredVotes": 2,
       "smellVotes": {
         "Assertion Roulette": 3,
+        "Exception Catching Throwing": 1,
         "Hardcoded Literal": 3,
         "Magic Number": 1,
         "Mystery Guest": 1
@@ -1514,6 +1533,7 @@
       "smellVotes": {
         "Assertion Roulette": 3,
         "Eager Test": 1,
+        "Exception Catching Throwing": 1,
         "Hardcoded Literal": 3,
         "Magic Number": 1,
         "Mystery Guest": 1
@@ -1528,6 +1548,7 @@
       "sourceCount": 3,
       "requiredVotes": 2,
       "smellVotes": {
+        "Exception Catching Throwing": 1,
         "Hardcoded Literal": 3,
         "Magic Number": 1,
         "Mystery Guest": 1
@@ -1541,6 +1562,7 @@
       "sourceCount": 3,
       "requiredVotes": 2,
       "smellVotes": {
+        "Exception Catching Throwing": 1,
         "Hardcoded Literal": 3,
         "Magic Number": 1,
         "Mystery Guest": 1
@@ -1554,6 +1576,7 @@
       "sourceCount": 3,
       "requiredVotes": 2,
       "smellVotes": {
+        "Exception Catching Throwing": 1,
         "Hardcoded Literal": 3,
         "Magic Number": 1,
         "Mystery Guest": 1
@@ -1568,6 +1591,7 @@
       "requiredVotes": 2,
       "smellVotes": {
         "Assertion Roulette": 3,
+        "Exception Catching Throwing": 1,
         "Hardcoded Literal": 3,
         "Magic Number": 1,
         "Mystery Guest": 1
@@ -1687,6 +1711,7 @@
       "sourceCount": 3,
       "requiredVotes": 2,
       "smellVotes": {
+        "Exception Catching Throwing": 1,
         "Hardcoded Literal": 3,
         "Mystery Guest": 1,
         "Resource Optimism": 1
@@ -1713,6 +1738,7 @@
       "sourceCount": 3,
       "requiredVotes": 2,
       "smellVotes": {
+        "Exception Catching Throwing": 1,
         "Hardcoded Literal": 3,
         "Mystery Guest": 1,
         "Resource Optimism": 1
@@ -2065,6 +2091,7 @@
       "sourceCount": 3,
       "requiredVotes": 2,
       "smellVotes": {
+        "Exception Catching Throwing": 3,
         "Hardcoded Literal": 3
       },
       "smells": [

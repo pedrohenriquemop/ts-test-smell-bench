@@ -93,10 +93,10 @@
     "smell": "Sensitive Equality",
     "tp": 4,
     "fp": 7,
-    "fn": 2,
-    "tn": 187,
+    "fn": 0,
+    "tn": 189,
     "precision": 0.3636,
-    "recall": 0.6667,
-    "f1": 0.4706
+    "recall": 1,
+    "f1": 0.5333
   }
 ]

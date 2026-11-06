@@ -1,4 +1,4 @@
-[LLM="Existing goldset with supplemental smell labels"]
+[LLM="Consensus: strict majority of 3 sources; extra smells voted separately"]
 File Name: excalidraw__excalidraw__packages_element_src_tests_flowchart.test__0.ts - Smells: Assertion Roulette, Hardcoded Literal, Magic Number
 File Name: shadcn-ui__ui__packages_helpers_src_test_chat-contract__0.ts - Smells: Assertion Roulette, Eager Test, Mystery Guest
 File Name: shadcn-ui__ui__packages_helpers_src_test_chat-contract__1.ts - Smells: Assertion Roulette, Mystery Guest
@@ -67,9 +67,9 @@ File Name: modelcontextprotocol__servers__src_everything_tests_resources.test__1
 File Name: modelcontextprotocol__servers__src_everything_tests_resources.test__2.ts - Smells: Assertion Roulette, Magic Number, Sensitive Equality
 File Name: modelcontextprotocol__servers__src_everything_tests_resources.test__3.ts - Smells: Magic Number, Sensitive Equality
 File Name: modelcontextprotocol__servers__src_everything_tests_resources.test__4.ts - Smells: Assertion Roulette, Magic Number, Sensitive Equality
-File Name: modelcontextprotocol__servers__src_everything_tests_resources.test__5.ts - Smells: Assertion Roulette, Magic Number, Sensitive Equality
+File Name: modelcontextprotocol__servers__src_everything_tests_resources.test__5.ts - Smells: Assertion Roulette, Magic Number
 File Name: modelcontextprotocol__servers__src_everything_tests_resources.test__6.ts - Smells: Magic Number
-File Name: modelcontextprotocol__servers__src_everything_tests_resources.test__7.ts - Smells: Assertion Roulette, Magic Number, Sensitive Equality
+File Name: modelcontextprotocol__servers__src_everything_tests_resources.test__7.ts - Smells: Assertion Roulette, Magic Number
 File Name: modelcontextprotocol__servers__src_everything_tests_resources.test__8.ts - Smells: Assertion Roulette, Hardcoded Literal, Magic Number
 File Name: modelcontextprotocol__servers__src_everything_tests_resources.test__9.ts - Smells: Assertion Roulette
 File Name: modelcontextprotocol__servers__src_everything_tests_resources.test__10.ts - Smells: Assertion Roulette, Hardcoded Literal

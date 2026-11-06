@@ -26,10 +26,10 @@ function readRunFile(filePath: string, allowMissingPrefix = false): GoldsetEntry
   return [...entries].map(([file, smells]) => ({ file, smells }));
 }
 
-function majorityVote(runsDir: string, runFiles: string[]): FileConsensus[] {
+function majorityVote(runsDir: string, runFiles: string[], allowMissingPrefix = false): FileConsensus[] {
   const votesByFile = new Map<string, string[][]>();
   for (const runFile of runFiles) {
-    for (const { file, smells } of readRunFile(path.join(runsDir, runFile))) {
+    for (const { file, smells } of readRunFile(path.join(runsDir, runFile), allowMissingPrefix)) {
       votesByFile.set(file, [...(votesByFile.get(file) ?? []), smells]);
     }
   }
@@ -58,10 +58,12 @@ function majorityVote(runsDir: string, runFiles: string[]): FileConsensus[] {
 /**
  * Combines independently produced goldset runs (`run_*.txt`) into one
  * reference file using strict-majority voting. Supplemental `*_extra.txt`
- * runs label additional smells and are unioned into that consensus.
+ * runs label additional smells; they are majority-voted among themselves and
+ * the accepted labels are added to the base consensus.
  *
- * When the output already exists it defines the curated test set, so it is
- * kept as the base instead of re-voting, which could silently expand the set.
+ * When the output already exists it defines the curated test set: labels are
+ * always re-voted, but only for the tests already listed in it, so a re-run
+ * cannot silently expand the set.
  */
 export function mergeGoldsetRuns(
   projectRoot = process.cwd(),
@@ -80,69 +82,51 @@ export function mergeGoldsetRuns(
   }
 
   const hasExistingGoldset = fs.existsSync(outputFile);
-  const consensus: FileConsensus[] = hasExistingGoldset
-    ? readRunFile(outputFile).map(({ file, smells }) => ({
-        file, sourceCount: 0, requiredVotes: 0, smellVotes: {}, smells,
-      }))
-    : majorityVote(runsDir, runFiles);
+  const voted = majorityVote(runsDir, runFiles);
+  let consensus = voted;
+  if (hasExistingGoldset) {
+    const votedByFile = new Map(voted.map((entry) => [entry.file, entry]));
+    consensus = readRunFile(outputFile).map(({ file }) => {
+      const entry = votedByFile.get(file);
+      if (!entry) throw new Error(`Test "${file}" from ${outputFile} has no votes in ${runFiles.join(", ")}.`);
+      return entry;
+    });
+  }
 
-  // Union extra labels after voting so their "None" cannot erase base labels.
-  const consensusByFile = new Map(consensus.map((entry) => [entry.file, entry]));
-  for (const extraFile of extraFiles) {
-    for (const entry of readRunFile(path.join(runsDir, extraFile), true)) {
-      let target = consensusByFile.get(entry.file);
-      if (!target) {
-        if (hasExistingGoldset) continue;
-        target = { file: entry.file, sourceCount: 0, requiredVotes: 0, smellVotes: {}, smells: [] };
-        consensus.push(target);
-        consensusByFile.set(entry.file, target);
-      }
-      target.smells = [...new Set([...target.smells, ...entry.smells])].sort((a, b) => a.localeCompare(b));
+  // Extra smells are voted on their own, then added, so their "None" cannot erase base labels.
+  if (extraFiles.length > 0) {
+    const extraByFile = new Map(majorityVote(runsDir, extraFiles, true).map((entry) => [entry.file, entry]));
+    for (const target of consensus) {
+      const extra = extraByFile.get(target.file);
+      if (!extra) continue;
+      target.smellVotes = Object.fromEntries(
+        Object.entries({ ...target.smellVotes, ...extra.smellVotes }).sort(([a], [b]) => a.localeCompare(b)),
+      );
+      target.smells = [...new Set([...target.smells, ...extra.smells])].sort((a, b) => a.localeCompare(b));
     }
   }
 
-  const header = hasExistingGoldset
-    ? '[LLM="Existing goldset with supplemental smell labels"]'
-    : `[LLM="Consensus: strict majority of ${runFiles.length} sources"]`;
+  const header = `[LLM="Consensus: strict majority of ${runFiles.length} sources; extra smells voted separately"]`;
   fs.mkdirSync(path.dirname(outputFile), { recursive: true });
   fs.writeFileSync(outputFile, `${[header, ...consensus.map(formatGoldsetLine)].join("\n")}\n`, "utf8");
 
-  const reportFile = writeConsensusReport(outputFile, consensus, runFiles, extraFiles, hasExistingGoldset);
-  console.log(`Merged ${extraFiles.length} extra runs into ${outputFile}${hasExistingGoldset ? " (existing test set preserved)" : ` using ${runFiles.length} normal runs`}`);
+  const reportFile = writeConsensusReport(outputFile, consensus, runFiles, extraFiles);
+  console.log(`Voted ${runFiles.length} runs and ${extraFiles.length} extra runs into ${outputFile}${hasExistingGoldset ? " (existing test set preserved)" : ""}`);
   console.log(`Wrote vote audit report: ${reportFile}`);
 }
 
-/** Keeps vote details from a previous report, since a preserved goldset has none of its own. */
 function writeConsensusReport(
   outputFile: string,
   consensus: FileConsensus[],
   runFiles: string[],
   extraFiles: string[],
-  hasExistingGoldset: boolean,
 ): string {
   const reportFile = outputFile.replace(/\.txt$/i, "_consensus_report.json");
-  let previousReport: { sources?: string[]; files?: FileConsensus[] } = {};
-  if (hasExistingGoldset && fs.existsSync(reportFile)) {
-    try {
-      previousReport = JSON.parse(fs.readFileSync(reportFile, "utf8"));
-    } catch {
-      // An unreadable audit report does not block the merge.
-    }
-  }
-
-  const previousFiles = new Map((previousReport.files ?? []).map((entry) => [entry.file, entry]));
-  const files = consensus.map((entry) => {
-    const previous = previousFiles.get(entry.file);
-    return previous
-      ? { ...entry, sourceCount: previous.sourceCount, requiredVotes: previous.requiredVotes, smellVotes: previous.smellVotes }
-      : entry;
-  });
-
   fs.writeFileSync(reportFile, `${JSON.stringify({
-    strategy: hasExistingGoldset ? "existing-goldset-plus-extra-label-union" : "strict-majority-plus-extra-label-union",
-    sources: hasExistingGoldset ? previousReport.sources ?? [path.basename(outputFile)] : runFiles,
+    strategy: "strict-majority-plus-voted-extra-labels",
+    sources: runFiles,
     extraSources: extraFiles,
-    files,
+    files: consensus,
   }, null, 2)}\n`, "utf8");
   return reportFile;
 }

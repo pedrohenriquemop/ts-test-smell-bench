@@ -83,11 +83,11 @@
     "smell": "Sensitive Equality",
     "tp": 1,
     "fp": 2,
-    "fn": 5,
-    "tn": 192,
+    "fn": 3,
+    "tn": 194,
     "precision": 0.3333,
-    "recall": 0.1667,
-    "f1": 0.2222
+    "recall": 0.25,
+    "f1": 0.2857
   },
   {
     "smell": "General Fixture",

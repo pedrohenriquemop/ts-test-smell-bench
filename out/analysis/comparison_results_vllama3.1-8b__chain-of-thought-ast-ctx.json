@@ -1243,8 +1243,7 @@
     "file": "modelcontextprotocol__servers__src_everything_tests_resources.test__5.ts",
     "referenceSmells": [
       "Assertion Roulette",
-      "Magic Number",
-      "Sensitive Equality"
+      "Magic Number"
     ],
     "modelSmells": [
       "Assertion Roulette",
@@ -1282,8 +1281,7 @@
     "file": "modelcontextprotocol__servers__src_everything_tests_resources.test__7.ts",
     "referenceSmells": [
       "Assertion Roulette",
-      "Magic Number",
-      "Sensitive Equality"
+      "Magic Number"
     ],
     "modelSmells": [
       "Assertion Roulette",
