@@ -1,13 +1,15 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Box, Text, useInput } from "ink";
 import Spinner from "ink-spinner";
-import { runPipeline, type StageName } from "../../pipeline/index.ts";
+import { runPipeline, type EvaluationRun, type StageName } from "../../pipeline/index.ts";
 import type { AppConfig } from "../../config/index.ts";
 import type { TuiStages } from "../settings.ts";
 
 interface Props {
   config: AppConfig;
+  /** Cloud models for the goldset stage. */
   modelIds: string[];
+  evaluationRuns: EvaluationRun[];
   stages: TuiStages;
   onComplete: () => void;
   onError: (error: string) => void;
@@ -35,7 +37,7 @@ function captureConsole(push: (line: string) => void): () => void {
   return () => Object.assign(console, original);
 }
 
-export const ExecutionScreen: React.FC<Props> = ({ config, modelIds, stages, onComplete, onError }) => {
+export const ExecutionScreen: React.FC<Props> = ({ config, modelIds, evaluationRuns, stages, onComplete, onError }) => {
   const [currentStage, setCurrentStage] = useState<StageName | undefined>();
   const [currentModel, setCurrentModel] = useState<string | undefined>();
   const [logs, setLogs] = useState<string[]>([]);
@@ -62,6 +64,7 @@ export const ExecutionScreen: React.FC<Props> = ({ config, modelIds, stages, onC
     runPipeline({
       config,
       modelIds,
+      evaluationRuns,
       stages,
       onStageStart: (stage, modelTag) => {
         if (!isMounted) return;

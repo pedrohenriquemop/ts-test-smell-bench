@@ -26,13 +26,6 @@
       "temperature": 0.0
     },
     {
-      "id": "phi4-mini-reasoning-latest",
-      "provider": "ollama",
-      "model": "phi4-mini-reasoning:latest",
-      "baseUrl": "http://localhost:11434/api/generate",
-      "temperature": 0.0
-    },
-    {
       "id": "phi4-mini-latest",
       "provider": "ollama",
       "model": "phi4-mini:latest",

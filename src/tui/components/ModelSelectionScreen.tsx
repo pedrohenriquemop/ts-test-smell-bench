@@ -1,16 +1,26 @@
-import React, { useState, useMemo } from "react";
+import React, { useMemo, useState } from "react";
 import { Box, Text, useInput } from "ink";
-import type { ModelConfig } from "../../config/index.ts";
+import { PROMPT_VARIANTS, type ModelConfig, type PromptVariant } from "../../config/index.ts";
+import type { EvaluationRun } from "../../pipeline/index.ts";
 import { APP_VERSION } from "../../version.ts";
-import type { TuiSettings, TuiStages } from "../settings.ts";
+import { evaluationRunKey, type TuiSettings, type TuiStages } from "../settings.ts";
 
 interface Props {
   models: ModelConfig[];
-  onStart: (selectedModelIds: string[], stages: TuiStages) => void;
+  onStart: (goldsetModelIds: string[], runs: EvaluationRun[], stages: TuiStages) => void;
   onExit: () => void;
   initialSettings: TuiSettings;
   onSettingsChange: (settings: TuiSettings) => void;
 }
+
+type MenuItem =
+  | { type: "stage"; id: keyof TuiStages; label: string }
+  | { type: "separator"; id: string; label: string }
+  | { type: "model"; id: string; label: string }
+  /** Toggles every variant of one local model at once. */
+  | { type: "group"; id: string; label: string; runKeys: string[] }
+  | { type: "run"; id: string; label: string }
+  | { type: "action"; id: "start" | "exit"; label: string };
 
 const STAGE_LABELS: Array<[keyof TuiStages, string]> = [
   ["mine", "Stage: Mine (Download tests)"],
@@ -23,9 +33,10 @@ const STAGE_LABELS: Array<[keyof TuiStages, string]> = [
 ];
 
 /** Local Ollama models are the evaluated SLMs; cloud models label the goldset. */
-function isSlm(model: ModelConfig): boolean {
-  return model.provider === "ollama";
-}
+const isSlm = (model: ModelConfig) => model.provider === "ollama";
+
+const variantLabel = (v: PromptVariant) =>
+  `CoT ${v.useChainOfThought ? "on " : "off"} · AST ${v.includeAstMetrics ? "on " : "off"}`;
 
 export const ModelSelectionScreen: React.FC<Props> = ({
   models,
@@ -34,143 +45,128 @@ export const ModelSelectionScreen: React.FC<Props> = ({
   initialSettings,
   onSettingsChange,
 }) => {
-  const [cursorIndex, setCursorIndex] = useState(0);
+  const llmModels = useMemo(() => models.filter((m) => !isSlm(m)), [models]);
+  const slmModels = useMemo(() => models.filter(isSlm), [models]);
+  const allRuns = useMemo(
+    () => slmModels.flatMap((m) => PROMPT_VARIANTS.map((v): EvaluationRun => ({ modelId: m.id, ...v }))),
+    [slmModels],
+  );
 
-  // State for selections
-  const [selectedModels, setSelectedModels] = useState<Set<string>>(
-    new Set(initialSettings.selectedModelIds.filter((id) => models.some((model) => model.id === id))),
+  const [cursorIndex, setCursorIndex] = useState(0);
+  const [selectedModels, setSelectedModels] = useState(
+    () => new Set(initialSettings.selectedModelIds.filter((id) => llmModels.some((m) => m.id === id))),
+  );
+  const [selectedRuns, setSelectedRuns] = useState(
+    () => new Set(initialSettings.selectedRunKeys.filter((key) => allRuns.some((r) => evaluationRunKey(r) === key))),
   );
   const [stages, setStages] = useState<TuiStages>({ ...initialSettings.stages });
 
-  const persistSettings = (nextModels: Set<string>, nextStages: typeof stages) => {
-    onSettingsChange({ selectedModelIds: Array.from(nextModels), stages: nextStages });
-  };
+  const persist = (nextModels: Set<string>, nextRuns: Set<string>, nextStages: TuiStages) =>
+    onSettingsChange({
+      selectedModelIds: [...nextModels],
+      selectedRunKeys: [...nextRuns],
+      stages: nextStages,
+    });
 
-  // Split models by type
-  const llmModels = useMemo(() => models.filter((m) => !isSlm(m)), [models]);
-  const slmModels = useMemo(() => models.filter((m) => isSlm(m)), [models]);
-
-  // Determine which model sections to show based on selected stages
   const showLlmModels = stages.analyze;
-  const showSlmModels = stages.evaluate || stages.generateMetrics;
+  const showSlmRuns = stages.evaluate || stages.generateMetrics;
 
-  // Build the menu items dynamically
   const menuItems = useMemo(() => {
-    const items: Array<{
-      type: "model" | "stage" | "separator" | "action";
-      id: string;
-      label: string;
-      category?: "llm" | "slm";
-    }> = [];
-
-    for (const [id, label] of STAGE_LABELS) items.push({ type: "stage", id, label });
+    const items: MenuItem[] = STAGE_LABELS.map(([id, label]) => ({ type: "stage", id, label }));
 
     if (showLlmModels && llmModels.length > 0) {
-      items.push({
-        type: "separator",
-        id: "sep-llm",
-        label: "── LLM Models (Gold Set) ──",
-      });
-      for (const m of llmModels) {
-        items.push({
-          type: "model",
-          id: m.id,
-          label: `${m.id} (${m.provider})`,
-          category: "llm",
-        });
-      }
+      items.push({ type: "separator", id: "sep-llm", label: "── LLM Models (Gold Set) ──" });
+      for (const m of llmModels) items.push({ type: "model", id: m.id, label: `${m.id} (${m.provider})` });
     }
 
-    if (showSlmModels && slmModels.length > 0) {
-      items.push({
-        type: "separator",
-        id: "sep-slm",
-        label: "── SLM Models (Evaluation) ──",
-      });
+    if (showSlmRuns && slmModels.length > 0) {
+      items.push({ type: "separator", id: "sep-slm", label: "── SLM Models (Evaluation) ──" });
       for (const m of slmModels) {
-        items.push({
-          type: "model",
-          id: m.id,
-          label: `${m.id} (${m.provider})`,
-          category: "slm",
-        });
+        const runs = allRuns.filter((r) => r.modelId === m.id);
+        items.push({ type: "group", id: `group-${m.id}`, label: `${m.id} (all variants)`, runKeys: runs.map(evaluationRunKey) });
+        for (const run of runs) {
+          items.push({ type: "run", id: evaluationRunKey(run), label: `   ${variantLabel(run)}` });
+        }
       }
     }
 
     items.push({ type: "action", id: "start", label: "▶ START PIPELINE" });
     items.push({ type: "action", id: "exit", label: "✖ EXIT" });
-
     return items;
-  }, [showLlmModels, showSlmModels, llmModels, slmModels]);
+  }, [showLlmModels, showSlmRuns, llmModels, slmModels, allRuns]);
 
-  const relevantModels = Array.from(selectedModels).filter((id) => {
-    const model = models.find((m) => m.id === id);
-    return Boolean(
-      model &&
-        ((stages.analyze && !isSlm(model)) ||
-          ((stages.evaluate || stages.generateMetrics) && isSlm(model))),
-    );
-  });
-  const needsModels =
-    stages.analyze || stages.evaluate || stages.generateMetrics;
-  const hasValidSelection = !needsModels || relevantModels.length > 0;
+  // The menu shrinks when stages are toggled off.
+  const cursor = Math.min(cursorIndex, menuItems.length - 1);
+
+  const goldsetModelIds = stages.analyze ? [...selectedModels] : [];
+  const evaluationRuns = showSlmRuns ? allRuns.filter((r) => selectedRuns.has(evaluationRunKey(r))) : [];
+  const missingGoldsetModel = stages.analyze && goldsetModelIds.length === 0;
+  const missingRuns = showSlmRuns && evaluationRuns.length === 0;
+
+  const toggleRuns = (keys: string[]) => {
+    const next = new Set(selectedRuns);
+    const allSelected = keys.every((key) => next.has(key));
+    for (const key of keys) {
+      if (allSelected) next.delete(key);
+      else next.add(key);
+    }
+    setSelectedRuns(next);
+    persist(selectedModels, next, stages);
+  };
+
+  const move = (step: 1 | -1) =>
+    setCursorIndex((prev) => {
+      let next = Math.min(menuItems.length - 1, Math.max(0, Math.min(prev, menuItems.length - 1) + step));
+      while (menuItems[next]?.type === "separator" && next > 0 && next < menuItems.length - 1) next += step;
+      return next;
+    });
 
   useInput((input, key) => {
-    if (key.upArrow) {
-      setCursorIndex((prev) => {
-        let next = Math.max(0, prev - 1);
-        // Skip separator items
-        while (next > 0 && menuItems[next]?.type === "separator") next--;
-        return next;
-      });
-    }
-    if (key.downArrow) {
-      setCursorIndex((prev) => {
-        let next = Math.min(menuItems.length - 1, prev + 1);
-        // Skip separator items
-        while (
-          next < menuItems.length - 1 &&
-          menuItems[next]?.type === "separator"
-        )
-          next++;
-        return next;
-      });
-    }
-    if (key.return || input === " ") {
-      const item = menuItems[cursorIndex];
-      if (!item || item.type === "separator") return;
+    if (key.upArrow) move(-1);
+    if (key.downArrow) move(1);
+    if (!key.return && input !== " ") return;
 
-      if (item.type === "model") {
+    const item = menuItems[cursor];
+    switch (item?.type) {
+      case "model": {
         const next = new Set(selectedModels);
         if (next.has(item.id)) next.delete(item.id);
         else next.add(item.id);
         setSelectedModels(next);
-        persistSettings(next, stages);
-      } else if (item.type === "stage") {
-        const next = {
-          ...stages,
-          [item.id]: !stages[item.id as keyof typeof stages],
-        };
-        setStages(next);
-        persistSettings(selectedModels, next);
-      } else if (item.type === "action") {
-        if (item.id === "start") {
-          if (!hasValidSelection) return;
-          onStart(relevantModels, stages);
-        } else if (item.id === "exit") {
-          onExit();
-        }
+        persist(next, selectedRuns, stages);
+        break;
       }
+      case "group":
+        toggleRuns(item.runKeys);
+        break;
+      case "run":
+        toggleRuns([item.id]);
+        break;
+      case "stage": {
+        const next = { ...stages, [item.id]: !stages[item.id] };
+        setStages(next);
+        persist(selectedModels, selectedRuns, next);
+        break;
+      }
+      case "action":
+        if (item.id === "exit") onExit();
+        else if (!missingGoldsetModel && !missingRuns) onStart(goldsetModelIds, evaluationRuns, stages);
+        break;
     }
   });
 
+  const isChecked = (item: MenuItem) => {
+    switch (item.type) {
+      case "stage": return stages[item.id];
+      case "model": return selectedModels.has(item.id);
+      case "run": return selectedRuns.has(item.id);
+      case "group": return item.runKeys.every((k) => selectedRuns.has(k));
+      default: return false;
+    }
+  };
+
   return (
-    <Box
-      flexDirection="column"
-      padding={1}
-      borderStyle="round"
-      borderColor="blue"
-    >
+    <Box flexDirection="column" padding={1} borderStyle="round" borderColor="blue">
       <Box marginBottom={1}>
         <Text bold color="cyan">
           === Pipeline Configuration (v{APP_VERSION}) ===
@@ -178,15 +174,11 @@ export const ModelSelectionScreen: React.FC<Props> = ({
       </Box>
 
       <Box flexDirection="column" marginBottom={1}>
-        <Text color="gray">Use ↑/↓ to navigate, Space/Enter to toggle.</Text>
-        <Text color="yellow">
-          Automatic stage: Sanitize model smells ([MATCH] only); it runs before metrics.
-        </Text>
+        <Text color="gray">Use ↑/↓ to navigate, Space/Enter to toggle. A model row toggles all of its variants.</Text>
+        <Text color="yellow">Automatic stage: Sanitize model smells; it runs before metrics.</Text>
       </Box>
 
       {menuItems.map((item, idx) => {
-        const isSelected = cursorIndex === idx;
-
         if (item.type === "separator") {
           return (
             <Box key={item.id} marginTop={1}>
@@ -198,30 +190,30 @@ export const ModelSelectionScreen: React.FC<Props> = ({
           );
         }
 
-        let isChecked = false;
-        if (item.type === "model") isChecked = selectedModels.has(item.id);
-        if (item.type === "stage")
-          isChecked = stages[item.id as keyof typeof stages];
-
-        const prefix = item.type === "action" ? "  " : isChecked ? " [x] " : " [ ] ";
-
-        const color = isSelected ? "green" : "white";
-        const bg = isSelected ? "blackBright" : undefined;
-
+        const selected = cursor === idx;
+        const someChecked = item.type === "group" && item.runKeys.some((k) => selectedRuns.has(k));
+        const box = isChecked(item) ? "[x]" : someChecked ? "[-]" : "[ ]";
+        const prefix = item.type === "action" ? "  " : ` ${box} `;
         return (
           <Box key={item.id}>
-            <Text color={color} backgroundColor={bg as any} bold={isSelected}>
-              {isSelected ? "❯" : " "} {prefix} {item.label}
+            <Text
+              color={selected ? "green" : item.type === "group" ? "cyan" : "white"}
+              backgroundColor={selected ? "blackBright" : undefined}
+              bold={selected || item.type === "group"}
+            >
+              {selected ? "❯" : " "} {prefix} {item.label}
             </Text>
           </Box>
         );
       })}
 
-      {!hasValidSelection && (
-        <Box marginTop={1}>
-          <Text color="red">⚠ Please select at least one model to start.</Text>
-        </Box>
-      )}
+      <Box marginTop={1} flexDirection="column">
+        {showSlmRuns && evaluationRuns.length > 0 && (
+          <Text color="gray">{evaluationRuns.length} evaluation run(s) selected.</Text>
+        )}
+        {missingGoldsetModel && <Text color="red">⚠ Select a cloud model to generate the gold set.</Text>}
+        {missingRuns && <Text color="red">⚠ Select at least one model variant to evaluate.</Text>}
+      </Box>
     </Box>
   );
 };

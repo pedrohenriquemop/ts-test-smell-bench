@@ -1,8 +1,11 @@
 import {
   findModel,
   promptSetupTag,
+  type AnalyzerConfig,
   type AppConfig,
   type ModelConfig,
+  type PromptConfig,
+  type PromptVariant,
 } from "../config/index.ts";
 import { Miner } from "../miner/index.ts";
 import { prepareLlmLabelingDataset } from "../dataset/index.ts";
@@ -38,11 +41,21 @@ export interface PipelineStages {
 
 export type StageName = keyof PipelineStages;
 
+/** One local-model evaluation: the model and the prompt variant it is run with. */
+export interface EvaluationRun extends PromptVariant {
+  modelId: string;
+}
+
 export interface PipelineOptions {
   config: AppConfig;
   stages?: Partial<PipelineStages>;
   /** Model IDs to run; defaults to every configured model. */
   modelIds?: string[];
+  /**
+   * Runs for the evaluate, sanitize and metrics stages. Defaults to each
+   * selected local model with the prompt flags from the config.
+   */
+  evaluationRuns?: EvaluationRun[];
   onStageStart?: (stage: StageName, modelTag?: string) => void;
   onStageComplete?: (stage: StageName, modelTag?: string) => void;
   /** Return true to continue with the next stage, false to abort. */
@@ -75,15 +88,9 @@ export async function runPipeline(opts: PipelineOptions): Promise<void> {
     }
   };
 
-  const systemPrompt = () =>
-    buildSystemPrompt(resolveSmells(config.smells.enabled), config.prompt);
-  const localModels = () =>
-    selectModels(config, opts.modelIds).filter((m) => m.provider === "ollama");
-  const runVersion = (model: ModelConfig) => `${model.id}__${promptSetupTag(config.prompt)}`;
-  const versionedAnalyzer = (model: ModelConfig) => ({
-    ...config.analyzer,
-    version: runVersion(model),
-  });
+  const systemPrompt = (prompt: PromptConfig) =>
+    buildSystemPrompt(resolveSmells(config.smells.enabled), prompt);
+  const runs = () => resolveEvaluationRuns(config, opts);
 
   if (stages.mine) {
     await runStage("mine", () => new Miner(config.miner).run());
@@ -109,11 +116,11 @@ export async function runPipeline(opts: PipelineOptions): Promise<void> {
       "analyze",
       () => {
         const provider = createProvider(model);
-        logRunHeader(provider.name, config);
+        logRunHeader(provider.name, config.prompt, config);
         return generateGoldset({
           config: config.analyzer,
           provider,
-          systemPrompt: systemPrompt(),
+          systemPrompt: systemPrompt(config.prompt),
           promptConfig: config.prompt,
           onPrompt: opts.onPrompt,
         });
@@ -127,42 +134,39 @@ export async function runPipeline(opts: PipelineOptions): Promise<void> {
   }
 
   if (stages.evaluate) {
-    for (const model of localModels()) {
+    for (const run of runs()) {
       await runStage(
         "evaluate",
-        () =>
-          runAnalyzer({
-            config: versionedAnalyzer(model),
-            provider: createProvider(model),
-            systemPrompt: systemPrompt(),
-            promptConfig: config.prompt,
+        () => {
+          const provider = createProvider(run.model);
+          logRunHeader(provider.name, run.prompt, config);
+          return runAnalyzer({
+            config: run.analyzer,
+            provider,
+            systemPrompt: systemPrompt(run.prompt),
+            promptConfig: run.prompt,
             onPrompt: opts.onPrompt,
-          }),
-        runVersion(model),
+          });
+        },
+        run.version,
       );
     }
   }
 
   if (stages.sanitize) {
-    for (const model of localModels()) {
-      await runStage(
-        "sanitize",
-        () => sanitizeComparisonResults(versionedAnalyzer(model)),
-        runVersion(model),
-      );
+    for (const run of runs()) {
+      await runStage("sanitize", () => sanitizeComparisonResults(run.analyzer), run.version);
     }
   }
 
   if (stages.generateMetrics) {
-    const models = localModels();
-    for (const model of models) {
-      await runStage(
-        "generateMetrics",
-        () => evaluateResults(versionedAnalyzer(model)),
-        runVersion(model),
-      );
+    const metricRuns = runs();
+    for (const run of metricRuns) {
+      await runStage("generateMetrics", () => evaluateResults(run.analyzer), run.version);
     }
-    if (models.length > 1) writeCrossModelReport(config.analyzer, models.map(runVersion));
+    if (metricRuns.length > 1) {
+      writeCrossModelReport(config.analyzer, metricRuns.map((run) => run.version));
+    }
   }
 
   console.log("\n✅ Pipeline complete.");
@@ -175,11 +179,45 @@ function selectModels(config: AppConfig, modelIds?: string[]): ModelConfig[] {
   return modelIds?.length ? modelIds.map((id) => findModel(config, id)) : config.models;
 }
 
-function logRunHeader(providerName: string, config: AppConfig): void {
+interface ResolvedRun {
+  model: ModelConfig;
+  prompt: PromptConfig;
+  /** Result-file tag, e.g. "llama3.1-8b__standard-noast-ctx". */
+  version: string;
+  analyzer: AnalyzerConfig;
+}
+
+/** Ordered by model so Ollama loads each model once for all of its variants. */
+function resolveEvaluationRuns(config: AppConfig, opts: PipelineOptions): ResolvedRun[] {
+  const requested: EvaluationRun[] =
+    opts.evaluationRuns ??
+    selectModels(config, opts.modelIds)
+      .filter((m) => m.provider === "ollama")
+      .map((m) => ({
+        modelId: m.id,
+        useChainOfThought: config.prompt.useChainOfThought,
+        includeAstMetrics: config.prompt.includeAstMetrics,
+      }));
+
+  const modelOrder = (id: string) => config.models.findIndex((m) => m.id === id);
+  return [...requested]
+    .sort((a, b) => modelOrder(a.modelId) - modelOrder(b.modelId))
+    .map((run) => {
+      const prompt = {
+        ...config.prompt,
+        useChainOfThought: run.useChainOfThought,
+        includeAstMetrics: run.includeAstMetrics,
+      };
+      const version = `${run.modelId}__${promptSetupTag(prompt)}`;
+      return { model: findModel(config, run.modelId), prompt, version, analyzer: { ...config.analyzer, version } };
+    });
+}
+
+function logRunHeader(providerName: string, prompt: PromptConfig, config: AppConfig): void {
   const smells = resolveSmells(config.smells.enabled);
   console.log(`\n${"═".repeat(60)}`);
   console.log(`  Model:    ${providerName}`);
-  console.log(`  Setup:    ${promptSetupTag(config.prompt)}`);
+  console.log(`  Setup:    ${promptSetupTag(prompt)}`);
   console.log(`  Smells (${smells.length}): ${smells.map((s) => s.displayName).join(", ")}`);
   console.log(`${"═".repeat(60)}\n`);
 }

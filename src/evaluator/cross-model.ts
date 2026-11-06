@@ -1,6 +1,6 @@
 import * as fs from "fs";
 import * as path from "path";
-import type { AnalyzerConfig } from "../config/index.ts";
+import { PROMPT_VARIANTS, type AnalyzerConfig } from "../config/index.ts";
 import { evaluateRun, type RunEvaluation } from "./index.ts";
 import {
   aggregate,
@@ -28,10 +28,34 @@ interface Contender {
 
 const support = (m: Metric) => m.tp + m.fn;
 
-/** Short display label: the model ID, or the full run tag when IDs repeat. */
+interface RunSetup {
+  modelId: string;
+  cot: boolean;
+  ast: boolean;
+  ctx: boolean;
+}
+
+/** Reads "llama3.1-8b__standard-noast-ctx" back into its prompt flags. */
+function parseSetup(version: string): RunSetup {
+  const [modelId, setup = ""] = version.split("__");
+  const flags = setup.split("-");
+  return {
+    modelId,
+    cot: setup.startsWith("chain-of-thought"),
+    ast: !flags.includes("noast"),
+    ctx: !flags.includes("noctx"),
+  };
+}
+
+const setupLabel = ({ cot, ast, ctx }: RunSetup) =>
+  [cot ? "CoT" : "no CoT", ast ? "AST" : "no AST", ...(ctx ? [] : ["no ctx"])].join(", ");
+
+/** The model ID, plus its prompt setup when the same model was run more than once. */
 function runLabels(evaluations: RunEvaluation[]): string[] {
   const ids = evaluations.map((e) => e.modelId);
-  return evaluations.map((e) => (ids.filter((id) => id === e.modelId).length > 1 ? e.version : e.modelId));
+  return evaluations.map((e) =>
+    ids.filter((id) => id === e.modelId).length > 1 ? `${e.modelId} (${setupLabel(parseSetup(e.version))})` : e.modelId,
+  );
 }
 
 function contenderFromRun(evaluation: RunEvaluation, label: string): Contender {
@@ -64,6 +88,106 @@ function ensembleContender(evaluations: RunEvaluation[]): Contender {
 }
 
 const overlaps = (a: Interval, b: Interval) => a[0] <= b[1] && b[0] <= a[1];
+
+// ── Prompt ablation (CoT × AST per model) ────────────────────────────
+
+interface Scores {
+  macro: number;
+  micro: number;
+}
+
+interface AblationRow {
+  modelId: string;
+  /** Scores per PROMPT_VARIANTS entry, when that variant was run. */
+  variants: Array<Scores | undefined>;
+  /** Mean change from switching the flag on, holding the other flag fixed. */
+  cotEffect: Scores | null;
+  astEffect: Scores | null;
+}
+
+const variantKey = (cot: boolean, ast: boolean) => `${cot}|${ast}`;
+
+function flagEffect(byVariant: Map<string, Scores>, flag: "cot" | "ast"): Scores | null {
+  const deltas: Scores[] = [];
+  for (const other of [true, false]) {
+    const on = byVariant.get(flag === "cot" ? variantKey(true, other) : variantKey(other, true));
+    const off = byVariant.get(flag === "cot" ? variantKey(false, other) : variantKey(other, false));
+    if (on && off) deltas.push({ macro: on.macro - off.macro, micro: on.micro - off.micro });
+  }
+  if (deltas.length === 0) return null;
+  const mean = (key: keyof Scores) => deltas.reduce((s, d) => s + d[key], 0) / deltas.length;
+  return { macro: mean("macro"), micro: mean("micro") };
+}
+
+/** One row per model that was run with more than one prompt variant. */
+function ablationRows(evaluations: RunEvaluation[]): AblationRow[] {
+  const byModel = new Map<string, Map<string, Scores>>();
+  for (const e of evaluations) {
+    const { modelId, cot, ast } = parseSetup(e.version);
+    const variants = byModel.get(modelId) ?? new Map<string, Scores>();
+    variants.set(variantKey(cot, ast), { macro: e.aggregates.macro.f1, micro: e.aggregates.micro.f1 });
+    byModel.set(modelId, variants);
+  }
+
+  return [...byModel]
+    .filter(([, variants]) => variants.size > 1)
+    .map(([modelId, variants]) => ({
+      modelId,
+      variants: PROMPT_VARIANTS.map((v) => variants.get(variantKey(v.useChainOfThought, v.includeAstMetrics))),
+      cotEffect: flagEffect(variants, "cot"),
+      astEffect: flagEffect(variants, "ast"),
+    }));
+}
+
+const signedPct = (value: number) => `${value > 0 ? "+" : ""}${(value * 100).toFixed(1)}`;
+
+function ablationSection(rows: AblationRow[]): string {
+  if (rows.length === 0) return "";
+  const effectCell = (effect: Scores | null) => {
+    if (!effect) return "–";
+    const color = effect.macro > 0 ? "text-emerald-300" : effect.macro < 0 ? "text-rose-300" : "";
+    return `<span class="${color}">${signedPct(effect.macro)}</span> <span class="text-gray-500">/ ${signedPct(effect.micro)}</span>`;
+  };
+  const tableRows = rows.map((row) => [
+    `<b>${escapeHtml(row.modelId)}</b>`,
+    ...row.variants.map((s) =>
+      s
+        ? `<span class="px-2 py-0.5 rounded" style="background:${scoreColor(s.macro)}">${pct(s.macro)}</span> <span class="text-gray-500">/ ${pct(s.micro)}</span>`
+        : "–",
+    ),
+    effectCell(row.cotEffect),
+    effectCell(row.astEffect),
+  ]);
+  return section(
+    "Prompt Ablation (CoT × AST)",
+    table(
+      [
+        { label: "Model", align: "left" },
+        ...PROMPT_VARIANTS.map((v) => ({
+          label: setupLabel({ modelId: "", cot: v.useChainOfThought, ast: v.includeAstMetrics, ctx: true }),
+        })),
+        { label: "CoT effect", title: "Mean change in F1 points when turning chain-of-thought on" },
+        { label: "AST effect", title: "Mean change in F1 points when turning AST metrics on" },
+      ],
+      tableRows,
+      "Each cell is macro F1 / micro F1. Effects are the mean change in F1 points from turning the flag on while the other flag stays fixed (macro / micro).",
+    ),
+  );
+}
+
+function ablationInsights(rows: AblationRow[]): string[] {
+  const describe = (flag: string, effects: Array<{ modelId: string; effect: Scores }>) => {
+    if (effects.length === 0) return [];
+    const helped = effects.filter((e) => e.effect.macro > 0).map((e) => escapeHtml(e.modelId));
+    const mean = effects.reduce((s, e) => s + e.effect.macro, 0) / effects.length;
+    return [
+      `Turning ${flag} on raises macro F1 for ${helped.length} of ${effects.length} model(s)${helped.length ? ` (${helped.join(", ")})` : ""}; the mean effect is ${signedPct(mean)} points.`,
+    ];
+  };
+  const effects = (key: "cotEffect" | "astEffect") =>
+    rows.flatMap((r) => (r[key] ? [{ modelId: r.modelId, effect: r[key]! }] : []));
+  return [...describe("chain-of-thought", effects("cotEffect")), ...describe("AST metrics", effects("astEffect"))];
+}
 
 function crossInsights(models: Contender[], ensemble: Contender | null): string[] {
   const insights: string[] = [];
@@ -270,7 +394,10 @@ export function writeCrossModelReport(analyzer: AnalyzerConfig, versions: string
   console.log(`\n📊 Cross-model summary saved to ${summaryPath}`);
 
   const models = evaluations.map((e, i) => contenderFromRun(e, labels[i]));
-  const ensemble = evaluations.length >= 3 ? ensembleContender(evaluations) : null;
+  // Voting only makes sense between different models given the same prompt.
+  const sameSetup = new Set(evaluations.map((e) => e.version.split("__")[1])).size === 1;
+  const ensemble = sameSetup && evaluations.length >= 3 ? ensembleContender(evaluations) : null;
+  const ablation = ablationRows(evaluations);
   const contenders = ensemble ? [...models, ensemble] : models;
 
   fs.writeFileSync(path.join(outputDir, "cross_model_report.json"), JSON.stringify(contenders, null, 2));
@@ -278,9 +405,10 @@ export function writeCrossModelReport(analyzer: AnalyzerConfig, versions: string
   const body = [
     section(
       "Key Findings",
-      `<ul class="list-disc pl-6 space-y-2 text-gray-200">${crossInsights(models, ensemble).map((i) => `<li>${i}</li>`).join("")}</ul>`,
+      `<ul class="list-disc pl-6 space-y-2 text-gray-200">${[...crossInsights(models, ensemble), ...ablationInsights(ablation)].map((i) => `<li>${i}</li>`).join("")}</ul>`,
     ),
     section("Leaderboard", leaderboard(contenders)),
+    ablationSection(ablation),
     section("F1 by Smell", perSmellMatrix(contenders, (m) => pct(m?.f1 ?? 0), (m) => m?.f1 ?? 0)),
     section(
       "Precision / Recall by Smell",
@@ -306,7 +434,11 @@ export function writeCrossModelReport(analyzer: AnalyzerConfig, versions: string
   const reportPath = path.join(outputDir, "cross_model_report.html");
   fs.writeFileSync(
     reportPath,
-    page("Cross-Model Comparison", `${evaluations.length} models · ${escapeHtml(versions[0].split("__")[1] ?? "")}`, body),
+    page(
+      "Cross-Model Comparison",
+      `${evaluations.length} runs · ${sameSetup ? escapeHtml(setupLabel(parseSetup(evaluations[0].version))) : "mixed prompt setups"}`,
+      body,
+    ),
   );
   console.log(`📊 Cross-model report saved to ${reportPath}`);
 }

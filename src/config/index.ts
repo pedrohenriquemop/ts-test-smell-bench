@@ -110,6 +110,16 @@ function resolvePromptConfig(raw: {
   };
 }
 
+/** The prompt flags that can vary between evaluation runs of the same model. */
+export type PromptVariant = Pick<PromptConfig, "useChainOfThought" | "includeAstMetrics">;
+
+export const PROMPT_VARIANTS: PromptVariant[] = [
+  { useChainOfThought: true, includeAstMetrics: true },
+  { useChainOfThought: false, includeAstMetrics: true },
+  { useChainOfThought: true, includeAstMetrics: false },
+  { useChainOfThought: false, includeAstMetrics: false },
+];
+
 /** Run tag used to version result files, e.g. "chain-of-thought-ast-ctx". */
 export function promptSetupTag(prompt: PromptConfig): string {
   return [

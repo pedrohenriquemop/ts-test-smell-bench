@@ -1,7 +1,33 @@
 import * as readline from "readline";
-import { Command } from "commander";
-import { DEFAULT_CONFIG_PATH, loadConfig } from "../../config/index.ts";
-import { runPipeline } from "../../pipeline/index.ts";
+import { Command, Option } from "commander";
+import { DEFAULT_CONFIG_PATH, loadConfig, type AppConfig } from "../../config/index.ts";
+import { runPipeline, type EvaluationRun } from "../../pipeline/index.ts";
+
+type FlagMode = "on" | "off" | "both";
+
+const flagValues = (mode: FlagMode | undefined, configValue: boolean): boolean[] =>
+  mode === "both" ? [true, false] : mode ? [mode === "on"] : [configValue];
+
+/** Every local model (or those in `modelIds`) × the requested CoT/AST values. */
+function evaluationRuns(
+  config: AppConfig,
+  modelIds: string[] | undefined,
+  cot: FlagMode | undefined,
+  ast: FlagMode | undefined,
+): EvaluationRun[] {
+  const localIds = config.models
+    .filter((m) => m.provider === "ollama" && (!modelIds?.length || modelIds.includes(m.id)))
+    .map((m) => m.id);
+  return localIds.flatMap((modelId) =>
+    flagValues(cot, config.prompt.useChainOfThought).flatMap((useChainOfThought) =>
+      flagValues(ast, config.prompt.includeAstMetrics).map((includeAstMetrics) => ({
+        modelId,
+        useChainOfThought,
+        includeAstMetrics,
+      })),
+    ),
+  );
+}
 
 function askYesNo(message: string): Promise<boolean> {
   const rl = readline.createInterface({ input: process.stdin, output: process.stdout });
@@ -23,6 +49,12 @@ export const runCommand = new Command("run")
   .option("--skip-sanitize", "Skip the model-smell sanitization stage")
   .option("--skip-metrics", "Skip the metrics generation stage")
   .option("-m, --models <ids...>", "Model IDs to run. Defaults to all configured models.")
+  .addOption(
+    new Option("--cot <mode>", "Chain-of-thought for the local-model runs (default: config)").choices(["on", "off", "both"]),
+  )
+  .addOption(
+    new Option("--ast <mode>", "AST metrics for the local-model runs (default: config)").choices(["on", "off", "both"]),
+  )
   .action(async (options) => {
     const config = await loadConfig(options.config);
     console.log("🚀 Starting ts-test-smell-bench pipeline...");
@@ -42,6 +74,7 @@ export const runCommand = new Command("run")
         generateMetrics: !options.skipMetrics,
       },
       modelIds: options.models,
+      evaluationRuns: evaluationRuns(config, options.models, options.cot, options.ast),
       onStageStart: (stage, modelTag) => {
         stageStart = Date.now();
         console.log(`\n▶️  [STAGE START] ${stage.toUpperCase()}${target(modelTag)}...`);

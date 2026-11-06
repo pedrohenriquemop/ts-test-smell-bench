@@ -73,9 +73,12 @@ function recoverInvalidEntry(entry: ResultEntry): ResultEntry {
 function finalAnswerSmells(raw: unknown): string[] | undefined {
   if (typeof raw !== "string") return undefined;
   if (/<classification\s*>/i.test(raw)) return parseModelResponse(raw, true)?.smells;
-  if (/\b(?:MATCH|PASS)\b/i.test(evaluationSection(raw))) return smellsMarkedMatch(raw);
+  if (DECISION_LINE.test(evaluationSection(raw))) return smellsMarkedMatch(raw);
   return undefined;
 }
+
+/** "- Assertion Roulette: … -> [MATCH]"; uppercase only, so prose like "strings match" is ignored. */
+const DECISION_LINE = /^\s*[-*]\s*[^:\n]+:.*\b(?:MATCH|PASS)\b/m;
 
 function sanitizeEntry(entry: ResultEntry): ResultEntry {
   const recovered = recoverInvalidEntry(entry);

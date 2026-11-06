@@ -3,6 +3,7 @@ import { Box, Text, useInput } from "ink";
 import * as fs from "fs";
 import * as path from "path";
 import type { AppConfig } from "../config/index.ts";
+import type { EvaluationRun } from "../pipeline/index.ts";
 import { ModelSelectionScreen } from "./components/ModelSelectionScreen.tsx";
 import { ExecutionScreen } from "./components/ExecutionScreen.tsx";
 import { ResultsScreen } from "./components/ResultsScreen.tsx";
@@ -41,7 +42,8 @@ const ErrorScreen: React.FC<{ message: string | null; onExit: () => void }> = ({
 
 export const App: React.FC<Props> = ({ config, onExit }) => {
   const [screen, setScreen] = useState<Screen>("select");
-  const [selectedModels, setSelectedModels] = useState<string[]>([]);
+  const [goldsetModelIds, setGoldsetModelIds] = useState<string[]>([]);
+  const [evaluationRuns, setEvaluationRuns] = useState<EvaluationRun[]>([]);
   const [stages, setStages] = useState<TuiStages>(() => loadTuiSettings().stages);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
 
@@ -62,8 +64,9 @@ export const App: React.FC<Props> = ({ config, onExit }) => {
   const afterMineConfirmation = (s: TuiStages) =>
     setScreen(preparedFilesWouldBeDeleted(s) ? "confirm-prepare" : "execute");
 
-  const handleStart = (models: string[], selectedStages: TuiStages) => {
-    setSelectedModels(models);
+  const handleStart = (modelIds: string[], runs: EvaluationRun[], selectedStages: TuiStages) => {
+    setGoldsetModelIds(modelIds);
+    setEvaluationRuns(runs);
     setStages(selectedStages);
     if (minedFilesWouldBeDeleted(selectedStages)) setScreen("confirm-mine");
     else afterMineConfirmation(selectedStages);
@@ -108,7 +111,8 @@ export const App: React.FC<Props> = ({ config, onExit }) => {
       {screen === "execute" && (
         <ExecutionScreen
           config={config}
-          modelIds={selectedModels}
+          modelIds={goldsetModelIds}
+          evaluationRuns={evaluationRuns}
           stages={stages}
           onComplete={() => setScreen("results")}
           onError={(message) => {

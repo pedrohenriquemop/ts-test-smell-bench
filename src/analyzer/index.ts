@@ -187,9 +187,14 @@ interface ComparisonRecord {
   [field: string]: unknown;
 }
 
-/** Loads previous results up to the first errored record, which will be retried. */
+/**
+ * Loads previous results up to the first errored record, which will be
+ * retried. A run that already covers every test is kept without asking, so
+ * an unattended batch of runs never stops at a prompt for a finished run.
+ */
 async function resumableResults(
   outputPath: string,
+  testFiles: string[],
   onPrompt: PromptHandler | undefined,
 ): Promise<ComparisonRecord[]> {
   if (!fs.existsSync(outputPath)) return [];
@@ -210,6 +215,12 @@ async function resumableResults(
     console.warn(`⚠️ Discarding ${existing.length - clean.length} errored/incomplete test records from previous run.`);
   }
   if (clean.length === 0) return [];
+
+  const done = new Set(clean.map((r) => r.file));
+  if (testFiles.every((file) => done.has(file))) {
+    console.log(`Existing results already cover all ${testFiles.length} tests; skipping.`);
+    return clean;
+  }
 
   const resume = await ask(
     onPrompt,
@@ -253,14 +264,15 @@ export async function runAnalyzer(options: RunAnalyzerOptions): Promise<void> {
   const outputPath = path.join(outputDir, `comparison_results${resultsSuffix(config)}.json`);
   fs.mkdirSync(outputDir, { recursive: true });
 
-  const results = await resumableResults(outputPath, onPrompt);
+  console.log("Parsing reference results...");
+  const reference = readGoldsetFile(path.resolve(config.referenceResultsPath)).slice(0, config.numTests);
+
+  const results = await resumableResults(outputPath, reference.map((test) => test.file), onPrompt);
   const completedFiles = new Set(results.map((r) => r.file));
 
   console.log("Loading metadata...");
   const manifest = new Map(readManifest(config.manifestPath).map((entry) => [entry.file, entry]));
 
-  console.log("Parsing reference results...");
-  const reference = readGoldsetFile(path.resolve(config.referenceResultsPath)).slice(0, config.numTests);
   const pending = reference.filter((test) => !completedFiles.has(test.file));
   if (pending.length === 0) {
     console.log("No more tests to run.");

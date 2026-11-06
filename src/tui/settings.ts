@@ -1,13 +1,21 @@
 import * as fs from "node:fs";
 import * as path from "node:path";
-import type { PipelineStages } from "../pipeline/index.ts";
+import type { EvaluationRun, PipelineStages } from "../pipeline/index.ts";
 
 /** Sanitize always runs, so it is not a toggle in the TUI. */
 export type TuiStages = Omit<PipelineStages, "sanitize">;
 
 export interface TuiSettings {
+  /** Cloud models used to label the goldset. */
   selectedModelIds: string[];
+  /** Local-model evaluation runs, as keys from `evaluationRunKey`. */
+  selectedRunKeys: string[];
   stages: TuiStages;
+}
+
+/** e.g. "llama3.1-8b|cot|noast". */
+export function evaluationRunKey(run: EvaluationRun): string {
+  return [run.modelId, run.useChainOfThought ? "cot" : "nocot", run.includeAstMetrics ? "ast" : "noast"].join("|");
 }
 
 const SETTINGS_FILENAME = ".ts-test-smell-bench.tui.json";
@@ -25,7 +33,7 @@ const DEFAULT_STAGES: TuiStages = {
 const settingsPath = () => path.resolve(SETTINGS_FILENAME);
 
 export function loadTuiSettings(): TuiSettings {
-  const defaults: TuiSettings = { selectedModelIds: [], stages: { ...DEFAULT_STAGES } };
+  const defaults: TuiSettings = { selectedModelIds: [], selectedRunKeys: [], stages: { ...DEFAULT_STAGES } };
   if (!fs.existsSync(settingsPath())) return defaults;
 
   try {
@@ -35,10 +43,11 @@ export function loadTuiSettings(): TuiSettings {
     for (const stage of Object.keys(stages) as Array<keyof TuiStages>) {
       if (typeof savedStages[stage] === "boolean") stages[stage] = savedStages[stage];
     }
+    const strings = (value: unknown) =>
+      Array.isArray(value) ? value.filter((item): item is string => typeof item === "string") : [];
     return {
-      selectedModelIds: Array.isArray(saved.selectedModelIds)
-        ? saved.selectedModelIds.filter((id: unknown): id is string => typeof id === "string")
-        : [],
+      selectedModelIds: strings(saved.selectedModelIds),
+      selectedRunKeys: strings(saved.selectedRunKeys),
       stages,
     };
   } catch {
