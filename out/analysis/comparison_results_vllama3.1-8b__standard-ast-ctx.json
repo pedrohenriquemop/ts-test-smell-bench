@@ -1,0 +1,3335 @@
+[
+  {
+    "file": "excalidraw__excalidraw__packages_element_src_tests_flowchart.test__0.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal",
+      "Magic Number"
+    ],
+    "modelSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "Multiple assertions without messages and hardcoded literals in test source.",
+    "latencyMs": 157782,
+    "rawModelResponse": "FILE: excalidraw__excalidraw__packages_element_src_tests_flowchart.test__0.ts - SMELLS: Assertion Roulette, Hardcoded Literal - JUSTIFICATION: Multiple assertions without messages and hardcoded literals in test source."
+  },
+  {
+    "file": "shadcn-ui__ui__packages_helpers_src_test_chat-contract__0.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Eager Test",
+      "Mystery Guest"
+    ],
+    "modelSmells": [
+      "Hardcoded Literal",
+      "Magic Number"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "Raw strings passed directly as behavioral inputs into SUT methods and hardcoded literal \"mutated\" in mutateNestedValue function.",
+    "latencyMs": 54510,
+    "rawModelResponse": "FILE: shadcn-ui__ui__packages_helpers_src_test_chat-contract__0.ts - SMELLS: Hardcoded Literal, Magic Number - JUSTIFICATION: Raw strings passed directly as behavioral inputs into SUT methods and hardcoded literal \"mutated\" in mutateNestedValue function."
+  },
+  {
+    "file": "shadcn-ui__ui__packages_helpers_src_test_chat-contract__1.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Mystery Guest"
+    ],
+    "modelSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "Multiple assertions without messages and hardcoded literals in test source.",
+    "latencyMs": 52884,
+    "rawModelResponse": "FILE: shadcn-ui__ui__packages_helpers_src_test_chat-contract__1.ts - SMELLS: Assertion Roulette, Hardcoded Literal - JUSTIFICATION: Multiple assertions without messages and hardcoded literals in test source."
+  },
+  {
+    "file": "shadcn-ui__ui__packages_helpers_src_test_chat-contract__2.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Mystery Guest"
+    ],
+    "modelSmells": [
+      "Hardcoded Literal",
+      "Magic Number"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "Raw string literal \"mutated\" passed directly as behavioral input into mutateNestedValue function, hardcoded number 0 used in get method call.",
+    "latencyMs": 51683,
+    "rawModelResponse": "FILE: shadcn-ui__ui__packages_helpers_src_test_chat-contract__2.ts - SMELLS: Hardcoded Literal, Magic Number - JUSTIFICATION: Raw string literal \"mutated\" passed directly as behavioral input into mutateNestedValue function, hardcoded number 0 used in get method call."
+  },
+  {
+    "file": "earendil-works__pi__packages_agent_test_harness_pico3_spec-plugins-lifecycle.test__0.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Eager Test",
+      "Hardcoded Literal",
+      "Mystery Guest"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 85917,
+    "rawModelResponse": "FILE: earendil-works__pi__packages_agent_test_harness_pico3_spec-plugins-lifecycle.test__0.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "earendil-works__pi__packages_agent_test_harness_pico3_spec-plugins-lifecycle.test__1.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Eager Test",
+      "Hardcoded Literal",
+      "Magic Number",
+      "Mystery Guest"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "No applicable test smells detected in the provided code.",
+    "latencyMs": 86051,
+    "rawModelResponse": "FILE: earendil-works__pi__packages_agent_test_harness_pico3_spec-plugins-lifecycle.test__1.ts - SMELLS: None - JUSTIFICATION: No applicable test smells detected in the provided code."
+  },
+  {
+    "file": "earendil-works__pi__packages_agent_test_harness_pico3_spec-plugins-lifecycle.test__2.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Eager Test",
+      "Hardcoded Literal",
+      "Mystery Guest"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "No test smells detected in this file.",
+    "latencyMs": 81830,
+    "rawModelResponse": "FILE: earendil-works__pi__packages_agent_test_harness_pico3_spec-plugins-lifecycle.test__2.ts - SMELLS: None - JUSTIFICATION: No test smells detected in this file."
+  },
+  {
+    "file": "earendil-works__pi__packages_agent_test_harness_pico3_spec-plugins-lifecycle.test__3.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Eager Test",
+      "Hardcoded Literal",
+      "Magic Number",
+      "Mystery Guest"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 90394,
+    "rawModelResponse": "FILE: earendil-works__pi__packages_agent_test_harness_pico3_spec-plugins-lifecycle.test__3.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "earendil-works__pi__packages_agent_test_harness_pico3_spec-plugins-lifecycle.test__5.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Conditional Test Logic",
+      "Eager Test",
+      "Hardcoded Literal",
+      "Mystery Guest"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "No applicable test smells detected based on provided AST metadata and context.",
+    "latencyMs": 89014,
+    "rawModelResponse": "FILE: earendil-works__pi__packages_agent_test_harness_pico3_spec-plugins-lifecycle.test__5.ts - SMELLS: None - JUSTIFICATION: No applicable test smells detected based on provided AST metadata and context."
+  },
+  {
+    "file": "earendil-works__pi__packages_agent_test_harness_pico3_spec-plugins-lifecycle.test__6.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Conditional Test Logic",
+      "Eager Test",
+      "Hardcoded Literal",
+      "Mystery Guest"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "No applicable test smells detected in the provided code.",
+    "latencyMs": 91849,
+    "rawModelResponse": "FILE: earendil-works__pi__packages_agent_test_harness_pico3_spec-plugins-lifecycle.test__6.ts - SMELLS: None - JUSTIFICATION: No applicable test smells detected in the provided code."
+  },
+  {
+    "file": "earendil-works__pi__packages_agent_test_harness_pico3_spec-plugins-lifecycle.test__7.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Conditional Test Logic",
+      "Eager Test",
+      "Hardcoded Literal",
+      "Magic Number",
+      "Mystery Guest",
+      "Sleepy Test"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "No applicable test smells detected in the provided code.",
+    "latencyMs": 101602,
+    "rawModelResponse": "FILE: earendil-works__pi__packages_agent_test_harness_pico3_spec-plugins-lifecycle.test__7.ts - SMELLS: None - JUSTIFICATION: No applicable test smells detected in the provided code."
+  },
+  {
+    "file": "earendil-works__pi__packages_agent_test_harness_pico3_spec-plugins-lifecycle.test__8.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Exception Catching Throwing",
+      "Hardcoded Literal",
+      "Mystery Guest"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 96875,
+    "rawModelResponse": "FILE: earendil-works__pi__packages_agent_test_harness_pico3_spec-plugins-lifecycle.test__8.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "earendil-works__pi__packages_agent_test_harness_pico3_spec-plugins-lifecycle.test__9.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Conditional Test Logic",
+      "Eager Test",
+      "Hardcoded Literal",
+      "Magic Number",
+      "Mystery Guest",
+      "Sleepy Test"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "No test smells detected based on provided AST metadata and context.",
+    "latencyMs": 89362,
+    "rawModelResponse": "FILE: earendil-works__pi__packages_agent_test_harness_pico3_spec-plugins-lifecycle.test__9.ts - SMELLS: None - JUSTIFICATION: No test smells detected based on provided AST metadata and context."
+  },
+  {
+    "file": "earendil-works__pi__packages_agent_test_harness_pico3_spec-plugins-lifecycle.test__10.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Conditional Test Logic",
+      "Hardcoded Literal",
+      "Magic Number",
+      "Mystery Guest",
+      "Sleepy Test"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "No applicable test smells detected based on provided AST metadata and context.",
+    "latencyMs": 87762,
+    "rawModelResponse": "FILE: earendil-works__pi__packages_agent_test_harness_pico3_spec-plugins-lifecycle.test__10.ts - SMELLS: None - JUSTIFICATION: No applicable test smells detected based on provided AST metadata and context."
+  },
+  {
+    "file": "earendil-works__pi__packages_agent_test_harness_pico3_spec-plugins-lifecycle.test__11.ts",
+    "referenceSmells": [
+      "Conditional Test Logic",
+      "Hardcoded Literal",
+      "Mystery Guest"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "No applicable test smells detected based on provided AST metadata and context.",
+    "latencyMs": 88580,
+    "rawModelResponse": "FILE: earendil-works__pi__packages_agent_test_harness_pico3_spec-plugins-lifecycle.test__11.ts - SMELLS: None - JUSTIFICATION: No applicable test smells detected based on provided AST metadata and context."
+  },
+  {
+    "file": "earendil-works__pi__packages_agent_test_harness_pico3_spec-plugins-lifecycle.test__12.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal",
+      "Mystery Guest"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "No applicable test smells detected in the provided code.",
+    "latencyMs": 89210,
+    "rawModelResponse": "FILE: earendil-works__pi__packages_agent_test_harness_pico3_spec-plugins-lifecycle.test__12.ts - SMELLS: None - JUSTIFICATION: No applicable test smells detected in the provided code."
+  },
+  {
+    "file": "earendil-works__pi__packages_agent_test_harness_pico3_spec-plugins-lifecycle.test__13.ts",
+    "referenceSmells": [
+      "Hardcoded Literal",
+      "Mystery Guest"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "No applicable test smells detected based on provided AST metadata and context.",
+    "latencyMs": 86016,
+    "rawModelResponse": "FILE: earendil-works__pi__packages_agent_test_harness_pico3_spec-plugins-lifecycle.test__13.ts - SMELLS: None - JUSTIFICATION: No applicable test smells detected based on provided AST metadata and context."
+  },
+  {
+    "file": "earendil-works__pi__packages_agent_test_harness_pico3_spec-plugins-lifecycle.test__14.ts",
+    "referenceSmells": [
+      "Hardcoded Literal",
+      "Mystery Guest"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "No test smells detected in this file.",
+    "latencyMs": 84076,
+    "rawModelResponse": "FILE: earendil-works__pi__packages_agent_test_harness_pico3_spec-plugins-lifecycle.test__14.ts - SMELLS: None - JUSTIFICATION: No test smells detected in this file."
+  },
+  {
+    "file": "earendil-works__pi__packages_agent_test_harness_pico3_spec-plugins-lifecycle.test__15.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal",
+      "Magic Number",
+      "Mystery Guest",
+      "Sleepy Test"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 101537,
+    "rawModelResponse": "FILE: earendil-works__pi__packages_agent_test_harness_pico3_spec-plugins-lifecycle.test__15.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "earendil-works__pi__packages_agent_test_harness_pico3_spec-plugins-lifecycle.test__16.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal",
+      "Mystery Guest"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "No applicable test smells detected in the provided code.",
+    "latencyMs": 85761,
+    "rawModelResponse": "FILE: earendil-works__pi__packages_agent_test_harness_pico3_spec-plugins-lifecycle.test__16.ts - SMELLS: None - JUSTIFICATION: No applicable test smells detected in the provided code."
+  },
+  {
+    "file": "earendil-works__pi__packages_ai_test_zen.test__0.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal",
+      "Mystery Guest",
+      "Resource Optimism"
+    ],
+    "modelSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "Multiple assertions without messages and hardcoded literals in test source.",
+    "latencyMs": 38206,
+    "rawModelResponse": "FILE: earendil-works__pi__packages_ai_test_zen.test__0.ts - SMELLS: Assertion Roulette, Hardcoded Literal - JUSTIFICATION: Multiple assertions without messages and hardcoded literals in test source."
+  },
+  {
+    "file": "earendil-works__pi__packages_ai_test_uuid.test__0.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Conditional Test Logic",
+      "Magic Number"
+    ],
+    "modelSmells": [
+      "Assertion Roulette",
+      "Resource Optimism"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "Multiple assertions without messages and network I/O call in uuidv7 function.",
+    "latencyMs": 68863,
+    "rawModelResponse": "FILE: earendil-works__pi__packages_ai_test_uuid.test__0.ts - SMELLS: Assertion Roulette, Resource Optimism - JUSTIFICATION: Multiple assertions without messages and network I/O call in uuidv7 function."
+  },
+  {
+    "file": "earendil-works__pi__packages_ai_test_uuid.test__1.ts",
+    "referenceSmells": [
+      "Hardcoded Literal",
+      "Magic Number"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "Multiple assertions without messages in target test block.",
+    "latencyMs": 53953,
+    "rawModelResponse": "FILE: earendil-works__pi__packages_ai_test_uuid.test__1.ts - SMELLS: Assertion Roulette - JUSTIFICATION: Multiple assertions without messages in target test block."
+  },
+  {
+    "file": "earendil-works__pi__packages_ai_test_text.test__0.ts",
+    "referenceSmells": [],
+    "modelSmells": [
+      "Hardcoded Literal",
+      "Magic Number"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "Raw string \"first\\nsecond\" passed directly as behavioral input into SUT method contentText() and hardcoded literal 1 in id field of toolCall object.",
+    "latencyMs": 42506,
+    "rawModelResponse": "FILE: earendil-works__pi__packages_ai_test_text.test__0.ts - SMELLS: Hardcoded Literal, Magic Number - JUSTIFICATION: Raw string \"first\\nsecond\" passed directly as behavioral input into SUT method contentText() and hardcoded literal 1 in id field of toolCall object."
+  },
+  {
+    "file": "earendil-works__pi__packages_ai_test_text.test__1.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Hardcoded Literal",
+      "Magic Number"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "Two hardcoded literals (\"firstsecond\") and a magic number (0) are present in the test source.",
+    "latencyMs": 36373,
+    "rawModelResponse": "FILE: earendil-works__pi__packages_ai_test_text.test__1.ts - SMELLS: Hardcoded Literal, Magic Number - JUSTIFICATION: Two hardcoded literals (\"firstsecond\") and a magic number (0) are present in the test source."
+  },
+  {
+    "file": "earendil-works__pi__packages_ai_test_text.test__2.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Hardcoded Literal",
+      "Magic Number"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "Raw string literals passed directly as behavioral inputs into SUT methods.",
+    "latencyMs": 19009,
+    "rawModelResponse": "FILE: earendil-works__pi__packages_ai_test_text.test__2.ts - SMELLS: Hardcoded Literal, Magic Number - JUSTIFICATION: Raw string literals passed directly as behavioral inputs into SUT methods."
+  },
+  {
+    "file": "earendil-works__pi__packages_ai_test_text.test__3.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Hardcoded Literal",
+      "Magic Number"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "Raw strings passed directly as behavioral inputs into SUT methods and hardcoded literal \"second\" in the test data.",
+    "latencyMs": 46365,
+    "rawModelResponse": "FILE: earendil-works__pi__packages_ai_test_text.test__3.ts - SMELLS: Hardcoded Literal, Magic Number - JUSTIFICATION: Raw strings passed directly as behavioral inputs into SUT methods and hardcoded literal \"second\" in the test data."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_memory_tests_resource.test__0.ts",
+    "referenceSmells": [],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "Only one assertion is present, but it uses expect.objectContaining with a hardcoded literal 'application/json'.",
+    "latencyMs": 47318,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_memory_tests_resource.test__0.ts - SMELLS: Assertion Roulette - JUSTIFICATION: Only one assertion is present, but it uses expect.objectContaining with a hardcoded literal 'application/json'."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_memory_tests_resource.test__1.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "Multiple assertions without messages and hardcoded literals in test source.",
+    "latencyMs": 55891,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_memory_tests_resource.test__1.ts - SMELLS: Assertion Roulette, Hardcoded Literal - JUSTIFICATION: Multiple assertions without messages and hardcoded literals in test source."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_memory_tests_resource.test__2.ts",
+    "referenceSmells": [],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "Only one assertion is present, but it lacks a custom failure explanation string.",
+    "latencyMs": 53448,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_memory_tests_resource.test__2.ts - SMELLS: Assertion Roulette - JUSTIFICATION: Only one assertion is present, but it lacks a custom failure explanation string."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_memory_tests_resource.test__3.ts",
+    "referenceSmells": [
+      "Assertion Roulette"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "Two assertions without messages are present in the test, making it ambiguous to understand what is being asserted.",
+    "latencyMs": 55663,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_memory_tests_resource.test__3.ts - SMELLS: Assertion Roulette - JUSTIFICATION: Two assertions without messages are present in the test, making it ambiguous to understand what is being asserted."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_memory_tests_resource.test__4.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Eager Test",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "Multiple assertions without messages in target test block.",
+    "latencyMs": 23205,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_memory_tests_resource.test__4.ts - SMELLS: Assertion Roulette - JUSTIFICATION: Multiple assertions without messages in target test block."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_memory_tests_file-path.test__0.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Hardcoded Literal",
+      "General Fixture"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "Raw path strings used directly in test logic; Shared state setup in beforeEach hook not fully utilized by the target test.",
+    "latencyMs": 61832,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_memory_tests_file-path.test__0.ts - SMELLS: Hardcoded Literal, General Fixture - JUSTIFICATION: Raw path strings used directly in test logic; Shared state setup in beforeEach hook not fully utilized by the target test."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_memory_tests_file-path.test__1.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "Multiple assertions without messages and hardcoded literals in path.join calls.",
+    "latencyMs": 60810,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_memory_tests_file-path.test__1.ts - SMELLS: Assertion Roulette, Hardcoded Literal - JUSTIFICATION: Multiple assertions without messages and hardcoded literals in path.join calls."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_memory_tests_file-path.test__2.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Conditional Test Logic",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette",
+      "Resource Optimism"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "Multiple assertions without messages and fs.unlink calls without try/catch blocks.",
+    "latencyMs": 63918,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_memory_tests_file-path.test__2.ts - SMELLS: Assertion Roulette, Resource Optimism - JUSTIFICATION: Multiple assertions without messages and fs.unlink calls without try/catch blocks."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_memory_tests_file-path.test__3.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Hardcoded Literal",
+      "Magic Number"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "Raw string passed directly as behavioral input into SUT method and hardcoded literal in path.join(os.homedir(), 'custom-memory.jsonl').",
+    "latencyMs": 63755,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_memory_tests_file-path.test__3.ts - SMELLS: Hardcoded Literal, Magic Number - JUSTIFICATION: Raw string passed directly as behavioral input into SUT method and hardcoded literal in path.join(os.homedir(), 'custom-memory.jsonl')."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_memory_tests_file-path.test__4.ts",
+    "referenceSmells": [],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 55979,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_memory_tests_file-path.test__4.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_memory_tests_file-path.test__5.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Exception Catching Throwing",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette",
+      "Resource Optimism"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "Multiple assertions without messages and potential I/O operations without try/catch blocks.",
+    "latencyMs": 73345,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_memory_tests_file-path.test__5.ts - SMELLS: Assertion Roulette, Resource Optimism - JUSTIFICATION: Multiple assertions without messages and potential I/O operations without try/catch blocks."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_memory_tests_file-path.test__6.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Exception Catching Throwing",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette",
+      "Resource Optimism"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "Multiple assertions without messages and file I/O operations without try/catch blocks or existence checks.",
+    "latencyMs": 72514,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_memory_tests_file-path.test__6.ts - SMELLS: Assertion Roulette, Resource Optimism - JUSTIFICATION: Multiple assertions without messages and file I/O operations without try/catch blocks or existence checks."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_memory_tests_file-path.test__7.ts",
+    "referenceSmells": [
+      "Hardcoded Literal",
+      "Resource Optimism"
+    ],
+    "modelSmells": [
+      "General Fixture"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "Shared state is set up in beforeEach, but this specific test body utilizes less than 50% of those setup variables.",
+    "latencyMs": 62884,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_memory_tests_file-path.test__7.ts - SMELLS: General Fixture - JUSTIFICATION: Shared state is set up in beforeEach, but this specific test body utilizes less than 50% of those setup variables."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_memory_tests_file-path.test__8.ts",
+    "referenceSmells": [],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "Multiple assertions without messages in target test block.",
+    "latencyMs": 55504,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_memory_tests_file-path.test__8.ts - SMELLS: Assertion Roulette - JUSTIFICATION: Multiple assertions without messages in target test block."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_memory_tests_file-path.test__9.ts",
+    "referenceSmells": [],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "No applicable test smells detected in the provided code.",
+    "latencyMs": 52632,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_memory_tests_file-path.test__9.ts - SMELLS: None - JUSTIFICATION: No applicable test smells detected in the provided code."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_memory_tests_file-path.test__10.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "Raw string \"~\" passed directly as input to expandHome() function.",
+    "latencyMs": 34664,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_memory_tests_file-path.test__10.ts - SMELLS: Hardcoded Literal - JUSTIFICATION: Raw string \"~\" passed directly as input to expandHome() function."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_memory_tests_file-path.test__11.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Hardcoded Literal",
+      "Magic Number"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "Raw string literal passed to expandHome function and hardcoded path.join() argument.",
+    "latencyMs": 40974,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_memory_tests_file-path.test__11.ts - SMELLS: Hardcoded Literal, Magic Number - JUSTIFICATION: Raw string literal passed to expandHome function and hardcoded path.join() argument."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_memory_tests_file-path.test__12.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Hardcoded Literal",
+      "Magic Number"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "Raw string literal passed directly as input to SUT method and hardcoded number used in assertion.",
+    "latencyMs": 40424,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_memory_tests_file-path.test__12.ts - SMELLS: Hardcoded Literal, Magic Number - JUSTIFICATION: Raw string literal passed directly as input to SUT method and hardcoded number used in assertion."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_memory_tests_file-path.test__13.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "Raw path '/var/data/memory.jsonl' passed directly as input to SUT method expandHome().",
+    "latencyMs": 19941,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_memory_tests_file-path.test__13.ts - SMELLS: Hardcoded Literal - JUSTIFICATION: Raw path '/var/data/memory.jsonl' passed directly as input to SUT method expandHome()."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_memory_tests_file-path.test__14.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Hardcoded Literal",
+      "Magic Number"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "Raw path strings passed directly as behavioral inputs into SUT methods instead of using declared constants.",
+    "latencyMs": 41192,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_memory_tests_file-path.test__14.ts - SMELLS: Hardcoded Literal, Magic Number - JUSTIFICATION: Raw path strings passed directly as behavioral inputs into SUT methods instead of using declared constants."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_server.test__0.ts",
+    "referenceSmells": [
+      "Assertion Roulette"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "Multiple assertions without custom messages.",
+    "latencyMs": 31742,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_server.test__0.ts - SMELLS: Assertion Roulette - JUSTIFICATION: Multiple assertions without custom messages."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_server.test__1.ts",
+    "referenceSmells": [],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "No applicable test smells detected in this file.",
+    "latencyMs": 31513,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_server.test__1.ts - SMELLS: None - JUSTIFICATION: No applicable test smells detected in this file."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_server.test__2.ts",
+    "referenceSmells": [
+      "Assertion Roulette"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "Multiple assertions without custom messages.",
+    "latencyMs": 31519,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_server.test__2.ts - SMELLS: Assertion Roulette - JUSTIFICATION: Multiple assertions without custom messages."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_server.test__3.ts",
+    "referenceSmells": [],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "Single assertion without a message makes it ambiguous to understand what is being tested.",
+    "latencyMs": 32938,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_server.test__3.ts - SMELLS: Assertion Roulette - JUSTIFICATION: Single assertion without a message makes it ambiguous to understand what is being tested."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_server.test__4.ts",
+    "referenceSmells": [
+      "Assertion Roulette"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "Multiple assertions without custom failure messages.",
+    "latencyMs": 33411,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_server.test__4.ts - SMELLS: Assertion Roulette - JUSTIFICATION: Multiple assertions without custom failure messages."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_prompts.test__0.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "Only one assertion is present, but it lacks a custom failure explanation string.",
+    "latencyMs": 57047,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_prompts.test__0.ts - SMELLS: Assertion Roulette,None - JUSTIFICATION: Only one assertion is present, but it lacks a custom failure explanation string."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_prompts.test__1.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "Multiple assertions without messages, indicating potential ambiguity in test failure reporting.",
+    "latencyMs": 54551,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_prompts.test__1.ts - SMELLS: Assertion Roulette - JUSTIFICATION: Multiple assertions without messages, indicating potential ambiguity in test failure reporting."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_prompts.test__2.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "Multiple assertions without messages in target test block.",
+    "latencyMs": 54785,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_prompts.test__2.ts - SMELLS: Assertion Roulette - JUSTIFICATION: Multiple assertions without messages in target test block."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_prompts.test__3.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "Multiple assertions without messages and hardcoded literals in test source.",
+    "latencyMs": 58547,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_prompts.test__3.ts - SMELLS: Assertion Roulette, Hardcoded Literal - JUSTIFICATION: Multiple assertions without messages and hardcoded literals in test source."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_prompts.test__4.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "Multiple assertions without messages in target test block.",
+    "latencyMs": 55451,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_prompts.test__4.ts - SMELLS: Assertion Roulette - JUSTIFICATION: Multiple assertions without messages in target test block."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_prompts.test__5.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Eager Test",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "Multiple assertions without messages and 15 hardcoded literals in test source.",
+    "latencyMs": 63034,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_prompts.test__5.ts - SMELLS: Assertion Roulette, Hardcoded Literal - JUSTIFICATION: Multiple assertions without messages and 15 hardcoded literals in test source."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_prompts.test__6.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "Multiple assertions without messages and hardcoded literals in test code.",
+    "latencyMs": 59559,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_prompts.test__6.ts - SMELLS: Assertion Roulette, Hardcoded Literal - JUSTIFICATION: Multiple assertions without messages and hardcoded literals in test code."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_prompts.test__7.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "Multiple assertions without custom messages.",
+    "latencyMs": 54623,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_prompts.test__7.ts - SMELLS: Assertion Roulette - JUSTIFICATION: Multiple assertions without custom messages."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_prompts.test__8.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "Multiple assertions without messages in target test block.",
+    "latencyMs": 53509,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_prompts.test__8.ts - SMELLS: Assertion Roulette - JUSTIFICATION: Multiple assertions without messages in target test block."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_prompts.test__9.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "Multiple assertions without messages in the target test block.",
+    "latencyMs": 58101,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_prompts.test__9.ts - SMELLS: Assertion Roulette - JUSTIFICATION: Multiple assertions without messages in the target test block."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_prompts.test__10.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "Multiple assertions without messages and hardcoded literals in test code.",
+    "latencyMs": 59327,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_prompts.test__10.ts - SMELLS: Assertion Roulette, Hardcoded Literal - JUSTIFICATION: Multiple assertions without messages and hardcoded literals in test code."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_resources.test__0.ts",
+    "referenceSmells": [
+      "Assertion Roulette"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "Multiple assertions without messages in the target test block.",
+    "latencyMs": 59412,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_resources.test__0.ts - SMELLS: Assertion Roulette - JUSTIFICATION: Multiple assertions without messages in the target test block."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_resources.test__1.ts",
+    "referenceSmells": [
+      "Magic Number",
+      "Sensitive Equality"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "Multiple assertions without messages, indicating potential ambiguity in test failure reporting.",
+    "latencyMs": 59146,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_resources.test__1.ts - SMELLS: Assertion Roulette - JUSTIFICATION: Multiple assertions without messages, indicating potential ambiguity in test failure reporting."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_resources.test__2.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Magic Number",
+      "Sensitive Equality"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "Multiple assertions without custom messages, making failure ambiguous.",
+    "latencyMs": 59164,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_resources.test__2.ts - SMELLS: Assertion Roulette - JUSTIFICATION: Multiple assertions without custom messages, making failure ambiguous."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_resources.test__3.ts",
+    "referenceSmells": [
+      "Magic Number",
+      "Sensitive Equality"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "Multiple assertions without messages, making failure ambiguous.",
+    "latencyMs": 57797,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_resources.test__3.ts - SMELLS: Assertion Roulette - JUSTIFICATION: Multiple assertions without messages, making failure ambiguous."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_resources.test__4.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Magic Number",
+      "Sensitive Equality"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "Multiple assertions without custom messages, making failure ambiguous.",
+    "latencyMs": 59276,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_resources.test__4.ts - SMELLS: Assertion Roulette - JUSTIFICATION: Multiple assertions without custom messages, making failure ambiguous."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_resources.test__5.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Magic Number"
+    ],
+    "modelSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "Multiple assertions without messages and hardcoded literals in test body.",
+    "latencyMs": 62437,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_resources.test__5.ts - SMELLS: Assertion Roulette, Hardcoded Literal - JUSTIFICATION: Multiple assertions without messages and hardcoded literals in test body."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_resources.test__6.ts",
+    "referenceSmells": [
+      "Magic Number"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "Multiple assertions without messages, indicating potential ambiguity in test failure reporting.",
+    "latencyMs": 60502,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_resources.test__6.ts - SMELLS: Assertion Roulette - JUSTIFICATION: Multiple assertions without messages, indicating potential ambiguity in test failure reporting."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_resources.test__7.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Magic Number"
+    ],
+    "modelSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "Multiple assertions without messages and hardcoded literals in test source.",
+    "latencyMs": 61388,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_resources.test__7.ts - SMELLS: Assertion Roulette, Hardcoded Literal - JUSTIFICATION: Multiple assertions without messages and hardcoded literals in test source."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_resources.test__8.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal",
+      "Magic Number"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "Multiple assertions without custom messages, making failure ambiguous.",
+    "latencyMs": 61675,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_resources.test__8.ts - SMELLS: Assertion Roulette - JUSTIFICATION: Multiple assertions without custom messages, making failure ambiguous."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_resources.test__9.ts",
+    "referenceSmells": [
+      "Assertion Roulette"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "Multiple assertions without messages in the target test block.",
+    "latencyMs": 61006,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_resources.test__9.ts - SMELLS: Assertion Roulette - JUSTIFICATION: Multiple assertions without messages in the target test block."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_resources.test__10.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "Multiple assertions without messages, indicating potential ambiguity in test failure reporting.",
+    "latencyMs": 61139,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_resources.test__10.ts - SMELLS: Assertion Roulette - JUSTIFICATION: Multiple assertions without messages, indicating potential ambiguity in test failure reporting."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_resources.test__11.ts",
+    "referenceSmells": [
+      "Assertion Roulette"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "Multiple assertions without custom failure messages.",
+    "latencyMs": 58720,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_resources.test__11.ts - SMELLS: Assertion Roulette - JUSTIFICATION: Multiple assertions without custom failure messages."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_resources.test__12.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "Multiple assertions without custom messages, making failure ambiguous.",
+    "latencyMs": 60908,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_resources.test__12.ts - SMELLS: Assertion Roulette - JUSTIFICATION: Multiple assertions without custom messages, making failure ambiguous."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_resources.test__13.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "Multiple assertions without custom failure messages.",
+    "latencyMs": 58490,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_resources.test__13.ts - SMELLS: Assertion Roulette - JUSTIFICATION: Multiple assertions without custom failure messages."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_resources.test__14.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "Multiple assertions without messages in the target test block.",
+    "latencyMs": 60094,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_resources.test__14.ts - SMELLS: Assertion Roulette - JUSTIFICATION: Multiple assertions without messages in the target test block."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_resources.test__15.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Eager Test",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette",
+      "General Fixture"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "Multiple assertions without messages and shared setup variables not fully utilized in this test body.",
+    "latencyMs": 70957,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_resources.test__15.ts - SMELLS: Assertion Roulette, General Fixture - JUSTIFICATION: Multiple assertions without messages and shared setup variables not fully utilized in this test body."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_resources.test__16.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "Multiple assertions without messages, indicating potential ambiguity in test failure reporting.",
+    "latencyMs": 58478,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_resources.test__16.ts - SMELLS: Assertion Roulette - JUSTIFICATION: Multiple assertions without messages, indicating potential ambiguity in test failure reporting."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_resources.test__17.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "Multiple assertions without custom messages.",
+    "latencyMs": 59212,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_resources.test__17.ts - SMELLS: Assertion Roulette - JUSTIFICATION: Multiple assertions without custom messages."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_resources.test__18.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Eager Test",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "Multiple assertions without messages and hardcoded literals in test code.",
+    "latencyMs": 73644,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_resources.test__18.ts - SMELLS: Assertion Roulette, Hardcoded Literal - JUSTIFICATION: Multiple assertions without messages and hardcoded literals in test code."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_resources.test__19.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "Multiple assertions without messages, indicating potential ambiguity in test failure reporting.",
+    "latencyMs": 66205,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_resources.test__19.ts - SMELLS: Assertion Roulette - JUSTIFICATION: Multiple assertions without messages, indicating potential ambiguity in test failure reporting."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_resources.test__20.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "Multiple assertions without messages and hardcoded literals in test source.",
+    "latencyMs": 72089,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_resources.test__20.ts - SMELLS: Assertion Roulette, Hardcoded Literal - JUSTIFICATION: Multiple assertions without messages and hardcoded literals in test source."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_resources.test__21.ts",
+    "referenceSmells": [
+      "Mystery Guest"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "Single assertion without a message indicates potential for ambiguous failure.",
+    "latencyMs": 61925,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_resources.test__21.ts - SMELLS: Assertion Roulette - JUSTIFICATION: Single assertion without a message indicates potential for ambiguous failure."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_resources.test__22.ts",
+    "referenceSmells": [],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "Multiple assertions without messages, indicating potential ambiguity in test failure reporting.",
+    "latencyMs": 62488,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_resources.test__22.ts - SMELLS: Assertion Roulette - JUSTIFICATION: Multiple assertions without messages, indicating potential ambiguity in test failure reporting."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_resources.test__23.ts",
+    "referenceSmells": [
+      "Assertion Roulette"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "Multiple assertions without messages in the target test block.",
+    "latencyMs": 99198,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_resources.test__23.ts - SMELLS: Assertion Roulette - JUSTIFICATION: Multiple assertions without messages in the target test block."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_resources.test__24.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "General Fixture"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test file sets up broad shared state in beforeEach, but this specific test body utilizes less than 50% of those setup variables.",
+    "latencyMs": 104775,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_resources.test__24.ts - SMELLS: General Fixture - JUSTIFICATION: The test file sets up broad shared state in beforeEach, but this specific test body utilizes less than 50% of those setup variables."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_resources.test__25.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "Multiple assertions without messages, indicating potential ambiguity in test failure reporting.",
+    "latencyMs": 75979,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_resources.test__25.ts - SMELLS: Assertion Roulette - JUSTIFICATION: Multiple assertions without messages, indicating potential ambiguity in test failure reporting."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_memory_tests_server-version.test__0.ts",
+    "referenceSmells": [
+      "Assertion Roulette"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "Multiple assertions without custom messages, making failure ambiguous.",
+    "latencyMs": 38872,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_memory_tests_server-version.test__0.ts - SMELLS: Assertion Roulette - JUSTIFICATION: Multiple assertions without custom messages, making failure ambiguous."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_memory_tests_server-version.test__1.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal",
+      "Mystery Guest"
+    ],
+    "modelSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "Multiple assertions without messages and hardcoded literals in path.join calls.",
+    "latencyMs": 44562,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_memory_tests_server-version.test__1.ts - SMELLS: Assertion Roulette, Hardcoded Literal - JUSTIFICATION: Multiple assertions without messages and hardcoded literals in path.join calls."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_sequentialthinking_tests_lib.test__0.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal",
+      "Magic Number"
+    ],
+    "modelSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "Multiple assertions without messages and hardcoded literals in test source.",
+    "latencyMs": 45751,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_sequentialthinking_tests_lib.test__0.ts - SMELLS: Assertion Roulette, Hardcoded Literal - JUSTIFICATION: Multiple assertions without messages and hardcoded literals in test source."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_sequentialthinking_tests_lib.test__1.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal",
+      "Magic Number"
+    ],
+    "modelSmells": [
+      "Hardcoded Literal",
+      "Magic Number"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "Raw strings passed directly as behavioral inputs into SUT methods and hardcoded literal '2' used in test data.",
+    "latencyMs": 48100,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_sequentialthinking_tests_lib.test__1.ts - SMELLS: Hardcoded Literal, Magic Number - JUSTIFICATION: Raw strings passed directly as behavioral inputs into SUT methods and hardcoded literal '2' used in test data."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_sequentialthinking_tests_lib.test__2.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal",
+      "Magic Number"
+    ],
+    "modelSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "Multiple assertions without messages and 11 hardcoded literals in the test source.",
+    "latencyMs": 50972,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_sequentialthinking_tests_lib.test__2.ts - SMELLS: Assertion Roulette, Hardcoded Literal - JUSTIFICATION: Multiple assertions without messages and 11 hardcoded literals in the test source."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_sequentialthinking_tests_lib.test__3.ts",
+    "referenceSmells": [
+      "Hardcoded Literal",
+      "Magic Number"
+    ],
+    "modelSmells": [
+      "Assertion Roulette",
+      "General Fixture"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "Multiple assertions without messages; setup hook is used but not fully utilized in this test.",
+    "latencyMs": 43585,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_sequentialthinking_tests_lib.test__3.ts - SMELLS: Assertion Roulette, General Fixture - JUSTIFICATION: Multiple assertions without messages; setup hook is used but not fully utilized in this test."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_sequentialthinking_tests_lib.test__4.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal",
+      "Magic Number"
+    ],
+    "modelSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "Multiple assertions without messages and 18 hardcoded literals in the test source.",
+    "latencyMs": 55325,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_sequentialthinking_tests_lib.test__4.ts - SMELLS: Assertion Roulette, Hardcoded Literal - JUSTIFICATION: Multiple assertions without messages and 18 hardcoded literals in the test source."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_sequentialthinking_tests_lib.test__5.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal",
+      "Magic Number"
+    ],
+    "modelSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "Multiple assertions without messages and 13 hardcoded literals in the test source.",
+    "latencyMs": 50277,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_sequentialthinking_tests_lib.test__5.ts - SMELLS: Assertion Roulette, Hardcoded Literal - JUSTIFICATION: Multiple assertions without messages and 13 hardcoded literals in the test source."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_sequentialthinking_tests_lib.test__6.ts",
+    "referenceSmells": [
+      "Hardcoded Literal",
+      "Magic Number"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "Multiple assertions without messages, indicating potential ambiguity in test failure reporting.",
+    "latencyMs": 40907,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_sequentialthinking_tests_lib.test__6.ts - SMELLS: Assertion Roulette - JUSTIFICATION: Multiple assertions without messages, indicating potential ambiguity in test failure reporting."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_sequentialthinking_tests_lib.test__7.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal",
+      "Magic Number"
+    ],
+    "modelSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "Multiple assertions without messages and hardcoded literals in test source.",
+    "latencyMs": 44485,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_sequentialthinking_tests_lib.test__7.ts - SMELLS: Assertion Roulette, Hardcoded Literal - JUSTIFICATION: Multiple assertions without messages and hardcoded literals in test source."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_sequentialthinking_tests_lib.test__8.ts",
+    "referenceSmells": [
+      "Hardcoded Literal",
+      "Magic Number"
+    ],
+    "modelSmells": [
+      "Assertion Roulette",
+      "General Fixture"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "Multiple assertions without messages; setup hook is used but not fully utilized in this test.",
+    "latencyMs": 43120,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_sequentialthinking_tests_lib.test__8.ts - SMELLS: Assertion Roulette, General Fixture - JUSTIFICATION: Multiple assertions without messages; setup hook is used but not fully utilized in this test."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_sequentialthinking_tests_lib.test__9.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal",
+      "Magic Number"
+    ],
+    "modelSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "Multiple assertions without messages and hardcoded literals in test source.",
+    "latencyMs": 44810,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_sequentialthinking_tests_lib.test__9.ts - SMELLS: Assertion Roulette, Hardcoded Literal - JUSTIFICATION: Multiple assertions without messages and hardcoded literals in test source."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_sequentialthinking_tests_lib.test__10.ts",
+    "referenceSmells": [
+      "Hardcoded Literal",
+      "Magic Number"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "Multiple assertions without messages, indicating ambiguous failure explanations.",
+    "latencyMs": 40794,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_sequentialthinking_tests_lib.test__10.ts - SMELLS: Assertion Roulette - JUSTIFICATION: Multiple assertions without messages, indicating ambiguous failure explanations."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_sequentialthinking_tests_lib.test__11.ts",
+    "referenceSmells": [
+      "Hardcoded Literal",
+      "Magic Number"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "Multiple assertions without messages in target test block.",
+    "latencyMs": 55069,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_sequentialthinking_tests_lib.test__11.ts - SMELLS: Assertion Roulette - JUSTIFICATION: Multiple assertions without messages in target test block."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_sequentialthinking_tests_lib.test__12.ts",
+    "referenceSmells": [
+      "Hardcoded Literal",
+      "Magic Number"
+    ],
+    "modelSmells": [
+      "General Fixture"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test file sets up broad shared state in beforeEach/beforeAll, but this specific test body utilizes less than 50% of those setup variables.",
+    "latencyMs": 60116,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_sequentialthinking_tests_lib.test__12.ts - SMELLS: General Fixture - JUSTIFICATION: The test file sets up broad shared state in beforeEach/beforeAll, but this specific test body utilizes less than 50% of those setup variables."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_sequentialthinking_tests_lib.test__13.ts",
+    "referenceSmells": [
+      "Hardcoded Literal",
+      "Magic Number"
+    ],
+    "modelSmells": [
+      "General Fixture"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test file sets up broad shared state in beforeEach/beforeAll, but this specific test body utilizes less than 50% of those setup variables.",
+    "latencyMs": 56263,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_sequentialthinking_tests_lib.test__13.ts - SMELLS: General Fixture - JUSTIFICATION: The test file sets up broad shared state in beforeEach/beforeAll, but this specific test body utilizes less than 50% of those setup variables."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_filesystem_tests_roots-utils.test__0.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Eager Test",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "invalid return",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "",
+    "latencyMs": 68557,
+    "rawModelResponse": "modelcontextprotocol__servers__src_filesystem_tests_roots-utils.test__0.ts - SMELLS: Assertion Roulette, Resource Optimism - JUSTIFICATION: Multiple assertions without messages and file I/O operations without try/catch blocks or existence checks."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_filesystem_tests_roots-utils.test__1.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "General Fixture",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette",
+      "Resource Optimism"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "Multiple assertions without messages and file I/O operations without try/catch blocks or existence checks.",
+    "latencyMs": 66678,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_filesystem_tests_roots-utils.test__1.ts - SMELLS: Assertion Roulette, Resource Optimism - JUSTIFICATION: Multiple assertions without messages and file I/O operations without try/catch blocks or existence checks."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_filesystem_tests_roots-utils.test__2.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette",
+      "Resource Optimism"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "Multiple assertions without messages and file I/O operations without try/catch blocks or existence checks.",
+    "latencyMs": 75259,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_filesystem_tests_roots-utils.test__2.ts - SMELLS: Assertion Roulette, Resource Optimism - JUSTIFICATION: Multiple assertions without messages and file I/O operations without try/catch blocks or existence checks."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_memory_tests_delete-reporting.test__0.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette",
+      "Resource Optimism"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "Multiple assertions without messages and fs.unlink call without try/catch block.",
+    "latencyMs": 57174,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_memory_tests_delete-reporting.test__0.ts - SMELLS: Assertion Roulette, Resource Optimism - JUSTIFICATION: Multiple assertions without messages and fs.unlink call without try/catch block."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_memory_tests_delete-reporting.test__1.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette",
+      "Resource Optimism"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "Multiple assertions without messages and fs.unlink call without try/catch block.",
+    "latencyMs": 58099,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_memory_tests_delete-reporting.test__1.ts - SMELLS: Assertion Roulette, Resource Optimism - JUSTIFICATION: Multiple assertions without messages and fs.unlink call without try/catch block."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_memory_tests_delete-reporting.test__2.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette",
+      "Resource Optimism"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "Multiple assertions without messages and fs.unlink call without checking file existence.",
+    "latencyMs": 54699,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_memory_tests_delete-reporting.test__2.ts - SMELLS: Assertion Roulette, Resource Optimism - JUSTIFICATION: Multiple assertions without messages and fs.unlink call without checking file existence."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_memory_tests_delete-reporting.test__3.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette",
+      "Resource Optimism"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "Multiple assertions without messages and fs.unlink call without try/catch block.",
+    "latencyMs": 58380,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_memory_tests_delete-reporting.test__3.ts - SMELLS: Assertion Roulette, Resource Optimism - JUSTIFICATION: Multiple assertions without messages and fs.unlink call without try/catch block."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_memory_tests_delete-reporting.test__4.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "General Fixture",
+      "Hardcoded Literal"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test file sets up broad shared state in beforeEach/beforeAll, but this specific test body utilizes less than 50% of those setup variables. Additionally, the test contains hardcoded literals such as `test-delete-reporting-${Date.now()}-${Math.random().toString(16).slice(2)}` and `Carol`.",
+    "latencyMs": 32934,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_memory_tests_delete-reporting.test__4.ts - SMELLS: General Fixture, Hardcoded Literal - JUSTIFICATION: The test file sets up broad shared state in beforeEach/beforeAll, but this specific test body utilizes less than 50% of those setup variables. Additionally, the test contains hardcoded literals such as `test-delete-reporting-${Date.now()}-${Math.random().toString(16).slice(2)}` and `Carol`."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_memory_tests_delete-reporting.test__5.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "Multiple assertions without messages, but no assertion roulette due to low assertion count.",
+    "latencyMs": 59060,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_memory_tests_delete-reporting.test__5.ts - SMELLS: Assertion Roulette,None - JUSTIFICATION: Multiple assertions without messages, but no assertion roulette due to low assertion count."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_memory_tests_delete-reporting.test__6.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette",
+      "Resource Optimism"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "Multiple assertions without messages and fs.unlink call without existence check.",
+    "latencyMs": 59305,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_memory_tests_delete-reporting.test__6.ts - SMELLS: Assertion Roulette, Resource Optimism - JUSTIFICATION: Multiple assertions without messages and fs.unlink call without existence check."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_registrations.test__0.ts",
+    "referenceSmells": [
+      "Assertion Roulette"
+    ],
+    "modelSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "Multiple assertions without messages and hardcoded literals in test code.",
+    "latencyMs": 59257,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_registrations.test__0.ts - SMELLS: Assertion Roulette, Hardcoded Literal - JUSTIFICATION: Multiple assertions without messages and hardcoded literals in test code."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_registrations.test__1.ts",
+    "referenceSmells": [
+      "Assertion Roulette"
+    ],
+    "modelSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "Multiple assertions without messages and hardcoded literals in test code.",
+    "latencyMs": 63053,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_registrations.test__1.ts - SMELLS: Assertion Roulette, Hardcoded Literal - JUSTIFICATION: Multiple assertions without messages and hardcoded literals in test code."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_registrations.test__2.ts",
+    "referenceSmells": [],
+    "modelSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "Multiple assertions without messages and hardcoded literal in test source.",
+    "latencyMs": 48964,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_registrations.test__2.ts - SMELLS: Assertion Roulette, Hardcoded Literal - JUSTIFICATION: Multiple assertions without messages and hardcoded literal in test source."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_registrations.test__3.ts",
+    "referenceSmells": [
+      "Assertion Roulette"
+    ],
+    "modelSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "Multiple assertions without messages and hardcoded literals in test source.",
+    "latencyMs": 50471,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_registrations.test__3.ts - SMELLS: Assertion Roulette, Hardcoded Literal - JUSTIFICATION: Multiple assertions without messages and hardcoded literals in test source."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_registrations.test__4.ts",
+    "referenceSmells": [
+      "Assertion Roulette"
+    ],
+    "modelSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "Multiple assertions without messages and hardcoded literals in test code.",
+    "latencyMs": 48498,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_registrations.test__4.ts - SMELLS: Assertion Roulette, Hardcoded Literal - JUSTIFICATION: Multiple assertions without messages and hardcoded literals in test code."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_registrations.test__5.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Mystery Guest"
+    ],
+    "modelSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "Multiple assertions without messages and hardcoded literals in test source.",
+    "latencyMs": 43906,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_registrations.test__5.ts - SMELLS: Assertion Roulette, Hardcoded Literal - JUSTIFICATION: Multiple assertions without messages and hardcoded literals in test source."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_filesystem_tests_unicode-paths.test__0.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Hardcoded Literal",
+      "Magic Number"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "Raw strings passed directly as behavioral inputs into SUT methods instead of using declared constants; Raw numbers used directly in path.join() calls.",
+    "latencyMs": 63134,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_filesystem_tests_unicode-paths.test__0.ts - SMELLS: Hardcoded Literal, Magic Number - JUSTIFICATION: Raw strings passed directly as behavioral inputs into SUT methods instead of using declared constants; Raw numbers used directly in path.join() calls."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_filesystem_tests_unicode-paths.test__1.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Hardcoded Literal",
+      "Magic Number"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "Raw strings passed directly as behavioral inputs into SUT methods instead of using declared constants; hardcoded directory path 'de\\u0301marche' and Unicode-equivalent parent path 'd\\u00e9marche'.",
+    "latencyMs": 62977,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_filesystem_tests_unicode-paths.test__1.ts - SMELLS: Hardcoded Literal, Magic Number - JUSTIFICATION: Raw strings passed directly as behavioral inputs into SUT methods instead of using declared constants; hardcoded directory path 'de\\u0301marche' and Unicode-equivalent parent path 'd\\u00e9marche'."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_filesystem_tests_unicode-paths.test__2.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Hardcoded Literal",
+      "General Fixture"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "5 hardcoded literals in setup variables; test file sets up broad shared state in beforeEach/beforeAll but the target test body utilizes less than 50% of those setup variables.",
+    "latencyMs": 61079,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_filesystem_tests_unicode-paths.test__2.ts - SMELLS: Hardcoded Literal, General Fixture - JUSTIFICATION: 5 hardcoded literals in setup variables; test file sets up broad shared state in beforeEach/beforeAll but the target test body utilizes less than 50% of those setup variables."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_filesystem_tests_nested-parents.test__0.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette",
+      "Resource Optimism"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "Multiple assertions without messages and file I/O operations without try/catch blocks or existence checks.",
+    "latencyMs": 63672,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_filesystem_tests_nested-parents.test__0.ts - SMELLS: Assertion Roulette, Resource Optimism - JUSTIFICATION: Multiple assertions without messages and file I/O operations without try/catch blocks or existence checks."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_filesystem_tests_nested-parents.test__1.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette",
+      "Resource Optimism"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "Multiple assertions without messages and I/O operations without try/catch blocks.",
+    "latencyMs": 66390,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_filesystem_tests_nested-parents.test__1.ts - SMELLS: Assertion Roulette, Resource Optimism - JUSTIFICATION: Multiple assertions without messages and I/O operations without try/catch blocks."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_diff-analyzer.test__0.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 91681,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_diff-analyzer.test__0.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_diff-analyzer.test__1.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 25294,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_diff-analyzer.test__1.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_diff-analyzer.test__2.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "Multiple assertions without messages and hardcoded literals in test source.",
+    "latencyMs": 94102,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_diff-analyzer.test__2.ts - SMELLS: Assertion Roulette, Hardcoded Literal - JUSTIFICATION: Multiple assertions without messages and hardcoded literals in test source."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_diff-analyzer.test__3.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 90009,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_diff-analyzer.test__3.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_diff-analyzer.test__4.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 24151,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_diff-analyzer.test__4.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_diff-analyzer.test__5.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "Multiple assertions without messages and hardcoded literals in test source.",
+    "latencyMs": 92200,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_diff-analyzer.test__5.ts - SMELLS: Assertion Roulette, Hardcoded Literal - JUSTIFICATION: Multiple assertions without messages and hardcoded literals in test source."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_diff-analyzer.test__6.ts",
+    "referenceSmells": [
+      "Assertion Roulette"
+    ],
+    "modelSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "Multiple assertions without messages and hardcoded literals in test source.",
+    "latencyMs": 87006,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_diff-analyzer.test__6.ts - SMELLS: Assertion Roulette, Hardcoded Literal - JUSTIFICATION: Multiple assertions without messages and hardcoded literals in test source."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_diff-analyzer.test__7.ts",
+    "referenceSmells": [
+      "Conditional Test Logic",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 94474,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_diff-analyzer.test__7.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_diff-analyzer.test__8.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 91870,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_diff-analyzer.test__8.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_diff-analyzer.test__9.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "No test smells detected based on provided AST metadata and context.",
+    "latencyMs": 90694,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_diff-analyzer.test__9.ts - SMELLS: None - JUSTIFICATION: No test smells detected based on provided AST metadata and context."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_diff-analyzer.test__10.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 25311,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_diff-analyzer.test__10.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_explain-builder.test__0.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 79534,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_explain-builder.test__0.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_explain-builder.test__1.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "Multiple assertions without messages and hardcoded literals in test source.",
+    "latencyMs": 82495,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_explain-builder.test__1.ts - SMELLS: Assertion Roulette, Hardcoded Literal - JUSTIFICATION: Multiple assertions without messages and hardcoded literals in test source."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_explain-builder.test__2.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "Multiple assertions without messages and hardcoded literals in test source.",
+    "latencyMs": 82425,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_explain-builder.test__2.ts - SMELLS: Assertion Roulette, Hardcoded Literal - JUSTIFICATION: Multiple assertions without messages and hardcoded literals in test source."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_explain-builder.test__3.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "1 assertion without message, hardcoded literals in test source.",
+    "latencyMs": 80240,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_explain-builder.test__3.ts - SMELLS: Assertion Roulette, Hardcoded Literal - JUSTIFICATION: 1 assertion without message, hardcoded literals in test source."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_explain-builder.test__4.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 76550,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_explain-builder.test__4.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_explain-builder.test__5.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "Multiple assertions without messages and hardcoded literals in test source.",
+    "latencyMs": 82841,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_explain-builder.test__5.ts - SMELLS: Assertion Roulette, Hardcoded Literal - JUSTIFICATION: Multiple assertions without messages and hardcoded literals in test source."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_explain-builder.test__6.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "Multiple assertions without messages and hardcoded literals in test source.",
+    "latencyMs": 93284,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_explain-builder.test__6.ts - SMELLS: Assertion Roulette, Hardcoded Literal - JUSTIFICATION: Multiple assertions without messages and hardcoded literals in test source."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_explain-builder.test__7.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "Multiple assertions without messages and hardcoded literals in test source.",
+    "latencyMs": 95425,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_explain-builder.test__7.ts - SMELLS: Assertion Roulette, Hardcoded Literal - JUSTIFICATION: Multiple assertions without messages and hardcoded literals in test source."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_onboard-builder.test__0.ts",
+    "referenceSmells": [
+      "Assertion Roulette"
+    ],
+    "modelSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "Multiple assertions without messages and hardcoded literals in test source.",
+    "latencyMs": 83999,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_onboard-builder.test__0.ts - SMELLS: Assertion Roulette, Hardcoded Literal - JUSTIFICATION: Multiple assertions without messages and hardcoded literals in test source."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_onboard-builder.test__1.ts",
+    "referenceSmells": [
+      "Assertion Roulette"
+    ],
+    "modelSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "Multiple assertions without messages and hardcoded literals in test source.",
+    "latencyMs": 76576,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_onboard-builder.test__1.ts - SMELLS: Assertion Roulette, Hardcoded Literal - JUSTIFICATION: Multiple assertions without messages and hardcoded literals in test source."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_onboard-builder.test__2.ts",
+    "referenceSmells": [
+      "Assertion Roulette"
+    ],
+    "modelSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "Multiple assertions without messages and hardcoded literals in test source.",
+    "latencyMs": 77415,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_onboard-builder.test__2.ts - SMELLS: Assertion Roulette, Hardcoded Literal - JUSTIFICATION: Multiple assertions without messages and hardcoded literals in test source."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_onboard-builder.test__3.ts",
+    "referenceSmells": [
+      "Assertion Roulette"
+    ],
+    "modelSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "Multiple assertions without messages and hardcoded literals in test source.",
+    "latencyMs": 76707,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_onboard-builder.test__3.ts - SMELLS: Assertion Roulette, Hardcoded Literal - JUSTIFICATION: Multiple assertions without messages and hardcoded literals in test source."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_onboard-builder.test__4.ts",
+    "referenceSmells": [
+      "Assertion Roulette"
+    ],
+    "modelSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "Multiple assertions without messages and hardcoded literals in test source.",
+    "latencyMs": 29211,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_onboard-builder.test__4.ts - SMELLS: Assertion Roulette, Hardcoded Literal - JUSTIFICATION: Multiple assertions without messages and hardcoded literals in test source."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_onboard-builder.test__5.ts",
+    "referenceSmells": [
+      "Assertion Roulette"
+    ],
+    "modelSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "Multiple assertions without messages and hardcoded literals in test source.",
+    "latencyMs": 27246,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_onboard-builder.test__5.ts - SMELLS: Assertion Roulette, Hardcoded Literal - JUSTIFICATION: Multiple assertions without messages and hardcoded literals in test source."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_onboard-builder.test__6.ts",
+    "referenceSmells": [],
+    "modelSmells": [
+      "Hardcoded Literal",
+      "Magic Number"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "Raw string \"## File Map\" in expect() matcher and hardcoded literal count is 1.",
+    "latencyMs": 82046,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_onboard-builder.test__6.ts - SMELLS: HardcodedLiteral, MagicNumber - JUSTIFICATION: Raw string \"## File Map\" in expect() matcher and hardcoded literal count is 1."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_onboard-builder.test__7.ts",
+    "referenceSmells": [],
+    "modelSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "Multiple assertions without messages and hardcoded literal in sampleGraph object.",
+    "latencyMs": 77236,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_onboard-builder.test__7.ts - SMELLS: Assertion Roulette, Hardcoded Literal - JUSTIFICATION: Multiple assertions without messages and hardcoded literal in sampleGraph object."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_onboard-builder.test__8.ts",
+    "referenceSmells": [],
+    "modelSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "Multiple assertions without messages and hardcoded literal in sampleGraph object.",
+    "latencyMs": 25253,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_onboard-builder.test__8.ts - SMELLS: Assertion Roulette, Hardcoded Literal - JUSTIFICATION: Multiple assertions without messages and hardcoded literal in sampleGraph object."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_staleness.test__0.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette",
+      "Resource Optimism"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "Multiple assertions without messages and hardcoded literal count is high. The test performs a network I/O call (execFileSync) without wrapping it in a try/catch block or checking the resource's existence prior to acting.",
+    "latencyMs": 80713,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_staleness.test__0.ts - SMELLS: Assertion Roulette, Resource Optimism - JUSTIFICATION: Multiple assertions without messages and hardcoded literal count is high. The test performs a network I/O call (execFileSync) without wrapping it in a try/catch block or checking the resource's existence prior to acting."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_staleness.test__1.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette",
+      "Resource Optimism"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "Multiple assertions without messages and a potential I/O call in getChangedFiles().",
+    "latencyMs": 71015,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_staleness.test__1.ts - SMELLS: Assertion Roulette, Resource Optimism - JUSTIFICATION: Multiple assertions without messages and a potential I/O call in getChangedFiles()."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_staleness.test__2.ts",
+    "referenceSmells": [
+      "Exception Catching Throwing",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette",
+      "Resource Optimism"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "Multiple assertions without messages and a potential I/O call in getChangedFiles().",
+    "latencyMs": 72058,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_staleness.test__2.ts - SMELLS: Assertion Roulette, Resource Optimism - JUSTIFICATION: Multiple assertions without messages and a potential I/O call in getChangedFiles()."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_staleness.test__3.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette",
+      "Resource Optimism"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "Multiple assertions without messages and file system I/O call without try/catch block.",
+    "latencyMs": 72978,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_staleness.test__3.ts - SMELLS: Assertion Roulette, Resource Optimism - JUSTIFICATION: Multiple assertions without messages and file system I/O call without try/catch block."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_staleness.test__4.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette",
+      "Resource Optimism"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "Multiple assertions without messages and a potential I/O call in isStale function.",
+    "latencyMs": 65009,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_staleness.test__4.ts - SMELLS: Assertion Roulette, Resource Optimism - JUSTIFICATION: Multiple assertions without messages and a potential I/O call in isStale function."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_staleness.test__5.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "Multiple assertions without messages and 29 hardcoded literals in the test file.",
+    "latencyMs": 104738,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_staleness.test__5.ts - SMELLS: Assertion Roulette, Hardcoded Literal - JUSTIFICATION: Multiple assertions without messages and 29 hardcoded literals in the test file."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_staleness.test__6.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "Multiple assertions without messages and 31 hardcoded literals in the test source.",
+    "latencyMs": 114437,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_staleness.test__6.ts - SMELLS: Assertion Roulette, Hardcoded Literal - JUSTIFICATION: Multiple assertions without messages and 31 hardcoded literals in the test source."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_staleness.test__7.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette",
+      "Resource Optimism"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "Multiple assertions without messages and a potential I/O call in mergeGraphUpdate.",
+    "latencyMs": 78692,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_staleness.test__7.ts - SMELLS: Assertion Roulette, Resource Optimism - JUSTIFICATION: Multiple assertions without messages and a potential I/O call in mergeGraphUpdate."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_figma_tests_merge.test__0.ts",
+    "referenceSmells": [
+      "Assertion Roulette"
+    ],
+    "modelSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "Multiple assertions without messages and a hardcoded literal in the test source.",
+    "latencyMs": 65391,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_figma_tests_merge.test__0.ts - SMELLS: Assertion Roulette, Hardcoded Literal - JUSTIFICATION: Multiple assertions without messages and a hardcoded literal in the test source."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_figma_tests_merge.test__1.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Eager Test",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "Multiple assertions without messages and hardcoded literals in the test source.",
+    "latencyMs": 74389,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_figma_tests_merge.test__1.ts - SMELLS: Assertion Roulette, Hardcoded Literal - JUSTIFICATION: Multiple assertions without messages and hardcoded literals in the test source."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_figma_tests_merge.test__2.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "Multiple assertions without messages and hardcoded literals in the test source.",
+    "latencyMs": 77078,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_figma_tests_merge.test__2.ts - SMELLS: Assertion Roulette, Hardcoded Literal - JUSTIFICATION: Multiple assertions without messages and hardcoded literals in the test source."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_figma_tests_merge.test__3.ts",
+    "referenceSmells": [],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "No test smells detected based on provided AST metadata and context.",
+    "latencyMs": 68337,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_figma_tests_merge.test__3.ts - SMELLS: None - JUSTIFICATION: No test smells detected based on provided AST metadata and context."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_figma_tests_tokens.test__0.ts",
+    "referenceSmells": [
+      "Assertion Roulette"
+    ],
+    "modelSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "Multiple assertions without messages and hardcoded literals in the test source.",
+    "latencyMs": 74700,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_figma_tests_tokens.test__0.ts - SMELLS: Assertion Roulette, Hardcoded Literal - JUSTIFICATION: Multiple assertions without messages and hardcoded literals in the test source."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_figma_tests_tokens.test__1.ts",
+    "referenceSmells": [],
+    "modelSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "Multiple assertions without messages and hardcoded literals in the test source.",
+    "latencyMs": 76348,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_figma_tests_tokens.test__1.ts - SMELLS: Assertion Roulette, Hardcoded Literal - JUSTIFICATION: Multiple assertions without messages and hardcoded literals in the test source."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_figma_tests_tokens.test__2.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 122087,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_figma_tests_tokens.test__2.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_figma_tests_tokens.test__3.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "No test smells detected based on provided AST metadata and context.",
+    "latencyMs": 92008,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_figma_tests_tokens.test__3.ts - SMELLS: None - JUSTIFICATION: No test smells detected based on provided AST metadata and context."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_context-builder.test__0.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 108605,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_context-builder.test__0.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_context-builder.test__1.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "Multiple assertions without messages and hardcoded literals in test source.",
+    "latencyMs": 117007,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_context-builder.test__1.ts - SMELLS: Assertion Roulette, Hardcoded Literal - JUSTIFICATION: Multiple assertions without messages and hardcoded literals in test source."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_context-builder.test__2.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Hardcoded Literal",
+      "Magic Number"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "Raw strings passed directly as behavioral inputs into SUT methods and unexplained primitive numbers used in assertions.",
+    "latencyMs": 114135,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_context-builder.test__2.ts - SMELLS: Hardcoded Literal, Magic Number - JUSTIFICATION: Raw strings passed directly as behavioral inputs into SUT methods and unexplained primitive numbers used in assertions."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_context-builder.test__3.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 107198,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_context-builder.test__3.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_context-builder.test__4.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "No test smells detected based on provided AST metadata and context.",
+    "latencyMs": 114929,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_context-builder.test__4.ts - SMELLS: None - JUSTIFICATION: No test smells detected based on provided AST metadata and context."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_context-builder.test__5.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 103146,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_context-builder.test__5.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_context-builder.test__6.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal",
+      "Magic Number"
+    ],
+    "modelSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "Multiple assertions without messages and hardcoded literals in test source.",
+    "latencyMs": 110459,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_context-builder.test__6.ts - SMELLS: Assertion Roulette, Hardcoded Literal - JUSTIFICATION: Multiple assertions without messages and hardcoded literals in test source."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_context-builder.test__7.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Hardcoded Literal",
+      "Magic Number"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "Raw strings passed directly as behavioral inputs into SUT methods and unexplained primitive numbers used in test assertions.",
+    "latencyMs": 109646,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_context-builder.test__7.ts - SMELLS: Hardcoded Literal, Magic Number - JUSTIFICATION: Raw strings passed directly as behavioral inputs into SUT methods and unexplained primitive numbers used in test assertions."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_context-builder.test__8.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Hardcoded Literal",
+      "Magic Number"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "Raw strings passed directly as behavioral inputs into SUT methods without declared constants.",
+    "latencyMs": 107687,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_context-builder.test__8.ts - SMELLS: Hardcoded Literal, Magic Number - JUSTIFICATION: Raw strings passed directly as behavioral inputs into SUT methods without declared constants."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_context-builder.test__9.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Hardcoded Literal",
+      "Magic Number"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "Raw strings passed directly as behavioral inputs into SUT methods and unexplained primitive numbers used in assertions.",
+    "latencyMs": 109023,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_context-builder.test__9.ts - SMELLS: Hardcoded Literal, Magic Number - JUSTIFICATION: Raw strings passed directly as behavioral inputs into SUT methods and unexplained primitive numbers used in assertions."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_context-builder.test__10.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Hardcoded Literal",
+      "Magic Number"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "Raw strings passed directly as behavioral inputs into SUT methods and unexplained primitive numbers used in assertions.",
+    "latencyMs": 111436,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_context-builder.test__10.ts - SMELLS: Hardcoded Literal, Magic Number - JUSTIFICATION: Raw strings passed directly as behavioral inputs into SUT methods and unexplained primitive numbers used in assertions."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_context-builder.test__11.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 105707,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_context-builder.test__11.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_context-builder.test__12.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 25358,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_context-builder.test__12.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_context-builder.test__13.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 104876,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_context-builder.test__13.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_domain-types.test__0.ts",
+    "referenceSmells": [
+      "Assertion Roulette"
+    ],
+    "modelSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "Multiple assertions without messages and hardcoded literals in the test source.",
+    "latencyMs": 70639,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_domain-types.test__0.ts - SMELLS: Assertion Roulette, Hardcoded Literal - JUSTIFICATION: Multiple assertions without messages and hardcoded literals in the test source."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_domain-types.test__1.ts",
+    "referenceSmells": [
+      "Assertion Roulette"
+    ],
+    "modelSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "Multiple assertions without messages and hardcoded literals in the test source.",
+    "latencyMs": 69034,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_domain-types.test__1.ts - SMELLS: Assertion Roulette, Hardcoded Literal - JUSTIFICATION: Multiple assertions without messages and hardcoded literals in the test source."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_domain-types.test__2.ts",
+    "referenceSmells": [
+      "Assertion Roulette"
+    ],
+    "modelSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "Multiple assertions without messages and hardcoded literals in the test source.",
+    "latencyMs": 25303,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_domain-types.test__2.ts - SMELLS: Assertion Roulette, Hardcoded Literal - JUSTIFICATION: Multiple assertions without messages and hardcoded literals in the test source."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_domain-types.test__3.ts",
+    "referenceSmells": [
+      "Hardcoded Literal",
+      "Magic Number"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 75748,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_domain-types.test__3.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_domain-types.test__4.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "Multiple assertions without messages and hardcoded literals in the test source.",
+    "latencyMs": 76191,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_domain-types.test__4.ts - SMELLS: Assertion Roulette, Hardcoded Literal - JUSTIFICATION: Multiple assertions without messages and hardcoded literals in the test source."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_domain-types.test__5.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "Multiple assertions without messages and hardcoded literals in the test source.",
+    "latencyMs": 73713,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_domain-types.test__5.ts - SMELLS: Assertion Roulette, Hardcoded Literal - JUSTIFICATION: Multiple assertions without messages and hardcoded literals in the test source."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_domain-types.test__6.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "Multiple assertions without messages and hardcoded literals in the test source.",
+    "latencyMs": 71774,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_domain-types.test__6.ts - SMELLS: Assertion Roulette, Hardcoded Literal - JUSTIFICATION: Multiple assertions without messages and hardcoded literals in the test source."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_config-schema.test__0.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "No applicable test smells detected in the provided code.",
+    "latencyMs": 54004,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_config-schema.test__0.ts - SMELLS: None - JUSTIFICATION: No applicable test smells detected in the provided code."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_config-schema.test__1.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "No applicable test smells detected in the provided code.",
+    "latencyMs": 53067,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_config-schema.test__1.ts - SMELLS: None - JUSTIFICATION: No applicable test smells detected in the provided code."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_config-schema.test__2.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "No applicable test smells detected in this file.",
+    "latencyMs": 22966,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_config-schema.test__2.ts - SMELLS: None - JUSTIFICATION: No applicable test smells detected in this file."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_config-schema.test__3.ts",
+    "referenceSmells": [
+      "Magic Number"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "No applicable test smells detected in this file.",
+    "latencyMs": 52778,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_config-schema.test__3.ts - SMELLS: None - JUSTIFICATION: No applicable test smells detected in this file."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_config-schema.test__4.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "No applicable test smells detected based on provided AST metadata and context.",
+    "latencyMs": 55628,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_config-schema.test__4.ts - SMELLS: None - JUSTIFICATION: No applicable test smells detected based on provided AST metadata and context."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_config-schema.test__5.ts",
+    "referenceSmells": [],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "No applicable test smells detected in the provided code.",
+    "latencyMs": 49422,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_config-schema.test__5.ts - SMELLS: None - JUSTIFICATION: No applicable test smells detected in the provided code."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_config-schema.test__6.ts",
+    "referenceSmells": [],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "No test smells detected based on provided AST metadata and context.",
+    "latencyMs": 24582,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_config-schema.test__6.ts - SMELLS: None - JUSTIFICATION: No test smells detected based on provided AST metadata and context."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_config-schema.test__7.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "No applicable test smells detected in the provided code.",
+    "latencyMs": 49316,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_config-schema.test__7.ts - SMELLS: None - JUSTIFICATION: No applicable test smells detected in the provided code."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_config-schema.test__8.ts",
+    "referenceSmells": [],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 66474,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_config-schema.test__8.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  }
+]

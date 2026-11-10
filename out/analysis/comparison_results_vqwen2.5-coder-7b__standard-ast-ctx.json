@@ -1,0 +1,3215 @@
+[
+  {
+    "file": "excalidraw__excalidraw__packages_element_src_tests_flowchart.test__0.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal",
+      "Magic Number"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test contains 5 assertions without messages, which can make it ambiguous if a failure occurs.",
+    "latencyMs": 131638,
+    "rawModelResponse": "FILE: excalidraw__excalidraw__packages_element_src_tests_flowchart.test__0.ts - SMELLS: Assertion Roulette - JUSTIFICATION: The test contains 5 assertions without messages, which can make it ambiguous if a failure occurs."
+  },
+  {
+    "file": "shadcn-ui__ui__packages_helpers_src_test_chat-contract__0.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Eager Test",
+      "Mystery Guest"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test contains 3 assertions without messages, which makes it ambiguous if they will fail.",
+    "latencyMs": 39480,
+    "rawModelResponse": "FILE: shadcn-ui__ui__packages_helpers_src_test_chat-contract__0.ts - SMELLS: Assertion Roulette - JUSTIFICATION: The test contains 3 assertions without messages, which makes it ambiguous if they will fail."
+  },
+  {
+    "file": "shadcn-ui__ui__packages_helpers_src_test_chat-contract__1.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Mystery Guest"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test contains 3 assertions without messages, which makes it ambiguous if they will fail.",
+    "latencyMs": 39024,
+    "rawModelResponse": "FILE: shadcn-ui__ui__packages_helpers_src_test_chat-contract__1.ts - SMELLS: Assertion Roulette - JUSTIFICATION: The test contains 3 assertions without messages, which makes it ambiguous if they will fail."
+  },
+  {
+    "file": "shadcn-ui__ui__packages_helpers_src_test_chat-contract__2.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Mystery Guest"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test contains 2 assertions without messages.",
+    "latencyMs": 35386,
+    "rawModelResponse": "FILE: shadcn-ui__ui__packages_helpers_src_test_chat-contract__2.ts - SMELLS: Assertion Roulette - JUSTIFICATION: The test contains 2 assertions without messages."
+  },
+  {
+    "file": "earendil-works__pi__packages_agent_test_harness_pico3_spec-plugins-lifecycle.test__0.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Eager Test",
+      "Hardcoded Literal",
+      "Mystery Guest"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test does not contain any of the detected smells.",
+    "latencyMs": 64093,
+    "rawModelResponse": "FILE: earendil-works__pi__packages_agent_test_harness_pico3_spec-plugins-lifecycle.test__0.ts - SMELLS: None - JUSTIFICATION: The test does not contain any of the detected smells."
+  },
+  {
+    "file": "earendil-works__pi__packages_agent_test_harness_pico3_spec-plugins-lifecycle.test__1.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Eager Test",
+      "Hardcoded Literal",
+      "Magic Number",
+      "Mystery Guest"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test does not contain any of the detected smells.",
+    "latencyMs": 62737,
+    "rawModelResponse": "FILE: earendil-works__pi__packages_agent_test_harness_pico3_spec-plugins-lifecycle.test__1.ts - SMELLS: None - JUSTIFICATION: The test does not contain any of the detected smells."
+  },
+  {
+    "file": "earendil-works__pi__packages_agent_test_harness_pico3_spec-plugins-lifecycle.test__2.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Eager Test",
+      "Hardcoded Literal",
+      "Mystery Guest"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test does not contain any of the detected smells.",
+    "latencyMs": 60346,
+    "rawModelResponse": "FILE: earendil-works__pi__packages_agent_test_harness_pico3_spec-plugins-lifecycle.test__2.ts - SMELLS: None - JUSTIFICATION: The test does not contain any of the detected smells."
+  },
+  {
+    "file": "earendil-works__pi__packages_agent_test_harness_pico3_spec-plugins-lifecycle.test__3.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Eager Test",
+      "Hardcoded Literal",
+      "Magic Number",
+      "Mystery Guest"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test does not contain any of the detected smells.",
+    "latencyMs": 69916,
+    "rawModelResponse": "FILE: earendil-works__pi__packages_agent_test_harness_pico3_spec-plugins-lifecycle.test__3.ts - SMELLS: None - JUSTIFICATION: The test does not contain any of the detected smells."
+  },
+  {
+    "file": "earendil-works__pi__packages_agent_test_harness_pico3_spec-plugins-lifecycle.test__5.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Conditional Test Logic",
+      "Eager Test",
+      "Hardcoded Literal",
+      "Mystery Guest"
+    ],
+    "modelSmells": [
+      "Conditional Test Logic"
+    ],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test contains control flow logic with 'await'.",
+    "latencyMs": 69823,
+    "rawModelResponse": "FILE: earendil-works__pi__packages_agent_test_harness_pico3_spec-plugins-lifecycle.test__5.ts - SMELLS: Conditional Test Logic - JUSTIFICATION: The test contains control flow logic with 'await'."
+  },
+  {
+    "file": "earendil-works__pi__packages_agent_test_harness_pico3_spec-plugins-lifecycle.test__6.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Conditional Test Logic",
+      "Eager Test",
+      "Hardcoded Literal",
+      "Mystery Guest"
+    ],
+    "modelSmells": [
+      "Conditional Test Logic"
+    ],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test contains control flow logic with 'if (missingApi)'.",
+    "latencyMs": 73118,
+    "rawModelResponse": "FILE: earendil-works__pi__packages_agent_test_harness_pico3_spec-plugins-lifecycle.test__6.ts - SMELLS: Conditional Test Logic - JUSTIFICATION: The test contains control flow logic with 'if (missingApi)'."
+  },
+  {
+    "file": "earendil-works__pi__packages_agent_test_harness_pico3_spec-plugins-lifecycle.test__7.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Conditional Test Logic",
+      "Eager Test",
+      "Hardcoded Literal",
+      "Magic Number",
+      "Mystery Guest",
+      "Sleepy Test"
+    ],
+    "modelSmells": [
+      "Conditional Test Logic"
+    ],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test contains control flow with 'for (let i = 0; i < 100; i++)'.",
+    "latencyMs": 82675,
+    "rawModelResponse": "FILE: earendil-works__pi__packages_agent_test_harness_pico3_spec-plugins-lifecycle.test__7.ts - SMELLS: Conditional Test Logic - JUSTIFICATION: The test contains control flow with 'for (let i = 0; i < 100; i++)'."
+  },
+  {
+    "file": "earendil-works__pi__packages_agent_test_harness_pico3_spec-plugins-lifecycle.test__8.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Exception Catching Throwing",
+      "Hardcoded Literal",
+      "Mystery Guest"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test does not contain any of the detected smells.",
+    "latencyMs": 76250,
+    "rawModelResponse": "FILE: earendil-works__pi__packages_agent_test_harness_pico3_spec-plugins-lifecycle.test__8.ts - SMELLS: None - JUSTIFICATION: The test does not contain any of the detected smells."
+  },
+  {
+    "file": "earendil-works__pi__packages_agent_test_harness_pico3_spec-plugins-lifecycle.test__9.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Conditional Test Logic",
+      "Eager Test",
+      "Hardcoded Literal",
+      "Magic Number",
+      "Mystery Guest",
+      "Sleepy Test"
+    ],
+    "modelSmells": [
+      "Conditional Test Logic"
+    ],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test contains control flow logic with 'for (let i = 0; i < 100; i++)'.",
+    "latencyMs": 73082,
+    "rawModelResponse": "FILE: earendil-works__pi__packages_agent_test_harness_pico3_spec-plugins-lifecycle.test__9.ts - SMELLS: Conditional Test Logic - JUSTIFICATION: The test contains control flow logic with 'for (let i = 0; i < 100; i++)'."
+  },
+  {
+    "file": "earendil-works__pi__packages_agent_test_harness_pico3_spec-plugins-lifecycle.test__10.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Conditional Test Logic",
+      "Hardcoded Literal",
+      "Magic Number",
+      "Mystery Guest",
+      "Sleepy Test"
+    ],
+    "modelSmells": [
+      "Conditional Test Logic"
+    ],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test contains control flow with 'await new Promise((resolve) => setTimeout(resolve, 1));'.",
+    "latencyMs": 71162,
+    "rawModelResponse": "FILE: earendil-works__pi__packages_agent_test_harness_pico3_spec-plugins-lifecycle.test__10.ts - SMELLS: Conditional Test Logic - JUSTIFICATION: The test contains control flow with 'await new Promise((resolve) => setTimeout(resolve, 1));'."
+  },
+  {
+    "file": "earendil-works__pi__packages_agent_test_harness_pico3_spec-plugins-lifecycle.test__11.ts",
+    "referenceSmells": [
+      "Conditional Test Logic",
+      "Hardcoded Literal",
+      "Mystery Guest"
+    ],
+    "modelSmells": [
+      "Conditional Test Logic"
+    ],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test contains control flow logic with 'for (const id of [\"spec.approver-a\", \"spec.approver-b\"] as const)'.",
+    "latencyMs": 73577,
+    "rawModelResponse": "FILE: earendil-works__pi__packages_agent_test_harness_pico3_spec-plugins-lifecycle.test__11.ts - SMELLS: Conditional Test Logic - JUSTIFICATION: The test contains control flow logic with 'for (const id of [\"spec.approver-a\", \"spec.approver-b\"] as const)'."
+  },
+  {
+    "file": "earendil-works__pi__packages_agent_test_harness_pico3_spec-plugins-lifecycle.test__12.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal",
+      "Mystery Guest"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test does not contain any of the detected smells.",
+    "latencyMs": 70496,
+    "rawModelResponse": "FILE: earendil-works__pi__packages_agent_test_harness_pico3_spec-plugins-lifecycle.test__12.ts - SMELLS: None - JUSTIFICATION: The test does not contain any of the detected smells."
+  },
+  {
+    "file": "earendil-works__pi__packages_agent_test_harness_pico3_spec-plugins-lifecycle.test__13.ts",
+    "referenceSmells": [
+      "Hardcoded Literal",
+      "Mystery Guest"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test does not contain any of the detected smells.",
+    "latencyMs": 67487,
+    "rawModelResponse": "FILE: earendil-works__pi__packages_agent_test_harness_pico3_spec-plugins-lifecycle.test__13.ts - SMELLS: None - JUSTIFICATION: The test does not contain any of the detected smells."
+  },
+  {
+    "file": "earendil-works__pi__packages_agent_test_harness_pico3_spec-plugins-lifecycle.test__14.ts",
+    "referenceSmells": [
+      "Hardcoded Literal",
+      "Mystery Guest"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test does not contain any of the detected smells.",
+    "latencyMs": 66526,
+    "rawModelResponse": "FILE: earendil-works__pi__packages_agent_test_harness_pico3_spec-plugins-lifecycle.test__14.ts - SMELLS: None - JUSTIFICATION: The test does not contain any of the detected smells."
+  },
+  {
+    "file": "earendil-works__pi__packages_agent_test_harness_pico3_spec-plugins-lifecycle.test__15.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal",
+      "Magic Number",
+      "Mystery Guest",
+      "Sleepy Test"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test does not contain any of the detected smells.",
+    "latencyMs": 80413,
+    "rawModelResponse": "FILE: earendil-works__pi__packages_agent_test_harness_pico3_spec-plugins-lifecycle.test__15.ts - SMELLS: None - JUSTIFICATION: The test does not contain any of the detected smells."
+  },
+  {
+    "file": "earendil-works__pi__packages_agent_test_harness_pico3_spec-plugins-lifecycle.test__16.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal",
+      "Mystery Guest"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test does not contain any of the detected smells.",
+    "latencyMs": 67709,
+    "rawModelResponse": "FILE: earendil-works__pi__packages_agent_test_harness_pico3_spec-plugins-lifecycle.test__16.ts - SMELLS: None - JUSTIFICATION: The test does not contain any of the detected smells."
+  },
+  {
+    "file": "earendil-works__pi__packages_ai_test_zen.test__0.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal",
+      "Mystery Guest",
+      "Resource Optimism"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test contains 2 assertions without messages, making it ambiguous if they fail.",
+    "latencyMs": 30946,
+    "rawModelResponse": "FILE: earendil-works__pi__packages_ai_test_zen.test__0.ts - SMELLS: Assertion Roulette - JUSTIFICATION: The test contains 2 assertions without messages, making it ambiguous if they fail."
+  },
+  {
+    "file": "earendil-works__pi__packages_ai_test_uuid.test__0.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Conditional Test Logic",
+      "Magic Number"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test contains 6 assertions without messages, which can make it ambiguous if a failure occurs.",
+    "latencyMs": 58075,
+    "rawModelResponse": "FILE: earendil-works__pi__packages_ai_test_uuid.test__0.ts - SMELLS: Assertion Roulette - JUSTIFICATION: The test contains 6 assertions without messages, which can make it ambiguous if a failure occurs."
+  },
+  {
+    "file": "earendil-works__pi__packages_ai_test_uuid.test__1.ts",
+    "referenceSmells": [
+      "Hardcoded Literal",
+      "Magic Number"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test contains 1 assertion without a message, triggering the Assertion Roulette smell.",
+    "latencyMs": 44930,
+    "rawModelResponse": "FILE: earendil-works__pi__packages_ai_test_uuid.test__1.ts - SMELLS: Assertion Roulette - JUSTIFICATION: The test contains 1 assertion without a message, triggering the Assertion Roulette smell."
+  },
+  {
+    "file": "earendil-works__pi__packages_ai_test_text.test__0.ts",
+    "referenceSmells": [],
+    "modelSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test contains a hardcoded literal \"first\\nsecond\" inside an assertion.",
+    "latencyMs": 30906,
+    "rawModelResponse": "FILE: earendil-works__pi__packages_ai_test_text.test__0.ts - SMELLS: Hardcoded Literal - JUSTIFICATION: The test contains a hardcoded literal \"first\\nsecond\" inside an assertion."
+  },
+  {
+    "file": "earendil-works__pi__packages_ai_test_text.test__1.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test uses a hardcoded literal for the separator string \"\".",
+    "latencyMs": 27162,
+    "rawModelResponse": "FILE: earendil-works__pi__packages_ai_test_text.test__1.ts - SMELLS: Hardcoded Literal - JUSTIFICATION: The test uses a hardcoded literal for the separator string \"\"."
+  },
+  {
+    "file": "earendil-works__pi__packages_ai_test_text.test__2.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test contains hardcoded literals \"hello\" passed directly as behavioral inputs into SUT methods instead of using declared constants.",
+    "latencyMs": 17208,
+    "rawModelResponse": "FILE: earendil-works__pi__packages_ai_test_text.test__2.ts - SMELLS: Hardcoded Literal - JUSTIFICATION: The test contains hardcoded literals \"hello\" passed directly as behavioral inputs into SUT methods instead of using declared constants."
+  },
+  {
+    "file": "earendil-works__pi__packages_ai_test_text.test__3.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test contains 10 hardcoded literals, which are domain strings passed directly into SUT methods instead of using declared constants.",
+    "latencyMs": 36729,
+    "rawModelResponse": "FILE: earendil-works__pi__packages_ai_test_text.test__3.ts - SMELLS: Hardcoded Literal - JUSTIFICATION: The test contains 10 hardcoded literals, which are domain strings passed directly into SUT methods instead of using declared constants."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_memory_tests_resource.test__0.ts",
+    "referenceSmells": [],
+    "modelSmells": [],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test does not contain any of the detected smells.",
+    "latencyMs": 35791,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_memory_tests_resource.test__0.ts - SMELLS: None - JUSTIFICATION: The test does not contain any of the detected smells."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_memory_tests_resource.test__1.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test contains 5 assertions without messages, which can make it ambiguous if a failure occurs.",
+    "latencyMs": 44775,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_memory_tests_resource.test__1.ts - SMELLS: Assertion Roulette - JUSTIFICATION: The test contains 5 assertions without messages, which can make it ambiguous if a failure occurs."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_memory_tests_resource.test__2.ts",
+    "referenceSmells": [],
+    "modelSmells": [],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test does not contain any of the detected smells.",
+    "latencyMs": 41114,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_memory_tests_resource.test__2.ts - SMELLS: None - JUSTIFICATION: The test does not contain any of the detected smells."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_memory_tests_resource.test__3.ts",
+    "referenceSmells": [
+      "Assertion Roulette"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test contains 2 assertions without messages, making it ambiguous if they will fail.",
+    "latencyMs": 43312,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_memory_tests_resource.test__3.ts - SMELLS: Assertion Roulette - JUSTIFICATION: The test contains 2 assertions without messages, making it ambiguous if they will fail."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_memory_tests_resource.test__4.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Eager Test",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test contains 2 assertions without messages, making it ambiguous if they fail.",
+    "latencyMs": 20127,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_memory_tests_resource.test__4.ts - SMELLS: Assertion Roulette - JUSTIFICATION: The test contains 2 assertions without messages, making it ambiguous if they fail."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_memory_tests_file-path.test__0.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test contains 1 assertion without a message, triggering the Assertion Roulette smell.",
+    "latencyMs": 46981,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_memory_tests_file-path.test__0.ts - SMELLS: Assertion Roulette - JUSTIFICATION: The test contains 1 assertion without a message, triggering the Assertion Roulette smell."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_memory_tests_file-path.test__1.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test contains 2 assertions without messages.",
+    "latencyMs": 46556,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_memory_tests_file-path.test__1.ts - SMELLS: Assertion Roulette - JUSTIFICATION: The test contains 2 assertions without messages."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_memory_tests_file-path.test__2.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Conditional Test Logic",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Conditional Test Logic"
+    ],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test contains control flow logic with 'if (process.platform === 'win32')'.",
+    "latencyMs": 50583,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_memory_tests_file-path.test__2.ts - SMELLS: Conditional Test Logic - JUSTIFICATION: The test contains control flow logic with 'if (process.platform === 'win32')'."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_memory_tests_file-path.test__3.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test contains 2 assertions without messages.",
+    "latencyMs": 46431,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_memory_tests_file-path.test__3.ts - SMELLS: Assertion Roulette - JUSTIFICATION: The test contains 2 assertions without messages."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_memory_tests_file-path.test__4.ts",
+    "referenceSmells": [],
+    "modelSmells": [],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test does not contain any of the detected smells.",
+    "latencyMs": 44209,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_memory_tests_file-path.test__4.ts - SMELLS: None - JUSTIFICATION: The test does not contain any of the detected smells."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_memory_tests_file-path.test__5.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Exception Catching Throwing",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test contains 5 assertions without messages, which can make it ambiguous if a failure occurs.",
+    "latencyMs": 57300,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_memory_tests_file-path.test__5.ts - SMELLS: Assertion Roulette - JUSTIFICATION: The test contains 5 assertions without messages, which can make it ambiguous if a failure occurs."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_memory_tests_file-path.test__6.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Exception Catching Throwing",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test contains 4 assertions without messages, which can make it ambiguous if they fail.",
+    "latencyMs": 56127,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_memory_tests_file-path.test__6.ts - SMELLS: Assertion Roulette - JUSTIFICATION: The test contains 4 assertions without messages, which can make it ambiguous if they fail."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_memory_tests_file-path.test__7.ts",
+    "referenceSmells": [
+      "Hardcoded Literal",
+      "Resource Optimism"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test contains 1 assertion without a message, triggering the Assertion Roulette smell.",
+    "latencyMs": 48248,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_memory_tests_file-path.test__7.ts - SMELLS: Assertion Roulette - JUSTIFICATION: The test contains 1 assertion without a message, triggering the Assertion Roulette smell."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_memory_tests_file-path.test__8.ts",
+    "referenceSmells": [],
+    "modelSmells": [],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test does not contain any of the detected smells.",
+    "latencyMs": 43532,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_memory_tests_file-path.test__8.ts - SMELLS: None - JUSTIFICATION: The test does not contain any of the detected smells."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_memory_tests_file-path.test__9.ts",
+    "referenceSmells": [],
+    "modelSmells": [],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test does not contain any of the detected smells.",
+    "latencyMs": 41391,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_memory_tests_file-path.test__9.ts - SMELLS: None - JUSTIFICATION: The test does not contain any of the detected smells."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_memory_tests_file-path.test__10.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test uses a hardcoded literal for the home directory path in the assertion.",
+    "latencyMs": 28197,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_memory_tests_file-path.test__10.ts - SMELLS: Hardcoded Literal - JUSTIFICATION: The test uses a hardcoded literal for the home directory path in the assertion."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_memory_tests_file-path.test__11.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test uses a hardcoded literal for the home directory path in the assertion.",
+    "latencyMs": 32402,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_memory_tests_file-path.test__11.ts - SMELLS: Hardcoded Literal - JUSTIFICATION: The test uses a hardcoded literal for the home directory path in the assertion."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_memory_tests_file-path.test__12.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test contains hardcoded literals (\"~backup.jsonl\") that should be replaced with declared constants.",
+    "latencyMs": 32093,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_memory_tests_file-path.test__12.ts - SMELLS: Hardcoded Literal - JUSTIFICATION: The test contains hardcoded literals (\"~backup.jsonl\") that should be replaced with declared constants."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_memory_tests_file-path.test__13.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test contains hardcoded literals \"/var/data/memory.jsonl\" which are not declared constants.",
+    "latencyMs": 16685,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_memory_tests_file-path.test__13.ts - SMELLS: Hardcoded Literal - JUSTIFICATION: The test contains hardcoded literals \"/var/data/memory.jsonl\" which are not declared constants."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_memory_tests_file-path.test__14.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test contains hardcoded literals such as 'data/memory.jsonl'.",
+    "latencyMs": 31650,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_memory_tests_file-path.test__14.ts - SMELLS: Hardcoded Literal - JUSTIFICATION: The test contains hardcoded literals such as 'data/memory.jsonl'."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_server.test__0.ts",
+    "referenceSmells": [
+      "Assertion Roulette"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test contains 2 assertions without messages, making it ambiguous if they fail.",
+    "latencyMs": 27197,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_server.test__0.ts - SMELLS: Assertion Roulette - JUSTIFICATION: The test contains 2 assertions without messages, making it ambiguous if they fail."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_server.test__1.ts",
+    "referenceSmells": [],
+    "modelSmells": [],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test does not contain any of the detected smells.",
+    "latencyMs": 25453,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_server.test__1.ts - SMELLS: None - JUSTIFICATION: The test does not contain any of the detected smells."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_server.test__2.ts",
+    "referenceSmells": [
+      "Assertion Roulette"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test contains 2 assertions without messages.",
+    "latencyMs": 25698,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_server.test__2.ts - SMELLS: Assertion Roulette - JUSTIFICATION: The test contains 2 assertions without messages."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_server.test__3.ts",
+    "referenceSmells": [],
+    "modelSmells": [],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test does not contain any of the detected smells.",
+    "latencyMs": 25575,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_server.test__3.ts - SMELLS: None - JUSTIFICATION: The test does not contain any of the detected smells."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_server.test__4.ts",
+    "referenceSmells": [
+      "Assertion Roulette"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test contains 3 assertions without messages, which can lead to ambiguous failure explanations.",
+    "latencyMs": 28341,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_server.test__4.ts - SMELLS: Assertion Roulette - JUSTIFICATION: The test contains 3 assertions without messages, which can lead to ambiguous failure explanations."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_prompts.test__0.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test contains 1 assertion without a message, triggering the Assertion Roulette smell.",
+    "latencyMs": 46195,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_prompts.test__0.ts - SMELLS: Assertion Roulette - JUSTIFICATION: The test contains 1 assertion without a message, triggering the Assertion Roulette smell."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_prompts.test__1.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test contains hardcoded literals such as \"What's weather in San Francisco?\".",
+    "latencyMs": 43468,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_prompts.test__1.ts - SMELLS: Hardcoded Literal - JUSTIFICATION: The test contains hardcoded literals such as \"What's weather in San Francisco?\"."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_prompts.test__2.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test does not contain any of the detected smells.",
+    "latencyMs": 45571,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_prompts.test__2.ts - SMELLS: None - JUSTIFICATION: The test does not contain any of the detected smells."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_prompts.test__3.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test contains 4 assertions without messages, which makes it ambiguous if they will fail.",
+    "latencyMs": 46598,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_prompts.test__3.ts - SMELLS: Assertion Roulette - JUSTIFICATION: The test contains 4 assertions without messages, which makes it ambiguous if they will fail."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_prompts.test__4.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test contains hardcoded literals such as 'Engineering' and 'Alice'.",
+    "latencyMs": 44549,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_prompts.test__4.ts - SMELLS: Hardcoded Literal - JUSTIFICATION: The test contains hardcoded literals such as 'Engineering' and 'Alice'."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_prompts.test__5.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Eager Test",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test contains 5 assertions without messages, which makes it ambiguous if they will fail.",
+    "latencyMs": 49611,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_prompts.test__5.ts - SMELLS: Assertion Roulette - JUSTIFICATION: The test contains 5 assertions without messages, which makes it ambiguous if they will fail."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_prompts.test__6.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test contains 5 assertions without messages, which can make it ambiguous if a failure occurs.",
+    "latencyMs": 47463,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_prompts.test__6.ts - SMELLS: Assertion Roulette - JUSTIFICATION: The test contains 5 assertions without messages, which can make it ambiguous if a failure occurs."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_prompts.test__7.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test contains 2 assertions without messages, making it ambiguous if they fail.",
+    "latencyMs": 44476,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_prompts.test__7.ts - SMELLS: Assertion Roulette - JUSTIFICATION: The test contains 2 assertions without messages, making it ambiguous if they fail."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_prompts.test__8.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test contains 1 assertion without a message, triggering the Assertion Roulette smell.",
+    "latencyMs": 43198,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_prompts.test__8.ts - SMELLS: Assertion Roulette - JUSTIFICATION: The test contains 1 assertion without a message, triggering the Assertion Roulette smell."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_prompts.test__9.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test contains 3 assertions without messages, which makes it ambiguous if they fail.",
+    "latencyMs": 48282,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_prompts.test__9.ts - SMELLS: Assertion Roulette - JUSTIFICATION: The test contains 3 assertions without messages, which makes it ambiguous if they fail."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_prompts.test__10.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test contains 5 assertions without messages, which can make it ambiguous if a test fails.",
+    "latencyMs": 49591,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_prompts.test__10.ts - SMELLS: Assertion Roulette - JUSTIFICATION: The test contains 5 assertions without messages, which can make it ambiguous if a test fails."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_resources.test__0.ts",
+    "referenceSmells": [
+      "Assertion Roulette"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test contains 3 assertions without messages, which makes it ambiguous if they will fail.",
+    "latencyMs": 49914,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_resources.test__0.ts - SMELLS: Assertion Roulette - JUSTIFICATION: The test contains 3 assertions without messages, which makes it ambiguous if they will fail."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_resources.test__1.ts",
+    "referenceSmells": [
+      "Magic Number",
+      "Sensitive Equality"
+    ],
+    "modelSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test uses a hardcoded literal 'demo://resource/dynamic/text/1' inside an assertion.",
+    "latencyMs": 49709,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_resources.test__1.ts - SMELLS: Hardcoded Literal - JUSTIFICATION: The test uses a hardcoded literal 'demo://resource/dynamic/text/1' inside an assertion."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_resources.test__2.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Magic Number",
+      "Sensitive Equality"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test contains 2 assertions without messages.",
+    "latencyMs": 48333,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_resources.test__2.ts - SMELLS: Assertion Roulette - JUSTIFICATION: The test contains 2 assertions without messages."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_resources.test__3.ts",
+    "referenceSmells": [
+      "Magic Number",
+      "Sensitive Equality"
+    ],
+    "modelSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test uses a hardcoded literal 'demo://resource/dynamic/blob/1' inside an assertion.",
+    "latencyMs": 49343,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_resources.test__3.ts - SMELLS: Hardcoded Literal - JUSTIFICATION: The test uses a hardcoded literal 'demo://resource/dynamic/blob/1' inside an assertion."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_resources.test__4.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Magic Number",
+      "Sensitive Equality"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test contains 2 assertions without messages.",
+    "latencyMs": 48342,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_resources.test__4.ts - SMELLS: Assertion Roulette - JUSTIFICATION: The test contains 2 assertions without messages."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_resources.test__5.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Magic Number"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test contains 4 assertions without messages, which can make it ambiguous if a failure occurs.",
+    "latencyMs": 52039,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_resources.test__5.ts - SMELLS: Assertion Roulette - JUSTIFICATION: The test contains 4 assertions without messages, which can make it ambiguous if a failure occurs."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_resources.test__6.ts",
+    "referenceSmells": [
+      "Magic Number"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test contains 1 assertion without a message, triggering the Assertion Roulette smell.",
+    "latencyMs": 50226,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_resources.test__6.ts - SMELLS: Assertion Roulette - JUSTIFICATION: The test contains 1 assertion without a message, triggering the Assertion Roulette smell."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_resources.test__7.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Magic Number"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test contains 3 assertions without messages, triggering the Assertion Roulette smell.",
+    "latencyMs": 50462,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_resources.test__7.ts - SMELLS: Assertion Roulette - JUSTIFICATION: The test contains 3 assertions without messages, triggering the Assertion Roulette smell."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_resources.test__8.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal",
+      "Magic Number"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test contains 2 assertions without messages, making it ambiguous if they fail.",
+    "latencyMs": 53195,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_resources.test__8.ts - SMELLS: Assertion Roulette - JUSTIFICATION: The test contains 2 assertions without messages, making it ambiguous if they fail."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_resources.test__9.ts",
+    "referenceSmells": [
+      "Assertion Roulette"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test contains 2 assertions without messages, making it ambiguous if they fail.",
+    "latencyMs": 51059,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_resources.test__9.ts - SMELLS: Assertion Roulette - JUSTIFICATION: The test contains 2 assertions without messages, making it ambiguous if they fail."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_resources.test__10.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test contains 2 assertions without messages, making it ambiguous if they fail.",
+    "latencyMs": 49768,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_resources.test__10.ts - SMELLS: Assertion Roulette - JUSTIFICATION: The test contains 2 assertions without messages, making it ambiguous if they fail."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_resources.test__11.ts",
+    "referenceSmells": [
+      "Assertion Roulette"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test contains 2 assertions without messages.",
+    "latencyMs": 47431,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_resources.test__11.ts - SMELLS: Assertion Roulette - JUSTIFICATION: The test contains 2 assertions without messages."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_resources.test__12.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test contains 2 assertions without messages, making it ambiguous if they fail.",
+    "latencyMs": 50282,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_resources.test__12.ts - SMELLS: Assertion Roulette - JUSTIFICATION: The test contains 2 assertions without messages, making it ambiguous if they fail."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_resources.test__13.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test contains 2 assertions without messages.",
+    "latencyMs": 46722,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_resources.test__13.ts - SMELLS: Assertion Roulette - JUSTIFICATION: The test contains 2 assertions without messages."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_resources.test__14.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test contains 3 assertions without messages, which can make it ambiguous if they fail.",
+    "latencyMs": 48716,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_resources.test__14.ts - SMELLS: Assertion Roulette - JUSTIFICATION: The test contains 3 assertions without messages, which can make it ambiguous if they fail."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_resources.test__15.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Eager Test",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test contains 4 assertions without messages, which can make it ambiguous if a failure occurs.",
+    "latencyMs": 56261,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_resources.test__15.ts - SMELLS: Assertion Roulette - JUSTIFICATION: The test contains 4 assertions without messages, which can make it ambiguous if a failure occurs."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_resources.test__16.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test contains hardcoded literals \"demo://resource/session/test\" which should be replaced with a declared constant.",
+    "latencyMs": 48001,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_resources.test__16.ts - SMELLS: Hardcoded Literal - JUSTIFICATION: The test contains hardcoded literals \"demo://resource/session/test\" which should be replaced with a declared constant."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_resources.test__17.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test contains 2 assertions without messages.",
+    "latencyMs": 47549,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_resources.test__17.ts - SMELLS: Assertion Roulette - JUSTIFICATION: The test contains 2 assertions without messages."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_resources.test__18.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Eager Test",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test contains 4 assertions with 3 lacking custom failure messages, meeting the trigger criteria for Assertion Roulette.",
+    "latencyMs": 59399,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_resources.test__18.ts - SMELLS: Assertion Roulette - JUSTIFICATION: The test contains 4 assertions with 3 lacking custom failure messages, meeting the trigger criteria for Assertion Roulette."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_resources.test__19.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test contains 2 assertions without messages, which can make it ambiguous if they fail.",
+    "latencyMs": 53199,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_resources.test__19.ts - SMELLS: Assertion Roulette - JUSTIFICATION: The test contains 2 assertions without messages, which can make it ambiguous if they fail."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_resources.test__20.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test contains 4 assertions without messages, which can make it ambiguous if a failure occurs.",
+    "latencyMs": 57635,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_resources.test__20.ts - SMELLS: Assertion Roulette - JUSTIFICATION: The test contains 4 assertions without messages, which can make it ambiguous if a failure occurs."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_resources.test__21.ts",
+    "referenceSmells": [
+      "Mystery Guest"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test does not contain any of the detected smells.",
+    "latencyMs": 48931,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_resources.test__21.ts - SMELLS: None - JUSTIFICATION: The test does not contain any of the detected smells."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_resources.test__22.ts",
+    "referenceSmells": [],
+    "modelSmells": [],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test does not contain any of the detected smells.",
+    "latencyMs": 48911,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_resources.test__22.ts - SMELLS: None - JUSTIFICATION: The test does not contain any of the detected smells."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_resources.test__23.ts",
+    "referenceSmells": [
+      "Assertion Roulette"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test contains 2 assertions without messages, which can lead to ambiguous failure explanations.",
+    "latencyMs": 78960,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_resources.test__23.ts - SMELLS: Assertion Roulette - JUSTIFICATION: The test contains 2 assertions without messages, which can lead to ambiguous failure explanations."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_resources.test__24.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Conditional Test Logic"
+    ],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test contains control flow logic with 'await subscribeHandler'.",
+    "latencyMs": 79909,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_resources.test__24.ts - SMELLS: Conditional Test Logic - JUSTIFICATION: The test contains control flow logic with 'await subscribeHandler'."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_resources.test__25.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test does not contain any of the detected smells.",
+    "latencyMs": 59217,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_resources.test__25.ts - SMELLS: None - JUSTIFICATION: The test does not contain any of the detected smells."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_memory_tests_server-version.test__0.ts",
+    "referenceSmells": [
+      "Assertion Roulette"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test contains 2 assertions without messages, making it ambiguous if they fail.",
+    "latencyMs": 30916,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_memory_tests_server-version.test__0.ts - SMELLS: Assertion Roulette - JUSTIFICATION: The test contains 2 assertions without messages, making it ambiguous if they fail."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_memory_tests_server-version.test__1.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal",
+      "Mystery Guest"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test contains 2 assertions without messages.",
+    "latencyMs": 33974,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_memory_tests_server-version.test__1.ts - SMELLS: Assertion Roulette - JUSTIFICATION: The test contains 2 assertions without messages."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_sequentialthinking_tests_lib.test__0.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal",
+      "Magic Number"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test contains 5 assertions without messages, which can make it ambiguous if a failure occurs.",
+    "latencyMs": 36943,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_sequentialthinking_tests_lib.test__0.ts - SMELLS: Assertion Roulette - JUSTIFICATION: The test contains 5 assertions without messages, which can make it ambiguous if a failure occurs."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_sequentialthinking_tests_lib.test__1.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal",
+      "Magic Number"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test contains 3 assertions without messages, which can make it ambiguous if they fail.",
+    "latencyMs": 36746,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_sequentialthinking_tests_lib.test__1.ts - SMELLS: Assertion Roulette - JUSTIFICATION: The test contains 3 assertions without messages, which can make it ambiguous if they fail."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_sequentialthinking_tests_lib.test__2.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal",
+      "Magic Number"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test contains 2 assertions without messages, making it ambiguous if they will fail.",
+    "latencyMs": 40311,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_sequentialthinking_tests_lib.test__2.ts - SMELLS: Assertion Roulette - JUSTIFICATION: The test contains 2 assertions without messages, making it ambiguous if they will fail."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_sequentialthinking_tests_lib.test__3.ts",
+    "referenceSmells": [
+      "Hardcoded Literal",
+      "Magic Number"
+    ],
+    "modelSmells": [
+      "Hardcoded Literal",
+      "Magic Number"
+    ],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test contains hardcoded literals (\"true\") and magic numbers (5).",
+    "latencyMs": 34346,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_sequentialthinking_tests_lib.test__3.ts - SMELLS: Hardcoded Literal, Magic Number - JUSTIFICATION: The test contains hardcoded literals (\"true\") and magic numbers (5)."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_sequentialthinking_tests_lib.test__4.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal",
+      "Magic Number"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test contains 4 assertions without messages, which can make it ambiguous if a failure occurs.",
+    "latencyMs": 44071,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_sequentialthinking_tests_lib.test__4.ts - SMELLS: Assertion Roulette - JUSTIFICATION: The test contains 4 assertions without messages, which can make it ambiguous if a failure occurs."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_sequentialthinking_tests_lib.test__5.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal",
+      "Magic Number"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test contains 2 assertions without messages, making it ambiguous if they will fail.",
+    "latencyMs": 39746,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_sequentialthinking_tests_lib.test__5.ts - SMELLS: Assertion Roulette - JUSTIFICATION: The test contains 2 assertions without messages, making it ambiguous if they will fail."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_sequentialthinking_tests_lib.test__6.ts",
+    "referenceSmells": [
+      "Hardcoded Literal",
+      "Magic Number"
+    ],
+    "modelSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test contains hardcoded literals such as 'a'.repeat(10000).",
+    "latencyMs": 33651,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_sequentialthinking_tests_lib.test__6.ts - SMELLS: Hardcoded Literal - JUSTIFICATION: The test contains hardcoded literals such as 'a'.repeat(10000)."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_sequentialthinking_tests_lib.test__7.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal",
+      "Magic Number"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test contains 3 assertions without messages, which makes it ambiguous if they will fail.",
+    "latencyMs": 35817,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_sequentialthinking_tests_lib.test__7.ts - SMELLS: Assertion Roulette - JUSTIFICATION: The test contains 3 assertions without messages, which makes it ambiguous if they will fail."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_sequentialthinking_tests_lib.test__8.ts",
+    "referenceSmells": [
+      "Hardcoded Literal",
+      "Magic Number"
+    ],
+    "modelSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test contains hardcoded literals such as 'Final thought', 'true', and 'false'.",
+    "latencyMs": 34135,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_sequentialthinking_tests_lib.test__8.ts - SMELLS: Hardcoded Literal - JUSTIFICATION: The test contains hardcoded literals such as 'Final thought', 'true', and 'false'."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_sequentialthinking_tests_lib.test__9.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal",
+      "Magic Number"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test contains 5 assertions without messages, which can make it ambiguous if a failure occurs.",
+    "latencyMs": 36204,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_sequentialthinking_tests_lib.test__9.ts - SMELLS: Assertion Roulette - JUSTIFICATION: The test contains 5 assertions without messages, which can make it ambiguous if a failure occurs."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_sequentialthinking_tests_lib.test__10.ts",
+    "referenceSmells": [
+      "Hardcoded Literal",
+      "Magic Number"
+    ],
+    "modelSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test contains hardcoded literals such as 'Test thought' and 'true'.",
+    "latencyMs": 35156,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_sequentialthinking_tests_lib.test__10.ts - SMELLS: Hardcoded Literal - JUSTIFICATION: The test contains hardcoded literals such as 'Test thought' and 'true'."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_sequentialthinking_tests_lib.test__11.ts",
+    "referenceSmells": [
+      "Hardcoded Literal",
+      "Magic Number"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test does not contain any of the detected smells.",
+    "latencyMs": 43684,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_sequentialthinking_tests_lib.test__11.ts - SMELLS: None - JUSTIFICATION: The test does not contain any of the detected smells."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_sequentialthinking_tests_lib.test__12.ts",
+    "referenceSmells": [
+      "Hardcoded Literal",
+      "Magic Number"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test does not contain any of the detected smells.",
+    "latencyMs": 44627,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_sequentialthinking_tests_lib.test__12.ts - SMELLS: None - JUSTIFICATION: The test does not contain any of the detected smells."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_sequentialthinking_tests_lib.test__13.ts",
+    "referenceSmells": [
+      "Hardcoded Literal",
+      "Magic Number"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test does not contain any of the detected smells based on the provided AST metadata and context.",
+    "latencyMs": 42947,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_sequentialthinking_tests_lib.test__13.ts - SMELLS: None - JUSTIFICATION: The test does not contain any of the detected smells based on the provided AST metadata and context."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_filesystem_tests_roots-utils.test__0.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Eager Test",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test contains multiple assertions without messages (4) and uses hardcoded literals for file paths (3).",
+    "latencyMs": 54618,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_filesystem_tests_roots-utils.test__0.ts - SMELLS: Assertion Roulette, Hardcoded Literal - JUSTIFICATION: The test contains multiple assertions without messages (4) and uses hardcoded literals for file paths (3)."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_filesystem_tests_roots-utils.test__1.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "General Fixture",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test contains 2 assertions without messages, which can make it ambiguous if they fail.",
+    "latencyMs": 51927,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_filesystem_tests_roots-utils.test__1.ts - SMELLS: Assertion Roulette - JUSTIFICATION: The test contains 2 assertions without messages, which can make it ambiguous if they fail."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_filesystem_tests_roots-utils.test__2.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test contains multiple assertions without messages (5) and uses hardcoded literals for error paths ('non-existent-directory-12345', '\\0invalid\\0path').",
+    "latencyMs": 62473,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_filesystem_tests_roots-utils.test__2.ts - SMELLS: Assertion Roulette, Hardcoded Literal - JUSTIFICATION: The test contains multiple assertions without messages (5) and uses hardcoded literals for error paths ('non-existent-directory-12345', '\\0invalid\\0path')."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_memory_tests_delete-reporting.test__0.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test does not contain any of the detected smells.",
+    "latencyMs": 45083,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_memory_tests_delete-reporting.test__0.ts - SMELLS: None - JUSTIFICATION: The test does not contain any of the detected smells."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_memory_tests_delete-reporting.test__1.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test contains 2 assertions without messages, making it ambiguous if they fail.",
+    "latencyMs": 45514,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_memory_tests_delete-reporting.test__1.ts - SMELLS: Assertion Roulette - JUSTIFICATION: The test contains 2 assertions without messages, making it ambiguous if they fail."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_memory_tests_delete-reporting.test__2.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test contains 2 assertions without messages, which can lead to ambiguous failure explanations.",
+    "latencyMs": 43187,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_memory_tests_delete-reporting.test__2.ts - SMELLS: Assertion Roulette - JUSTIFICATION: The test contains 2 assertions without messages, which can lead to ambiguous failure explanations."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_memory_tests_delete-reporting.test__3.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test does not contain any of the detected smells.",
+    "latencyMs": 44705,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_memory_tests_delete-reporting.test__3.ts - SMELLS: None - JUSTIFICATION: The test does not contain any of the detected smells."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_memory_tests_delete-reporting.test__4.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test does not contain any of the detected smells.",
+    "latencyMs": 17880,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_memory_tests_delete-reporting.test__4.ts - SMELLS: None - JUSTIFICATION: The test does not contain any of the detected smells."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_memory_tests_delete-reporting.test__5.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test does not contain any of the detected smells.",
+    "latencyMs": 45595,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_memory_tests_delete-reporting.test__5.ts - SMELLS: None - JUSTIFICATION: The test does not contain any of the detected smells."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_memory_tests_delete-reporting.test__6.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test contains 2 assertions without messages, making it ambiguous if they fail.",
+    "latencyMs": 46683,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_memory_tests_delete-reporting.test__6.ts - SMELLS: Assertion Roulette - JUSTIFICATION: The test contains 2 assertions without messages, making it ambiguous if they fail."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_registrations.test__0.ts",
+    "referenceSmells": [
+      "Assertion Roulette"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test contains 13 assertions without messages, which can make it ambiguous if a failure occurs.",
+    "latencyMs": 47942,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_registrations.test__0.ts - SMELLS: Assertion Roulette - JUSTIFICATION: The test contains 13 assertions without messages, which can make it ambiguous if a failure occurs."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_registrations.test__1.ts",
+    "referenceSmells": [
+      "Assertion Roulette"
+    ],
+    "modelSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test contains multiple assertions without messages (Assertion Roulette) and uses hardcoded literals for domain strings (Hardcoded Literal).",
+    "latencyMs": 51687,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_registrations.test__1.ts - SMELLS: Assertion Roulette, Hardcoded Literal - JUSTIFICATION: The test contains multiple assertions without messages (Assertion Roulette) and uses hardcoded literals for domain strings (Hardcoded Literal)."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_registrations.test__2.ts",
+    "referenceSmells": [],
+    "modelSmells": [
+      "Conditional Test Logic"
+    ],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test contains control flow logic with 'if' statements inside the test body.",
+    "latencyMs": 39072,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_registrations.test__2.ts - SMELLS: Conditional Test Logic - JUSTIFICATION: The test contains control flow logic with 'if' statements inside the test body."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_registrations.test__3.ts",
+    "referenceSmells": [
+      "Assertion Roulette"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test contains 5 assertions without messages, which can make it ambiguous if a failure occurs.",
+    "latencyMs": 40842,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_registrations.test__3.ts - SMELLS: Assertion Roulette - JUSTIFICATION: The test contains 5 assertions without messages, which can make it ambiguous if a failure occurs."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_registrations.test__4.ts",
+    "referenceSmells": [
+      "Assertion Roulette"
+    ],
+    "modelSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test contains multiple assertions without messages (3) and uses hardcoded literals for resource names ('Dynamic Text Resource', 'Dynamic Blob Resource').",
+    "latencyMs": 40998,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_registrations.test__4.ts - SMELLS: Assertion Roulette, Hardcoded Literal - JUSTIFICATION: The test contains multiple assertions without messages (3) and uses hardcoded literals for resource names ('Dynamic Text Resource', 'Dynamic Blob Resource')."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_registrations.test__5.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Mystery Guest"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test contains 2 assertions without messages, making it ambiguous if they fail.",
+    "latencyMs": 34903,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_registrations.test__5.ts - SMELLS: Assertion Roulette - JUSTIFICATION: The test contains 2 assertions without messages, making it ambiguous if they fail."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_filesystem_tests_unicode-paths.test__0.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test contains hardcoded literals such as 'de\\u0301marche', 're\\u0301sume\\u0301.txt', and 'd\\u00e9marche' that are not declared constants.",
+    "latencyMs": 54371,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_filesystem_tests_unicode-paths.test__0.ts - SMELLS: Hardcoded Literal - JUSTIFICATION: The test contains hardcoded literals such as 'de\\u0301marche', 're\\u0301sume\\u0301.txt', and 'd\\u00e9marche' that are not declared constants."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_filesystem_tests_unicode-paths.test__1.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test contains hardcoded literals such as 'de\\u0301marche' and 'new.txt'.",
+    "latencyMs": 46299,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_filesystem_tests_unicode-paths.test__1.ts - SMELLS: Hardcoded Literal - JUSTIFICATION: The test contains hardcoded literals such as 'de\\u0301marche' and 'new.txt'."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_filesystem_tests_unicode-paths.test__2.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "Multiple assertions without messages (1) and hardcoded literals (5).",
+    "latencyMs": 44990,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_filesystem_tests_unicode-paths.test__2.ts - SMELLS: Assertion Roulette, Hardcoded Literal - JUSTIFICATION: Multiple assertions without messages (1) and hardcoded literals (5)."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_filesystem_tests_nested-parents.test__0.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test contains multiple assertions without messages (Assertion Roulette) and uses hardcoded literals for file paths (Hardcoded Literal).",
+    "latencyMs": 50994,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_filesystem_tests_nested-parents.test__0.ts - SMELLS: Assertion Roulette, Hardcoded Literal - JUSTIFICATION: The test contains multiple assertions without messages (Assertion Roulette) and uses hardcoded literals for file paths (Hardcoded Literal)."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_filesystem_tests_nested-parents.test__1.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette",
+      "General Fixture"
+    ],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test contains multiple assertions without messages (Assertion Roulette) and utilizes less than 50% of the setup variables defined in beforeEach (General Fixture).",
+    "latencyMs": 53618,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_filesystem_tests_nested-parents.test__1.ts - SMELLS: Assertion Roulette, General Fixture - JUSTIFICATION: The test contains multiple assertions without messages (Assertion Roulette) and utilizes less than 50% of the setup variables defined in beforeEach (General Fixture)."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_diff-analyzer.test__0.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test does not contain any of the detected smells.",
+    "latencyMs": 71626,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_diff-analyzer.test__0.ts - SMELLS: None - JUSTIFICATION: The test does not contain any of the detected smells."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_diff-analyzer.test__1.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test does not contain any of the detected smells.",
+    "latencyMs": 21403,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_diff-analyzer.test__1.ts - SMELLS: None - JUSTIFICATION: The test does not contain any of the detected smells."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_diff-analyzer.test__2.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test contains 2 assertions without messages, triggering the Assertion Roulette smell.",
+    "latencyMs": 74351,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_diff-analyzer.test__2.ts - SMELLS: Assertion Roulette - JUSTIFICATION: The test contains 2 assertions without messages, triggering the Assertion Roulette smell."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_diff-analyzer.test__3.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test does not contain any of the detected smells.",
+    "latencyMs": 71484,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_diff-analyzer.test__3.ts - SMELLS: None - JUSTIFICATION: The test does not contain any of the detected smells."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_diff-analyzer.test__4.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test does not contain any of the detected smells.",
+    "latencyMs": 20520,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_diff-analyzer.test__4.ts - SMELLS: None - JUSTIFICATION: The test does not contain any of the detected smells."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_diff-analyzer.test__5.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test contains 2 assertions without messages, triggering the Assertion Roulette smell.",
+    "latencyMs": 72910,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_diff-analyzer.test__5.ts - SMELLS: Assertion Roulette - JUSTIFICATION: The test contains 2 assertions without messages, triggering the Assertion Roulette smell."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_diff-analyzer.test__6.ts",
+    "referenceSmells": [
+      "Assertion Roulette"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test contains 2 assertions without messages, triggering the Assertion Roulette smell.",
+    "latencyMs": 69089,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_diff-analyzer.test__6.ts - SMELLS: Assertion Roulette - JUSTIFICATION: The test contains 2 assertions without messages, triggering the Assertion Roulette smell."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_diff-analyzer.test__7.ts",
+    "referenceSmells": [
+      "Conditional Test Logic",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Conditional Test Logic",
+      "Hardcoded Literal"
+    ],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test contains control flow logic (if statement) and uses a hardcoded literal string.",
+    "latencyMs": 75977,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_diff-analyzer.test__7.ts - SMELLS: Conditional Test Logic, Hardcoded Literal - JUSTIFICATION: The test contains control flow logic (if statement) and uses a hardcoded literal string."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_diff-analyzer.test__8.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test contains 3 assertions without messages, meeting the trigger criteria for Assertion Roulette.",
+    "latencyMs": 73947,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_diff-analyzer.test__8.ts - SMELLS: Assertion Roulette - JUSTIFICATION: The test contains 3 assertions without messages, meeting the trigger criteria for Assertion Roulette."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_diff-analyzer.test__9.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test does not contain any of the detected smells.",
+    "latencyMs": 71385,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_diff-analyzer.test__9.ts - SMELLS: None - JUSTIFICATION: The test does not contain any of the detected smells."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_diff-analyzer.test__10.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test does not contain any of the detected smells.",
+    "latencyMs": 21693,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_diff-analyzer.test__10.ts - SMELLS: None - JUSTIFICATION: The test does not contain any of the detected smells."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_explain-builder.test__0.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test does not contain any of the detected smells.",
+    "latencyMs": 63473,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_explain-builder.test__0.ts - SMELLS: None - JUSTIFICATION: The test does not contain any of the detected smells."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_explain-builder.test__1.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test contains 2 assertions without messages, making it ambiguous if they fail.",
+    "latencyMs": 65735,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_explain-builder.test__1.ts - SMELLS: Assertion Roulette - JUSTIFICATION: The test contains 2 assertions without messages, making it ambiguous if they fail."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_explain-builder.test__2.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test does not contain any of the detected smells.",
+    "latencyMs": 63529,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_explain-builder.test__2.ts - SMELLS: None - JUSTIFICATION: The test does not contain any of the detected smells."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_explain-builder.test__3.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test does not contain any of the detected smells.",
+    "latencyMs": 62981,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_explain-builder.test__3.ts - SMELLS: None - JUSTIFICATION: The test does not contain any of the detected smells."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_explain-builder.test__4.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test does not contain any of the detected smells.",
+    "latencyMs": 59887,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_explain-builder.test__4.ts - SMELLS: None - JUSTIFICATION: The test does not contain any of the detected smells."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_explain-builder.test__5.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test does not contain any of the detected smells.",
+    "latencyMs": 60276,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_explain-builder.test__5.ts - SMELLS: None - JUSTIFICATION: The test does not contain any of the detected smells."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_explain-builder.test__6.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test contains 3 assertions without messages, which makes it ambiguous if they fail.",
+    "latencyMs": 65965,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_explain-builder.test__6.ts - SMELLS: Assertion Roulette - JUSTIFICATION: The test contains 3 assertions without messages, which makes it ambiguous if they fail."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_explain-builder.test__7.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test does not contain any of the detected smells.",
+    "latencyMs": 63676,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_explain-builder.test__7.ts - SMELLS: None - JUSTIFICATION: The test does not contain any of the detected smells."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_onboard-builder.test__0.ts",
+    "referenceSmells": [
+      "Assertion Roulette"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test contains 2 assertions without messages, making it ambiguous if they fail.",
+    "latencyMs": 57564,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_onboard-builder.test__0.ts - SMELLS: Assertion Roulette - JUSTIFICATION: The test contains 2 assertions without messages, making it ambiguous if they fail."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_onboard-builder.test__1.ts",
+    "referenceSmells": [
+      "Assertion Roulette"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test contains 2 assertions without messages, making it ambiguous if they fail.",
+    "latencyMs": 55511,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_onboard-builder.test__1.ts - SMELLS: Assertion Roulette - JUSTIFICATION: The test contains 2 assertions without messages, making it ambiguous if they fail."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_onboard-builder.test__2.ts",
+    "referenceSmells": [
+      "Assertion Roulette"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test contains 3 assertions without messages, which makes it ambiguous if they fail.",
+    "latencyMs": 58667,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_onboard-builder.test__2.ts - SMELLS: Assertion Roulette - JUSTIFICATION: The test contains 3 assertions without messages, which makes it ambiguous if they fail."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_onboard-builder.test__3.ts",
+    "referenceSmells": [
+      "Assertion Roulette"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test contains 2 assertions without messages, making it ambiguous if they fail.",
+    "latencyMs": 60513,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_onboard-builder.test__3.ts - SMELLS: Assertion Roulette - JUSTIFICATION: The test contains 2 assertions without messages, making it ambiguous if they fail."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_onboard-builder.test__4.ts",
+    "referenceSmells": [
+      "Assertion Roulette"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test contains 2 assertions without messages, making it ambiguous if they fail.",
+    "latencyMs": 22151,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_onboard-builder.test__4.ts - SMELLS: Assertion Roulette - JUSTIFICATION: The test contains 2 assertions without messages, making it ambiguous if they fail."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_onboard-builder.test__5.ts",
+    "referenceSmells": [
+      "Assertion Roulette"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test contains 2 assertions without messages, which can lead to ambiguous failure explanations.",
+    "latencyMs": 22297,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_onboard-builder.test__5.ts - SMELLS: Assertion Roulette - JUSTIFICATION: The test contains 2 assertions without messages, which can lead to ambiguous failure explanations."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_onboard-builder.test__6.ts",
+    "referenceSmells": [],
+    "modelSmells": [],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test does not contain any of the detected smells.",
+    "latencyMs": 58640,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_onboard-builder.test__6.ts - SMELLS: None - JUSTIFICATION: The test does not contain any of the detected smells."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_onboard-builder.test__7.ts",
+    "referenceSmells": [],
+    "modelSmells": [],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test does not contain any of the detected smells.",
+    "latencyMs": 59751,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_onboard-builder.test__7.ts - SMELLS: None - JUSTIFICATION: The test does not contain any of the detected smells."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_onboard-builder.test__8.ts",
+    "referenceSmells": [],
+    "modelSmells": [],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test does not contain any of the detected smells.",
+    "latencyMs": 20975,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_onboard-builder.test__8.ts - SMELLS: None - JUSTIFICATION: The test does not contain any of the detected smells."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_staleness.test__0.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test contains 2 assertions without messages, which can make it ambiguous if they fail.",
+    "latencyMs": 58240,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_staleness.test__0.ts - SMELLS: Assertion Roulette - JUSTIFICATION: The test contains 2 assertions without messages, which can make it ambiguous if they fail."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_staleness.test__1.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test does not contain any of the detected smells.",
+    "latencyMs": 52112,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_staleness.test__1.ts - SMELLS: None - JUSTIFICATION: The test does not contain any of the detected smells."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_staleness.test__2.ts",
+    "referenceSmells": [
+      "Exception Catching Throwing",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test does not contain any of the detected smells.",
+    "latencyMs": 53012,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_staleness.test__2.ts - SMELLS: None - JUSTIFICATION: The test does not contain any of the detected smells."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_staleness.test__3.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test does not contain any of the detected smells.",
+    "latencyMs": 53622,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_staleness.test__3.ts - SMELLS: None - JUSTIFICATION: The test does not contain any of the detected smells."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_staleness.test__4.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test does not contain any of the detected smells.",
+    "latencyMs": 49821,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_staleness.test__4.ts - SMELLS: None - JUSTIFICATION: The test does not contain any of the detected smells."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_staleness.test__5.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test contains 5 assertions without messages, which can make it ambiguous if a failure occurs.",
+    "latencyMs": 78420,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_staleness.test__5.ts - SMELLS: Assertion Roulette - JUSTIFICATION: The test contains 5 assertions without messages, which can make it ambiguous if a failure occurs."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_staleness.test__6.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test contains multiple assertions without messages (4) and uses 31 hardcoded literals.",
+    "latencyMs": 84021,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_staleness.test__6.ts - SMELLS: Assertion Roulette, Hardcoded Literal - JUSTIFICATION: The test contains multiple assertions without messages (4) and uses 31 hardcoded literals."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_staleness.test__7.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test contains 3 assertions without messages, meeting the trigger criteria for Assertion Roulette.",
+    "latencyMs": 55027,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_staleness.test__7.ts - SMELLS: Assertion Roulette - JUSTIFICATION: The test contains 3 assertions without messages, meeting the trigger criteria for Assertion Roulette."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_figma_tests_merge.test__0.ts",
+    "referenceSmells": [
+      "Assertion Roulette"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test contains 2 assertions without messages.",
+    "latencyMs": 48694,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_figma_tests_merge.test__0.ts - SMELLS: Assertion Roulette - JUSTIFICATION: The test contains 2 assertions without messages."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_figma_tests_merge.test__1.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Eager Test",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test contains 2 assertions without messages, which can lead to ambiguous failure explanations.",
+    "latencyMs": 55089,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_figma_tests_merge.test__1.ts - SMELLS: Assertion Roulette - JUSTIFICATION: The test contains 2 assertions without messages, which can lead to ambiguous failure explanations."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_figma_tests_merge.test__2.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test contains 2 assertions without messages, which can lead to ambiguous failure explanations.",
+    "latencyMs": 53967,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_figma_tests_merge.test__2.ts - SMELLS: Assertion Roulette - JUSTIFICATION: The test contains 2 assertions without messages, which can lead to ambiguous failure explanations."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_figma_tests_merge.test__3.ts",
+    "referenceSmells": [],
+    "modelSmells": [],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test does not contain any of the detected smells.",
+    "latencyMs": 49005,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_figma_tests_merge.test__3.ts - SMELLS: None - JUSTIFICATION: The test does not contain any of the detected smells."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_figma_tests_tokens.test__0.ts",
+    "referenceSmells": [
+      "Assertion Roulette"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test contains 3 assertions without messages, which can make it ambiguous if they fail.",
+    "latencyMs": 54271,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_figma_tests_tokens.test__0.ts - SMELLS: Assertion Roulette - JUSTIFICATION: The test contains 3 assertions without messages, which can make it ambiguous if they fail."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_figma_tests_tokens.test__1.ts",
+    "referenceSmells": [],
+    "modelSmells": [],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test does not contain any of the detected smells.",
+    "latencyMs": 52698,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_figma_tests_tokens.test__1.ts - SMELLS: None - JUSTIFICATION: The test does not contain any of the detected smells."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_figma_tests_tokens.test__2.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test contains 2 assertions without messages, making it ambiguous if they fail.",
+    "latencyMs": 94107,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_figma_tests_tokens.test__2.ts - SMELLS: Assertion Roulette - JUSTIFICATION: The test contains 2 assertions without messages, making it ambiguous if they fail."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_figma_tests_tokens.test__3.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test does not contain any of the detected smells.",
+    "latencyMs": 67376,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_figma_tests_tokens.test__3.ts - SMELLS: None - JUSTIFICATION: The test does not contain any of the detected smells."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_context-builder.test__0.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test contains 2 assertions without messages, making it ambiguous if they fail.",
+    "latencyMs": 84965,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_context-builder.test__0.ts - SMELLS: Assertion Roulette - JUSTIFICATION: The test contains 2 assertions without messages, making it ambiguous if they fail."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_context-builder.test__1.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test contains 3 assertions without messages, which makes it ambiguous if they fail.",
+    "latencyMs": 90628,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_context-builder.test__1.ts - SMELLS: Assertion Roulette - JUSTIFICATION: The test contains 3 assertions without messages, which makes it ambiguous if they fail."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_context-builder.test__2.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test contains 4 assertions without messages, which makes it ambiguous if they will fail.",
+    "latencyMs": 85274,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_context-builder.test__2.ts - SMELLS: Assertion Roulette - JUSTIFICATION: The test contains 4 assertions without messages, which makes it ambiguous if they will fail."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_context-builder.test__3.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test does not contain any of the detected smells.",
+    "latencyMs": 83383,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_context-builder.test__3.ts - SMELLS: None - JUSTIFICATION: The test does not contain any of the detected smells."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_context-builder.test__4.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test contains 2 assertions without messages, making it ambiguous if they fail.",
+    "latencyMs": 87316,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_context-builder.test__4.ts - SMELLS: Assertion Roulette - JUSTIFICATION: The test contains 2 assertions without messages, making it ambiguous if they fail."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_context-builder.test__5.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test does not contain any of the detected smells.",
+    "latencyMs": 81426,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_context-builder.test__5.ts - SMELLS: None - JUSTIFICATION: The test does not contain any of the detected smells."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_context-builder.test__6.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal",
+      "Magic Number"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test contains 2 assertions without messages, making it ambiguous if they fail.",
+    "latencyMs": 87083,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_context-builder.test__6.ts - SMELLS: Assertion Roulette - JUSTIFICATION: The test contains 2 assertions without messages, making it ambiguous if they fail."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_context-builder.test__7.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test contains 3 assertions without messages, meeting the trigger criteria for Assertion Roulette.",
+    "latencyMs": 85098,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_context-builder.test__7.ts - SMELLS: Assertion Roulette - JUSTIFICATION: The test contains 3 assertions without messages, meeting the trigger criteria for Assertion Roulette."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_context-builder.test__8.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test contains 2 assertions without messages, making it ambiguous if they fail.",
+    "latencyMs": 84345,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_context-builder.test__8.ts - SMELLS: Assertion Roulette - JUSTIFICATION: The test contains 2 assertions without messages, making it ambiguous if they fail."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_context-builder.test__9.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test contains 3 assertions without messages, meeting the trigger criteria for Assertion Roulette.",
+    "latencyMs": 84807,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_context-builder.test__9.ts - SMELLS: Assertion Roulette - JUSTIFICATION: The test contains 3 assertions without messages, meeting the trigger criteria for Assertion Roulette."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_context-builder.test__10.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test contains 3 assertions without messages, meeting the trigger criteria for Assertion Roulette.",
+    "latencyMs": 86954,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_context-builder.test__10.ts - SMELLS: Assertion Roulette - JUSTIFICATION: The test contains 3 assertions without messages, meeting the trigger criteria for Assertion Roulette."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_context-builder.test__11.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test does not contain any of the detected smells.",
+    "latencyMs": 82703,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_context-builder.test__11.ts - SMELLS: None - JUSTIFICATION: The test does not contain any of the detected smells."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_context-builder.test__12.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test does not contain any of the detected smells.",
+    "latencyMs": 21779,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_context-builder.test__12.ts - SMELLS: None - JUSTIFICATION: The test does not contain any of the detected smells."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_context-builder.test__13.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test contains 2 assertions without messages, making it ambiguous if they fail.",
+    "latencyMs": 84266,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_context-builder.test__13.ts - SMELLS: Assertion Roulette - JUSTIFICATION: The test contains 2 assertions without messages, making it ambiguous if they fail."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_domain-types.test__0.ts",
+    "referenceSmells": [
+      "Assertion Roulette"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test contains 4 assertions without messages, which can make it ambiguous if a failure occurs.",
+    "latencyMs": 57112,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_domain-types.test__0.ts - SMELLS: Assertion Roulette - JUSTIFICATION: The test contains 4 assertions without messages, which can make it ambiguous if a failure occurs."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_domain-types.test__1.ts",
+    "referenceSmells": [
+      "Assertion Roulette"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test contains 2 assertions without messages, making it ambiguous if they fail.",
+    "latencyMs": 55175,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_domain-types.test__1.ts - SMELLS: Assertion Roulette - JUSTIFICATION: The test contains 2 assertions without messages, making it ambiguous if they fail."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_domain-types.test__2.ts",
+    "referenceSmells": [
+      "Assertion Roulette"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test contains 2 assertions without messages, making it ambiguous if they fail.",
+    "latencyMs": 21188,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_domain-types.test__2.ts - SMELLS: Assertion Roulette - JUSTIFICATION: The test contains 2 assertions without messages, making it ambiguous if they fail."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_domain-types.test__3.ts",
+    "referenceSmells": [
+      "Hardcoded Literal",
+      "Magic Number"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test does not contain any of the detected smells.",
+    "latencyMs": 60582,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_domain-types.test__3.ts - SMELLS: None - JUSTIFICATION: The test does not contain any of the detected smells."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_domain-types.test__4.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test contains 4 assertions without messages, which can make it ambiguous if they fail.",
+    "latencyMs": 61320,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_domain-types.test__4.ts - SMELLS: Assertion Roulette - JUSTIFICATION: The test contains 4 assertions without messages, which can make it ambiguous if they fail."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_domain-types.test__5.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test contains 3 assertions without messages, which makes it ambiguous if they fail.",
+    "latencyMs": 59116,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_domain-types.test__5.ts - SMELLS: Assertion Roulette - JUSTIFICATION: The test contains 3 assertions without messages, which makes it ambiguous if they fail."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_domain-types.test__6.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test contains 2 assertions without messages, making it ambiguous if they fail.",
+    "latencyMs": 57325,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_domain-types.test__6.ts - SMELLS: Assertion Roulette - JUSTIFICATION: The test contains 2 assertions without messages, making it ambiguous if they fail."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_config-schema.test__0.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test does not contain any of the detected smells.",
+    "latencyMs": 42742,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_config-schema.test__0.ts - SMELLS: None - JUSTIFICATION: The test does not contain any of the detected smells."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_config-schema.test__1.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test does not contain any of the detected smells.",
+    "latencyMs": 42095,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_config-schema.test__1.ts - SMELLS: None - JUSTIFICATION: The test does not contain any of the detected smells."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_config-schema.test__2.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test does not contain any of the detected smells.",
+    "latencyMs": 19298,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_config-schema.test__2.ts - SMELLS: None - JUSTIFICATION: The test does not contain any of the detected smells."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_config-schema.test__3.ts",
+    "referenceSmells": [
+      "Magic Number"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test does not contain any of the detected smells.",
+    "latencyMs": 42040,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_config-schema.test__3.ts - SMELLS: None - JUSTIFICATION: The test does not contain any of the detected smells."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_config-schema.test__4.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test does not contain any of the detected smells.",
+    "latencyMs": 43691,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_config-schema.test__4.ts - SMELLS: None - JUSTIFICATION: The test does not contain any of the detected smells."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_config-schema.test__5.ts",
+    "referenceSmells": [],
+    "modelSmells": [],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test does not contain any of the detected smells.",
+    "latencyMs": 39227,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_config-schema.test__5.ts - SMELLS: None - JUSTIFICATION: The test does not contain any of the detected smells."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_config-schema.test__6.ts",
+    "referenceSmells": [],
+    "modelSmells": [],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test does not contain any of the detected smells.",
+    "latencyMs": 20121,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_config-schema.test__6.ts - SMELLS: None - JUSTIFICATION: The test does not contain any of the detected smells."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_config-schema.test__7.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test does not contain any of the detected smells.",
+    "latencyMs": 39252,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_config-schema.test__7.ts - SMELLS: None - JUSTIFICATION: The test does not contain any of the detected smells."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_config-schema.test__8.ts",
+    "referenceSmells": [],
+    "modelSmells": [],
+    "modelName": "Ollama / qwen2.5-coder:7b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": true,
+    "modelJustification": "The test does not contain any of the detected smells.",
+    "latencyMs": 51261,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_config-schema.test__8.ts - SMELLS: None - JUSTIFICATION: The test does not contain any of the detected smells."
+  }
+]

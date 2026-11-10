@@ -1,0 +1,3211 @@
+[
+  {
+    "file": "excalidraw__excalidraw__packages_element_src_tests_flowchart.test__0.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal",
+      "Magic Number"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "The test contains multiple assertions with custom failure explanations strings, making failing ambiguous.",
+    "latencyMs": 96943,
+    "rawModelResponse": "FILE: excalidraw__excalidraw__packages_element_src_tests_flowchart.test__0.ts - SMELLS: Assertion Roulette - Justification: The test contains multiple assertions with custom failure explanations strings, making failing ambiguous."
+  },
+  {
+    "file": "shadcn-ui__ui__packages_helpers_src_test_chat-contract__0.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Eager Test",
+      "Mystery Guest"
+    ],
+    "modelSmells": [
+      "Assertion Roulette",
+      "General Fixture"
+    ],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "Multiple assertions with no custom failure explanations; less than 50% of setup variables used in test body.",
+    "latencyMs": 27018,
+    "rawModelResponse": "FILE: shadcn-ui__ui__packages_helpers_src_test_chat-contract__0.ts - SMELLS: Assertion Roulette, General Fixture - JUSTIFICATION: Multiple assertions with no custom failure explanations; less than 50% of setup variables used in test body."
+  },
+  {
+    "file": "shadcn-ui__ui__packages_helpers_src_test_chat-contract__1.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Mystery Guest"
+    ],
+    "modelSmells": [
+      "Assertion Roulette",
+      "General Fixture"
+    ],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "Multiple assertions with no custom failure explanations; less than 50% of setup variables used in test body.",
+    "latencyMs": 15712,
+    "rawModelResponse": "FILE: shadcn-ui__ui__packages_helpers_src_test_chat-contract__1.ts - SMELLS: Assertion Roulette, General Fixture - JUSTIFICATION: Multiple assertions with no custom failure explanations; less than 50% of setup variables used in test body."
+  },
+  {
+    "file": "shadcn-ui__ui__packages_helpers_src_test_chat-contract__2.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Mystery Guest"
+    ],
+    "modelSmells": [
+      "Assertion Roulette",
+      "General Fixture"
+    ],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "Multiple assertions without custom failure explanations; less than 50% of setup variables used in test body.",
+    "latencyMs": 14145,
+    "rawModelResponse": "FILE: shadcn-ui__ui__packages_helpers_src_test_chat-contract__2.ts - SMELLS: Assertion Roulette, General Fixture - JUSTIFICATION: Multiple assertions without custom failure explanations; less than 50% of setup variables used in test body."
+  },
+  {
+    "file": "earendil-works__pi__packages_agent_test_harness_pico3_spec-plugins-lifecycle.test__0.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Eager Test",
+      "Hardcoded Literal",
+      "Mystery Guest"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "The test does not exhibit any of the specified Test Smells based on its structure, assertions used are safe as per guidelines (e.g., using `assert.equal` instead of raw comparisons), and there is no evidence of hardcoded literals or magic numbers.",
+    "latencyMs": 51013,
+    "rawModelResponse": "FILE: earendil-works__pi__packages_agent_test_harness_pico3_spec-plugins-lifecycle.test__0.ts - SMELLS: None - JUSTIFICATION: The test does not exhibit any of the specified Test Smells based on its structure, assertions used are safe as per guidelines (e.g., using `assert.equal` instead of raw comparisons), and there is no evidence of hardcoded literals or magic numbers."
+  },
+  {
+    "file": "earendil-works__pi__packages_agent_test_harness_pico3_spec-plugins-lifecycle.test__1.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Eager Test",
+      "Hardcoded Literal",
+      "Magic Number",
+      "Mystery Guest"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "The test does not exhibit any of the specified Test Smells based on its structure, assertions used within it are safe as per guidelines provided.",
+    "latencyMs": 27185,
+    "rawModelResponse": "FILE: earendil-works__pi__packages_agent_test_harness_pico3_spec-plugins-lifecycle.test__1.ts - SMELLS: None - JUSTIFICATION: The test does not exhibit any of the specified Test Smells based on its structure, assertions used within it are safe as per guidelines provided."
+  },
+  {
+    "file": "earendil-works__pi__packages_agent_test_harness_pico3_spec-plugins-lifecycle.test__2.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Eager Test",
+      "Hardcoded Literal",
+      "Mystery Guest"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "The test does not exhibit any of the defined Test Smells based on its structure, assertions used are safe as per guidelines (e.g., using `assert.throws` for exception catching), and there is no evidence of hardcoded literals or magic numbers that would trigger those smells.",
+    "latencyMs": 28841,
+    "rawModelResponse": "FILE: earendil-works__pi__packages_agent_test_harness_pico3_spec-plugins-lifecycle.test__2.ts - SMELLS: None - JUSTIFICATION: The test does not exhibit any of the defined Test Smells based on its structure, assertions used are safe as per guidelines (e.g., using `assert.throws` for exception catching), and there is no evidence of hardcoded literals or magic numbers that would trigger those smells."
+  },
+  {
+    "file": "earendil-works__pi__packages_agent_test_harness_pico3_spec-plugins-lifecycle.test__3.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Eager Test",
+      "Hardcoded Literal",
+      "Magic Number",
+      "Mystery Guest"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "The test does not exhibit any of the specified Test Smells based on its structure, context usage, or behavior as per defined triggers and guards.",
+    "latencyMs": 33580,
+    "rawModelResponse": "FILE: earendil-works__pi__packages_agent_test_harness_pico3_spec-plugins-lifecycle.test__3.ts - SMELLS: None - JUSTIFICATION: The test does not exhibit any of the specified Test Smells based on its structure, context usage, or behavior as per defined triggers and guards."
+  },
+  {
+    "file": "earendil-works__pi__packages_agent_test_harness_pico3_spec-plugins-lifecycle.test__5.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Conditional Test Logic",
+      "Eager Test",
+      "Hardcoded Literal",
+      "Mystery Guest"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "The test does not exhibit any of the specified Test Smells based on its structure, context usage, or behavior as per defined triggers and guards.",
+    "latencyMs": 33198,
+    "rawModelResponse": "FILE: earendil-works__pi__packages_agent_test_harness_pico3_spec-plugins-lifecycle.test__5.ts - SMELLS: None - JUSTIFICATION: The test does not exhibit any of the specified Test Smells based on its structure, context usage, or behavior as per defined triggers and guards."
+  },
+  {
+    "file": "earendil-works__pi__packages_agent_test_harness_pico3_spec-plugins-lifecycle.test__6.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Conditional Test Logic",
+      "Eager Test",
+      "Hardcoded Literal",
+      "Mystery Guest"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "No Test Smells detected in this test file based on provided rules and context.",
+    "latencyMs": 33866,
+    "rawModelResponse": "FILE: earendil-works__pi__packages_agent_test_harness_pico3_spec-plugins-lifecycle.test__6.ts - SMELLS: None - JUSTIFICATION: No Test Smells detected in this test file based on provided rules and context."
+  },
+  {
+    "file": "earendil-works__pi__packages_agent_test_harness_pico3_spec-plugins-lifecycle.test__7.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Conditional Test Logic",
+      "Eager Test",
+      "Hardcoded Literal",
+      "Magic Number",
+      "Mystery Guest",
+      "Sleepy Test"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "No Test Smells detected in this test file based on provided rules.",
+    "latencyMs": 39415,
+    "rawModelResponse": "FILE: earendil-works__pi__packages_agent_test_harness_pico3_spec-plugins-lifecycle.test__7.ts - SMELLS: None - JUSTIFICATION: No Test Smells detected in this test file based on provided rules."
+  },
+  {
+    "file": "earendil-works__pi__packages_agent_test_harness_pico3_spec-plugins-lifecycle.test__8.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Exception Catching Throwing",
+      "Hardcoded Literal",
+      "Mystery Guest"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "No Test Smells detected in the provided test file based on strict algorithmic rules for evaluating assertions, conditional logic, eager tests, mystery guests, resource optimism, general fixtures, hardcoded literals, sleepiness of a test, exception catching throwing patterns, and sensitive equality.",
+    "latencyMs": 41891,
+    "rawModelResponse": "FILE: earendil-works__pi__packages_agent_test_harness_pico3_spec-plugins-lifecycle.test__8.ts - SMELLS: None - JUSTIFICATION: No Test Smells detected in the provided test file based on strict algorithmic rules for evaluating assertions, conditional logic, eager tests, mystery guests, resource optimism, general fixtures, hardcoded literals, sleepiness of a test, exception catching throwing patterns, and sensitive equality."
+  },
+  {
+    "file": "earendil-works__pi__packages_agent_test_harness_pico3_spec-plugins-lifecycle.test__9.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Conditional Test Logic",
+      "Eager Test",
+      "Hardcoded Literal",
+      "Magic Number",
+      "Mystery Guest",
+      "Sleepy Test"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "The test does not exhibit any of the defined Test Smells based on its structure, context usage, or behavior as per provided rules.",
+    "latencyMs": 33472,
+    "rawModelResponse": "FILE: earendil-works__pi__packages_agent_test_harness_pico3_spec-plugins-lifecycle.test__9.ts - SMELLS: None - JUSTIFICATION: The test does not exhibit any of the defined Test Smells based on its structure, context usage, or behavior as per provided rules."
+  },
+  {
+    "file": "earendil-works__pi__packages_agent_test_harness_pico3_spec-plugins-lifecycle.test__10.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Conditional Test Logic",
+      "Hardcoded Literal",
+      "Magic Number",
+      "Mystery Guest",
+      "Sleepy Test"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "No Test Smells detected in this test file based on provided rules.",
+    "latencyMs": 32588,
+    "rawModelResponse": "FILE: earendil-works__pi__packages_agent_test_harness_pico3_spec-plugins-lifecycle.test__10.ts - SMELLS: None - JUSTIFICATION: No Test Smells detected in this test file based on provided rules."
+  },
+  {
+    "file": "earendil-works__pi__packages_agent_test_harness_pico3_spec-plugins-lifecycle.test__11.ts",
+    "referenceSmells": [
+      "Conditional Test Logic",
+      "Hardcoded Literal",
+      "Mystery Guest"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "No Test Smells detected in this test file based on provided rules.",
+    "latencyMs": 31268,
+    "rawModelResponse": "FILE: earendil-works__pi__packages_agent_test_harness_pico3_spec-plugins-lifecycle.test__11.ts - SMELLS: None - JUSTIFICATION: No Test Smells detected in this test file based on provided rules."
+  },
+  {
+    "file": "earendil-works__pi__packages_agent_test_harness_pico3_spec-plugins-lifecycle.test__12.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal",
+      "Mystery Guest"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "The test does not exhibit any of the specified Test Smells based on its structure, context provided by imports, or content within the target test block.",
+    "latencyMs": 33824,
+    "rawModelResponse": "FILE: earendil-works__pi__packages_agent_test_harness_pico3_spec-plugins-lifecycle.test__12.ts - SMELLS: None - JUSTIFICATION: The test does not exhibit any of the specified Test Smells based on its structure, context provided by imports, or content within the target test block."
+  },
+  {
+    "file": "earendil-works__pi__packages_agent_test_harness_pico3_spec-plugins-lifecycle.test__13.ts",
+    "referenceSmells": [
+      "Hardcoded Literal",
+      "Mystery Guest"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "The test does not exhibit any of the specified Test Smells based on its structure, assertions used within it are safe as per guidelines provided.",
+    "latencyMs": 32872,
+    "rawModelResponse": "FILE: earendil-works__pi__packages_agent_test_harness_pico3_spec-plugins-lifecycle.test__13.ts - SMELLS: None - JUSTIFICATION: The test does not exhibit any of the specified Test Smells based on its structure, assertions used within it are safe as per guidelines provided."
+  },
+  {
+    "file": "earendil-works__pi__packages_agent_test_harness_pico3_spec-plugins-lifecycle.test__14.ts",
+    "referenceSmells": [
+      "Hardcoded Literal",
+      "Mystery Guest"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "The test does not exhibit any of the specified Test Smells based on its structure, context usage, or behavior as per defined triggers and guards.",
+    "latencyMs": 32196,
+    "rawModelResponse": "FILE: earendil-works__pi__packages_agent_test_harness_pico3_spec-plugins-lifecycle.test__14.ts - SMELLS: None - JUSTIFICATION: The test does not exhibit any of the specified Test Smells based on its structure, context usage, or behavior as per defined triggers and guards."
+  },
+  {
+    "file": "earendil-works__pi__packages_agent_test_harness_pico3_spec-plugins-lifecycle.test__15.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal",
+      "Magic Number",
+      "Mystery Guest",
+      "Sleepy Test"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "No Test Smells detected in this test file based on provided rules and context.",
+    "latencyMs": 41938,
+    "rawModelResponse": "FILE: earendil-works__pi__packages_agent_test_harness_pico3_spec-plugins-lifecycle.test__15.ts - SMELLS: None - JUSTIFICATION: No Test Smells detected in this test file based on provided rules and context."
+  },
+  {
+    "file": "earendil-works__pi__packages_agent_test_harness_pico3_spec-plugins-lifecycle.test__16.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal",
+      "Mystery Guest"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "The test does not exhibit any of the specified Test Smells based on its structure, assertions used within it are custom failure explanations as required by Assertion Roulette smell.",
+    "latencyMs": 33530,
+    "rawModelResponse": "FILE: earendil-works__pi__packages_agent_test_harness_pico3_spec-plugins-lifecycle.test__16.ts - SMELLS: None - JUSTIFICATION: The test does not exhibit any of the specified Test Smells based on its structure, assertions used within it are custom failure explanations as required by Assertion Roulette smell."
+  },
+  {
+    "file": "earendil-works__pi__packages_ai_test_zen.test__0.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal",
+      "Mystery Guest",
+      "Resource Optimism"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "Multiple assertions with no custom failure explanations, making failing ambiguous.",
+    "latencyMs": 19125,
+    "rawModelResponse": "FILE: earendil-works__pi__packages_ai_test_zen.test__0.ts - SMELLS: Assertion Roulette - Justification: Multiple assertions with no custom failure explanations, making failing ambiguous."
+  },
+  {
+    "file": "earendil-works__pi__packages_ai_test_uuid.test__0.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Conditional Test Logic",
+      "Magic Number"
+    ],
+    "modelSmells": [
+      "Assertion Roulette",
+      "General Fixture"
+    ],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "Multiple assertions without custom failure explanations; loading 5 different database repository mocks in setup but using less than 50% of those variables.",
+    "latencyMs": 41596,
+    "rawModelResponse": "FILE: earendil-works__pi__packages_ai_test_uuid.test__0.ts - SMELLS: Assertion Roulette, General Fixture - JUSTIFICATION: Multiple assertions without custom failure explanations; loading 5 different database repository mocks in setup but using less than 50% of those variables."
+  },
+  {
+    "file": "earendil-works__pi__packages_ai_test_uuid.test__1.ts",
+    "referenceSmells": [
+      "Hardcoded Literal",
+      "Magic Number"
+    ],
+    "modelSmells": [
+      "Assertion Roulette",
+      "Conditional Test Logic",
+      "Eager Test",
+      "General Fixture"
+    ],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "Multiple assertions with no custom failure explanation strings detected; a conditional test logic block using 'if' statement found in the target test.",
+    "latencyMs": 23691,
+    "rawModelResponse": "FILE: earendil-works__pi__packages_ai_test_uuid.test__1.ts - SMELLS: Assertion Roulette, Conditional Test Logic, Eager Test, General Fixture Justification: Multiple assertions with no custom failure explanation strings detected; a conditional test logic block using 'if' statement found in the target test."
+  },
+  {
+    "file": "earendil-works__pi__packages_ai_test_text.test__0.ts",
+    "referenceSmells": [],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "The test contains multiple assertions with no custom failure explanations, making it ambiguous if a particular assertion fails.",
+    "latencyMs": 20262,
+    "rawModelResponse": "FILE: earendil-works__pi__packages_ai_test_text.test__0.ts - SMELLS: Assertion Roulette - Justification: The test contains multiple assertions with no custom failure explanations, making it ambiguous if a particular assertion fails."
+  },
+  {
+    "file": "earendil-works__pi__packages_ai_test_text.test__1.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "The test contains multiple assertions with no custom failure explanations, making it ambiguous if a failed assertion is due to an actual issue or just the wrong expectation.",
+    "latencyMs": 13834,
+    "rawModelResponse": "FILE: earendil-works__pi__packages_ai_test_text.test__1.ts - SMELLS: Assertion Roulette - Justification: The test contains multiple assertions with no custom failure explanations, making it ambiguous if a failed assertion is due to an actual issue or just the wrong expectation."
+  },
+  {
+    "file": "earendil-works__pi__packages_ai_test_text.test__2.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "The test contains multiple assertions with no custom failure explanations, making it ambiguous if any assertion fails.",
+    "latencyMs": 12458,
+    "rawModelResponse": "FILE: earendil-works__pi__packages_ai_test_text.test__2.ts - SMELLS: Assertion Roulette - Justification: The test contains multiple assertions with no custom failure explanations, making it ambiguous if any assertion fails."
+  },
+  {
+    "file": "earendil-works__pi__packages_ai_test_text.test__3.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "The test contains multiple assertions with custom failure explanations, making it ambiguous if a particular assertion fails due to an incorrect value or another issue.",
+    "latencyMs": 17056,
+    "rawModelResponse": "FILE: earendil-works__pi__packages_ai_test_text.test__3.ts - SMELLS: Assertion Roulette - Justification: The test contains multiple assertions with custom failure explanations, making it ambiguous if a particular assertion fails due to an incorrect value or another issue."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_memory_tests_resource.test__0.ts",
+    "referenceSmells": [],
+    "modelSmells": [
+      "General Fixture"
+    ],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "The test uses less than 50% of setup variables in `beforeEach`/`beforeAll`.",
+    "latencyMs": 25443,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_memory_tests_resource.test__0.ts - SMELLS: General Fixture - Justification: The test uses less than 50% of setup variables in `beforeEach`/`beforeAll`."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_memory_tests_resource.test__1.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "General Fixture"
+    ],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "The test file sets up a mock server with `registerResource` but uses less than 50% of those setup variables in its assertions.\n\nNone",
+    "latencyMs": 24486,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_memory_tests_resource.test__1.ts - SMELLS: General Fixture - Justification: The test file sets up a mock server with `registerResource` but uses less than 50% of those setup variables in its assertions.\n\nNone"
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_memory_tests_resource.test__2.ts",
+    "referenceSmells": [],
+    "modelSmells": [
+      "General Fixture"
+    ],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "REASONING: The test file sets up a mock server in `makeMockServer()` but uses less than 50% of those setup variables (only one capability is registered). None",
+    "latencyMs": 24032,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_memory_tests_resource.test__2.ts - SMELLS: General Fixture - REASONING: The test file sets up a mock server in `makeMockServer()` but uses less than 50% of those setup variables (only one capability is registered). None"
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_memory_tests_resource.test__3.ts",
+    "referenceSmells": [
+      "Assertion Roulette"
+    ],
+    "modelSmells": [
+      "General Fixture"
+    ],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "The test file sets up a mock server in `makeMockServer` but uses less than 50% of those setup variables (only using the returned object without further utilizing any properties or methods).",
+    "latencyMs": 17622,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_memory_tests_resource.test__3.ts - SMELLS: General Fixture - Justification: The test file sets up a mock server in `makeMockServer` but uses less than 50% of those setup variables (only using the returned object without further utilizing any properties or methods)."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_memory_tests_resource.test__4.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Eager Test",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "General Fixture"
+    ],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "REASONING: Loading 5 different database repository mocks in setup, but the test only uses 1.\n\nNone",
+    "latencyMs": 16215,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_memory_tests_resource.test__4.ts - SMELLS: General Fixture - REASONING: Loading 5 different database repository mocks in setup, but the test only uses 1.\n\nNone"
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_memory_tests_file-path.test__0.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Resource Optimism"
+    ],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "REASONING: The test performs an actual I/O call (`fs.unlink`) without wrapping it in a `try/catch` block or checking the resource's existence prior to acting. FALSE-POSITIVE GUARD: None detected.",
+    "latencyMs": 37187,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_memory_tests_file-path.test__0.ts - SMELLS: Resource Optimism - REASONING: The test performs an actual I/O call (`fs.unlink`) without wrapping it in a `try/catch` block or checking the resource's existence prior to acting. FALSE-POSITIVE GUARD: None detected."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_memory_tests_file-path.test__1.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "General Fixture"
+    ],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "The test sets up a broad shared state in `beforeEach`/`beforeAll`, but this specific test body utilizes less than 50% of those setup variables (only one variable is used).",
+    "latencyMs": 18141,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_memory_tests_file-path.test__1.ts - SMELLS: General Fixture Justification: The test sets up a broad shared state in `beforeEach`/`beforeAll`, but this specific test body utilizes less than 50% of those setup variables (only one variable is used)."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_memory_tests_file-path.test__2.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Conditional Test Logic",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "General Fixture"
+    ],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "The test sets up a MEMORY_FILE_PATH environment variable but uses less than 50% of it in its assertions, relying on other variables for the actual check. None",
+    "latencyMs": 19084,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_memory_tests_file-path.test__2.ts - SMELLS: General Fixture Justification: The test sets up a MEMORY_FILE_PATH environment variable but uses less than 50% of it in its assertions, relying on other variables for the actual check. None"
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_memory_tests_file-path.test__3.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Resource Optimism"
+    ],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "The test performs an actual network, disk I/O call (`fs.unlink`) without wrapping it in a `try/catch` block or checking the resource's existence prior to acting. FALSE-POSITIVE GUARD: Reading 'process.env' is not considered here as it's part of setting up and tearing down environment variables for each iteration rather than performing an actual network, disk I/O call that would be affected by its absence.",
+    "latencyMs": 23722,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_memory_tests_file-path.test__3.ts - SMELLS: Resource Optimism - Justification: The test performs an actual network, disk I/O call (`fs.unlink`) without wrapping it in a `try/catch` block or checking the resource's existence prior to acting. FALSE-POSITIVE GUARD: Reading 'process.env' is not considered here as it's part of setting up and tearing down environment variables for each iteration rather than performing an actual network, disk I/O call that would be affected by its absence."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_memory_tests_file-path.test__4.ts",
+    "referenceSmells": [],
+    "modelSmells": [
+      "General Fixture"
+    ],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "The test uses 5 different database repository mocks in setup, but the test only utilizes less than 50% of those variables.\n\nNone",
+    "latencyMs": 15741,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_memory_tests_file-path.test__4.ts - SMELLS: General Fixture Justification: The test uses 5 different database repository mocks in setup, but the test only utilizes less than 50% of those variables.\n\nNone"
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_memory_tests_file-path.test__5.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Exception Catching Throwing",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "General Fixture"
+    ],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "The test file sets up a memory migration scenario but uses less than 50% of its setup variables in this specific target test block.",
+    "latencyMs": 24925,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_memory_tests_file-path.test__5.ts - SMELLS: General Fixture Justification: The test file sets up a memory migration scenario but uses less than 50% of its setup variables in this specific target test block."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_memory_tests_file-path.test__6.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Exception Catching Throwing",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "General Fixture"
+    ],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "REASONING: The test file sets up broad shared state in `beforeEach`/`beforeAll`, but this specific test body utilizes less than 50% of those setup variables.",
+    "latencyMs": 24806,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_memory_tests_file-path.test__6.ts - SMELLS: General Fixture - REASONING: The test file sets up broad shared state in `beforeEach`/`beforeAll`, but this specific test body utilizes less than 50% of those setup variables."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_memory_tests_file-path.test__7.ts",
+    "referenceSmells": [
+      "Hardcoded Literal",
+      "Resource Optimism"
+    ],
+    "modelSmells": [
+      "General Fixture"
+    ],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "The test sets up a memory file path for testing but uses less than 50% of those setup variables in its body.\n\nReturn exactly one line in this format, with no extra text or explanations.",
+    "latencyMs": 18626,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_memory_tests_file-path.test__7.ts - SMELLS: General Fixture Justification: The test sets up a memory file path for testing but uses less than 50% of those setup variables in its body.\n\nReturn exactly one line in this format, with no extra text or explanations."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_memory_tests_file-path.test__8.ts",
+    "referenceSmells": [],
+    "modelSmells": [
+      "General Fixture"
+    ],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "The test uses 5 different database repository mocks in setup, but it utilizes less than 50% of those variables.\n\nReturn exactly one line and nothing else, using the supplied filename \"modelcontextprotocol__servers__src_memory_tests_file-path.test__8.ts\": FILE: modelcontextprotocol__servers__src_memory_tests_file-path.test__8.ts - SMELLS: General Fixture Justification: The test uses 5 different database repository mocks in setup, but it utilizes less than 50% of those variables.",
+    "latencyMs": 24401,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_memory_tests_file-path.test__8.ts - SMELLS: General Fixture Justification: The test uses 5 different database repository mocks in setup, but it utilizes less than 50% of those variables.\n\nReturn exactly one line and nothing else, using the supplied filename \"modelcontextprotocol__servers__src_memory_tests_file-path.test__8.ts\": FILE: modelcontextprotocol__servers__src_memory_tests_file-path.test__8.ts - SMELLS: General Fixture Justification: The test uses 5 different database repository mocks in setup, but it utilizes less than 50% of those variables."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_memory_tests_file-path.test__9.ts",
+    "referenceSmells": [],
+    "modelSmells": [
+      "Resource Optimism"
+    ],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "The test performs an actual network I/O call (`fs.unlink`) without wrapping it in a `try/catch` block or checking the resource's existence prior to acting. FALSE-POSITIVE GUARD: Reading process.env is not flagged as it's considered an in-memory lookup, NOT I/O.",
+    "latencyMs": 17224,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_memory_tests_file-path.test__9.ts - SMELLS: Resource Optimism - Justification: The test performs an actual network I/O call (`fs.unlink`) without wrapping it in a `try/catch` block or checking the resource's existence prior to acting. FALSE-POSITIVE GUARD: Reading process.env is not flagged as it's considered an in-memory lookup, NOT I/O."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_memory_tests_file-path.test__10.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "General Fixture"
+    ],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "The test uses less than 50% of setup variables provided in `beforeEach`.",
+    "latencyMs": 12780,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_memory_tests_file-path.test__10.ts - SMELLS: General Fixture - Justification: The test uses less than 50% of setup variables provided in `beforeEach`."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_memory_tests_file-path.test__11.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "The test contains an `expect` statement with a `.toString()` call inside it, which is considered sensitive equality as per TRIGGER 11 in the valid-smell list.",
+    "latencyMs": 16348,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_memory_tests_file-path.test__11.ts - SMELLS: Assertion Roulette - Justification: The test contains an `expect` statement with a `.toString()` call inside it, which is considered sensitive equality as per TRIGGER 11 in the valid-smell list."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_memory_tests_file-path.test__12.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "The test contains multiple assertions without custom failure explanations, making it ambiguous if a particular assertion fails.",
+    "latencyMs": 12244,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_memory_tests_file-path.test__12.ts - SMELLS: Assertion Roulette - Justification: The test contains multiple assertions without custom failure explanations, making it ambiguous if a particular assertion fails."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_memory_tests_file-path.test__13.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "The test contains a single assertion with no custom failure message, making it ambiguous if there's an error (\"expect(expandHome('/var/data/memory.jsonl')).toBe(/var/data/memory.jsonl/\").",
+    "latencyMs": 14695,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_memory_tests_file-path.test__13.ts - SMELLS: Assertion Roulette - Justification: The test contains a single assertion with no custom failure message, making it ambiguous if there's an error (\"expect(expandHome('/var/data/memory.jsonl')).toBe(/var/data/memory.jsonl/\")."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_memory_tests_file-path.test__14.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "The test contains multiple assertions without custom failure explanations, making it ambiguous if a particular assertion fails.",
+    "latencyMs": 12635,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_memory_tests_file-path.test__14.ts - SMELLS: Assertion Roulette - Justification: The test contains multiple assertions without custom failure explanations, making it ambiguous if a particular assertion fails."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_server.test__0.ts",
+    "referenceSmells": [
+      "Assertion Roulette"
+    ],
+    "modelSmells": [
+      "General Fixture"
+    ],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "The test uses less than 50% of setup variables that are loaded in `beforeEach`/`beforeAll`.",
+    "latencyMs": 16409,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_server.test__0.ts - SMELLS: General Fixture - Justification: The test uses less than 50% of setup variables that are loaded in `beforeEach`/`beforeAll`."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_server.test__1.ts",
+    "referenceSmells": [],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "The test contains a single assertion that checks if `cleanup` is of type 'function'. Without additional context, it's unclear whether this constitutes an ambiguous failure message or not; however, it could be considered as lacking custom explanation.",
+    "latencyMs": 14524,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_server.test__1.ts - SMELLS: Assertion Roulette - Justification: The test contains a single assertion that checks if `cleanup` is of type 'function'. Without additional context, it's unclear whether this constitutes an ambiguous failure message or not; however, it could be considered as lacking custom explanation."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_server.test__2.ts",
+    "referenceSmells": [
+      "Assertion Roulette"
+    ],
+    "modelSmells": [
+      "General Fixture"
+    ],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "The test uses less than 50% of setup variables in a broader shared state context provided by `createServer()`.",
+    "latencyMs": 12852,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_server.test__2.ts - SMELLS: General Fixture - Justification: The test uses less than 50% of setup variables in a broader shared state context provided by `createServer()`."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_server.test__3.ts",
+    "referenceSmells": [],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "The test contains multiple assertions without custom failure explanations, making it ambiguous if any assertion fails.",
+    "latencyMs": 11858,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_server.test__3.ts - SMELLS: Assertion Roulette - Justification: The test contains multiple assertions without custom failure explanations, making it ambiguous if any assertion fails."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_server.test__4.ts",
+    "referenceSmells": [
+      "Assertion Roulette"
+    ],
+    "modelSmells": [
+      "General Fixture"
+    ],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "The test uses 2 setup variables (`result1` and `result2`) but utilizes less than 50% of them in the assertions, which is indicative of a general fixture smell.",
+    "latencyMs": 15414,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_server.test__4.ts - SMELLS: General Fixture - Justification: The test uses 2 setup variables (`result1` and `result2`) but utilizes less than 50% of them in the assertions, which is indicative of a general fixture smell."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_prompts.test__0.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "General Fixture"
+    ],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "The test file sets up a mock server with handlers for different prompts, but this specific target test uses less than 50% of those setup variables (only using 'simple-prompt').",
+    "latencyMs": 32030,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_prompts.test__0.ts - SMELLS: General Fixture - Justification: The test file sets up a mock server with handlers for different prompts, but this specific target test uses less than 50% of those setup variables (only using 'simple-prompt')."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_prompts.test__1.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "The test contains multiple assertions without custom failure explanations, making it ambiguous if any assertion fails.",
+    "latencyMs": 15969,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_prompts.test__1.ts - SMELLS: Assertion Roulette - Justification: The test contains multiple assertions without custom failure explanations, making it ambiguous if any assertion fails."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_prompts.test__2.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "The test checks if `result.messages[0].content.text` equals \"What's weather in San Francisco, California?\" without providing a custom failure explanation string for the assertion.",
+    "latencyMs": 17249,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_prompts.test__2.ts - SMELLS: Assertion Roulette - Justification: The test checks if `result.messages[0].content.text` equals \"What's weather in San Francisco, California?\" without providing a custom failure explanation string for the assertion."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_prompts.test__3.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "The test contains multiple assertions without custom failure explanations, making it ambiguous if any assertion fails.",
+    "latencyMs": 17264,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_prompts.test__3.ts - SMELLS: Assertion Roulette - Justification: The test contains multiple assertions without custom failure explanations, making it ambiguous if any assertion fails."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_prompts.test__4.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "The test contains multiple assertions without custom failure explanations, making it ambiguous if any assertion fails.",
+    "latencyMs": 17131,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_prompts.test__4.ts - SMELLS: Assertion Roulette - Justification: The test contains multiple assertions without custom failure explanations, making it ambiguous if any assertion fails."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_prompts.test__5.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Eager Test",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette",
+      "General Fixture"
+    ],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "Multiple assertions with custom failure explanation strings missing in 'expect(a, \"msg\").toBe(b)', test invokes more than one distinct state-changing method on the SUT ('registerPromptWithCompletions'), loading 5 different database repository mocks but only using 1.",
+    "latencyMs": 25534,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_prompts.test__5.ts - SMELLS: Assertion Roulette, False-POSITIVE GUARD (Eager Test), General Fixture - JUSTIFICATION: Multiple assertions with custom failure explanation strings missing in 'expect(a, \"msg\").toBe(b)', test invokes more than one distinct state-changing method on the SUT ('registerPromptWithCompletions'), loading 5 different database repository mocks but only using 1."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_prompts.test__6.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "General Fixture"
+    ],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "The test file sets up broad shared state in `createMockServer` but uses less than 50% of those setup variables (mockServer, handlers). None",
+    "latencyMs": 20687,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_prompts.test__6.ts - SMELLS: General Fixture - Justification: The test file sets up broad shared state in `createMockServer` but uses less than 50% of those setup variables (mockServer, handlers). None"
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_prompts.test__7.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "General Fixture"
+    ],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "The test file sets up a mock server with handlers for different prompts, but this specific target test uses less than 50% of those setup variables (only using 'resource-prompt').",
+    "latencyMs": 18241,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_prompts.test__7.ts - SMELLS: General Fixture - Justification: The test file sets up a mock server with handlers for different prompts, but this specific target test uses less than 50% of those setup variables (only using 'resource-prompt')."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_prompts.test__8.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "General Fixture"
+    ],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "The test file sets up a mock server with handlers for different prompts, but this specific target test uses less than 50% of those setup variables (only using 'resource-prompt').",
+    "latencyMs": 16904,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_prompts.test__8.ts - SMELLS: General Fixture - Justification: The test file sets up a mock server with handlers for different prompts, but this specific target test uses less than 50% of those setup variables (only using 'resource-prompt')."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_prompts.test__9.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "General Fixture"
+    ],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "The test file sets up a mock server with handlers for different prompts, but this specific target test uses less than 50% of those setup variables (only one handler is used).",
+    "latencyMs": 19814,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_prompts.test__9.ts - SMELLS: General Fixture - Justification: The test file sets up a mock server with handlers for different prompts, but this specific target test uses less than 50% of those setup variables (only one handler is used)."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_prompts.test__10.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "General Fixture"
+    ],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "The test file sets up a mock server with handlers for different prompts, but this specific target test uses less than 50% of those setup variables (only using 'resource-prompt').",
+    "latencyMs": 20374,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_prompts.test__10.ts - SMELLS: General Fixture - Justification: The test file sets up a mock server with handlers for different prompts, but this specific target test uses less than 50% of those setup variables (only using 'resource-prompt')."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_resources.test__0.ts",
+    "referenceSmells": [
+      "Assertion Roulette"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "The test contains multiple assertions without custom failure explanations, making it ambiguous if any assertion fails.",
+    "latencyMs": 32976,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_resources.test__0.ts - SMELLS: Assertion Roulette - Justification: The test contains multiple assertions without custom failure explanations, making it ambiguous if any assertion fails."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_resources.test__1.ts",
+    "referenceSmells": [
+      "Magic Number",
+      "Sensitive Equality"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "The test contains multiple assertions without custom failure explanations, making it ambiguous if any assertion fails.",
+    "latencyMs": 14308,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_resources.test__1.ts - SMELLS: Assertion Roulette - Justification: The test contains multiple assertions without custom failure explanations, making it ambiguous if any assertion fails."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_resources.test__2.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Magic Number",
+      "Sensitive Equality"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "The test contains multiple assertions with custom failure explanations missing, making failing ambiguous.",
+    "latencyMs": 13724,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_resources.test__2.ts - SMELLS: Assertion Roulette - Justification: The test contains multiple assertions with custom failure explanations missing, making failing ambiguous."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_resources.test__3.ts",
+    "referenceSmells": [
+      "Magic Number",
+      "Sensitive Equality"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "The test contains multiple assertions without custom failure explanations, making it ambiguous if any assertion fails.",
+    "latencyMs": 14238,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_resources.test__3.ts - SMELLS: Assertion Roulette - Justification: The test contains multiple assertions without custom failure explanations, making it ambiguous if any assertion fails."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_resources.test__4.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Magic Number",
+      "Sensitive Equality"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "The test contains multiple assertions with no custom failure explanations, making it ambiguous if any assertion fails.",
+    "latencyMs": 14186,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_resources.test__4.ts - SMELLS: Assertion Roulette - Justification: The test contains multiple assertions with no custom failure explanations, making it ambiguous if any assertion fails."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_resources.test__5.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Magic Number"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "The test contains multiple assertions without custom failure explanations, making it ambiguous if any assertion fails.",
+    "latencyMs": 16254,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_resources.test__5.ts - SMELLS: Assertion Roulette - Justification: The test contains multiple assertions without custom failure explanations, making it ambiguous if any assertion fails."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_resources.test__6.ts",
+    "referenceSmells": [
+      "Magic Number"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "The test checks if a timestamp is present in resource content using regex, which makes it ambiguous as to what exactly failed when an assertion fails without custom failure explanation strings.",
+    "latencyMs": 15766,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_resources.test__6.ts - SMELLS: Assertion Roulette - Justification: The test checks if a timestamp is present in resource content using regex, which makes it ambiguous as to what exactly failed when an assertion fails without custom failure explanation strings."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_resources.test__7.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Magic Number"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "The test contains multiple assertions without custom failure explanations, making it ambiguous if any assertion fails.",
+    "latencyMs": 15670,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_resources.test__7.ts - SMELLS: Assertion Roulette - Justification: The test contains multiple assertions without custom failure explanations, making it ambiguous if any assertion fails."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_resources.test__8.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal",
+      "Magic Number"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "The test contains multiple assertions without custom failure explanations, making it ambiguous if any assertion fails.",
+    "latencyMs": 15179,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_resources.test__8.ts - SMELLS: Assertion Roulette - Justification: The test contains multiple assertions without custom failure explanations, making it ambiguous if any assertion fails."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_resources.test__9.ts",
+    "referenceSmells": [
+      "Assertion Roulette"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "The test checks if resourceTypeCompleter is defined as a completable schema, which lacks custom failure explanation strings for assertions.",
+    "latencyMs": 16647,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_resources.test__9.ts - SMELLS: Assertion Roulette - Justification: The test checks if resourceTypeCompleter is defined as a completable schema, which lacks custom failure explanation strings for assertions."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_resources.test__10.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "The test contains multiple assertions without custom failure explanations, making failing ambiguous.\n\nReturn exactly one line in this format with no extra text or explanation added beyond the justification for detected smells.",
+    "latencyMs": 16182,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_resources.test__10.ts - SMELLS: Assertion Roulette - Justification: The test contains multiple assertions without custom failure explanations, making failing ambiguous.\n\nReturn exactly one line in this format with no extra text or explanation added beyond the justification for detected smells."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_resources.test__11.ts",
+    "referenceSmells": [
+      "Assertion Roulette"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "The test checks if `resourceIdForPromptCompleter` is defined as a function, which does not involve multiple assertions or custom failure explanations; thus it lacks the complexity of an assertion roulette smell.",
+    "latencyMs": 17231,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_resources.test__11.ts - SMELLS: Assertion Roulette - Justification: The test checks if `resourceIdForPromptCompleter` is defined as a function, which does not involve multiple assertions or custom failure explanations; thus it lacks the complexity of an assertion roulette smell."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_resources.test__12.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "The test contains multiple assertions without custom failure explanations, making failing ambiguous.\n\nReturn exactly one line in this format with no extra text or explanation added beyond the justification for detected smells.",
+    "latencyMs": 16414,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_resources.test__12.ts - SMELLS: Assertion Roulette - Justification: The test contains multiple assertions without custom failure explanations, making failing ambiguous.\n\nReturn exactly one line in this format with no extra text or explanation added beyond the justification for detected smells."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_resources.test__13.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "The test contains multiple assertions with custom failure explanations missing, making failing ambiguous.",
+    "latencyMs": 14314,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_resources.test__13.ts - SMELLS: Assertion Roulette - Justification: The test contains multiple assertions with custom failure explanations missing, making failing ambiguous."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_resources.test__14.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette",
+      "General Fixture"
+    ],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "Multiple assertions with no custom failure explanations detected in 'should reject invalid IDs' test; less than 50% of setup variables used in the context layer.",
+    "latencyMs": 15850,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_resources.test__14.ts - SMELLS: Assertion Roulette, General Fixture - JUSTIFICATION: Multiple assertions with no custom failure explanations detected in 'should reject invalid IDs' test; less than 50% of setup variables used in the context layer."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_resources.test__15.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Eager Test",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "General Fixture"
+    ],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "The test uses 5 different database repository mocks in setup, but it utilizes less than 50% of those variables.\n\nReturn exactly one line and nothing else, using the supplied filename \"modelcontextprotocol__servers__src_everything_tests_resources.test__15.ts\": FILE: modelcontextprotocol__servers__src_everything_tests_resources.test__15.ts - SMELLS: General Fixture - JUSTIFICATION: The test uses 5 different database repository mocks in setup, but it utilizes less than 50% of those variables.",
+    "latencyMs": 31237,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_resources.test__15.ts - SMELLS: General Fixture - Justification: The test uses 5 different database repository mocks in setup, but it utilizes less than 50% of those variables.\n\nReturn exactly one line and nothing else, using the supplied filename \"modelcontextprotocol__servers__src_everything_tests_resources.test__15.ts\": FILE: modelcontextprotocol__servers__src_everything_tests_resources.test__15.ts - SMELLS: General Fixture - JUSTIFICATION: The test uses 5 different database repository mocks in setup, but it utilizes less than 50% of those variables."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_resources.test__16.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "General Fixture"
+    ],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "REASONING: Loading 5 different database repository mocks in setup, but the test only uses 1.",
+    "latencyMs": 14422,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_resources.test__16.ts - SMELLS: General Fixture - REASONING: Loading 5 different database repository mocks in setup, but the test only uses 1."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_resources.test__17.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "The test contains multiple assertions with no custom failure explanations, making it ambiguous if any assertion fails.",
+    "latencyMs": 14148,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_resources.test__17.ts - SMELLS: Assertion Roulette - Justification: The test contains multiple assertions with no custom failure explanations, making it ambiguous if any assertion fails."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_resources.test__18.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Eager Test",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "General Fixture"
+    ],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "The test uses 5 different resource registrations in setup, but it utilizes less than 50% of those variables within this specific target test block.\n\nReturn exactly one line and nothing else. Do not use bullets or numbering; keep the justification concise on a single line without extra text before or after.",
+    "latencyMs": 28271,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_resources.test__18.ts - SMELLS: General Fixture - Justification: The test uses 5 different resource registrations in setup, but it utilizes less than 50% of those variables within this specific target test block.\n\nReturn exactly one line and nothing else. Do not use bullets or numbering; keep the justification concise on a single line without extra text before or after."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_resources.test__19.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "General Fixture"
+    ],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "The test file sets up broad shared state in `beforeEach`/`beforeAll`, but this specific test body utilizes less than 50% of those setup variables.\n\nReturn exactly one line and nothing else, using the supplied filename \"modelcontextprotocol__servers__src_everything_tests_resources.test__19.ts\": FILE: modelcontextprotocol__servers__src_everything_tests_resources.test__19.ts - SMELLS: General Fixture - JUSTIFICATION: The test file sets up broad shared state in `beforeEach`/`beforeAll`, but this specific test body utilizes less than 50% of those setup variables.",
+    "latencyMs": 30109,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_resources.test__19.ts - SMELLS: General Fixture - Justification: The test file sets up broad shared state in `beforeEach`/`beforeAll`, but this specific test body utilizes less than 50% of those setup variables.\n\nReturn exactly one line and nothing else, using the supplied filename \"modelcontextprotocol__servers__src_everything_tests_resources.test__19.ts\": FILE: modelcontextprotocol__servers__src_everything_tests_resources.test__19.ts - SMELLS: General Fixture - JUSTIFICATION: The test file sets up broad shared state in `beforeEach`/`beforeAll`, but this specific test body utilizes less than 50% of those setup variables."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_resources.test__20.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "General Fixture"
+    ],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "The test uses 5 different resource templates in setup, but it utilizes less than 50% of those variables.\n\nReturn exactly one line and nothing else, using the supplied filename \"modelcontextprotocol__servers__src_everything_tests_resources.test__20.ts\": FILE: modelcontextprotocol__servers__src_everything_tests_resources.test__20.ts - SMELLS: General Fixture - JUSTIFICATION: The test uses 5 different resource templates in setup, but it utilizes less than 50% of those variables.",
+    "latencyMs": 31020,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_resources.test__20.ts - SMELLS: General Fixture - Justification: The test uses 5 different resource templates in setup, but it utilizes less than 50% of those variables.\n\nReturn exactly one line and nothing else, using the supplied filename \"modelcontextprotocol__servers__src_everything_tests_resources.test__20.ts\": FILE: modelcontextprotocol__servers__src_everything_tests_resources.test__20.ts - SMELLS: General Fixture - JUSTIFICATION: The test uses 5 different resource templates in setup, but it utilizes less than 50% of those variables."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_resources.test__21.ts",
+    "referenceSmells": [
+      "Mystery Guest"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "The test contains multiple assertions without custom failure explanations, making it ambiguous if any assertion fails.",
+    "latencyMs": 16806,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_resources.test__21.ts - SMELLS: Assertion Roulette - Justification: The test contains multiple assertions without custom failure explanations, making it ambiguous if any assertion fails."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_resources.test__22.ts",
+    "referenceSmells": [],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "The test contains multiple assertions without custom failure explanations, making it ambiguous if any assertion fails.",
+    "latencyMs": 16907,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_resources.test__22.ts - SMELLS: Assertion Roulette - Justification: The test contains multiple assertions without custom failure explanations, making it ambiguous if any assertion fails."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_resources.test__23.ts",
+    "referenceSmells": [
+      "Assertion Roulette"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "The target test does not exhibit any of the specified Test Smells based on its structure, context setup variables (handlers), mock server configuration for subscriptions testing (`mockServer` and `subscribeHandler`).",
+    "latencyMs": 53004,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_resources.test__23.ts - SMELLS: NONE - JUSTIFICATION: The target test does not exhibit any of the specified Test Smells based on its structure, context setup variables (handlers), mock server configuration for subscriptions testing (`mockServer` and `subscribeHandler`)."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_resources.test__24.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "Multiple assertions with no custom failure explanations detected in `expect(notification).toHaveBeenCalled()`.",
+    "latencyMs": 20694,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_resources.test__24.ts - SMELLS: Assertion Roulette - Justification: Multiple assertions with no custom failure explanations detected in `expect(notification).toHaveBeenCalled()`."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_resources.test__25.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "General Fixture"
+    ],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "The test uses 5 different database repository mocks in setup, but it does not utilize less than 50% of those variables within its body.\n\nNone",
+    "latencyMs": 35604,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_resources.test__25.ts - SMELLS: General Fixture Justification: The test uses 5 different database repository mocks in setup, but it does not utilize less than 50% of those variables within its body.\n\nNone"
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_memory_tests_server-version.test__0.ts",
+    "referenceSmells": [
+      "Assertion Roulette"
+    ],
+    "modelSmells": [
+      "General Fixture"
+    ],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "The test body utilizes less than 50% of setup variables that are loaded in `beforeEach`/`beforeAll`.",
+    "latencyMs": 19631,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_memory_tests_server-version.test__0.ts - SMELLS: General Fixture - Justification: The test body utilizes less than 50% of setup variables that are loaded in `beforeEach`/`beforeAll`."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_memory_tests_server-version.test__1.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal",
+      "Mystery Guest"
+    ],
+    "modelSmells": [
+      "Assertion Roulette",
+      "General Fixture"
+    ],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "Multiple assertions with no custom failure explanations detected; less than 50% of setup variables used in test body.",
+    "latencyMs": 16397,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_memory_tests_server-version.test__1.ts - SMELLS: Assertion Roulette, General Fixture - JUSTIFICATION: Multiple assertions with no custom failure explanations detected; less than 50% of setup variables used in test body."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_sequentialthinking_tests_lib.test__0.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal",
+      "Magic Number"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "The test contains multiple assertions without custom failure explanations, making it ambiguous if any assertion fails.",
+    "latencyMs": 23724,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_sequentialthinking_tests_lib.test__0.ts - SMELLS: Assertion Roulette - Justification: The test contains multiple assertions without custom failure explanations, making it ambiguous if any assertion fails."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_sequentialthinking_tests_lib.test__1.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal",
+      "Magic Number"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "The test contains multiple assertions without custom failure explanations, making it ambiguous if any assertion fails.",
+    "latencyMs": 17087,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_sequentialthinking_tests_lib.test__1.ts - SMELLS: Assertion Roulette - Justification: The test contains multiple assertions without custom failure explanations, making it ambiguous if any assertion fails."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_sequentialthinking_tests_lib.test__2.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal",
+      "Magic Number"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "Multiple assertions with no custom failure explanations detected in `expect(data.thoughtHistoryLength).toBe(3); expect(data.nextThoughtNeeded).toBe(false);`.",
+    "latencyMs": 21392,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_sequentialthinking_tests_lib.test__2.ts - SMELLS: Assertion Roulette - Justification: Multiple assertions with no custom failure explanations detected in `expect(data.thoughtHistoryLength).toBe(3); expect(data.nextThoughtNeeded).toBe(false);`."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_sequentialthinking_tests_lib.test__3.ts",
+    "referenceSmells": [
+      "Hardcoded Literal",
+      "Magic Number"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "The test contains multiple assertions without custom failure explanations, making it ambiguous if any assertion fails.",
+    "latencyMs": 14820,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_sequentialthinking_tests_lib.test__3.ts - SMELLS: Assertion Roulette - Justification: The test contains multiple assertions without custom failure explanations, making it ambiguous if any assertion fails."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_sequentialthinking_tests_lib.test__4.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal",
+      "Magic Number"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "Multiple assertions with no custom failure explanations detected in `expect(data.branches).toContain('branch-a')`, `expect(data.branches).toContain('branch-b')`, and `expect(data.branches.length).toBe(2)`.",
+    "latencyMs": 27125,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_sequentialthinking_tests_lib.test__4.ts - SMELLS: Assertion Roulette - Justification: Multiple assertions with no custom failure explanations detected in `expect(data.branches).toContain('branch-a')`, `expect(data.branches).toContain('branch-b')`, and `expect(data.branches.length).toBe(2)`."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_sequentialthinking_tests_lib.test__5.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal",
+      "Magic Number"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "The test contains multiple assertions without custom failure explanations, making it ambiguous if any assertion fails.",
+    "latencyMs": 19468,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_sequentialthinking_tests_lib.test__5.ts - SMELLS: Assertion Roulette - Justification: The test contains multiple assertions without custom failure explanations, making it ambiguous if any assertion fails."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_sequentialthinking_tests_lib.test__6.ts",
+    "referenceSmells": [
+      "Hardcoded Literal",
+      "Magic Number"
+    ],
+    "modelSmells": [
+      "Eager Test"
+    ],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "The test invokes more than one distinct state-changing method on SUT (server.processThought).",
+    "latencyMs": 15236,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_sequentialthinking_tests_lib.test__6.ts - SMELLS: Eager Test - Justification: The test invokes more than one distinct state-changing method on SUT (server.processThought)."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_sequentialthinking_tests_lib.test__7.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal",
+      "Magic Number"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "The test contains multiple assertions without custom failure explanations, making it ambiguous if any assertion fails.",
+    "latencyMs": 16055,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_sequentialthinking_tests_lib.test__7.ts - SMELLS: Assertion Roulette - Justification: The test contains multiple assertions without custom failure explanations, making it ambiguous if any assertion fails."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_sequentialthinking_tests_lib.test__8.ts",
+    "referenceSmells": [
+      "Hardcoded Literal",
+      "Magic Number"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "The test contains multiple assertions without custom failure explanations, making it ambiguous if any assertion fails.",
+    "latencyMs": 14662,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_sequentialthinking_tests_lib.test__8.ts - SMELLS: Assertion Roulette - Justification: The test contains multiple assertions without custom failure explanations, making it ambiguous if any assertion fails."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_sequentialthinking_tests_lib.test__9.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal",
+      "Magic Number"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "The test contains multiple assertions without custom failure explanations, making it ambiguous if any assertion fails.",
+    "latencyMs": 17536,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_sequentialthinking_tests_lib.test__9.ts - SMELLS: Assertion Roulette - Justification: The test contains multiple assertions without custom failure explanations, making it ambiguous if any assertion fails."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_sequentialthinking_tests_lib.test__10.ts",
+    "referenceSmells": [
+      "Hardcoded Literal",
+      "Magic Number"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "The test uses `expect(() => JSON.parse(result.content[0].text)).not.toThrow();` which checks for a thrown error instead of verifying the content directly.",
+    "latencyMs": 15966,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_sequentialthinking_tests_lib.test__10.ts - SMELLS: Assertion Roulette - Justification: The test uses `expect(() => JSON.parse(result.content[0].text)).not.toThrow();` which checks for a thrown error instead of verifying the content directly."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_sequentialthinking_tests_lib.test__11.ts",
+    "referenceSmells": [
+      "Hardcoded Literal",
+      "Magic Number"
+    ],
+    "modelSmells": [
+      "General Fixture"
+    ],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "REASONING: Loading 5 different database repository mocks in setup, but the test only uses 1.\n\nJustification is provided for detected smells based on visible code patterns and context.",
+    "latencyMs": 31062,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_sequentialthinking_tests_lib.test__11.ts - SMELLS: General Fixture - REASONING: Loading 5 different database repository mocks in setup, but the test only uses 1.\n\nJustification is provided for detected smells based on visible code patterns and context."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_sequentialthinking_tests_lib.test__12.ts",
+    "referenceSmells": [
+      "Hardcoded Literal",
+      "Magic Number"
+    ],
+    "modelSmells": [
+      "General Fixture"
+    ],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "REASONING: Loading 5 different database repository mocks in setup, but the test only uses 1.\n\nNone",
+    "latencyMs": 15445,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_sequentialthinking_tests_lib.test__12.ts - SMELLS: General Fixture - REASONING: Loading 5 different database repository mocks in setup, but the test only uses 1.\n\nNone"
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_sequentialthinking_tests_lib.test__13.ts",
+    "referenceSmells": [
+      "Hardcoded Literal",
+      "Magic Number"
+    ],
+    "modelSmells": [
+      "General Fixture"
+    ],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "The test file sets up broad shared state in `beforeEach`/`beforeAll`, but this specific test body utilizes less than 50% of those setup variables.",
+    "latencyMs": 17191,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_sequentialthinking_tests_lib.test__13.ts - SMELLS: General Fixture - Justification: The test file sets up broad shared state in `beforeEach`/`beforeAll`, but this specific test body utilizes less than 50% of those setup variables."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_filesystem_tests_roots-utils.test__0.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Eager Test",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "General Fixture"
+    ],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "REASONING: The test file sets up broad shared state in `beforeEach`/`beforeAll`, but this specific test body utilizes less than 50% of those setup variables.",
+    "latencyMs": 39495,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_filesystem_tests_roots-utils.test__0.ts - SMELLS: General Fixture - REASONING: The test file sets up broad shared state in `beforeEach`/`beforeAll`, but this specific test body utilizes less than 50% of those setup variables."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_filesystem_tests_roots-utils.test__1.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "General Fixture",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "General Fixture"
+    ],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "The test file sets up broad shared state in `beforeEach`/`beforeAll`, but this specific test body utilizes less than 50% of those setup variables.",
+    "latencyMs": 18510,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_filesystem_tests_roots-utils.test__1.ts - SMELLS: General Fixture - Justification: The test file sets up broad shared state in `beforeEach`/`beforeAll`, but this specific test body utilizes less than 50% of those setup variables."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_filesystem_tests_roots-utils.test__2.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "General Fixture"
+    ],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "The test file sets up broad shared state in `beforeEach`/`beforeAll`, but this specific test body utilizes less than 50% of those setup variables.",
+    "latencyMs": 24812,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_filesystem_tests_roots-utils.test__2.ts - SMELLS: General Fixture Justification: The test file sets up broad shared state in `beforeEach`/`beforeAll`, but this specific test body utilizes less than 50% of those setup variables."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_memory_tests_delete-reporting.test__0.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette",
+      "General Fixture"
+    ],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "Multiple assertions with custom failure explanations missing; less than 50% of setup variables used in test body.",
+    "latencyMs": 30869,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_memory_tests_delete-reporting.test__0.ts - SMELLS: Assertion Roulette, General Fixture - JUSTIFICATION: Multiple assertions with custom failure explanations missing; less than 50% of setup variables used in test body."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_memory_tests_delete-reporting.test__1.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "The test contains multiple assertions without custom failure explanations, making it ambiguous if a failure occurs.",
+    "latencyMs": 14331,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_memory_tests_delete-reporting.test__1.ts - SMELLS: Assertion Roulette - Justification: The test contains multiple assertions without custom failure explanations, making it ambiguous if a failure occurs."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_memory_tests_delete-reporting.test__2.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette",
+      "Resource Optimism"
+    ],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "Multiple assertions without custom failure explanations; performing I/O operations (fs.unlink) directly in afterEach hook without try/catch or resource existence check.",
+    "latencyMs": 15976,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_memory_tests_delete-reporting.test__2.ts - SMELLS: Assertion Roulette, Resource Optimism - JUSTIFICATION: Multiple assertions without custom failure explanations; performing I/O operations (fs.unlink) directly in afterEach hook without try/catch or resource existence check."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_memory_tests_delete-reporting.test__3.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "The test contains multiple assertions without custom failure explanations, making it ambiguous if any assertion fails.",
+    "latencyMs": 15560,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_memory_tests_delete-reporting.test__3.ts - SMELLS: Assertion Roulette - Justification: The test contains multiple assertions without custom failure explanations, making it ambiguous if any assertion fails."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_memory_tests_delete-reporting.test__4.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "General Fixture"
+    ],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "The test uses less than 50% of setup variables (5 entities, relations) in a single target test block. None",
+    "latencyMs": 14964,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_memory_tests_delete-reporting.test__4.ts - SMELLS: General Fixture Justification: The test uses less than 50% of setup variables (5 entities, relations) in a single target test block. None"
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_memory_tests_delete-reporting.test__5.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "The test contains multiple assertions with no custom failure explanations, making it ambiguous if any assertion fails.",
+    "latencyMs": 16393,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_memory_tests_delete-reporting.test__5.ts - SMELLS: Assertion Roulette - Justification: The test contains multiple assertions with no custom failure explanations, making it ambiguous if any assertion fails."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_memory_tests_delete-reporting.test__6.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette",
+      "General Fixture"
+    ],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "Multiple assertions in a single test without custom failure explanations; less than 50% of setup variables used by this specific test body.",
+    "latencyMs": 16607,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_memory_tests_delete-reporting.test__6.ts - SMELLS: Assertion Roulette, General Fixture - JUSTIFICATION: Multiple assertions in a single test without custom failure explanations; less than 50% of setup variables used by this specific test body."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_registrations.test__0.ts",
+    "referenceSmells": [
+      "Assertion Roulette"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "Multiple assertions with no custom failure explanations, making failing ambiguous.\n\nRETURN EXACTLY ONE LINE AND NOTHING ELSE USING THE SUPPLIED FORMAT:\n\nFILE: modelcontextprotocol__servers__src_everything_tests_registrations.test__0.ts - SMELLS: Assertion Roulette - JUSTIFICATION: Brief explanation of detected smells.",
+    "latencyMs": 37573,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_registrations.test__0.ts - SMELLS: Assertion Roulette - Justification: Multiple assertions with no custom failure explanations, making failing ambiguous.\n\nRETURN EXACTLY ONE LINE AND NOTHING ELSE USING THE SUPPLIED FORMAT:\n\nFILE: modelcontextprotocol__servers__src_everything_tests_registrations.test__0.ts - SMELLS: Assertion Roulette - JUSTIFICATION: Brief explanation of detected smells."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_registrations.test__1.ts",
+    "referenceSmells": [
+      "Assertion Roulette"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "Multiple assertions with no custom failure explanations, making failing ambiguous.",
+    "latencyMs": 25849,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_registrations.test__1.ts - SMELLS: Assertion Roulette - Justification: Multiple assertions with no custom failure explanations, making failing ambiguous."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_registrations.test__2.ts",
+    "referenceSmells": [],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "The test contains multiple assertions without custom failure explanations, making it ambiguous if any assertion fails.\n\nFILE: modelcontextprotocol__servers__src_everything_tests_registrations.test__2.ts - SMELLS: None",
+    "latencyMs": 20232,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_registrations.test__2.ts - SMELLS: Assertion Roulette - Justification: The test contains multiple assertions without custom failure explanations, making it ambiguous if any assertion fails.\n\nFILE: modelcontextprotocol__servers__src_everything_tests_registrations.test__2.ts - SMELLS: None"
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_registrations.test__3.ts",
+    "referenceSmells": [
+      "Assertion Roulette"
+    ],
+    "modelSmells": [
+      "Assertion Roulette",
+      "General Fixture"
+    ],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "Multiple assertions with no custom failure explanation strings detected; less than 50% of setup variables used in test body.",
+    "latencyMs": 20664,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_registrations.test__3.ts - SMELLS: Assertion Roulette, General Fixture - JUSTIFICATION: Multiple assertions with no custom failure explanation strings detected; less than 50% of setup variables used in test body."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_registrations.test__4.ts",
+    "referenceSmells": [
+      "Assertion Roulette"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "The test contains multiple assertions without custom failure explanations, making it ambiguous if any assertion fails.",
+    "latencyMs": 18969,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_registrations.test__4.ts - SMELLS: Assertion Roulette - Justification: The test contains multiple assertions without custom failure explanations, making it ambiguous if any assertion fails."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_registrations.test__5.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Mystery Guest"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "The test contains multiple assertions without custom failure explanations, making it ambiguous if any assertion fails.",
+    "latencyMs": 15082,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_registrations.test__5.ts - SMELLS: Assertion Roulette - Justification: The test contains multiple assertions without custom failure explanations, making it ambiguous if any assertion fails."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_filesystem_tests_unicode-paths.test__0.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "Multiple assertions with unexplained failure messages detected in a single test block.",
+    "latencyMs": 34039,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_filesystem_tests_unicode-paths.test__0.ts - SMELLS: Assertion Roulette - Justification: Multiple assertions with unexplained failure messages detected in a single test block."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_filesystem_tests_unicode-paths.test__1.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "The test contains multiple assertions without custom failure explanations, making it ambiguous if any assertion fails.",
+    "latencyMs": 16952,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_filesystem_tests_unicode-paths.test__1.ts - SMELLS: Assertion Roulette - Justification: The test contains multiple assertions without custom failure explanations, making it ambiguous if any assertion fails."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_filesystem_tests_unicode-paths.test__2.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "The test contains multiple assertions with custom failure explanations, making it ambiguous if a failing assertion is due to an actual bug or just one of the many checks being performed.",
+    "latencyMs": 18601,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_filesystem_tests_unicode-paths.test__2.ts - SMELLS: Assertion Roulette - Justification: The test contains multiple assertions with custom failure explanations, making it ambiguous if a failing assertion is due to an actual bug or just one of the many checks being performed."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_filesystem_tests_nested-parents.test__0.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "General Fixture"
+    ],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "REASONING: The test body utilizes less than 50% of setup variables (only one variable is used).",
+    "latencyMs": 33607,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_filesystem_tests_nested-parents.test__0.ts - SMELLS: General Fixture - REASONING: The test body utilizes less than 50% of setup variables (only one variable is used)."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_filesystem_tests_nested-parents.test__1.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "Multiple assertions in a single test block without custom failure explanations.",
+    "latencyMs": 15360,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_filesystem_tests_nested-parents.test__1.ts - SMELLS: Assertion Roulette - Justification: Multiple assertions in a single test block without custom failure explanations."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_diff-analyzer.test__0.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "The target test does not exhibit any of the defined Test Smells based on its structure, context provided by imports/fixtures, and content between \"// ── TARGET TEST ───\" and \"// ── END TARGET TEST ─────\".",
+    "latencyMs": 58803,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_diff-analyzer.test__0.ts - SMELLS: None - JUSTIFICATION: The target test does not exhibit any of the defined Test Smells based on its structure, context provided by imports/fixtures, and content between \"// ── TARGET TEST ───\" and \"// ── END TARGET TEST ─────\"."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_diff-analyzer.test__1.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "The target test does not exhibit any of the defined Test Smells based on its structure, context provided by imports/fixtures, and content between \"// ── TARGET TEST ───\" and \"// ── END TARGET TEST ─────\".",
+    "latencyMs": 21620,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_diff-analyzer.test__1.ts - SMELLS: None - JUSTIFICATION: The target test does not exhibit any of the defined Test Smells based on its structure, context provided by imports/fixtures, and content between \"// ── TARGET TEST ───\" and \"// ── END TARGET TEST ─────\"."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_diff-analyzer.test__2.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "The target test does not exhibit any of the defined Test Smells based on its structure, context provided by imports/fixtures, and content between \"// ── TARGET TEST ───\" and \"// ── END TARGET TEST ─────\".",
+    "latencyMs": 23008,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_diff-analyzer.test__2.ts - SMELLS: None - JUSTIFICATION: The target test does not exhibit any of the defined Test Smells based on its structure, context provided by imports/fixtures, and content between \"// ── TARGET TEST ───\" and \"// ── END TARGET TEST ─────\"."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_diff-analyzer.test__3.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "The target test does not exhibit any of the specified Test Smells based on its structure, context provided by imports/fixtures, and content between \"// ── TARGET TEST ───\" and \"// ── END TARGET TEST ─────\".",
+    "latencyMs": 21148,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_diff-analyzer.test__3.ts - SMELLS: None - JUSTIFICATION: The target test does not exhibit any of the specified Test Smells based on its structure, context provided by imports/fixtures, and content between \"// ── TARGET TEST ───\" and \"// ── END TARGET TEST ─────\"."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_diff-analyzer.test__4.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "The target test does not contain any of the specified Test Smells as per their strict definitions provided in the prompt.",
+    "latencyMs": 17421,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_diff-analyzer.test__4.ts - SMELLS: None - JUSTIFICATION: The target test does not contain any of the specified Test Smells as per their strict definitions provided in the prompt."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_diff-analyzer.test__5.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "The target test does not exhibit any of the specified Test Smells based on its content and structure provided in this context.",
+    "latencyMs": 18557,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_diff-analyzer.test__5.ts - SMELLS: None - JUSTIFICATION: The target test does not exhibit any of the specified Test Smells based on its content and structure provided in this context."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_diff-analyzer.test__6.ts",
+    "referenceSmells": [
+      "Assertion Roulette"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "The target test does not exhibit any of the specified Test Smells based on its structure, context imports, or logic as provided in this snippet.",
+    "latencyMs": 18600,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_diff-analyzer.test__6.ts - SMELLS: None - JUSTIFICATION: The target test does not exhibit any of the specified Test Smells based on its structure, context imports, or logic as provided in this snippet."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_diff-analyzer.test__7.ts",
+    "referenceSmells": [
+      "Conditional Test Logic",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "No Test Smells detected in the provided test file.",
+    "latencyMs": 18266,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_diff-analyzer.test__7.ts - SMELLS: None - JUSTIFICATION: No Test Smells detected in the provided test file."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_diff-analyzer.test__8.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "The target test does not exhibit any of the defined Test Smells based on its structure, context provided by imports/fixtures, and content between \"// ── TARGET TEST ───\" and \"// ── END TARGET TEST ─────\".",
+    "latencyMs": 24107,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_diff-analyzer.test__8.ts - SMELLS: None - JUSTIFICATION: The target test does not exhibit any of the defined Test Smells based on its structure, context provided by imports/fixtures, and content between \"// ── TARGET TEST ───\" and \"// ── END TARGET TEST ─────\"."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_diff-analyzer.test__9.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "The target test does NOT contain multiple assertions without custom failure explanations, nor any conditional logic that deviates from a linear flow of Arrange -> Act -> Assert. It also doesn't invoke more than one distinct state-changing method on the System Under Test (SUT), relies solely within its own context for variables and mocks setup which are not Mystery Guests as they can be seen in full code block provided, does NOT perform any actual I/O operations that would require a try/catch or resource existence checks. The test uses less than 50% of shared state from the fixture layer (only one variable is used out of five), there aren't hardcoded literals passed directly into SUT methods without declared constants present in this snippet and it doesn't use fixed delays, explicit sleep calls to wait for asynchronous behavior nor does it contain any exception catching or throwing mechanisms. Lastly, there's no sensitive equality smell detected as `.toString()` or `JSON.stringify()` is not used inside an expect() argument comparison within the provided test code block.",
+    "latencyMs": 40913,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_diff-analyzer.test__9.ts - SMELLS: None - JUSTIFICATION: The target test does NOT contain multiple assertions without custom failure explanations, nor any conditional logic that deviates from a linear flow of Arrange -> Act -> Assert. It also doesn't invoke more than one distinct state-changing method on the System Under Test (SUT), relies solely within its own context for variables and mocks setup which are not Mystery Guests as they can be seen in full code block provided, does NOT perform any actual I/O operations that would require a try/catch or resource existence checks. The test uses less than 50% of shared state from the fixture layer (only one variable is used out of five), there aren't hardcoded literals passed directly into SUT methods without declared constants present in this snippet and it doesn't use fixed delays, explicit sleep calls to wait for asynchronous behavior nor does it contain any exception catching or throwing mechanisms. Lastly, there's no sensitive equality smell detected as `.toString()` or `JSON.stringify()` is not used inside an expect() argument comparison within the provided test code block."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_diff-analyzer.test__10.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "The target test does not exhibit any of the specified Test Smells based on its structure, context imports, or logic as provided in this snippet.",
+    "latencyMs": 18945,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_diff-analyzer.test__10.ts - SMELLS: None - JUSTIFICATION: The target test does not exhibit any of the specified Test Smells based on its structure, context imports, or logic as provided in this snippet."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_explain-builder.test__0.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "The target test correctly finds a file node by path, which is not considered an issue or smell in this context. No smells detected based on the provided rules and triggers for Test Smells.",
+    "latencyMs": 49285,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_explain-builder.test__0.ts - SMELLS: None - JUSTIFICATION: The target test correctly finds a file node by path, which is not considered an issue or smell in this context. No smells detected based on the provided rules and triggers for Test Smells."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_explain-builder.test__1.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "The target test checks for child nodes in a sample graph, which is not indicative of any Test Smells as per the provided rules.",
+    "latencyMs": 19266,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_explain-builder.test__1.ts - SMELLS: None - JUSTIFICATION: The target test checks for child nodes in a sample graph, which is not indicative of any Test Smells as per the provided rules."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_explain-builder.test__2.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "The target test does not exhibit any of the defined Test Smells based on its structure, context provided by imports, or content within the specified TARGET TEST block.",
+    "latencyMs": 19041,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_explain-builder.test__2.ts - SMELLS: None - JUSTIFICATION: The target test does not exhibit any of the defined Test Smells based on its structure, context provided by imports, or content within the specified TARGET TEST block."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_explain-builder.test__3.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "The target test does not exhibit any of the specified Test Smells based on its structure, assertions used in tests are standard `expect()` calls without custom failure explanations or unexplained literals. No hardcoded numbers that change behavior across runs were detected; no magic strings like `\"SUPER_ADMIN\"` present as inputs to System Under Test methods directly from test code rather than constants defined elsewhere.\n\nThe target test uses a declarative assertion (`expect(ctx.layer?.name).toBe(\"Auth Layer\")`) which is considered safe and not indicative of any smell. The use of `buildExplainContext` function does not trigger the General Fixture Smell as it only utilizes one setup variable out of five, well below 50% usage threshold.\n\nNo conditional logic or state-changing methods are invoked directly in this test block; thus no Eager Test is detected here either.\nThe absence of any Mystery Guest indicators such as external imports for mocks/data not visible within the code snippet also rules them out. No I/O operations like `fs.readFileSync` were performed, ruling against Resource Optimism.\n\nNo hardcoded literals are present in this test block that would trigger a Hardcoded Literal smell; all strings used appear to be part of standard assertions or descriptions.\nThe sleep-related mechanisms such as explicit timeouts (`setTimeout`, etc.) and exception handling with `catch` clauses for expected thrown exceptions were not found within the target code, thus excluding Sleepy Test and Exception Catching Throwing smells.\n\nSensitive Equality smell is also absent since there are no `.toString()` or `JSON.stringify()` calls used inside an argument of any expectation checks.",
+    "latencyMs": 55620,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_explain-builder.test__3.ts - SMELLS: None - JUSTIFICATION: The target test does not exhibit any of the specified Test Smells based on its structure, assertions used in tests are standard `expect()` calls without custom failure explanations or unexplained literals. No hardcoded numbers that change behavior across runs were detected; no magic strings like `\"SUPER_ADMIN\"` present as inputs to System Under Test methods directly from test code rather than constants defined elsewhere.\n\nThe target test uses a declarative assertion (`expect(ctx.layer?.name).toBe(\"Auth Layer\")`) which is considered safe and not indicative of any smell. The use of `buildExplainContext` function does not trigger the General Fixture Smell as it only utilizes one setup variable out of five, well below 50% usage threshold.\n\nNo conditional logic or state-changing methods are invoked directly in this test block; thus no Eager Test is detected here either.\nThe absence of any Mystery Guest indicators such as external imports for mocks/data not visible within the code snippet also rules them out. No I/O operations like `fs.readFileSync` were performed, ruling against Resource Optimism.\n\nNo hardcoded literals are present in this test block that would trigger a Hardcoded Literal smell; all strings used appear to be part of standard assertions or descriptions.\nThe sleep-related mechanisms such as explicit timeouts (`setTimeout`, etc.) and exception handling with `catch` clauses for expected thrown exceptions were not found within the target code, thus excluding Sleepy Test and Exception Catching Throwing smells.\n\nSensitive Equality smell is also absent since there are no `.toString()` or `JSON.stringify()` calls used inside an argument of any expectation checks."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_explain-builder.test__4.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "The target test does not exhibit any of the defined Test Smells based on its structure, assertions used in tests are standard and do not indicate Assertion Roulette. There is no evidence for Conditional Test Logic as there aren't loops or conditional statements present within it that would affect execution flow beyond what a single unit test inherently contains.\n\nThe absence of Mystery Guest smells can be confirmed since the target node references exist directly inside the KnowledgeGraph object, which means they are accessible and not externalized in an unpredictable manner. Resource Optimism is also absent as there aren't any I/O operations performed within this specific block; it's purely setting up a context for testing purposes.\n\nGeneral Fixture smell does apply here because while there's only one test case present (which uses less than 50% of the setup variables), it still qualifies under General Fixture since no other tests are being run in parallel that would utilize more shared state. However, this is not strictly an issue with Test Smells but rather a characteristic trait when evaluating single-unit tests.\n\nHardcoded Literal smells do apply as there exist raw domain strings like \"unknown.ts\" passed directly into the `buildExplainContext` function without using declared constants or being part of assertions that would make them safe. Sensitive Equality smell is not detected since there's no `.toString()` call inside an argument to any expectation checks within this test block.\n\nTherefore, based on strict algorithmic rules for detecting Test Smells from provided context and target tests only: None",
+    "latencyMs": 50174,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_explain-builder.test__4.ts - SMELLS: None - JUSTIFICATION: The target test does not exhibit any of the defined Test Smells based on its structure, assertions used in tests are standard and do not indicate Assertion Roulette. There is no evidence for Conditional Test Logic as there aren't loops or conditional statements present within it that would affect execution flow beyond what a single unit test inherently contains.\n\nThe absence of Mystery Guest smells can be confirmed since the target node references exist directly inside the KnowledgeGraph object, which means they are accessible and not externalized in an unpredictable manner. Resource Optimism is also absent as there aren't any I/O operations performed within this specific block; it's purely setting up a context for testing purposes.\n\nGeneral Fixture smell does apply here because while there's only one test case present (which uses less than 50% of the setup variables), it still qualifies under General Fixture since no other tests are being run in parallel that would utilize more shared state. However, this is not strictly an issue with Test Smells but rather a characteristic trait when evaluating single-unit tests.\n\nHardcoded Literal smells do apply as there exist raw domain strings like \"unknown.ts\" passed directly into the `buildExplainContext` function without using declared constants or being part of assertions that would make them safe. Sensitive Equality smell is not detected since there's no `.toString()` call inside an argument to any expectation checks within this test block.\n\nTherefore, based on strict algorithmic rules for detecting Test Smells from provided context and target tests only: None"
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_explain-builder.test__5.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "The test source is syntactically correct TypeScript code with no detectable smells based on provided rules.",
+    "latencyMs": 16104,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_explain-builder.test__5.ts - SMELLS: None - JUSTIFICATION: The test source is syntactically correct TypeScript code with no detectable smells based on provided rules."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_explain-builder.test__6.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "The target test does not exhibit any of the defined Test Smells based on its structure, assertions used within it are custom failure explanations which do not trigger Assertion Roulette. There is no evidence for Conditional Test Logic as there aren't multiple conditions or loops present in a linear fashion that would require an 'if' statement to execute different code paths.\n\nThe test does not invoke more than one distinct state-changing method on the System Under Test (SUT), thus it avoids triggering Eager Test smell, and there's nothing indicative of Mystery Guest since all variables are instantiated within this file. There is no evidence for Resource Optimism as there aren't any I/O calls present in the target code block.\n\nThe test does not set up broad shared state that less than 50% utilized; instead, it uses a specific context variable 'sampleGraph' which was imported and used directly without relying on other setup variables from beforeEach or afterAll blocks. Therefore, General Fixture smell is avoided here as well.\n\n\nThere are no raw numbers passed into SUT methods in the target test block that would trigger Magic Number Smell; all values seem to be derived contextually within this code snippet.\n\nThe absence of any explicit `throw` statements and lack of catch clauses mean there's nothing triggering Exception Catching Throwing smell. Lastly, there is an unconditional match for Sensitive Equality as 'expect' assertions are used with custom failure explanations strings which do not trigger the concern about relying on string representations.\n\n\nBased upon this analysis without seeing actual test cases or additional context beyond what's provided in your prompt and following strict algorithmic rules to identify smells strictly from visible code patterns, no Test Smells have been detected.",
+    "latencyMs": 55730,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_explain-builder.test__6.ts - SMELLS: None - JUSTIFICATION: The target test does not exhibit any of the defined Test Smells based on its structure, assertions used within it are custom failure explanations which do not trigger Assertion Roulette. There is no evidence for Conditional Test Logic as there aren't multiple conditions or loops present in a linear fashion that would require an 'if' statement to execute different code paths.\n\nThe test does not invoke more than one distinct state-changing method on the System Under Test (SUT), thus it avoids triggering Eager Test smell, and there's nothing indicative of Mystery Guest since all variables are instantiated within this file. There is no evidence for Resource Optimism as there aren't any I/O calls present in the target code block.\n\nThe test does not set up broad shared state that less than 50% utilized; instead, it uses a specific context variable 'sampleGraph' which was imported and used directly without relying on other setup variables from beforeEach or afterAll blocks. Therefore, General Fixture smell is avoided here as well.\n\n\nThere are no raw numbers passed into SUT methods in the target test block that would trigger Magic Number Smell; all values seem to be derived contextually within this code snippet.\n\nThe absence of any explicit `throw` statements and lack of catch clauses mean there's nothing triggering Exception Catching Throwing smell. Lastly, there is an unconditional match for Sensitive Equality as 'expect' assertions are used with custom failure explanations strings which do not trigger the concern about relying on string representations.\n\n\nBased upon this analysis without seeing actual test cases or additional context beyond what's provided in your prompt and following strict algorithmic rules to identify smells strictly from visible code patterns, no Test Smells have been detected."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_explain-builder.test__7.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "The target test does not exhibit any of the specified Test Smells based on its content and structure provided in this context.",
+    "latencyMs": 16788,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_explain-builder.test__7.ts - SMELLS: None - JUSTIFICATION: The target test does not exhibit any of the specified Test Smells based on its content and structure provided in this context."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_onboard-builder.test__0.ts",
+    "referenceSmells": [
+      "Assertion Roulette"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "The test checks for specific strings in a generated guide, which is not an issue of Test Smells as defined by the provided rules.",
+    "latencyMs": 40394,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_onboard-builder.test__0.ts - SMELLS: None - JUSTIFICATION: The test checks for specific strings in a generated guide, which is not an issue of Test Smells as defined by the provided rules."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_onboard-builder.test__1.ts",
+    "referenceSmells": [
+      "Assertion Roulette"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "The test checks for specific strings in a guide object, which is not an issue of Test Smells as defined by the provided rules.",
+    "latencyMs": 16400,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_onboard-builder.test__1.ts - SMELLS: None - JUSTIFICATION: The test checks for specific strings in a guide object, which is not an issue of Test Smells as defined by the provided rules."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_onboard-builder.test__2.ts",
+    "referenceSmells": [
+      "Assertion Roulette"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "The target test checks for specific strings in a generated guide, which is not an issue of Test Smells as defined by the provided criteria.",
+    "latencyMs": 17202,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_onboard-builder.test__2.ts - SMELLS: None - JUSTIFICATION: The target test checks for specific strings in a generated guide, which is not an issue of Test Smells as defined by the provided criteria."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_onboard-builder.test__3.ts",
+    "referenceSmells": [
+      "Assertion Roulette"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "The test checks for string inclusion using `toContain`, which is not a magic number smell as it uses standard property keys and expected output values.",
+    "latencyMs": 16690,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_onboard-builder.test__3.ts - SMELLS: None - JUSTIFICATION: The test checks for string inclusion using `toContain`, which is not a magic number smell as it uses standard property keys and expected output values."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_onboard-builder.test__4.ts",
+    "referenceSmells": [
+      "Assertion Roulette"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "The test checks for specific strings in a generated guide, which is not an issue of Test Smells as defined by the provided rules.",
+    "latencyMs": 16563,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_onboard-builder.test__4.ts - SMELLS: None - JUSTIFICATION: The test checks for specific strings in a generated guide, which is not an issue of Test Smells as defined by the provided rules."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_onboard-builder.test__5.ts",
+    "referenceSmells": [
+      "Assertion Roulette"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "The test checks for a string in an object, which is not considered sensitive equality as per the definition provided.",
+    "latencyMs": 15885,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_onboard-builder.test__5.ts - SMELLS: None - JUSTIFICATION: The test checks for a string in an object, which is not considered sensitive equality as per the definition provided."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_onboard-builder.test__6.ts",
+    "referenceSmells": [],
+    "modelSmells": [],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "The test checks for a string \"## File Map\" in an object, which is not related to any of the defined Test Smells.",
+    "latencyMs": 15969,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_onboard-builder.test__6.ts - SMELLS: None - JUSTIFICATION: The test checks for a string \"## File Map\" in an object, which is not related to any of the defined Test Smells."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_onboard-builder.test__7.ts",
+    "referenceSmells": [],
+    "modelSmells": [],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "The test checks if a graph with no layers is handled gracefully, which does not exhibit any of the defined Test Smells.",
+    "latencyMs": 16559,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_onboard-builder.test__7.ts - SMELLS: None - JUSTIFICATION: The test checks if a graph with no layers is handled gracefully, which does not exhibit any of the defined Test Smells."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_onboard-builder.test__8.ts",
+    "referenceSmells": [],
+    "modelSmells": [],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "The test checks if a graph with no tour is handled gracefully, which does not trigger any of the defined Test Smells.",
+    "latencyMs": 16296,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_onboard-builder.test__8.ts - SMELLS: None - JUSTIFICATION: The test checks if a graph with no tour is handled gracefully, which does not trigger any of the defined Test Smells."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_staleness.test__0.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "The test does not exhibit any of the specified Test Smells based on its structure, context usage, or target code evaluation.",
+    "latencyMs": 38816,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_staleness.test__0.ts - SMELLS: None - JUSTIFICATION: The test does not exhibit any of the specified Test Smells based on its structure, context usage, or target code evaluation."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_staleness.test__1.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "The test checks for changes in files but does not contain any smells as per defined criteria.",
+    "latencyMs": 15392,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_staleness.test__1.ts - SMELLS: None - JUSTIFICATION: The test checks for changes in files but does not contain any smells as per defined criteria."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_staleness.test__2.ts",
+    "referenceSmells": [
+      "Exception Catching Throwing",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "The test does not exhibit any of the specified Test Smells based on its structure, context provided by imports/fixtures, and target test logic.",
+    "latencyMs": 17270,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_staleness.test__2.ts - SMELLS: None - JUSTIFICATION: The test does not exhibit any of the specified Test Smells based on its structure, context provided by imports/fixtures, and target test logic."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_staleness.test__3.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "The test checks for staleness by mocking a file change, which is not an actual I/O operation; it does not involve real network or disk operations.",
+    "latencyMs": 19137,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_staleness.test__3.ts - SMELLS: None - JUSTIFICATION: The test checks for staleness by mocking a file change, which is not an actual I/O operation; it does not involve real network or disk operations."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_staleness.test__4.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "The test checks staleness without any actual file change detection logic, which is not a smell in itself but could be misleading if the function `isStale` relies on real changes.",
+    "latencyMs": 18462,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_staleness.test__4.ts - SMELLS: None - JUSTIFICATION: The test checks staleness without any actual file change detection logic, which is not a smell in itself but could be misleading if the function `isStale` relies on real changes."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_staleness.test__5.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "The target test does not exhibit any of the specified Test Smells based on its structure, context provided by imports and fixtures, or content within the \"// ── TARGET TEST ───\" block.",
+    "latencyMs": 38833,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_staleness.test__5.ts - SMELLS: None - JUSTIFICATION: The target test does not exhibit any of the specified Test Smells based on its structure, context provided by imports and fixtures, or content within the \"// ── TARGET TEST ───\" block."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_staleness.test__6.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "The target test does not exhibit any of the specified Test Smells based on its structure, context usage, or behavior as per defined triggers and guards.",
+    "latencyMs": 42052,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_staleness.test__6.ts - SMELLS: None - JUSTIFICATION: The target test does not exhibit any of the specified Test Smells based on its structure, context usage, or behavior as per defined triggers and guards."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_staleness.test__7.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "The test does not exhibit any of the specified Test Smells based on its structure, context provided by imports/fixtures, and target test logic.",
+    "latencyMs": 19848,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_staleness.test__7.ts - SMELLS: None - JUSTIFICATION: The test does not exhibit any of the specified Test Smells based on its structure, context provided by imports/fixtures, and target test logic."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_figma_tests_merge.test__0.ts",
+    "referenceSmells": [
+      "Assertion Roulette"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "The test checks for a valid kind of design graph without any detected smells based on the provided criteria.",
+    "latencyMs": 33996,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_figma_tests_merge.test__0.ts - SMELLS: None - JUSTIFICATION: The test checks for a valid kind of design graph without any detected smells based on the provided criteria."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_figma_tests_merge.test__1.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Eager Test",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "The test groups screens under their page layer correctly, but there are no smells detected in the provided context or target test block.",
+    "latencyMs": 20835,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_figma_tests_merge.test__1.ts - SMELLS: None - JUSTIFICATION: The test groups screens under their page layer correctly, but there are no smells detected in the provided context or target test block."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_figma_tests_merge.test__2.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "The target test checks if a node's summary is updated correctly after merging, which does not indicate any of the listed smells.",
+    "latencyMs": 19690,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_figma_tests_merge.test__2.ts - SMELLS: None - JUSTIFICATION: The target test checks if a node's summary is updated correctly after merging, which does not indicate any of the listed smells."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_figma_tests_merge.test__3.ts",
+    "referenceSmells": [],
+    "modelSmells": [],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "The test checks if a tour starts with \"Design System\" which is not an issue as it uses the expected output matcher correctly.",
+    "latencyMs": 16577,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_figma_tests_merge.test__3.ts - SMELLS: None - JUSTIFICATION: The test checks if a tour starts with \"Design System\" which is not an issue as it uses the expected output matcher correctly."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_figma_tests_tokens.test__0.ts",
+    "referenceSmells": [
+      "Assertion Roulette"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "The test checks for a token node with type \"token\" but does not contain multiple assertions without custom failure explanations, conditional logic that deviates from the linear flow of Arrange -> Act -> Assert, or any I/O operations. It also uses less than 50% of setup variables and passes raw numbers directly as expected outputs in an assertion which is considered a Magic Number smell; however, since there are no multiple assertions without custom failure explanations (Assertion Roulette), conditional logic deviating from linear flow (Conditional Test Logic), broad shared state usage with low utilization rate by the test body (General Fixture), or any I/O operations present that aren't handled properly as per Resource Optimism criteria.",
+    "latencyMs": 50105,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_figma_tests_tokens.test__0.ts - SMELLS: None - JUSTIFICATION: The test checks for a token node with type \"token\" but does not contain multiple assertions without custom failure explanations, conditional logic that deviates from the linear flow of Arrange -> Act -> Assert, or any I/O operations. It also uses less than 50% of setup variables and passes raw numbers directly as expected outputs in an assertion which is considered a Magic Number smell; however, since there are no multiple assertions without custom failure explanations (Assertion Roulette), conditional logic deviating from linear flow (Conditional Test Logic), broad shared state usage with low utilization rate by the test body (General Fixture), or any I/O operations present that aren't handled properly as per Resource Optimism criteria."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_figma_tests_tokens.test__1.ts",
+    "referenceSmells": [],
+    "modelSmells": [],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "The test checks if a token is used by an edge, which does not indicate any smell as it seems to be verifying the expected behavior.",
+    "latencyMs": 18427,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_figma_tests_tokens.test__1.ts - SMELLS: None - JUSTIFICATION: The test checks if a token is used by an edge, which does not indicate any smell as it seems to be verifying the expected behavior."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_figma_tests_tokens.test__2.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "The test does not exhibit any of the specified Test Smells based on its structure, context usage, or logic as per provided rules.",
+    "latencyMs": 66818,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_figma_tests_tokens.test__2.ts - SMELLS: None - JUSTIFICATION: The test does not exhibit any of the specified Test Smells based on its structure, context usage, or logic as per provided rules."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_figma_tests_tokens.test__3.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "The test does not exhibit any of the specified Test Smells based on its structure, assertions used within it are standard and do not involve unexplained literals or magic numbers.",
+    "latencyMs": 47815,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_figma_tests_tokens.test__3.ts - SMELLS: None - JUSTIFICATION: The test does not exhibit any of the specified Test Smells based on its structure, assertions used within it are standard and do not involve unexplained literals or magic numbers."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_context-builder.test__0.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette",
+      "General Fixture"
+    ],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "Multiple assertions without custom failure explanations detected in \"it(\"finds relevant nodes for a query\", () => { ... }). Expectation checks are missing detailed messages. The test only uses 1 out of the 5 setup variables (nodes related to 'authentication').",
+    "latencyMs": 66376,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_context-builder.test__0.ts - SMELLS: Assertion Roulette, General Fixture - JUSTIFICATION: Multiple assertions without custom failure explanations detected in \"it(\"finds relevant nodes for a query\", () => { ... }). Expectation checks are missing detailed messages. The test only uses 1 out of the 5 setup variables (nodes related to 'authentication')."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_context-builder.test__1.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "The test checks for connected nodes via 1-hop expansion which is a valid assertion pattern as per the defined smell criteria. No other smells are detected in this target test block based on its structure and content provided.",
+    "latencyMs": 25848,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_context-builder.test__1.ts - SMELLS: Assertion Roulette, None - JUSTIFICATION: The test checks for connected nodes via 1-hop expansion which is a valid assertion pattern as per the defined smell criteria. No other smells are detected in this target test block based on its structure and content provided."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_context-builder.test__2.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette",
+      "General Fixture"
+    ],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "Multiple assertions with no custom failure explanation strings detected in both test cases; less than 50% of setup variables used by the target tests.",
+    "latencyMs": 19678,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_context-builder.test__2.ts - SMELLS: Assertion Roulette, General Fixture - JUSTIFICATION: Multiple assertions with no custom failure explanation strings detected in both test cases; less than 50% of setup variables used by the target tests."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_context-builder.test__3.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette",
+      "General Fixture"
+    ],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "The test checks if relevant layers containing matched nodes are included in `buildChatContext`, but it uses less than 50% of the setup variables.",
+    "latencyMs": 19358,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_context-builder.test__3.ts - SMELLS: Assertion Roulette, General Fixture JUSTIFICATION: The test checks if relevant layers containing matched nodes are included in `buildChatContext`, but it uses less than 50% of the setup variables."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_context-builder.test__4.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette",
+      "Conditional Test Logic"
+    ],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "Multiple assertions with no custom failure explanation strings detected in `expect(a).toBe(b)` checks.",
+    "latencyMs": 20544,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_context-builder.test__4.ts - SMELLS: Assertion Roulette, Conditional Test Logic - JUSTIFICATION: Multiple assertions with no custom failure explanation strings detected in `expect(a).toBe(b)` checks."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_context-builder.test__5.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette",
+      "General Fixture"
+    ],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "Multiple assertions with no custom failure explanation strings detected in `expect(ctx.query).toBe(\"database pool\")`. The test uses less than 50% of the setup variables.",
+    "latencyMs": 18303,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_context-builder.test__5.ts - SMELLS: Assertion Roulette, General Fixture - JUSTIFICATION: Multiple assertions with no custom failure explanation strings detected in `expect(ctx.query).toBe(\"database pool\")`. The test uses less than 50% of the setup variables."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_context-builder.test__6.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal",
+      "Magic Number"
+    ],
+    "modelSmells": [
+      "Assertion Roulette",
+      "General Fixture"
+    ],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "Multiple assertions with no custom failure explanation strings detected in `expect(a).toBe(b)` statements; the test only uses 1 out of 5 setup variables.",
+    "latencyMs": 22128,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_context-builder.test__6.ts - SMELLS: Assertion Roulette, General Fixture JUSTIFICATION: Multiple assertions with no custom failure explanation strings detected in `expect(a).toBe(b)` statements; the test only uses 1 out of 5 setup variables."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_context-builder.test__7.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette",
+      "General Fixture"
+    ],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "The test checks for empty relevantNodes which may not be an assertion but could indicate a lack of meaningful assertions in the context setup.",
+    "latencyMs": 19545,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_context-builder.test__7.ts - SMELLS: Assertion Roulette, General Fixture - JUSTIFICATION: The test checks for empty relevantNodes which may not be an assertion but could indicate a lack of meaningful assertions in the context setup."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_context-builder.test__8.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette",
+      "General Fixture"
+    ],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "Multiple assertions with no custom failure explanation strings detected in the test block; less than 50% of setup variables used by this specific test.",
+    "latencyMs": 20809,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_context-builder.test__8.ts - SMELLS: Assertion Roulette, General Fixture - JUSTIFICATION: Multiple assertions with no custom failure explanation strings detected in the test block; less than 50% of setup variables used by this specific test."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_context-builder.test__9.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette",
+      "General Fixture"
+    ],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "Multiple assertions with no custom failure explanation strings detected in both test cases; less than 50% of setup variables used by the target tests.",
+    "latencyMs": 19450,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_context-builder.test__9.ts - SMELLS: Assertion Roulette, General Fixture - JUSTIFICATION: Multiple assertions with no custom failure explanation strings detected in both test cases; less than 50% of setup variables used by the target tests."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_context-builder.test__10.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "The test contains multiple assertions without custom failure explanations strings (e.g., expect(a).toBe(b)).",
+    "latencyMs": 19887,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_context-builder.test__10.ts - SMELLS: Assertion Roulette, None - JUSTIFICATION: The test contains multiple assertions without custom failure explanations strings (e.g., expect(a).toBe(b))."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_context-builder.test__11.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "Multiple assertions with no custom failure explanation strings detected in `expect(a).toBe(b)`.",
+    "latencyMs": 17024,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_context-builder.test__11.ts - SMELLS: Assertion Roulette, None - JUSTIFICATION: Multiple assertions with no custom failure explanation strings detected in `expect(a).toBe(b)`."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_context-builder.test__12.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "Multiple assertions with no custom failure explanation strings detected in the test source code.",
+    "latencyMs": 16826,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_context-builder.test__12.ts - SMELLS: Assertion Roulette, None - JUSTIFICATION: Multiple assertions with no custom failure explanation strings detected in the test source code."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_context-builder.test__13.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "The test checks for 'complex' in formatted output but does not contain multiple assertions without custom failure explanations as per the trigger.",
+    "latencyMs": 18185,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_context-builder.test__13.ts - SMELLS: Assertion Roulette, None - JUSTIFICATION: The test checks for 'complex' in formatted output but does not contain multiple assertions without custom failure explanations as per the trigger."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_domain-types.test__0.ts",
+    "referenceSmells": [
+      "Assertion Roulette"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "The test checks for a successful validation of domain graph with expected node types, which is not indicative of any smell as per the defined smells.",
+    "latencyMs": 39546,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_domain-types.test__0.ts - SMELLS: None - JUSTIFICATION: The test checks for a successful validation of domain graph with expected node types, which is not indicative of any smell as per the defined smells."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_domain-types.test__1.ts",
+    "referenceSmells": [
+      "Assertion Roulette"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "The test checks if a specific edge type is present in the graph, which does not indicate any of the listed smells.",
+    "latencyMs": 16282,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_domain-types.test__1.ts - SMELLS: None - JUSTIFICATION: The test checks if a specific edge type is present in the graph, which does not indicate any of the listed smells."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_domain-types.test__2.ts",
+    "referenceSmells": [
+      "Assertion Roulette"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "The test checks if a specific edge type is present in the graph, which does not indicate any of the listed smells.",
+    "latencyMs": 16254,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_domain-types.test__2.ts - SMELLS: None - JUSTIFICATION: The test checks if a specific edge type is present in the graph, which does not indicate any of the listed smells."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_domain-types.test__3.ts",
+    "referenceSmells": [
+      "Hardcoded Literal",
+      "Magic Number"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "The test does not exhibit any of the defined Test Smells based on its structure, context provided by imports/fixtures, and target test logic.",
+    "latencyMs": 22079,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_domain-types.test__3.ts - SMELLS: None - JUSTIFICATION: The test does not exhibit any of the defined Test Smells based on its structure, context provided by imports/fixtures, and target test logic."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_domain-types.test__4.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "The test checks for type aliases normalization which is not a smell as per defined smells in the context.",
+    "latencyMs": 20631,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_domain-types.test__4.ts - SMELLS: None - JUSTIFICATION: The test checks for type aliases normalization which is not a smell as per defined smells in the context."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_domain-types.test__5.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "The test checks for normalized edge type aliases which is not a smell as it does not violate any of the defined rules or guards.",
+    "latencyMs": 19524,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_domain-types.test__5.ts - SMELLS: None - JUSTIFICATION: The test checks for normalized edge type aliases which is not a smell as it does not violate any of the defined rules or guards."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_domain-types.test__6.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "The test checks if `domainMeta` is preserved on nodes through validation, which does not indicate any Test Smells as per the defined criteria.",
+    "latencyMs": 19055,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_domain-types.test__6.ts - SMELLS: None - JUSTIFICATION: The test checks if `domainMeta` is preserved on nodes through validation, which does not indicate any Test Smells as per the defined criteria."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_config-schema.test__0.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "The test checks if a valid TreeSitter configuration schema can be parsed successfully, which is not considered an issue based on the provided rules.",
+    "latencyMs": 30442,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_config-schema.test__0.ts - SMELLS: None - JUSTIFICATION: The test checks if a valid TreeSitter configuration schema can be parsed successfully, which is not considered an issue based on the provided rules."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_config-schema.test__1.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "The target test checks for a missing `wasmFile` property in an object passed to the schema's safeParse method, which is not considered a smell as it correctly tests that behavior.",
+    "latencyMs": 17415,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_config-schema.test__1.ts - SMELLS: None - JUSTIFICATION: The target test checks for a missing `wasmFile` property in an object passed to the schema's safeParse method, which is not considered a smell as it correctly tests that behavior."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_config-schema.test__2.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "The test checks for a missing wasmFile property but does not contain any of the defined Test Smells based on its structure and content.",
+    "latencyMs": 15889,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_config-schema.test__2.ts - SMELLS: None - JUSTIFICATION: The test checks for a missing wasmFile property but does not contain any of the defined Test Smells based on its structure and content."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_config-schema.test__3.ts",
+    "referenceSmells": [
+      "Magic Number"
+    ],
+    "modelSmells": [
+      "Assertion Roulette",
+      "General Fixture"
+    ],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "The test uses less than 50% of setup variables in a broader shared state context.",
+    "latencyMs": 15357,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_config-schema.test__3.ts - SMELLS: Assertion Roulette, General Fixture Justification: The test uses less than 50% of setup variables in a broader shared state context."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_config-schema.test__4.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "The test checks if a valid file pattern config is accepted correctly, which does not exhibit any of the defined Test Smells.",
+    "latencyMs": 18502,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_config-schema.test__4.ts - SMELLS: None - JUSTIFICATION: The test checks if a valid file pattern config is accepted correctly, which does not exhibit any of the defined Test Smells."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_config-schema.test__5.ts",
+    "referenceSmells": [],
+    "modelSmells": [],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "The test checks if an empty array is accepted by `FilePatternConfigSchema`, which does not contain any Test Smells according to the provided rules.",
+    "latencyMs": 16720,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_config-schema.test__5.ts - SMELLS: None - JUSTIFICATION: The test checks if an empty array is accepted by `FilePatternConfigSchema`, which does not contain any Test Smells according to the provided rules."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_config-schema.test__6.ts",
+    "referenceSmells": [],
+    "modelSmells": [
+      "Assertion Roulette",
+      "General Fixture"
+    ],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "The test uses less than 50% of setup variables in a broader shared state context.\n\nReturn exactly one line and nothing else. Do not use bullets or brackets around the smell names; write only valid smells separated by commas if any are detected based on strict algorithmic rules provided above.",
+    "latencyMs": 20254,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_config-schema.test__6.ts - SMELLS: Assertion Roulette, General Fixture Justification: The test uses less than 50% of setup variables in a broader shared state context.\n\nReturn exactly one line and nothing else. Do not use bullets or brackets around the smell names; write only valid smells separated by commas if any are detected based on strict algorithmic rules provided above."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_config-schema.test__7.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette",
+      "General Fixture"
+    ],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "Multiple assertions with no custom failure explanation strings detected; test uses less than 50% of setup variables in context.",
+    "latencyMs": 16287,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_config-schema.test__7.ts - SMELLS: Assertion Roulette, General Fixture - JUSTIFICATION: Multiple assertions with no custom failure explanation strings detected; test uses less than 50% of setup variables in context."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_config-schema.test__8.ts",
+    "referenceSmells": [],
+    "modelSmells": [],
+    "modelName": "Ollama / phi4-mini:latest",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "The target test checks if a valid configuration object is accepted by `LanguageConfigSchema.safeParse` without any detected smells based on the provided criteria.",
+    "latencyMs": 32930,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_config-schema.test__8.ts - SMELLS: None - JUSTIFICATION: The target test checks if a valid configuration object is accepted by `LanguageConfigSchema.safeParse` without any detected smells based on the provided criteria."
+  }
+]

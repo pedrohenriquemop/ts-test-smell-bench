@@ -1,0 +1,3034 @@
+[
+  {
+    "file": "excalidraw__excalidraw__packages_element_src_tests_flowchart.test__0.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal",
+      "Magic Number"
+    ],
+    "modelSmells": [
+      "Assertion Roulette",
+      "Magic Number"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "Multiple assertions without custom failure explanation strings; raw number 2 used as behavioral input.",
+    "latencyMs": 172273,
+    "rawModelResponse": "FILE: excalidraw__excalidraw__packages_element_src_tests_flowchart.test__0.ts - SMELLS: Assertion Roulette, Magic Number - JUSTIFICATION: Multiple assertions without custom failure explanation strings; raw number 2 used as behavioral input."
+  },
+  {
+    "file": "shadcn-ui__ui__packages_helpers_src_test_chat-contract__0.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Eager Test",
+      "Mystery Guest"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 42770,
+    "rawModelResponse": "FILE: shadcn-ui__ui__packages_helpers_src_test_chat-contract__0.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "shadcn-ui__ui__packages_helpers_src_test_chat-contract__1.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Mystery Guest"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "Multiple assertions with identical expectations.",
+    "latencyMs": 27730,
+    "rawModelResponse": "FILE: shadcn-ui__ui__packages_helpers_src_test_chat-contract__1.ts - SMELLS: Assertion Roulette,Assertion Roulette - JUSTIFICATION: Multiple assertions with identical expectations."
+  },
+  {
+    "file": "shadcn-ui__ui__packages_helpers_src_test_chat-contract__2.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Mystery Guest"
+    ],
+    "modelSmells": [
+      "Assertion Roulette",
+      "Magic Number"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "Multiple assertions without custom failure explanation strings; raw number \"0\" passed directly as behavioral input into SUT methods.",
+    "latencyMs": 23585,
+    "rawModelResponse": "FILE: shadcn-ui__ui__packages_helpers_src_test_chat-contract__2.ts - SMELLS: Assertion Roulette, Magic Number - JUSTIFICATION: Multiple assertions without custom failure explanation strings; raw number \"0\" passed directly as behavioral input into SUT methods."
+  },
+  {
+    "file": "earendil-works__pi__packages_agent_test_harness_pico3_spec-plugins-lifecycle.test__0.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Eager Test",
+      "Hardcoded Literal",
+      "Mystery Guest"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 81144,
+    "rawModelResponse": "FILE: earendil-works__pi__packages_agent_test_harness_pico3_spec-plugins-lifecycle.test__0.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "earendil-works__pi__packages_agent_test_harness_pico3_spec-plugins-lifecycle.test__1.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Eager Test",
+      "Hardcoded Literal",
+      "Magic Number",
+      "Mystery Guest"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 42133,
+    "rawModelResponse": "FILE: earendil-works__pi__packages_agent_test_harness_pico3_spec-plugins-lifecycle.test__1.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "earendil-works__pi__packages_agent_test_harness_pico3_spec-plugins-lifecycle.test__2.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Eager Test",
+      "Hardcoded Literal",
+      "Mystery Guest"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 38383,
+    "rawModelResponse": "FILE: earendil-works__pi__packages_agent_test_harness_pico3_spec-plugins-lifecycle.test__2.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "earendil-works__pi__packages_agent_test_harness_pico3_spec-plugins-lifecycle.test__3.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Eager Test",
+      "Hardcoded Literal",
+      "Magic Number",
+      "Mystery Guest"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 59115,
+    "rawModelResponse": "FILE: earendil-works__pi__packages_agent_test_harness_pico3_spec-plugins-lifecycle.test__3.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "earendil-works__pi__packages_agent_test_harness_pico3_spec-plugins-lifecycle.test__5.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Conditional Test Logic",
+      "Eager Test",
+      "Hardcoded Literal",
+      "Mystery Guest"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 58371,
+    "rawModelResponse": "FILE: earendil-works__pi__packages_agent_test_harness_pico3_spec-plugins-lifecycle.test__5.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "earendil-works__pi__packages_agent_test_harness_pico3_spec-plugins-lifecycle.test__6.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Conditional Test Logic",
+      "Eager Test",
+      "Hardcoded Literal",
+      "Mystery Guest"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 55881,
+    "rawModelResponse": "FILE: earendil-works__pi__packages_agent_test_harness_pico3_spec-plugins-lifecycle.test__6.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "earendil-works__pi__packages_agent_test_harness_pico3_spec-plugins-lifecycle.test__7.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Conditional Test Logic",
+      "Eager Test",
+      "Hardcoded Literal",
+      "Magic Number",
+      "Mystery Guest",
+      "Sleepy Test"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 63329,
+    "rawModelResponse": "FILE: earendil-works__pi__packages_agent_test_harness_pico3_spec-plugins-lifecycle.test__7.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "earendil-works__pi__packages_agent_test_harness_pico3_spec-plugins-lifecycle.test__8.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Exception Catching Throwing",
+      "Hardcoded Literal",
+      "Mystery Guest"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 64098,
+    "rawModelResponse": "FILE: earendil-works__pi__packages_agent_test_harness_pico3_spec-plugins-lifecycle.test__8.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "earendil-works__pi__packages_agent_test_harness_pico3_spec-plugins-lifecycle.test__9.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Conditional Test Logic",
+      "Eager Test",
+      "Hardcoded Literal",
+      "Magic Number",
+      "Mystery Guest",
+      "Sleepy Test"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 49111,
+    "rawModelResponse": "FILE: earendil-works__pi__packages_agent_test_harness_pico3_spec-plugins-lifecycle.test__9.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "earendil-works__pi__packages_agent_test_harness_pico3_spec-plugins-lifecycle.test__10.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Conditional Test Logic",
+      "Hardcoded Literal",
+      "Magic Number",
+      "Mystery Guest",
+      "Sleepy Test"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 50309,
+    "rawModelResponse": "FILE: earendil-works__pi__packages_agent_test_harness_pico3_spec-plugins-lifecycle.test__10.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "earendil-works__pi__packages_agent_test_harness_pico3_spec-plugins-lifecycle.test__11.ts",
+    "referenceSmells": [
+      "Conditional Test Logic",
+      "Hardcoded Literal",
+      "Mystery Guest"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 55891,
+    "rawModelResponse": "FILE: earendil-works__pi__packages_agent_test_harness_pico3_spec-plugins-lifecycle.test__11.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "earendil-works__pi__packages_agent_test_harness_pico3_spec-plugins-lifecycle.test__12.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal",
+      "Mystery Guest"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 56966,
+    "rawModelResponse": "FILE: earendil-works__pi__packages_agent_test_harness_pico3_spec-plugins-lifecycle.test__12.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "earendil-works__pi__packages_agent_test_harness_pico3_spec-plugins-lifecycle.test__13.ts",
+    "referenceSmells": [
+      "Hardcoded Literal",
+      "Mystery Guest"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 45766,
+    "rawModelResponse": "FILE: earendil-works__pi__packages_agent_test_harness_pico3_spec-plugins-lifecycle.test__13.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "earendil-works__pi__packages_agent_test_harness_pico3_spec-plugins-lifecycle.test__14.ts",
+    "referenceSmells": [
+      "Hardcoded Literal",
+      "Mystery Guest"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 47101,
+    "rawModelResponse": "FILE: earendil-works__pi__packages_agent_test_harness_pico3_spec-plugins-lifecycle.test__14.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "earendil-works__pi__packages_agent_test_harness_pico3_spec-plugins-lifecycle.test__15.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal",
+      "Magic Number",
+      "Mystery Guest",
+      "Sleepy Test"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 71965,
+    "rawModelResponse": "FILE: earendil-works__pi__packages_agent_test_harness_pico3_spec-plugins-lifecycle.test__15.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "earendil-works__pi__packages_agent_test_harness_pico3_spec-plugins-lifecycle.test__16.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal",
+      "Mystery Guest"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 55348,
+    "rawModelResponse": "FILE: earendil-works__pi__packages_agent_test_harness_pico3_spec-plugins-lifecycle.test__16.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "earendil-works__pi__packages_ai_test_zen.test__0.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal",
+      "Mystery Guest",
+      "Resource Optimism"
+    ],
+    "modelSmells": [
+      "Assertion Roulette",
+      "Resource Optimism"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "Multiple assertions without custom failure explanation strings; actual network call without try/catch block or resource existence check.",
+    "latencyMs": 33295,
+    "rawModelResponse": "FILE: earendil-works__pi__packages_ai_test_zen.test__0.ts - SMELLS: Assertion Roulette, Resource Optimism - JUSTIFICATION: Multiple assertions without custom failure explanation strings; actual network call without try/catch block or resource existence check."
+  },
+  {
+    "file": "earendil-works__pi__packages_ai_test_uuid.test__0.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Conditional Test Logic",
+      "Magic Number"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "Multiple assertions without custom failure explanation strings in the target test block.",
+    "latencyMs": 59440,
+    "rawModelResponse": "FILE: earendil-works__pi__packages_ai_test_uuid.test__0.ts - SMELLS: Assertion Roulette - JUSTIFICATION: Multiple assertions without custom failure explanation strings in the target test block."
+  },
+  {
+    "file": "earendil-works__pi__packages_ai_test_uuid.test__1.ts",
+    "referenceSmells": [
+      "Hardcoded Literal",
+      "Magic Number"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "Multiple assertions without custom failure explanation strings in the target test block.",
+    "latencyMs": 31726,
+    "rawModelResponse": "FILE: earendil-works__pi__packages_ai_test_uuid.test__1.ts - SMELLS: Assertion Roulette - JUSTIFICATION: Multiple assertions without custom failure explanation strings in the target test block."
+  },
+  {
+    "file": "earendil-works__pi__packages_ai_test_text.test__0.ts",
+    "referenceSmells": [],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "Multiple assertions lack custom failure explanation strings.",
+    "latencyMs": 34414,
+    "rawModelResponse": "FILE: earendil-works__pi__packages_ai_test_text.test__0.ts - SMELLS: Assertion Roulette - JUSTIFICATION: Multiple assertions lack custom failure explanation strings."
+  },
+  {
+    "file": "earendil-works__pi__packages_ai_test_text.test__1.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 17161,
+    "rawModelResponse": "FILE: earendil-works__pi__packages_ai_test_text.test__1.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "earendil-works__pi__packages_ai_test_text.test__2.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 17206,
+    "rawModelResponse": "FILE: earendil-works__pi__packages_ai_test_text.test__2.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "earendil-works__pi__packages_ai_test_text.test__3.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "Multiple assertions lack custom failure explanation strings.",
+    "latencyMs": 24414,
+    "rawModelResponse": "FILE: earendil-works__pi__packages_ai_test_text.test__3.ts - SMELLS: Assertion Roulette - JUSTIFICATION: Multiple assertions lack custom failure explanation strings."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_memory_tests_resource.test__0.ts",
+    "referenceSmells": [],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 42365,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_memory_tests_resource.test__0.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_memory_tests_resource.test__1.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "Multiple assertions with no custom failure explanation strings.",
+    "latencyMs": 38070,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_memory_tests_resource.test__1.ts - SMELLS: Assertion Roulette - JUSTIFICATION: Multiple assertions with no custom failure explanation strings."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_memory_tests_resource.test__2.ts",
+    "referenceSmells": [],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 36227,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_memory_tests_resource.test__2.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_memory_tests_resource.test__3.ts",
+    "referenceSmells": [
+      "Assertion Roulette"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 23723,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_memory_tests_resource.test__3.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_memory_tests_resource.test__4.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Eager Test",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "Multiple assertions without custom failure explanation strings.",
+    "latencyMs": 25309,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_memory_tests_resource.test__4.ts - SMELLS: Assertion Roulette - JUSTIFICATION: Multiple assertions without custom failure explanation strings."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_memory_tests_file-path.test__0.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 58941,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_memory_tests_file-path.test__0.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_memory_tests_file-path.test__1.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 24059,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_memory_tests_file-path.test__1.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_memory_tests_file-path.test__2.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Conditional Test Logic",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 26650,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_memory_tests_file-path.test__2.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_memory_tests_file-path.test__3.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 23980,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_memory_tests_file-path.test__3.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_memory_tests_file-path.test__4.ts",
+    "referenceSmells": [],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 20676,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_memory_tests_file-path.test__4.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_memory_tests_file-path.test__5.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Exception Catching Throwing",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 33594,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_memory_tests_file-path.test__5.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_memory_tests_file-path.test__6.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Exception Catching Throwing",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 34836,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_memory_tests_file-path.test__6.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_memory_tests_file-path.test__7.ts",
+    "referenceSmells": [
+      "Hardcoded Literal",
+      "Resource Optimism"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 24052,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_memory_tests_file-path.test__7.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_memory_tests_file-path.test__8.ts",
+    "referenceSmells": [],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 23904,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_memory_tests_file-path.test__8.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_memory_tests_file-path.test__9.ts",
+    "referenceSmells": [],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 20241,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_memory_tests_file-path.test__9.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_memory_tests_file-path.test__10.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "No test smells detected in the provided target test source.",
+    "latencyMs": 19279,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_memory_tests_file-path.test__10.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided target test source."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_memory_tests_file-path.test__11.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "No test smells detected in the provided target test source.",
+    "latencyMs": 20469,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_memory_tests_file-path.test__11.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided target test source."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_memory_tests_file-path.test__12.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "No test smells detected in the provided target test source.",
+    "latencyMs": 19655,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_memory_tests_file-path.test__12.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided target test source."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_memory_tests_file-path.test__13.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "No test smells detected in the provided target test source.",
+    "latencyMs": 21514,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_memory_tests_file-path.test__13.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided target test source."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_memory_tests_file-path.test__14.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "No test smells detected in the provided target test source.",
+    "latencyMs": 21022,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_memory_tests_file-path.test__14.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided target test source."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_server.test__0.ts",
+    "referenceSmells": [
+      "Assertion Roulette"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 28602,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_server.test__0.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_server.test__1.ts",
+    "referenceSmells": [],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "No test smells detected in the provided target test source.",
+    "latencyMs": 19092,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_server.test__1.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided target test source."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_server.test__2.ts",
+    "referenceSmells": [
+      "Assertion Roulette"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 17513,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_server.test__2.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_server.test__3.ts",
+    "referenceSmells": [],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "Multiple assertions without custom failure explanation strings.",
+    "latencyMs": 19790,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_server.test__3.ts - SMELLS: Assertion Roulette - JUSTIFICATION: Multiple assertions without custom failure explanation strings."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_server.test__4.ts",
+    "referenceSmells": [
+      "Assertion Roulette"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "Multiple assertions lack custom failure explanation strings.",
+    "latencyMs": 23404,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_server.test__4.ts - SMELLS: Assertion Roulette - JUSTIFICATION: Multiple assertions lack custom failure explanation strings."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_prompts.test__0.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 57103,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_prompts.test__0.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_prompts.test__1.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "Multiple assertions without custom failure explanation strings.",
+    "latencyMs": 25188,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_prompts.test__1.ts - SMELLS: Assertion Roulette - JUSTIFICATION: Multiple assertions without custom failure explanation strings."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_prompts.test__2.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 25370,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_prompts.test__2.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_prompts.test__3.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "Multiple assertions with identical expectation strings.",
+    "latencyMs": 30437,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_prompts.test__3.ts - SMELLS: Assertion Roulette - JUSTIFICATION: Multiple assertions with identical expectation strings."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_prompts.test__4.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 27224,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_prompts.test__4.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_prompts.test__5.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Eager Test",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "Multiple assertions without custom failure explanation strings.",
+    "latencyMs": 31804,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_prompts.test__5.ts - SMELLS: Assertion Roulette - JUSTIFICATION: Multiple assertions without custom failure explanation strings."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_prompts.test__6.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 36942,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_prompts.test__6.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_prompts.test__7.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 25875,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_prompts.test__7.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_prompts.test__8.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "Multiple assertions without custom failure explanation strings.",
+    "latencyMs": 25864,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_prompts.test__8.ts - SMELLS: Assertion Roulette - JUSTIFICATION: Multiple assertions without custom failure explanation strings."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_prompts.test__9.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "Multiple assertions with identical expected exception messages, indicating ambiguous failure behavior.",
+    "latencyMs": 31781,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_prompts.test__9.ts - SMELLS: Assertion Roulette - JUSTIFICATION: Multiple assertions with identical expected exception messages, indicating ambiguous failure behavior."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_prompts.test__10.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 31242,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_prompts.test__10.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_resources.test__0.ts",
+    "referenceSmells": [
+      "Assertion Roulette"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 56494,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_resources.test__0.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_resources.test__1.ts",
+    "referenceSmells": [
+      "Magic Number",
+      "Sensitive Equality"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 23380,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_resources.test__1.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_resources.test__2.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Magic Number",
+      "Sensitive Equality"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 22704,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_resources.test__2.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_resources.test__3.ts",
+    "referenceSmells": [
+      "Magic Number",
+      "Sensitive Equality"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 22400,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_resources.test__3.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_resources.test__4.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Magic Number",
+      "Sensitive Equality"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 24462,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_resources.test__4.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_resources.test__5.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Magic Number"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 26218,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_resources.test__5.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_resources.test__6.ts",
+    "referenceSmells": [
+      "Magic Number"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "No test smells detected in the provided code snippet.",
+    "latencyMs": 22317,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_resources.test__6.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code snippet."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_resources.test__7.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Magic Number"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 25091,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_resources.test__7.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_resources.test__8.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal",
+      "Magic Number"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 28230,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_resources.test__8.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_resources.test__9.ts",
+    "referenceSmells": [
+      "Assertion Roulette"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 23006,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_resources.test__9.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_resources.test__10.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 23334,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_resources.test__10.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_resources.test__11.ts",
+    "referenceSmells": [
+      "Assertion Roulette"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 23993,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_resources.test__11.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_resources.test__12.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 21179,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_resources.test__12.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_resources.test__13.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 23840,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_resources.test__13.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_resources.test__14.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 20142,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_resources.test__14.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_resources.test__15.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Eager Test",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 33750,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_resources.test__15.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_resources.test__16.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "No test smells detected in the provided code snippet.",
+    "latencyMs": 21147,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_resources.test__16.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code snippet."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_resources.test__17.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 25519,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_resources.test__17.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_resources.test__18.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Eager Test",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "Multiple assertions without custom failure explanation strings.",
+    "latencyMs": 42500,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_resources.test__18.ts - SMELLS: Assertion Roulette - JUSTIFICATION: Multiple assertions without custom failure explanation strings."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_resources.test__19.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 31575,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_resources.test__19.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_resources.test__20.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "Multiple assertions without custom failure explanation strings.",
+    "latencyMs": 36210,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_resources.test__20.ts - SMELLS: Assertion Roulette - JUSTIFICATION: Multiple assertions without custom failure explanation strings."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_resources.test__21.ts",
+    "referenceSmells": [
+      "Mystery Guest"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 28603,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_resources.test__21.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_resources.test__22.ts",
+    "referenceSmells": [],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 26400,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_resources.test__22.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_resources.test__23.ts",
+    "referenceSmells": [
+      "Assertion Roulette"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 78529,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_resources.test__23.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_resources.test__24.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 30056,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_resources.test__24.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_resources.test__25.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "Multiple assertions without custom failure explanation strings, making failing ambiguous.",
+    "latencyMs": 57645,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_resources.test__25.ts - SMELLS: Assertion Roulette - JUSTIFICATION: Multiple assertions without custom failure explanation strings, making failing ambiguous."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_memory_tests_server-version.test__0.ts",
+    "referenceSmells": [
+      "Assertion Roulette"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 33669,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_memory_tests_server-version.test__0.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_memory_tests_server-version.test__1.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal",
+      "Mystery Guest"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 24815,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_memory_tests_server-version.test__1.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_sequentialthinking_tests_lib.test__0.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal",
+      "Magic Number"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "Multiple assertions without custom failure explanation strings.",
+    "latencyMs": 38386,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_sequentialthinking_tests_lib.test__0.ts - SMELLS: Assertion Roulette - JUSTIFICATION: Multiple assertions without custom failure explanation strings."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_sequentialthinking_tests_lib.test__1.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal",
+      "Magic Number"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "Multiple assertions without custom failure explanation strings.",
+    "latencyMs": 25558,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_sequentialthinking_tests_lib.test__1.ts - SMELLS: Assertion Roulette - JUSTIFICATION: Multiple assertions without custom failure explanation strings."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_sequentialthinking_tests_lib.test__2.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal",
+      "Magic Number"
+    ],
+    "modelSmells": [
+      "Assertion Roulette",
+      "General Fixture"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "Multiple assertions without custom failure explanation strings; setup variables are loaded but not utilized in this test body.",
+    "latencyMs": 34406,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_sequentialthinking_tests_lib.test__2.ts - SMELLS: Assertion Roulette, General Fixture - JUSTIFICATION: Multiple assertions without custom failure explanation strings; setup variables are loaded but not utilized in this test body."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_sequentialthinking_tests_lib.test__3.ts",
+    "referenceSmells": [
+      "Hardcoded Literal",
+      "Magic Number"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "Multiple assertions without custom failure explanation strings.",
+    "latencyMs": 26398,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_sequentialthinking_tests_lib.test__3.ts - SMELLS: Assertion Roulette - JUSTIFICATION: Multiple assertions without custom failure explanation strings."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_sequentialthinking_tests_lib.test__4.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal",
+      "Magic Number"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "Multiple assertions without custom failure explanation strings.",
+    "latencyMs": 40677,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_sequentialthinking_tests_lib.test__4.ts - SMELLS: Assertion Roulette - JUSTIFICATION: Multiple assertions without custom failure explanation strings."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_sequentialthinking_tests_lib.test__5.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal",
+      "Magic Number"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "Multiple assertions without custom failure explanation strings.",
+    "latencyMs": 30900,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_sequentialthinking_tests_lib.test__5.ts - SMELLS: Assertion Roulette - JUSTIFICATION: Multiple assertions without custom failure explanation strings."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_sequentialthinking_tests_lib.test__6.ts",
+    "referenceSmells": [
+      "Hardcoded Literal",
+      "Magic Number"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 22594,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_sequentialthinking_tests_lib.test__6.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_sequentialthinking_tests_lib.test__7.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal",
+      "Magic Number"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 25866,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_sequentialthinking_tests_lib.test__7.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_sequentialthinking_tests_lib.test__8.ts",
+    "referenceSmells": [
+      "Hardcoded Literal",
+      "Magic Number"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "Multiple assertions without custom failure explanation strings.",
+    "latencyMs": 23310,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_sequentialthinking_tests_lib.test__8.ts - SMELLS: Assertion Roulette - JUSTIFICATION: Multiple assertions without custom failure explanation strings."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_sequentialthinking_tests_lib.test__9.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal",
+      "Magic Number"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 29069,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_sequentialthinking_tests_lib.test__9.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_sequentialthinking_tests_lib.test__10.ts",
+    "referenceSmells": [
+      "Hardcoded Literal",
+      "Magic Number"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "Multiple assertions without custom failure explanation strings.",
+    "latencyMs": 25468,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_sequentialthinking_tests_lib.test__10.ts - SMELLS: Assertion Roulette - JUSTIFICATION: Multiple assertions without custom failure explanation strings."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_sequentialthinking_tests_lib.test__11.ts",
+    "referenceSmells": [
+      "Hardcoded Literal",
+      "Magic Number"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "Multiple assertions without custom failure explanation strings.",
+    "latencyMs": 46982,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_sequentialthinking_tests_lib.test__11.ts - SMELLS: Assertion Roulette - JUSTIFICATION: Multiple assertions without custom failure explanation strings."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_sequentialthinking_tests_lib.test__12.ts",
+    "referenceSmells": [
+      "Hardcoded Literal",
+      "Magic Number"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "Multiple assertions without custom failure explanation strings.",
+    "latencyMs": 24256,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_sequentialthinking_tests_lib.test__12.ts - SMELLS: Assertion Roulette - JUSTIFICATION: Multiple assertions without custom failure explanation strings."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_sequentialthinking_tests_lib.test__13.ts",
+    "referenceSmells": [
+      "Hardcoded Literal",
+      "Magic Number"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "Multiple assertions without custom failure explanation strings.",
+    "latencyMs": 24301,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_sequentialthinking_tests_lib.test__13.ts - SMELLS: Assertion Roulette - JUSTIFICATION: Multiple assertions without custom failure explanation strings."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_filesystem_tests_roots-utils.test__0.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Eager Test",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette",
+      "Resource Optimism"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "Multiple assertions without custom failure explanation strings; fs operations performed without checking resource existence.",
+    "latencyMs": 64323,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_filesystem_tests_roots-utils.test__0.ts - SMELLS: Assertion Roulette, Resource Optimism - JUSTIFICATION: Multiple assertions without custom failure explanation strings; fs operations performed without checking resource existence."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_filesystem_tests_roots-utils.test__1.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "General Fixture",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 29447,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_filesystem_tests_roots-utils.test__1.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_filesystem_tests_roots-utils.test__2.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette",
+      "Resource Optimism"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "Multiple assertions without custom failure explanation strings; getValidRootDirectories() performs actual file I/O calls without wrapping in try/catch or checking resource existence.",
+    "latencyMs": 43640,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_filesystem_tests_roots-utils.test__2.ts - SMELLS: Assertion Roulette, Resource Optimism - JUSTIFICATION: Multiple assertions without custom failure explanation strings; getValidRootDirectories() performs actual file I/O calls without wrapping in try/catch or checking resource existence."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_memory_tests_delete-reporting.test__0.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "Multiple assertions without custom failure explanation strings in the target test.",
+    "latencyMs": 54900,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_memory_tests_delete-reporting.test__0.ts - SMELLS: Assertion Roulette - JUSTIFICATION: Multiple assertions without custom failure explanation strings in the target test."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_memory_tests_delete-reporting.test__1.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "Multiple assertions without custom failure explanation strings in the target test block.",
+    "latencyMs": 24299,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_memory_tests_delete-reporting.test__1.ts - SMELLS: Assertion Roulette - JUSTIFICATION: Multiple assertions without custom failure explanation strings in the target test block."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_memory_tests_delete-reporting.test__2.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "Multiple assertions without custom failure explanation strings.",
+    "latencyMs": 24471,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_memory_tests_delete-reporting.test__2.ts - SMELLS: Assertion Roulette - JUSTIFICATION: Multiple assertions without custom failure explanation strings."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_memory_tests_delete-reporting.test__3.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "Multiple assertions without custom failure explanation strings in the target test block.",
+    "latencyMs": 25205,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_memory_tests_delete-reporting.test__3.ts - SMELLS: Assertion Roulette - JUSTIFICATION: Multiple assertions without custom failure explanation strings in the target test block."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_memory_tests_delete-reporting.test__4.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "Multiple assertions without custom failure explanation strings in the target test.",
+    "latencyMs": 24259,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_memory_tests_delete-reporting.test__4.ts - SMELLS: Assertion Roulette - JUSTIFICATION: Multiple assertions without custom failure explanation strings in the target test."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_memory_tests_delete-reporting.test__5.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "Multiple assertions with identical structure, making failure ambiguous.",
+    "latencyMs": 26010,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_memory_tests_delete-reporting.test__5.ts - SMELLS: Assertion Roulette - JUSTIFICATION: Multiple assertions with identical structure, making failure ambiguous."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_memory_tests_delete-reporting.test__6.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [
+      "Assertion Roulette"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "Multiple assertions without custom failure explanation strings in the target test block.",
+    "latencyMs": 25993,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_memory_tests_delete-reporting.test__6.ts - SMELLS: Assertion Roulette - JUSTIFICATION: Multiple assertions without custom failure explanation strings in the target test block."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_registrations.test__0.ts",
+    "referenceSmells": [
+      "Assertion Roulette"
+    ],
+    "modelSmells": [
+      "Assertion Roulette",
+      "Eager Test"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "Multiple assertions without custom failure explanation strings; test invokes multiple state-changing methods on the SUT.",
+    "latencyMs": 61873,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_registrations.test__0.ts - SMELLS: Assertion Roulette, Eager Test - JUSTIFICATION: Multiple assertions without custom failure explanation strings; test invokes multiple state-changing methods on the SUT."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_registrations.test__1.ts",
+    "referenceSmells": [
+      "Assertion Roulette"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "invalid return",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "",
+    "latencyMs": 44557,
+    "rawModelResponse": "modelcontextprotocol__servers__src_everything_tests_registrations.test__1.ts - SMELLS: Assertion Roulette - JUSTIFICATION: Multiple assertions without custom failure explanation strings."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_registrations.test__2.ts",
+    "referenceSmells": [],
+    "modelSmells": [
+      "Assertion Roulette",
+      "Conditional Test Logic"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "Multiple assertions without custom failure explanation strings; test logic includes conditional statements (if) for capabilities checking.",
+    "latencyMs": 34067,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_registrations.test__2.ts - SMELLS: Assertion Roulette, Conditional Test Logic - JUSTIFICATION: Multiple assertions without custom failure explanation strings; test logic includes conditional statements (if) for capabilities checking."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_registrations.test__3.ts",
+    "referenceSmells": [
+      "Assertion Roulette"
+    ],
+    "modelSmells": [
+      "Assertion Roulette",
+      "Eager Test"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "Multiple assertions without custom failure explanation strings; test invokes multiple distinct state-changing methods on the SUT.",
+    "latencyMs": 36241,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_registrations.test__3.ts - SMELLS: Assertion Roulette, Eager Test - JUSTIFICATION: Multiple assertions without custom failure explanation strings; test invokes multiple distinct state-changing methods on the SUT."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_registrations.test__4.ts",
+    "referenceSmells": [
+      "Assertion Roulette"
+    ],
+    "modelSmells": [
+      "Assertion Roulette",
+      "Resource Optimism"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "Multiple assertions without custom failure explanation strings; actual network I/O call (import) not wrapped in a try/catch block or checked for existence.",
+    "latencyMs": 34375,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_registrations.test__4.ts - SMELLS: Assertion Roulette, Resource Optimism - JUSTIFICATION: Multiple assertions without custom failure explanation strings; actual network I/O call (import) not wrapped in a try/catch block or checked for existence."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_everything_tests_registrations.test__5.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Mystery Guest"
+    ],
+    "modelSmells": [
+      "Assertion Roulette",
+      "Resource Optimism"
+    ],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "Multiple assertions without custom failure explanation strings; actual file I/O call without try/catch block or existence check.",
+    "latencyMs": 27009,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_everything_tests_registrations.test__5.ts - SMELLS: Assertion Roulette, Resource Optimism - JUSTIFICATION: Multiple assertions without custom failure explanation strings; actual file I/O call without try/catch block or existence check."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_filesystem_tests_unicode-paths.test__0.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 53034,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_filesystem_tests_unicode-paths.test__0.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_filesystem_tests_unicode-paths.test__1.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 24192,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_filesystem_tests_unicode-paths.test__1.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_filesystem_tests_unicode-paths.test__2.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 23911,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_filesystem_tests_unicode-paths.test__2.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_filesystem_tests_nested-parents.test__0.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 51628,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_filesystem_tests_nested-parents.test__0.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "modelcontextprotocol__servers__src_filesystem_tests_nested-parents.test__1.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 26839,
+    "rawModelResponse": "FILE: modelcontextprotocol__servers__src_filesystem_tests_nested-parents.test__1.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_diff-analyzer.test__0.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 94439,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_diff-analyzer.test__0.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_diff-analyzer.test__1.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 30002,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_diff-analyzer.test__1.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_diff-analyzer.test__2.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 31087,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_diff-analyzer.test__2.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_diff-analyzer.test__3.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 26564,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_diff-analyzer.test__3.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_diff-analyzer.test__4.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 27738,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_diff-analyzer.test__4.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_diff-analyzer.test__5.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 25054,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_diff-analyzer.test__5.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_diff-analyzer.test__6.ts",
+    "referenceSmells": [
+      "Assertion Roulette"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 30083,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_diff-analyzer.test__6.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_diff-analyzer.test__7.ts",
+    "referenceSmells": [
+      "Conditional Test Logic",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 28936,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_diff-analyzer.test__7.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_diff-analyzer.test__8.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 31143,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_diff-analyzer.test__8.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_diff-analyzer.test__9.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 24634,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_diff-analyzer.test__9.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_diff-analyzer.test__10.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 27563,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_diff-analyzer.test__10.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_explain-builder.test__0.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 72546,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_explain-builder.test__0.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_explain-builder.test__1.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 29918,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_explain-builder.test__1.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_explain-builder.test__2.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 26403,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_explain-builder.test__2.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_explain-builder.test__3.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 27485,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_explain-builder.test__3.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_explain-builder.test__4.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 26155,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_explain-builder.test__4.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_explain-builder.test__5.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 25621,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_explain-builder.test__5.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_explain-builder.test__6.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 27837,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_explain-builder.test__6.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_explain-builder.test__7.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 28494,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_explain-builder.test__7.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_onboard-builder.test__0.ts",
+    "referenceSmells": [
+      "Assertion Roulette"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 65841,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_onboard-builder.test__0.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_onboard-builder.test__1.ts",
+    "referenceSmells": [
+      "Assertion Roulette"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 26766,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_onboard-builder.test__1.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_onboard-builder.test__2.ts",
+    "referenceSmells": [
+      "Assertion Roulette"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 29145,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_onboard-builder.test__2.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_onboard-builder.test__3.ts",
+    "referenceSmells": [
+      "Assertion Roulette"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 25653,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_onboard-builder.test__3.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_onboard-builder.test__4.ts",
+    "referenceSmells": [
+      "Assertion Roulette"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 25704,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_onboard-builder.test__4.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_onboard-builder.test__5.ts",
+    "referenceSmells": [
+      "Assertion Roulette"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 27277,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_onboard-builder.test__5.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_onboard-builder.test__6.ts",
+    "referenceSmells": [],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 24919,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_onboard-builder.test__6.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_onboard-builder.test__7.ts",
+    "referenceSmells": [],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 27524,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_onboard-builder.test__7.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_onboard-builder.test__8.ts",
+    "referenceSmells": [],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 23233,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_onboard-builder.test__8.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_staleness.test__0.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 58497,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_staleness.test__0.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_staleness.test__1.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 27378,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_staleness.test__1.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_staleness.test__2.ts",
+    "referenceSmells": [
+      "Exception Catching Throwing",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 24201,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_staleness.test__2.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_staleness.test__3.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 32769,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_staleness.test__3.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_staleness.test__4.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 26464,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_staleness.test__4.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_staleness.test__5.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 57287,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_staleness.test__5.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_staleness.test__6.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 71873,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_staleness.test__6.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_staleness.test__7.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 33125,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_staleness.test__7.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_figma_tests_merge.test__0.ts",
+    "referenceSmells": [
+      "Assertion Roulette"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 57588,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_figma_tests_merge.test__0.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_figma_tests_merge.test__1.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Eager Test",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 36160,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_figma_tests_merge.test__1.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_figma_tests_merge.test__2.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 31214,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_figma_tests_merge.test__2.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_figma_tests_merge.test__3.ts",
+    "referenceSmells": [],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 26350,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_figma_tests_merge.test__3.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_figma_tests_tokens.test__0.ts",
+    "referenceSmells": [
+      "Assertion Roulette"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 56609,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_figma_tests_tokens.test__0.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_figma_tests_tokens.test__1.ts",
+    "referenceSmells": [],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 27935,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_figma_tests_tokens.test__1.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_figma_tests_tokens.test__2.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 120904,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_figma_tests_tokens.test__2.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_figma_tests_tokens.test__3.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 79635,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_figma_tests_tokens.test__3.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_context-builder.test__0.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 101168,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_context-builder.test__0.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_context-builder.test__1.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 37866,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_context-builder.test__1.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_context-builder.test__2.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 29275,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_context-builder.test__2.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_context-builder.test__3.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 30445,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_context-builder.test__3.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_context-builder.test__4.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 29526,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_context-builder.test__4.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_context-builder.test__5.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 23689,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_context-builder.test__5.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_context-builder.test__6.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal",
+      "Magic Number"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 32076,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_context-builder.test__6.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_context-builder.test__7.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 31940,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_context-builder.test__7.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_context-builder.test__8.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 30077,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_context-builder.test__8.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_context-builder.test__9.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 27948,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_context-builder.test__9.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_context-builder.test__10.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 31857,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_context-builder.test__10.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_context-builder.test__11.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 28899,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_context-builder.test__11.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_context-builder.test__12.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 26619,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_context-builder.test__12.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_context-builder.test__13.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 29493,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_src_tests_context-builder.test__13.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_domain-types.test__0.ts",
+    "referenceSmells": [
+      "Assertion Roulette"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 63663,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_domain-types.test__0.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_domain-types.test__1.ts",
+    "referenceSmells": [
+      "Assertion Roulette"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 25921,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_domain-types.test__1.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_domain-types.test__2.ts",
+    "referenceSmells": [
+      "Assertion Roulette"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 25183,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_domain-types.test__2.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_domain-types.test__3.ts",
+    "referenceSmells": [
+      "Hardcoded Literal",
+      "Magic Number"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 35077,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_domain-types.test__3.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_domain-types.test__4.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 35599,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_domain-types.test__4.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_domain-types.test__5.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 29833,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_domain-types.test__5.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_domain-types.test__6.ts",
+    "referenceSmells": [
+      "Assertion Roulette",
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 31207,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_domain-types.test__6.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_config-schema.test__0.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 48520,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_config-schema.test__0.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_config-schema.test__1.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 24815,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_config-schema.test__1.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_config-schema.test__2.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 26824,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_config-schema.test__2.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_config-schema.test__3.ts",
+    "referenceSmells": [
+      "Magic Number"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 27004,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_config-schema.test__3.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_config-schema.test__4.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 29203,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_config-schema.test__4.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_config-schema.test__5.ts",
+    "referenceSmells": [],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "No test smells detected in the provided code snippet.",
+    "latencyMs": 26146,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_config-schema.test__5.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code snippet."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_config-schema.test__6.ts",
+    "referenceSmells": [],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "No test smells detected in the provided code snippet.",
+    "latencyMs": 28671,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_config-schema.test__6.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code snippet."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_config-schema.test__7.ts",
+    "referenceSmells": [
+      "Hardcoded Literal"
+    ],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 25644,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_config-schema.test__7.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  },
+  {
+    "file": "Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_config-schema.test__8.ts",
+    "referenceSmells": [],
+    "modelSmells": [],
+    "modelName": "Ollama / llama3.1:8b",
+    "modelStatus": "success",
+    "cotEnabled": false,
+    "astMetricsIncluded": false,
+    "modelJustification": "No test smells detected in the provided code.",
+    "latencyMs": 49200,
+    "rawModelResponse": "FILE: Egonex-AI__Understand-Anything__understand-anything-plugin_packages_core_src_tests_config-schema.test__8.ts - SMELLS: None - JUSTIFICATION: No test smells detected in the provided code."
+  }
+]
