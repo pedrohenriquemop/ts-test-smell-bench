@@ -1,0 +1,102 @@
+[
+  {
+    "smell": "Assertion Roulette",
+    "tp": 83,
+    "fp": 26,
+    "fn": 27,
+    "tn": 64,
+    "precision": 0.7615,
+    "recall": 0.7545,
+    "f1": 0.758
+  },
+  {
+    "smell": "Magic Number/Hardcoded Literal",
+    "tp": 8,
+    "fp": 0,
+    "fn": 144,
+    "tn": 48,
+    "precision": 1,
+    "recall": 0.0526,
+    "f1": 0.1
+  },
+  {
+    "smell": "Eager Test",
+    "tp": 0,
+    "fp": 4,
+    "fn": 15,
+    "tn": 181,
+    "precision": 0,
+    "recall": 0,
+    "f1": 0
+  },
+  {
+    "smell": "Mystery Guest",
+    "tp": 11,
+    "fp": 18,
+    "fn": 12,
+    "tn": 159,
+    "precision": 0.3793,
+    "recall": 0.4783,
+    "f1": 0.4231
+  },
+  {
+    "smell": "General Fixture",
+    "tp": 0,
+    "fp": 35,
+    "fn": 1,
+    "tn": 164,
+    "precision": 0,
+    "recall": 0,
+    "f1": 0
+  },
+  {
+    "smell": "Conditional Test Logic",
+    "tp": 3,
+    "fp": 0,
+    "fn": 6,
+    "tn": 191,
+    "precision": 1,
+    "recall": 0.3333,
+    "f1": 0.5
+  },
+  {
+    "smell": "Sleepy Test",
+    "tp": 2,
+    "fp": 1,
+    "fn": 2,
+    "tn": 195,
+    "precision": 0.6667,
+    "recall": 0.5,
+    "f1": 0.5714
+  },
+  {
+    "smell": "Exception Catching Throwing",
+    "tp": 0,
+    "fp": 0,
+    "fn": 4,
+    "tn": 196,
+    "precision": 0,
+    "recall": 0,
+    "f1": 0
+  },
+  {
+    "smell": "Resource Optimism",
+    "tp": 0,
+    "fp": 1,
+    "fn": 2,
+    "tn": 197,
+    "precision": 0,
+    "recall": 0,
+    "f1": 0
+  },
+  {
+    "smell": "Sensitive Equality",
+    "tp": 1,
+    "fp": 0,
+    "fn": 3,
+    "tn": 196,
+    "precision": 1,
+    "recall": 0.25,
+    "f1": 0.4
+  }
+]
